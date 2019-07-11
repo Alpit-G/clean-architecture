@@ -1,5 +1,6 @@
 using HumanitarianAssistance.Application.Accounting.Queries;
 using HumanitarianAssistance.Domain.Entities;
+using HumanitarianAssistance.Infrastructure.Extensions;
 using HumanitarianAssistance.Persistence;
 using HumanitarianAssistance.WebApi.Extensions;
 using MediatR;
@@ -52,7 +53,7 @@ namespace HumanitarianAssistance.WebApi
             {
                 options.AddPolicy(DefaultCorsPolicyName, p =>
                 {
-                    //todo: Get from confiuration
+                    //todo: Get from configuration
                     p.WithOrigins(DefaultCorsPolicyUrl).AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
 
                 });
@@ -105,17 +106,7 @@ namespace HumanitarianAssistance.WebApi
             services.AddMediatR(typeof(GetMainLevelAccountQueryHandler).GetTypeInfo().Assembly);
 
             //swagger configuration
-            services.AddSwaggerGen(p =>
-            {
-                p.SwaggerDoc("v1", new Info { Title = " Humanitarian API", Description = "Humanitarian" });
-                p.AddSecurityDefinition("Bearer", new ApiKeyScheme
-                {
-                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
-                    Name = "Authorization",
-                    In = "header",
-                    Type = "apiKey"
-                });
-            });
+            services.AddSwaggerDocumentation();
 
 
             // Auto mapper
@@ -170,11 +161,7 @@ namespace HumanitarianAssistance.WebApi
             }
 
             // swagger configuration
-            app.UseSwagger();
-            app.UseSwaggerUI(c =>
-            {
-                c.SwaggerEndpoint("../swagger/v1/swagger.json", "Humanitarian Assistance");
-            });
+            app.UseSwaggerDocumentation();
 
 
             app.UseHttpsRedirection();
