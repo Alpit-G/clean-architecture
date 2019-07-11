@@ -687,23 +687,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\arjuns.IXCNEW\\.nuget\\packages\\": {},
+    "C:\\Users\\Googli\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\arjun\\HumanitarianAssistance\\Test\\HumanitarianAssistance\\HumanitarianAssistance.Common\\HumanitarianAssistance.Common.csproj",
+      "projectUniqueName": "G:\\Office\\github-alpit-g\\clean-architecture\\HumanitarianAssistance.Common\\HumanitarianAssistance.Common.csproj",
       "projectName": "HumanitarianAssistance.Common",
-      "projectPath": "D:\\arjun\\HumanitarianAssistance\\Test\\HumanitarianAssistance\\HumanitarianAssistance.Common\\HumanitarianAssistance.Common.csproj",
-      "packagesPath": "C:\\Users\\arjuns.IXCNEW\\.nuget\\packages\\",
-      "outputPath": "D:\\arjun\\HumanitarianAssistance\\Test\\HumanitarianAssistance\\HumanitarianAssistance.Common\\obj\\",
+      "projectPath": "G:\\Office\\github-alpit-g\\clean-architecture\\HumanitarianAssistance.Common\\HumanitarianAssistance.Common.csproj",
+      "packagesPath": "C:\\Users\\Googli\\.nuget\\packages\\",
+      "outputPath": "G:\\Office\\github-alpit-g\\clean-architecture\\HumanitarianAssistance.Common\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\arjuns.IXCNEW\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Googli\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

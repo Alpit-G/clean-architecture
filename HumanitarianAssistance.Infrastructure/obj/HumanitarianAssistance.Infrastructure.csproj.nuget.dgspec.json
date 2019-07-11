@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "d:\\arjun\\HumanitarianAssistance\\Test\\HumanitarianAssistance\\HumanitarianAssistance.Infrastructure\\HumanitarianAssistance.Infrastructure.csproj": {}
+    "g:\\Office\\github-alpit-g\\clean-architecture\\HumanitarianAssistance.Infrastructure\\HumanitarianAssistance.Infrastructure.csproj": {}
   },
   "projects": {
-    "d:\\arjun\\HumanitarianAssistance\\Test\\HumanitarianAssistance\\HumanitarianAssistance.Infrastructure\\HumanitarianAssistance.Infrastructure.csproj": {
+    "g:\\Office\\github-alpit-g\\clean-architecture\\HumanitarianAssistance.Infrastructure\\HumanitarianAssistance.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\arjun\\HumanitarianAssistance\\Test\\HumanitarianAssistance\\HumanitarianAssistance.Infrastructure\\HumanitarianAssistance.Infrastructure.csproj",
+        "projectUniqueName": "g:\\Office\\github-alpit-g\\clean-architecture\\HumanitarianAssistance.Infrastructure\\HumanitarianAssistance.Infrastructure.csproj",
         "projectName": "HumanitarianAssistance.Infrastructure",
-        "projectPath": "d:\\arjun\\HumanitarianAssistance\\Test\\HumanitarianAssistance\\HumanitarianAssistance.Infrastructure\\HumanitarianAssistance.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\arjuns.IXCNEW\\.nuget\\packages\\",
-        "outputPath": "d:\\arjun\\HumanitarianAssistance\\Test\\HumanitarianAssistance\\HumanitarianAssistance.Infrastructure\\obj\\",
+        "projectPath": "g:\\Office\\github-alpit-g\\clean-architecture\\HumanitarianAssistance.Infrastructure\\HumanitarianAssistance.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\Googli\\.nuget\\packages\\",
+        "outputPath": "g:\\Office\\github-alpit-g\\clean-architecture\\HumanitarianAssistance.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\arjuns.IXCNEW\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Googli\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
