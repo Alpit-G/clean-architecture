@@ -1,0 +1,9 @@
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Common\bin\Debug\netcoreapp2.2\HumanitarianAssistance.Common.deps.json
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Common\bin\Debug\netcoreapp2.2\HumanitarianAssistance.Common.dll
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Common\bin\Debug\netcoreapp2.2\HumanitarianAssistance.Common.pdb
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Common\obj\Debug\netcoreapp2.2\HumanitarianAssistance.Common.csprojAssemblyReference.cache
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Common\obj\Debug\netcoreapp2.2\HumanitarianAssistance.Common.csproj.CoreCompileInputs.cache
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Common\obj\Debug\netcoreapp2.2\HumanitarianAssistance.Common.AssemblyInfoInputs.cache
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Common\obj\Debug\netcoreapp2.2\HumanitarianAssistance.Common.AssemblyInfo.cs
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Common\obj\Debug\netcoreapp2.2\HumanitarianAssistance.Common.dll
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Common\obj\Debug\netcoreapp2.2\HumanitarianAssistance.Common.pdb

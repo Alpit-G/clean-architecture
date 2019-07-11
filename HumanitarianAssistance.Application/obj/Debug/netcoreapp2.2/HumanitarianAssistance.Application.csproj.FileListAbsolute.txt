@@ -1,0 +1,16 @@
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Application\bin\Debug\netcoreapp2.2\HumanitarianAssistance.Application.deps.json
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Application\bin\Debug\netcoreapp2.2\HumanitarianAssistance.Application.dll
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Application\bin\Debug\netcoreapp2.2\HumanitarianAssistance.Application.pdb
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Application\obj\Debug\netcoreapp2.2\HumanitarianAssistance.Application.csprojAssemblyReference.cache
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Application\obj\Debug\netcoreapp2.2\HumanitarianAssistance.Application.csproj.CoreCompileInputs.cache
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Application\obj\Debug\netcoreapp2.2\HumanitarianAssistance.Application.AssemblyInfoInputs.cache
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Application\obj\Debug\netcoreapp2.2\HumanitarianAssistance.Application.AssemblyInfo.cs
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Application\obj\Debug\netcoreapp2.2\HumanitarianAssistance.Application.dll
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Application\obj\Debug\netcoreapp2.2\HumanitarianAssistance.Application.pdb
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Application\bin\Debug\netcoreapp2.2\HumanitarianAssistance.Common.dll
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Application\bin\Debug\netcoreapp2.2\HumanitarianAssistance.Domain.dll
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Application\bin\Debug\netcoreapp2.2\HumanitarianAssistance.Persistence.dll
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Application\bin\Debug\netcoreapp2.2\HumanitarianAssistance.Common.pdb
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Application\bin\Debug\netcoreapp2.2\HumanitarianAssistance.Persistence.pdb
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Application\bin\Debug\netcoreapp2.2\HumanitarianAssistance.Domain.pdb
+D:\arjun\HumanitarianAssistance\Test\HumanitarianAssistance\HumanitarianAssistance.Application\obj\Debug\netcoreapp2.2\HumanitarianAssistance.Application.csproj.CopyComplete
