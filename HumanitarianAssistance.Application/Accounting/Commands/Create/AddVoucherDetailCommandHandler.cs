@@ -19,9 +19,10 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
         private HumanitarianAssistanceDbContext _dbContext;
         private IMapper _mapper;
 
-        public AddVoucherDetailCommandHandler(HumanitarianAssistanceDbContext dbContext)
+        public AddVoucherDetailCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
+            _mapper = mapper;
         }
 
         public async Task<ApiResponse> Handle(AddVoucherDetailCommand request, CancellationToken cancellationToken)

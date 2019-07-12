@@ -6,9 +6,6 @@ using HumanitarianAssistance.Application.Accounting.Commands.Delete;
 using HumanitarianAssistance.Application.Accounting.Commands.Update;
 using HumanitarianAssistance.Application.Accounting.Queries;
 using HumanitarianAssistance.Application.Infrastructure;
-using Microsoft.AspNetCore.Identity;
-using HumanitarianAssistance.Domain.Entities;
-using System.Security.Claims;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Accounting
 {
@@ -18,7 +15,6 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
     public class ChartOfAccountController : Controller
     {
         private readonly IMediator _mediator;
-        private readonly UserManager<AppUser> _userManager;
 
         public ChartOfAccountController(IMediator mediator)
         {
