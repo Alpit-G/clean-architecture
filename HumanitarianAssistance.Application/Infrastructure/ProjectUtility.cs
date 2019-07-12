@@ -6,7 +6,7 @@ namespace HumanitarianAssistance.Application.Infrastructure
 {
     public static class ProjectUtility
     {
-        public static string getClientCode(this string ClientId)
+        public static string GetClientCode(this string ClientId)
         {
             string code = string.Empty;
             if (ClientId.Length == 1)

@@ -1,4 +1,7 @@
 ﻿using HumanitarianAssistance.Application.Infrastructure;
+using HumanitarianAssistance.Application.Marketing.Commands.Create;
+using HumanitarianAssistance.Application.Marketing.Commands.Delete;
+using HumanitarianAssistance.Application.Marketing.Commands.Update;
 using HumanitarianAssistance.Application.Marketing.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -20,20 +23,52 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             _mediator = mediator;
         }
 
-        [HttpPost] 
+        [HttpPost]
         public async Task<ApiResponse> GetClientsPaginatedList([FromBody]GetClientsPaginatedListQuery query)
         {
             return await _mediator.Send(query);
         }
         [HttpPost]
-        public async Task<ApiResponse> GetClientDetailsById([FromBody]GetClientDetailsByIdQuery query)
+        public async Task<ApiResponse> GetClientDetailsById(int ClientId)
+        {
+            return await _mediator.Send(new GetClientDetailsByIdQuery { ClientId = ClientId });
+        }
+        [HttpPost]
+        public async Task<ApiResponse> GetAllClientList()
+        {
+            return await _mediator.Send(new GetAllClientQuery());
+        }
+        [HttpPost]
+        public async Task<ApiResponse> GetFilteredClientList([FromBody]FilterClientListQuery query)
         {
             return await _mediator.Send(query);
         }
         [HttpPost]
-        public async Task<ApiResponse> GetAllClientList([FromBody]GetAllClientQuery query)
+        public async Task<ApiResponse> GetAllCategoryList()
         {
-            return await _mediator.Send(query);
+            return await _mediator.Send(new GetAllCategoryQuery());
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddClient([FromBody]AddClientDetailsCommand command)
+        {
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> EditClient([FromBody]EditClientDetailsCommand command)
+        {
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> DeleteClient(int ClientId)
+        {
+            return await _mediator.Send(new DeleteClientDetailsCommand { ClientId = ClientId });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddCategory([FromBody]EditClientDetailsCommand command)
+        {
+            return await _mediator.Send(command);
         }
 
     }
