@@ -7,25 +7,26 @@ using HumanitarianAssistance.Common.Enums;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Persistence;
 using Microsoft.EntityFrameworkCore;
+using HumanitarianAssistance.Domain.Entities.Accounting;
 
 namespace HumanitarianAssistance.Application.Accounting.Commands.Delete
 {
 
-    public class DeleteChartOfAccountQueryHandler : IRequestHandler<DeleteChartOfAccountQuery, ApiResponse>
+    public class DeleteChartOfAccountCommandHandler : IRequestHandler<DeleteChartOfAccountCommand, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
 
-        public DeleteChartOfAccountQueryHandler(HumanitarianAssistanceDbContext dbContext)
+        public DeleteChartOfAccountCommandHandler(HumanitarianAssistanceDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task<ApiResponse> Handle(DeleteChartOfAccountQuery request, CancellationToken cancellationToken)
+        public async Task<ApiResponse> Handle(DeleteChartOfAccountCommand request, CancellationToken cancellationToken)
         {
             ApiResponse response = new ApiResponse();
             try
             {
-                var accountDetail = await _dbContext.ChartOfAccountNew.FirstOrDefaultAsync(x => x.ChartOfAccountNewId == request.AccountId);
+                ChartOfAccountNew accountDetail = await _dbContext.ChartOfAccountNew.FirstOrDefaultAsync(x => x.ChartOfAccountNewId == request.AccountId);
                 if (accountDetail != null)
                 {
                     if (accountDetail.AccountLevelId == (int)AccountLevels.InputLevel ? !await CheckTransactionExistOrNot(request.AccountId) : !await CheckChildAccountExistOrNot(request.AccountId))
@@ -34,7 +35,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Delete
                         accountDetail.ModifiedById = request.ModifiedById;
                         accountDetail.ModifiedDate = DateTime.UtcNow;
 
-                        _dbContext.ChartOfAccountNew.Update(accountDetail);
+                        await _dbContext.SaveChangesAsync();
 
                         response.StatusCode = StaticResource.successStatusCode;
                         response.Message = StaticResource.SuccessText;

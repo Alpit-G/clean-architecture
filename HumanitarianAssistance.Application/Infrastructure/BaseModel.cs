@@ -4,6 +4,13 @@ namespace HumanitarianAssistance.Application.Infrastructure
 {
     public class BaseModel
     {
+        public BaseModel()
+        {
+            CreatedById = null;
+            ModifiedById = null;
+            IsDeleted = false;
+        }
+
         public DateTime? CreatedDate { get; set; }
         public DateTime? ModifiedDate { get; set; }
         public string CreatedById { get; set; }

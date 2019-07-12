@@ -6,22 +6,23 @@ using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Enums;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Domain.Entities.Accounting;
+using HumanitarianAssistance.Domain.Entities.Marketing;
 using HumanitarianAssistance.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Accounting.Commands.Create
 {
-    public class AddChartOfAccountQueryHandler : IRequestHandler<AddChartOfAccountQuery, ApiResponse>
+    public class AddChartOfAccountCommandHandler : IRequestHandler<AddChartOfAccountCommand, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
 
-        public AddChartOfAccountQueryHandler(HumanitarianAssistanceDbContext dbContext)
+        public AddChartOfAccountCommandHandler(HumanitarianAssistanceDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task<ApiResponse> Handle(AddChartOfAccountQuery request, CancellationToken cancellationToken)
+        public async Task<ApiResponse> Handle(AddChartOfAccountCommand request, CancellationToken cancellationToken)
         {
             ApiResponse response = new ApiResponse();
             try
@@ -34,9 +35,6 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                     }
                 }
 
-                //bool sameAccount = await _dbContext.ChartOfAccountNew.AnyAsync(x => x.AccountName.ToLower() == request.AccountName.ToLower());
-                //if (!sameAccount)
-                //{
                 //Main Level
                 if (request.AccountLevelId == (int)AccountLevels.MainLevel)
                 {
@@ -64,10 +62,11 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                         obj.IsDeleted = false;
 
                         await _dbContext.ChartOfAccountNew.AddAsync(obj);
+                        await _dbContext.SaveChangesAsync();
 
                         obj.ParentID = obj.ChartOfAccountNewId;
 
-                        _dbContext.ChartOfAccountNew.Update(obj);
+                        await _dbContext.SaveChangesAsync();
 
                         response.data.ChartOfAccountNewDetail = obj;
                         response.StatusCode = StaticResource.successStatusCode;
@@ -110,6 +109,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                             obj.IsDeleted = false;
 
                             await _dbContext.ChartOfAccountNew.AddAsync(obj);
+                            await _dbContext.SaveChangesAsync();
 
                             response.data.ChartOfAccountNewDetail = obj;
                             response.StatusCode = StaticResource.successStatusCode;
@@ -120,7 +120,6 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                             response.StatusCode = StaticResource.failStatusCode;
                             response.Message = StaticResource.ParentIdNotPresent;
                         }
-
                     }
                     else
                     {
@@ -157,14 +156,12 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                             obj.ChartOfAccountNewCode = request.ChartOfAccountNewCode;
 
                             obj.AccountFilterTypeId = request.AccountFilterTypeId != null ? request.AccountFilterTypeId : null;  //dropdown
-                            // obj.AccountTypeId = request.AccountTypeId != null ? request.AccountTypeId : null; //dropdown
 
                             if (request.AccountTypeId != null)
                             {
                                 obj.AccountTypeId = request.AccountTypeId;
                                 // Get balance type.
-                                obj.IsCreditBalancetype =
-                                    await GetAccountBalanceTypeByAccountType((int)obj.AccountTypeId);
+                                obj.IsCreditBalancetype = await GetAccountBalanceTypeByAccountType((int)obj.AccountTypeId);
                             }
                             else
                             {
@@ -177,6 +174,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                             obj.IsDeleted = false;
 
                             await _dbContext.ChartOfAccountNew.AddAsync(obj);
+                            await _dbContext.SaveChangesAsync();
 
                             response.data.ChartOfAccountNewDetail = obj;
                             response.StatusCode = StaticResource.successStatusCode;
@@ -229,11 +227,10 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                             obj.AccountTypeId = parentPresent.AccountTypeId;
                             obj.IsCreditBalancetype = parentPresent.IsCreditBalancetype;
                             obj.AccountFilterTypeId = parentPresent.AccountFilterTypeId;
-                            //////////////////////
-
                             obj.IsDeleted = false;
 
                             await _dbContext.ChartOfAccountNew.AddAsync(obj);
+                            await _dbContext.SaveChangesAsync();
 
                             response.data.ChartOfAccountNewDetail = obj;
                             response.StatusCode = StaticResource.successStatusCode;
@@ -244,7 +241,6 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                             response.StatusCode = StaticResource.failStatusCode;
                             response.Message = StaticResource.ParentIdNotPresent;
                         }
-
                     }
                     else
                     {
@@ -263,10 +259,8 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
 
         public async Task<bool> GetAccountBalanceTypeByAccountType(int accountTypeId)
         {
-            var accountType = await _dbContext.AccountType.Where(x => x.AccountTypeId == accountTypeId)
-                .FirstOrDefaultAsync();
-            var accountHeadType = await _dbContext.AccountHeadType
-                .Where(x => x.AccountHeadTypeId == accountType.AccountHeadTypeId).FirstOrDefaultAsync();
+            var accountType = await _dbContext.AccountType.FirstOrDefaultAsync(x => x.AccountTypeId == accountTypeId);
+            var accountHeadType = await _dbContext.AccountHeadType.FirstOrDefaultAsync(x => x.AccountHeadTypeId == accountType.AccountHeadTypeId);
             return accountHeadType.IsCreditBalancetype;
         }
     }
