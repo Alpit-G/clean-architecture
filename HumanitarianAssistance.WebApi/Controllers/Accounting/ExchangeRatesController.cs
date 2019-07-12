@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using HumanitarianAssistance.Application.Accounting.Commands.Create;
+using HumanitarianAssistance.Application.Accounting.Commands.Delete;
+using HumanitarianAssistance.Application.Accounting.Commands.Update;
 using HumanitarianAssistance.Application.Accounting.Models;
 using HumanitarianAssistance.Application.Accounting.Queries;
 using HumanitarianAssistance.Application.Infrastructure;
@@ -30,11 +33,35 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
         }
 
         [HttpPost]
-        public async Task<ApiResponse> SaveSystemGeneratedExchangeRates([FromBody] List<AddExchangeRateModel> model)
+        public async Task<ApiResponse> SaveSystemGeneratedExchangeRates([FromBody] List<GenerateExchangeRateModel> model)
         {
-            AddExchangeRateCommand cs= new AddExchangeRateCommand();
-            cs.AddExchangeRateList.AddRange(model);
-            return await _mediator.Send(cs);
+            AddExchangeRateCommand command= new AddExchangeRateCommand();
+            command.GenerateExchangeRateModel.AddRange(model);
+            return await _mediator.Send(command);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetExchangeRatesDetail([FromBody] GetExchangeRatesDetailQuery model)
+        {
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> SaveExchangeRatesForAllOffices([FromBody] SaveExchangeRatesForAllOfficesCommand officeExchangeRateViewModel)
+        {
+            return await _mediator.Send(officeExchangeRateViewModel);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> VerifyExchangeRates([FromBody] DateTime model)
+        {
+            return await _mediator.Send(new VerifyExchangeRatesCommand { ExchangeRateDate= model} );
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> DeleteExchangeRates([FromBody] DateTime model)
+        {
+            return await _mediator.Send(new DeleteExchangeRatesCommand { ExchangeRateDate= model} );
         }
     }
 }
