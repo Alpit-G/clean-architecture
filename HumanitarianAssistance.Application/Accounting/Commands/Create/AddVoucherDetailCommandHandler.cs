@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
 using HumanitarianAssistance.Application.Accounting.Models;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
@@ -13,11 +14,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Accounting.Commands.Create
 {
-
-
     public class AddVoucherDetailCommandHandler : IRequestHandler<AddVoucherDetailCommand, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
+        private IMapper _mapper;
 
         public AddVoucherDetailCommandHandler(HumanitarianAssistanceDbContext dbContext)
         {
@@ -30,7 +30,6 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
 
             try
             {
-
                 request.TimezoneOffset = request.TimezoneOffset > 0 ? request.TimezoneOffset * -1 : Math.Abs(request.TimezoneOffset.Value);
 
                 DateTime filterVoucherDate = request.VoucherDate.AddMinutes(request.TimezoneOffset.Value);
@@ -111,6 +110,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                                 }
 
                                 await _dbContext.VoucherDetail.AddAsync(obj);
+                                await _dbContext.SaveChangesAsync();
 
                                 VoucherDetailEntityModel voucherModel = _mapper.Map<VoucherDetail, VoucherDetailEntityModel>(obj);
 
@@ -141,7 +141,6 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                     response.StatusCode = StaticResource.failStatusCode;
                     response.Message = StaticResource.ExchagneRateNotDefined;
                 }
-
             }
             catch (Exception ex)
             {
