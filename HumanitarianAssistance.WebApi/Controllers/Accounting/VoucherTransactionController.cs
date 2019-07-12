@@ -50,5 +50,17 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
             return await _mediator.Send(new VerifyVoucherCommand { VoucherId = id });
         }
 
+        [HttpPost]
+        public async Task<ApiResponse> GetAllTransactionsByVoucherId([FromBody] long id)
+        {
+            return await _mediator.Send(new GetAllTransactionsByVoucherIdQuery { VoucherId = id });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditTransactionList([FromBody] AddEditTransactionListCommand model)
+        {
+            return await _mediator.Send(model);
+        }
+
     }
 }
