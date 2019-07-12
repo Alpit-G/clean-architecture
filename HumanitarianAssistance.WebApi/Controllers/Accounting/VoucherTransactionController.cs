@@ -24,5 +24,11 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
             return await _mediator.Send(model);
         }
 
+        [HttpPost]
+        public async Task<ApiResponse> GetVoucherDetailByVoucherNo([FromBody] long id)
+        {
+            return await _mediator.Send(new GetVoucherDetailByVoucherNoQuery { VoucherId = id });
+        }
+
     }
 }
