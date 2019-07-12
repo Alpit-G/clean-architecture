@@ -1,5 +1,10 @@
 .vs/HumanitarianAssistance/v16
+.vs/HumanitarianAssistance/v15
 .vs/HumanitarianAssistance/DesignTimeBuild
+
+/.vs/HumanitarianAssistance/v15/Server/sqlite3
+/.vs/config/applicationhost.config
+
 
 HumanitarianAssistance.Application/obj
 HumanitarianAssistance.Application/bin
@@ -16,4 +21,3 @@ HumanitarianAssistance.Infrastructure/bin
 HumanitarianAssistance.Persistence/obj
 HumanitarianAssistance.Persistence/bin
 HumanitarianAssistance.WebApi/ClientApp/package-lock.json
-/.vs/HumanitarianAssistance/v15/Server/sqlite3

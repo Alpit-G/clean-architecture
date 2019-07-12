@@ -1,4 +1,6 @@
 using System.Threading.Tasks;
+using HumanitarianAssistance.Application.Accounting.Commands.Create;
+using HumanitarianAssistance.Application.Accounting.Commands.Update;
 using HumanitarianAssistance.Application.Accounting.Queries;
 using HumanitarianAssistance.Application.Infrastructure;
 using MediatR;
@@ -28,6 +30,24 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
         public async Task<ApiResponse> GetVoucherDetailByVoucherNo([FromBody] long id)
         {
             return await _mediator.Send(new GetVoucherDetailByVoucherNoQuery { VoucherId = id });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddVoucherDetail([FromBody] AddVoucherDetailCommand model)
+        {
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> EditVoucherDetail([FromBody] EditVoucherDetailCommand model)
+        {
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> VerifyVoucher([FromBody] long id)
+        {
+            return await _mediator.Send(new VerifyVoucherCommand { VoucherId = id });
         }
 
     }
