@@ -20,7 +20,7 @@ namespace HumanitarianAssistance.Application.Accounting.Queries
             _dbContext = dbContext;
         }
 
-        public async Task<ApiResponse> Handle(AddChartOfAccountQuery request, CancellationToken cancellationToken)
+        public async Task<ApiResponse> HandleAsync(AddChartOfAccountQuery request, CancellationToken cancellationToken)
         {
             ApiResponse response = new ApiResponse();
             try

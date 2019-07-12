@@ -11,8 +11,6 @@
     <Folder Include="Hr\Models\" />
     <Folder Include="Hr\Queries\" />
     <Folder Include="Marketing\Commands\" />
-    <Folder Include="Marketing\Models\" />
-    <Folder Include="Marketing\Queries\" />
   </ItemGroup>
 
   <ItemGroup>
