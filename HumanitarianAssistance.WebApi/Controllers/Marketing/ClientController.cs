@@ -2,6 +2,7 @@
 using HumanitarianAssistance.Application.Marketing.Commands.Create;
 using HumanitarianAssistance.Application.Marketing.Commands.Delete;
 using HumanitarianAssistance.Application.Marketing.Commands.Update;
+using HumanitarianAssistance.Application.Marketing.Models;
 using HumanitarianAssistance.Application.Marketing.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -66,9 +67,16 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
         }
 
         [HttpPost]
-        public async Task<ApiResponse> AddCategory([FromBody]EditClientDetailsCommand command)
+        public async Task<ApiResponse> AddCategory([FromBody]CategoryModel model)
         {
-            return await _mediator.Send(command);
+            if (model.CategoryId == 0)
+            {
+                return await _mediator.Send(new AddCategoryCommand {CategoryId=model.CategoryId,CategoryName=model.CategoryName });
+            }
+            else
+            {
+               return await _mediator.Send(new EditCategoryCommand { CategoryId = model.CategoryId, CategoryName = model.CategoryName });
+            } 
         }
 
     }

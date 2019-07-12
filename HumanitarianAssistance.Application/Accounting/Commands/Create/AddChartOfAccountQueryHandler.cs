@@ -21,11 +21,11 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
             _dbContext = dbContext;
         }
 
-        public async Task<ApiResponse> HandleAsync(AddChartOfAccountQuery request, CancellationToken cancellationToken)
+        public async Task<ApiResponse> Handle(AddChartOfAccountQuery request, CancellationToken cancellationToken)
         {
             ApiResponse response = new ApiResponse();
             try
-            {
+            { 
                 if (request != null)
                 {
                     if (request.AccountName != null)
