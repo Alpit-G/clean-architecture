@@ -1,9 +1,9 @@
-using HumanitarianAssistance.Application.Infrastructure;
 using MediatR;
+using HumanitarianAssistance.Application.Infrastructure;
 
-namespace HumanitarianAssistance.Application.Accounting.Queries
+namespace HumanitarianAssistance.Application.Accounting.Commands.Create
 {
-    public class AddChartOfAccountQuery : IRequest<ApiResponse>
+    public class AddChartOfAccountQuery : BaseModel, IRequest<ApiResponse>
     {
         public long ChartOfAccountNewId { get; set; }
         public string AccountName { get; set; }

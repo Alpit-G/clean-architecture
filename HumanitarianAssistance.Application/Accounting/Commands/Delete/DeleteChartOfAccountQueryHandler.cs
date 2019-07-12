@@ -1,4 +1,4 @@
-namespace HumanitarianAssistance.Application.Accounting.Queries
+namespace HumanitarianAssistance.Application.Accounting.Commands.Delete
 {
     public class DeleteChartOfAccountQueryHandler
     {

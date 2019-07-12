@@ -1,26 +1,19 @@
+using MediatR;
 using HumanitarianAssistance.Application.Accounting.Queries;
 using HumanitarianAssistance.Domain.Entities;
 using HumanitarianAssistance.Infrastructure.Extensions;
 using HumanitarianAssistance.Persistence;
 using HumanitarianAssistance.WebApi.Extensions;
-using MediatR;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
-using Swashbuckle.AspNetCore.Swagger;
-using System;
 using System.Reflection;
-using System.Text;
 
 namespace HumanitarianAssistance.WebApi
 {
@@ -28,12 +21,10 @@ namespace HumanitarianAssistance.WebApi
     {
 
         string DefaultCorsPolicyName = string.Empty;
-        private readonly SymmetricSecurityKey _signingKey;
 
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            this._signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtIssuerOptions:JwtKey"]));
         }
 
         public IConfiguration Configuration { get; }
@@ -69,56 +60,16 @@ namespace HumanitarianAssistance.WebApi
 
             }).AddEntityFrameworkStores<HumanitarianAssistanceDbContext>().AddDefaultTokenProviders();
 
-
-            // jwt token configuration
-            var jwtAppSettingOptions = Configuration.GetSection(nameof(JwtIssuerOptions));
-            services.Configure<JwtIssuerOptions>(options =>
-            {
-                options.Issuer = jwtAppSettingOptions[nameof(JwtIssuerOptions.Issuer)];
-                options.Audience = jwtAppSettingOptions[nameof(JwtIssuerOptions.Audience)];
-                options.SigningCredentials = new SigningCredentials(_signingKey, SecurityAlgorithms.HmacSha256);
-
-            });
-
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-
-            })
-           .AddJwtBearer(cfg =>
-           {
-               cfg.RequireHttpsMetadata = false;
-               cfg.SaveToken = true;
-               cfg.TokenValidationParameters = new TokenValidationParameters()
-               {
-                   ValidIssuer = Configuration["JwtIssuerOptions:Issuer"],
-                   ValidAudience = Configuration["JwtIssuerOption s:Audience"],
-                   IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtIssuerOptions:JwtKey"])),
-                   RequireExpirationTime = true,
-                   ClockSkew = TimeSpan.Zero
-               };
-           });
-
             // Mediater Between Send To Handler
             services.AddMediatR(typeof(Startup));
             services.AddMediatR(typeof(GetMainLevelAccountQueryHandler).GetTypeInfo().Assembly);
 
-            //swagger configuration
+            // Jwt Config
+            services.AddJwtAuthentication(Configuration);
+
+
+            // swagger configuration
             services.AddSwaggerDocumentation();
-
-
-            // Auto mapper
-            //var config = new AutoMapper.MapperConfiguration(cfg =>
-            //{
-            //    cfg.AddProfile(new AutoMapperProfile());
-            //});
-
-            //var mapper = config.CreateMapper();
-            //services.AddSingleton(mapper);
-            //services.AddAutoMapper();
-
 
 
             //important to run your application
@@ -163,7 +114,9 @@ namespace HumanitarianAssistance.WebApi
             // swagger configuration
             app.UseSwaggerDocumentation();
 
-
+            // to use identity
+            app.UseAuthentication();
+            
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();

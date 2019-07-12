@@ -5,11 +5,12 @@ using System.Threading.Tasks;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Enums;
 using HumanitarianAssistance.Common.Helpers;
+using HumanitarianAssistance.Domain.Entities.Accounting;
 using HumanitarianAssistance.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace HumanitarianAssistance.Application.Accounting.Queries
+namespace HumanitarianAssistance.Application.Accounting.Commands.Create
 {
     public class AddChartOfAccountQueryHandler : IRequestHandler<AddChartOfAccountQuery, ApiResponse>
     {
@@ -66,7 +67,7 @@ namespace HumanitarianAssistance.Application.Accounting.Queries
 
                         obj.ParentID = obj.ChartOfAccountNewId;
 
-                        await _dbContext.ChartOfAccountNew.Update(obj);
+                        _dbContext.ChartOfAccountNew.Update(obj);
 
                         response.data.ChartOfAccountNewDetail = obj;
                         response.StatusCode = StaticResource.successStatusCode;
@@ -258,6 +259,15 @@ namespace HumanitarianAssistance.Application.Accounting.Queries
                 response.Message = StaticResource.SomethingWrong + ex.Message;
             }
             return response;
+        }
+
+        public async Task<bool> GetAccountBalanceTypeByAccountType(int accountTypeId)
+        {
+            var accountType = await _dbContext.AccountType.Where(x => x.AccountTypeId == accountTypeId)
+                .FirstOrDefaultAsync();
+            var accountHeadType = await _dbContext.AccountHeadType
+                .Where(x => x.AccountHeadTypeId == accountType.AccountHeadTypeId).FirstOrDefaultAsync();
+            return accountHeadType.IsCreditBalancetype;
         }
     }
 }

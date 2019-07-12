@@ -5,6 +5,6 @@ namespace HumanitarianAssistance.Application.Accounting.Queries
 {
     public class GetAllAccountsByParentIdQuery : IRequest<ApiResponse>
     {
-        public long Id { get; set; }
+        public long ParentId { get; set; }
     }
 }
