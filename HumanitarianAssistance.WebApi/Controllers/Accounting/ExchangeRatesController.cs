@@ -1,3 +1,8 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using HumanitarianAssistance.Application.Accounting.Commands.Create;
+using HumanitarianAssistance.Application.Accounting.Models;
+using HumanitarianAssistance.Application.Accounting.Queries;
 using HumanitarianAssistance.Application.Infrastructure;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -19,10 +24,17 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
         }
 
         [HttpPost]
-        public ApiResponse GetSavedExchangeRates([FromBody] ExchangeRateVerificationFilter filter)
+        public async Task<ApiResponse> GetSavedExchangeRatesAsync([FromBody] GetSavedExchangeRatesQuery filter)
         {
-            APIResponse response = _iExchangeRate.GetSavedExchangeRates(filter);
-            return response;
+             return await _mediator.Send(filter);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> SaveSystemGeneratedExchangeRates([FromBody] List<AddExchangeRateModel> model)
+        {
+            AddExchangeRateCommand cs= new AddExchangeRateCommand();
+            cs.AddExchangeRateList.AddRange(model);
+            return await _mediator.Send(cs);
         }
     }
 }
