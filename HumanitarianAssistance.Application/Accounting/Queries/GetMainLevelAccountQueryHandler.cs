@@ -1,13 +1,13 @@
-﻿using HumanitarianAssistance.Application.Infrastructure;
-using HumanitarianAssistance.Common.Enums;
-using HumanitarianAssistance.Common.Helpers;
-using HumanitarianAssistance.Persistence;
-using MediatR;
-using Microsoft.EntityFrameworkCore;
+﻿using MediatR;
 using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using HumanitarianAssistance.Application.Infrastructure;
+using HumanitarianAssistance.Common.Enums;
+using HumanitarianAssistance.Common.Helpers;
+using HumanitarianAssistance.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Accounting.Queries
 {
@@ -26,14 +26,14 @@ namespace HumanitarianAssistance.Application.Accounting.Queries
             try
             {
                 var mainLevelList = await _dbContext.ChartOfAccountNew
-                                                             .Where(x => x.AccountHeadTypeId == request.Id && 
-                                                                         x.AccountLevelId == (int)AccountLevels.MainLevel && x.IsDeleted == false)
-                                                             .OrderBy(x => x.ChartOfAccountNewId)
-                                                             .ToListAsync();
+                                                    .Where(x => x.AccountHeadTypeId == request.Id &&
+                                                                x.AccountLevelId == (int)AccountLevels.MainLevel && x.IsDeleted == false)
+                                                    .OrderBy(x => x.ChartOfAccountNewId)
+                                                    .ToListAsync();
 
                 response.data.MainLevelAccountList = mainLevelList;
                 response.StatusCode = StaticResource.successStatusCode;
-                response.Message = "Success";
+                response.Message = StaticResource.SuccessText;
             }
             catch (Exception ex)
             {
