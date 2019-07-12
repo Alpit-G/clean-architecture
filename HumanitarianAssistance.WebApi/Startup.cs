@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using AutoMapper;
 
 namespace HumanitarianAssistance.WebApi
 {
@@ -71,12 +72,14 @@ namespace HumanitarianAssistance.WebApi
             // swagger configuration
             services.AddSwaggerDocumentation();
 
+            // AutoMapper will scan our assembly and look for classes that inherit from Profile, then load their mapping configurations.
+            services.AddAutoMapper();
 
             //important to run your application
             services.AddMvc()
-                .AddJsonOptions(config =>
+                .AddJsonOptions(c =>
                 {
-                    config.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
+                    c.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
                 });
 
             services.AddRouting();
@@ -116,7 +119,7 @@ namespace HumanitarianAssistance.WebApi
 
             // to use identity
             app.UseAuthentication();
-            
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSpaStaticFiles();

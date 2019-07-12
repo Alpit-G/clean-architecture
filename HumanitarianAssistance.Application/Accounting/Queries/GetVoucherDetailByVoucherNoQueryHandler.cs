@@ -10,8 +10,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Accounting.Queries
 {
-
-
     public class GetVoucherDetailByVoucherNoQueryHandler : IRequestHandler<GetVoucherDetailByVoucherNoQuery, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
