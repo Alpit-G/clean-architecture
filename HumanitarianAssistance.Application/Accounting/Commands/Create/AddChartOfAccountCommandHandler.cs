@@ -1,12 +1,10 @@
 using System;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Enums;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Domain.Entities.Accounting;
-using HumanitarianAssistance.Domain.Entities.Marketing;
 using HumanitarianAssistance.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
