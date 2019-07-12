@@ -22,7 +22,7 @@ namespace HumanitarianAssistance.Application.Accounting.Queries
 
         public async Task<ApiResponse> Handle(GetMainLevelAccountQuery request, CancellationToken cancellationToken)
         {
-            ApiResponse response = new ApiResponse();
+            ApiResponse response = new ApiResponse(); 
             try
             {
                 var mainLevelList = await _dbContext.ChartOfAccountNew

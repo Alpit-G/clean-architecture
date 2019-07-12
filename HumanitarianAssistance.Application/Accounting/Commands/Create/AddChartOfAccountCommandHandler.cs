@@ -24,7 +24,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
         {
             ApiResponse response = new ApiResponse();
             try
-            {
+            { 
                 if (request != null)
                 {
                     if (request.AccountName != null)
