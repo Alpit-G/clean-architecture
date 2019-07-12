@@ -10,7 +10,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
     [ApiController]
     [Produces("application/json")]
     [Route("api/AccountReports/[Action]")]
-    public class AccountReportsController : ControllerBase
+    public class AccountReportsController : Controller
     {
     }
 }
