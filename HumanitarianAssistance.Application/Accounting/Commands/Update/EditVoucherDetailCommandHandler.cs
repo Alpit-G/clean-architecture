@@ -16,8 +16,8 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Update
 
     public class EditVoucherDetailCommandHandler : IRequestHandler<EditVoucherDetailCommand, ApiResponse>
     {
-        private HumanitarianAssistanceDbContext _dbContext;
-        private IMapper _mapper;
+        private readonly HumanitarianAssistanceDbContext _dbContext;
+        private readonly IMapper _mapper;
 
         public EditVoucherDetailCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
         {

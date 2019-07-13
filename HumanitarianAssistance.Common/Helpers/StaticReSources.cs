@@ -314,7 +314,7 @@ namespace HumanitarianAssistance.Common.Helpers
         public const string QuestionnaireDeleted = "QuestionnaireDeleted";
         public const string NoEvalutorFound = "No Evalutor Found";
         public const string NoReportFound = "No Report Found";
-        public const string SomethingWentWrong = "SomethingWentWrong";
+        public const string SomethingWentWrong = "Something Went Wrong";
         //
         public const string QuestionnaireDedlineDateNotPassed = "Questionnaire DedlineDate Not Passed";
         public const string SubAssetClassAdded = " Sub Asset class has added";

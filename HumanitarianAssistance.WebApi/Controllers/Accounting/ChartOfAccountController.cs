@@ -40,12 +40,20 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
         [HttpPost]
         public async Task<ApiResponse> AddChartOfAccount([FromBody]AddChartOfAccountCommand model)
         {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+
             return await _mediator.Send(model);
         }
 
         [HttpPost]
         public async Task<ApiResponse> EditChartOfAccount([FromBody]EditChartOfAccountCommand model)
         {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+
             return await _mediator.Send(model);
         }
 

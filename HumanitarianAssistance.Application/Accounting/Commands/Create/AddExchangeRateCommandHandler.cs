@@ -15,10 +15,10 @@ using Microsoft.EntityFrameworkCore.Storage;
 
 namespace HumanitarianAssistance.Application.Accounting.Commands.Create
 {
-    
-    public class AddExchangeRateCommandHandler: IRequestHandler<AddExchangeRateCommand, ApiResponse>
+
+    public class AddExchangeRateCommandHandler : IRequestHandler<AddExchangeRateCommand, ApiResponse>
     {
-        private HumanitarianAssistanceDbContext _dbContext;
+        private readonly HumanitarianAssistanceDbContext _dbContext;
 
         public AddExchangeRateCommandHandler(HumanitarianAssistanceDbContext dbContext)
         {
@@ -98,7 +98,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                 }
             }
 
-           
+
             return response;
         }
 
@@ -150,7 +150,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
 
         }
 
-         public ExchangeRateDetail AddExchangeRateAfterManipulation(GenerateExchangeRateModel exchangeRateViewModel, string userId)
+        public ExchangeRateDetail AddExchangeRateAfterManipulation(GenerateExchangeRateModel exchangeRateViewModel, string userId)
         {
             ExchangeRateDetail exchangeRate = new ExchangeRateDetail();
             exchangeRate.CreatedById = userId;
@@ -164,7 +164,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
             return exchangeRate;
         }
 
-         public ExchangeRateDetail AddReverseExchangeRateAfterManipulation(GenerateExchangeRateModel GenerateExchangeRate, string userId)
+        public ExchangeRateDetail AddReverseExchangeRateAfterManipulation(GenerateExchangeRateModel GenerateExchangeRate, string userId)
         {
             ExchangeRateDetail exchangeRate = new ExchangeRateDetail();
             exchangeRate.CreatedById = userId;

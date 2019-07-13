@@ -14,7 +14,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Delete
 
     public class DeleteChartOfAccountCommandHandler : IRequestHandler<DeleteChartOfAccountCommand, ApiResponse>
     {
-        private HumanitarianAssistanceDbContext _dbContext;
+        private readonly HumanitarianAssistanceDbContext _dbContext;
 
         public DeleteChartOfAccountCommandHandler(HumanitarianAssistanceDbContext dbContext)
         {

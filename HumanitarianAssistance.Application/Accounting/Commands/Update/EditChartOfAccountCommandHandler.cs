@@ -14,7 +14,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Update
 {
     public class EditChartOfAccountCommandHandler : IRequestHandler<EditChartOfAccountCommand, ApiResponse>
     {
-        private HumanitarianAssistanceDbContext _dbContext;
+        private readonly HumanitarianAssistanceDbContext _dbContext;
 
         public EditChartOfAccountCommandHandler(HumanitarianAssistanceDbContext dbContext)
         {

@@ -33,13 +33,13 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Common
                                     SignInManager<AppUser> signInManager,
                                     UserManager<AppUser> userManager,
                                     RoleManager<IdentityRole> roleManager,
-                                    IConfiguration config
+                                    IConfiguration configuration
                                 )
         {
             _signInManager = signInManager;
             _dbContext = dbContext;
             _userManager = userManager;
-            _configuration = config;
+            _configuration = configuration;
             _roleManager = roleManager;
 
         }
@@ -298,7 +298,6 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Common
                 }
                 #endregion
 
-
                 #region "Set responses"
                 var User = _dbContext.UserDetails.AsNoTracking().FirstOrDefault(x => x.IsDeleted == false && x.AspNetUserId == user.Id);
                 var Offices = _dbContext.UserDetailOffices.Where(x => x.IsDeleted == false && x.UserId == User.UserID).Select(x => x.OfficeId).ToList();
@@ -315,7 +314,6 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Common
                 response.StatusCode = 200;
                 response.Message = StaticResource.SuccessText;
                 #endregion
-
 
             }
             catch (Exception ex)

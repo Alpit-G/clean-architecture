@@ -6,12 +6,16 @@ using HumanitarianAssistance.Application.Accounting.Commands.Create;
 using HumanitarianAssistance.Application.Accounting.Commands.Update;
 using HumanitarianAssistance.Application.Accounting.Queries;
 using HumanitarianAssistance.Application.Infrastructure;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
+using System;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Accounting
 {
     [ApiController]
     [Produces("application/json")]
     [Route("api/VoucherTransaction/[Action]")]
+    [Authorize]
     public class VoucherTransactionController : Controller
     {
         private readonly IMediator _mediator;
@@ -36,19 +40,36 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
         [HttpPost]
         public async Task<ApiResponse> AddVoucherDetail([FromBody] AddVoucherDetailCommand model)
         {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+
             return await _mediator.Send(model);
         }
 
         [HttpPost]
         public async Task<ApiResponse> EditVoucherDetail([FromBody] EditVoucherDetailCommand model)
         {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+
             return await _mediator.Send(model);
         }
 
         [HttpPost]
         public async Task<ApiResponse> VerifyVoucher([FromBody] long id)
         {
-            return await _mediator.Send(new VerifyVoucherCommand { VoucherId = id });
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            return await _mediator.Send(new VerifyVoucherCommand
+            {
+                VoucherId = id,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            });
         }
 
         [HttpPost]
@@ -60,6 +81,11 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
         [HttpPost]
         public async Task<ApiResponse> AddEditTransactionList([FromBody] AddEditTransactionListCommand model)
         {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+
             return await _mediator.Send(model);
         }
 

@@ -14,7 +14,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Common
     public class AddEditTransactionListCommandHandler : IRequestHandler<AddEditTransactionListCommand, ApiResponse>
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
 
 
         public AddEditTransactionListCommandHandler(HumanitarianAssistanceDbContext dbContext)

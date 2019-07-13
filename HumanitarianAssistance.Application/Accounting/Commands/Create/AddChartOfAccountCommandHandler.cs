@@ -13,7 +13,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
 {
     public class AddChartOfAccountCommandHandler : IRequestHandler<AddChartOfAccountCommand, ApiResponse>
     {
-        private HumanitarianAssistanceDbContext _dbContext;
+        private readonly HumanitarianAssistanceDbContext _dbContext;
 
         public AddChartOfAccountCommandHandler(HumanitarianAssistanceDbContext dbContext)
         {
@@ -24,7 +24,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
         {
             ApiResponse response = new ApiResponse();
             try
-            { 
+            {
                 if (request != null)
                 {
                     if (request.AccountName != null)

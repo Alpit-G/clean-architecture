@@ -13,10 +13,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Accounting.Commands.Delete
 {
-    public class DeleteExchangeRatesCommandHandler: IRequestHandler<DeleteExchangeRatesCommand, ApiResponse>
+    public class DeleteExchangeRatesCommandHandler : IRequestHandler<DeleteExchangeRatesCommand, ApiResponse>
     {
 
-        private HumanitarianAssistanceDbContext _dbContext;
+        private readonly HumanitarianAssistanceDbContext _dbContext;
 
         public DeleteExchangeRatesCommandHandler(HumanitarianAssistanceDbContext dbContext)
         {
@@ -39,7 +39,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Delete
                     _dbContext.Update(exchangeRateVerification);
                     _dbContext.SaveChanges();
                 }
-                
+
                 List<ExchangeRateDetail> exchangeRateList = await _dbContext.ExchangeRateDetail.Where(x => x.IsDeleted == false && x.Date.Date == command.ExchangeRateDate).ToListAsync();
 
                 if (exchangeRateList.Any())

@@ -5,7 +5,7 @@ using MediatR;
 
 namespace HumanitarianAssistance.Application.Accounting.Commands.Create
 {
-    public class AddExchangeRateCommand: BaseModel, IRequest<ApiResponse>
+    public class AddExchangeRateCommand : BaseModel, IRequest<ApiResponse>
     {
         public List<GenerateExchangeRateModel> GenerateExchangeRateModel { get; set; }
     }

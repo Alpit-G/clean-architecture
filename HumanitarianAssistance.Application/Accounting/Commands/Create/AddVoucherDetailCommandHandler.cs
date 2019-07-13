@@ -17,8 +17,8 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
 {
     public class AddVoucherDetailCommandHandler : IRequestHandler<AddVoucherDetailCommand, ApiResponse>
     {
-        private HumanitarianAssistanceDbContext _dbContext;
-        private IMapper _mapper;
+        private readonly HumanitarianAssistanceDbContext _dbContext;
+        private readonly IMapper _mapper;
 
         public AddVoucherDetailCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
         {
