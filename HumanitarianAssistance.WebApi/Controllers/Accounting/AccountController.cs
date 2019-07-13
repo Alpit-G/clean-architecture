@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using HumanitarianAssistance.Application.Accounting.Commands.Common;
 using HumanitarianAssistance.Application.Accounting.Commands.Create;
 using HumanitarianAssistance.Application.Accounting.Commands.Update;
+using HumanitarianAssistance.Application.Accounting.Queries;
 using HumanitarianAssistance.Application.Infrastructure;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -77,6 +78,17 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
             return await _mediator.Send(model);
         }
 
+        [HttpPost]
+        public async Task<ApiResponse> AssignRoleToUser([FromBody]AssignRoleToUserCommand model)
+        {
+            return await _mediator.Send(model);
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetRoles([FromBody]GetAllRolesQuery model)
+        {
+            return await _mediator.Send(model);
+        }
 
 
 

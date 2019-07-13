@@ -41,6 +41,7 @@ namespace HumanitarianAssistance.Infrastructure.Extensions
                 c.SwaggerEndpoint("/swagger/v1.0/swagger.json", "Humanitarian Assistance API v1.0");
                 c.DocumentTitle = "Humanitarian Assistance Documentation";
                 c.DocExpansion(DocExpansion.None);
+                c.EnableFilter();
             });
 
             return app;
