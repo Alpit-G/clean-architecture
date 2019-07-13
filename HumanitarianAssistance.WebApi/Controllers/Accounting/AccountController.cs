@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HumanitarianAssistance.Application.Accounting.Commands.Common;
 using HumanitarianAssistance.Application.Infrastructure;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -24,12 +25,12 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
             _mediator = mediator;
         }
 
-        // [HttpPost]
-        // [AllowAnonymous]
-        // public async Task<ApiResponse> Login([FromBody]LoginUserModel model)
-        // {
-        //     return await _mediator.Send(new GetMainLevelAccountQuery { Id = id });
-        // }
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<ApiResponse> Login([FromBody]LoginCommand model)
+        {
+            return await _mediator.Send(model);
+        }
 
 
     }

@@ -12,20 +12,24 @@ using System.Threading.Tasks;
 
 namespace HumanitarianAssistance.Application.Marketing.Queries
 {
-    public class GetAllCategoryQueryHandler : IRequestHandler<GetAllCategoryQuery, ApiResponse>
+
+    public class GetAllContractDetailsQueryHandler : IRequestHandler<GetAllContractDetailsQuery, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
-        public GetAllCategoryQueryHandler(HumanitarianAssistanceDbContext dbContext)
+
+        public GetAllContractDetailsQueryHandler(HumanitarianAssistanceDbContext dbContext)
         {
             _dbContext = dbContext;
         }
-        public async Task<ApiResponse> Handle(GetAllCategoryQuery request, CancellationToken cancellationToken)
+
+        public async Task<ApiResponse> Handle(GetAllContractDetailsQuery request, CancellationToken cancellationToken)
         {
             ApiResponse response = new ApiResponse();
             try
             {
-                var list = await _dbContext.Categories.Where(x => !x.IsDeleted.Value).ToListAsync();
-                response.data.Categories = list;
+                var list = await _dbContext.ContractDetails.AsNoTracking().AsQueryable().Where(x => !x.IsDeleted.Value).ToListAsync();
+                response.data.ContractDetails = list;
+                response.data.jobListTotalCount = _dbContext.ContractDetails.Count(x => x.IsDeleted == false);
                 response.StatusCode = 200;
                 response.Message = "Success";
             }

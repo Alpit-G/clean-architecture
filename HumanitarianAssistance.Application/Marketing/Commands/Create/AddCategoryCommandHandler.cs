@@ -28,7 +28,7 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Create
             ApiResponse response = new ApiResponse();
             try
             {
-                Category obj = _mapper.Map<AddCategoryCommand, Category>(request);
+                Category obj = _mapper.Map<Category>(request);
                 obj.CreatedById = request.CreatedById;
                 obj.CreatedDate = request.CreatedDate;
                 await _dbContext.Categories.AddAsync(obj);

@@ -55,7 +55,7 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Create
                         Position = request.Position,
                         IsDeleted = request.IsDeleted,
                         CreatedById = request.CreatedById,
-                        CreatedDate = DateTime.UtcNow
+                        CreatedDate = request.CreatedDate
                     };
                     await _dbContext.ClientDetails.AddAsync(objClientDetails);
                     await _dbContext.SaveChangesAsync();
