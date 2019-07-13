@@ -1,10 +1,13 @@
 ﻿using HumanitarianAssistance.Application.Infrastructure;
+using HumanitarianAssistance.Application.Marketing.Commands.Common;
+using HumanitarianAssistance.Application.Marketing.Commands.Update;
 using HumanitarianAssistance.Application.Marketing.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Marketing
@@ -145,5 +148,22 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
         {
             return await _mediator.Send(query);
         }
+        [HttpPost]
+        public async Task<ApiResponse> ApproveContract([FromBody]ApproveContractCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        public async Task<ApiResponse> AddEditContractDetail([FromBody]AddEditContractDetailCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }       
     }
 }

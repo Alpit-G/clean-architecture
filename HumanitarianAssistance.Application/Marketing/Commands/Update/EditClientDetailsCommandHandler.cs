@@ -27,11 +27,13 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Update
             ApiResponse response = new ApiResponse();
             try
             {
-                var data = await _dbContext.ClientDetails.Where(x => x.ClientId == request.ClientId && x.IsDeleted == false).SingleOrDefaultAsync();
+                var data = await _dbContext.ClientDetails.Where(x => x.ClientId == request.ClientId && x.IsDeleted == false).SingleAsync();
                 if (data != null)
                 {
                     //_mapper.Map(request, data);
                     _mapper.Map<ClientDetails>(request);
+                    data.ModifiedById = request.ModifiedById;
+                    data.ModifiedDate = request.ModifiedDate;
                     _dbContext.ClientDetails.Update(data);
                     await _dbContext.SaveChangesAsync();
                     response.StatusCode = StaticResource.successStatusCode;

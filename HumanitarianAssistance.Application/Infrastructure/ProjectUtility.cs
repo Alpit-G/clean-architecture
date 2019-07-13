@@ -20,5 +20,19 @@ namespace HumanitarianAssistance.Application.Infrastructure
             else
                 return code = "" + ClientId;
         }
+        public static string GetContractCode(this string ContractId)
+        {
+            string code = string.Empty;
+            if (ContractId.Length == 1)
+                return code = "0000" + ContractId;
+            else if (ContractId.Length == 2)
+                return code = "000" + ContractId;
+            else if (ContractId.Length == 3)
+                return code = "00" + ContractId;
+            else if (ContractId.Length == 4)
+                return code = "0" + ContractId;
+            else
+                return code = "" + ContractId;
+        }
     }
 }

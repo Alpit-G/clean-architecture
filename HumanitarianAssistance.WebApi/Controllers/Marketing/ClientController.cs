@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Marketing
@@ -53,30 +54,55 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
         [HttpPost]
         public async Task<ApiResponse> AddClient([FromBody]AddClientDetailsCommand command)
         {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
         }
         [HttpPost]
         public async Task<ApiResponse> EditClient([FromBody]EditClientDetailsCommand command)
         {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
         }
         [HttpPost]
         public async Task<ApiResponse> DeleteClient([FromBody]int ClientId)
         {
-            return await _mediator.Send(new DeleteClientDetailsCommand { ClientId = ClientId });
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new DeleteClientDetailsCommand
+            {
+                ClientId = ClientId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            });
         }
 
         [HttpPost]
         public async Task<ApiResponse> AddCategory([FromBody]CategoryModel model)
         {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             if (model.CategoryId == 0)
             {
-                return await _mediator.Send(new AddCategoryCommand {CategoryId=model.CategoryId,CategoryName=model.CategoryName });
+                return await _mediator.Send(new AddCategoryCommand
+                {
+                    CategoryId = model.CategoryId,
+                    CategoryName = model.CategoryName,
+                    CreatedById = userId,
+                    CreatedDate = DateTime.UtcNow
+                });
             }
             else
             {
-               return await _mediator.Send(new EditCategoryCommand { CategoryId = model.CategoryId, CategoryName = model.CategoryName });
-            } 
+                return await _mediator.Send(new EditCategoryCommand
+                {
+                    CategoryId = model.CategoryId,
+                    CategoryName = model.CategoryName,
+                    ModifiedById = userId,
+                    ModifiedDate = DateTime.UtcNow
+                });
+            }
         }
 
     }

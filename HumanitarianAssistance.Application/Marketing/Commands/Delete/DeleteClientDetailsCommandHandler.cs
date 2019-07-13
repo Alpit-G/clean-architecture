@@ -26,7 +26,7 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Delete
             {
                 var ClientInfo = await _dbContext.ClientDetails.Where(c => c.ClientId == request.ClientId).SingleOrDefaultAsync();
                 ClientInfo.IsDeleted = true;
-                // ClientInfo.ModifiedBy = request.ModifiedById;
+                ClientInfo.ModifiedById = request.ModifiedById;
                 ClientInfo.ModifiedDate = request.ModifiedDate;
                 _dbContext.ClientDetails.Update(ClientInfo);
                 await _dbContext.SaveChangesAsync();
