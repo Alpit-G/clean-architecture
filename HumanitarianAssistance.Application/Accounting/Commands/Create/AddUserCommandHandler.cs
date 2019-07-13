@@ -8,6 +8,7 @@ using HumanitarianAssistance.Domain.Entities;
 using HumanitarianAssistance.Persistence;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace HumanitarianAssistance.Application.Accounting.Commands.Create
 {
@@ -26,67 +27,73 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
         {
             ApiResponse response = new ApiResponse();
 
-            try
+            using (IDbContextTransaction tran = _dbContext.Database.BeginTransaction())
             {
-                AppUser newUser = new AppUser
+                try
                 {
-                    UserName = request.Email,
-                    FirstName = request.FirstName,
-                    LastName = request.LastName,
-                    Email = request.Email,
-                    PhoneNumber = request.Phone
-                };
-
-                AppUser existUser = await _userManager.FindByNameAsync(request.Email);
-
-                if (existUser == null)
-                {
-                    IdentityResult objNew = await _userManager.CreateAsync(newUser, request.Password);
-
-                    UserDetails user = new UserDetails();
-
-                    user.FirstName = request.FirstName;
-                    user.LastName = request.LastName;
-                    user.Password = request.Password;
-                    user.Status = request.Status;
-                    user.Username = request.Email;
-                    user.CreatedById = request.CreatedById;
-                    user.CreatedDate = request.CreatedDate;
-                    user.UserType = request.UserType;
-                    user.AspNetUserId = newUser.Id;
-
-                    await _dbContext.UserDetails.AddAsync(user);
-                    await _dbContext.SaveChangesAsync();
-
-                    List<UserDetailOffices> lst = new List<UserDetailOffices>();
-                    foreach (var item in request.OfficeId)
+                    AppUser newUser = new AppUser
                     {
-                        UserDetailOffices obj = new UserDetailOffices();
-                        obj.OfficeId = item;
-                        obj.UserId = user.UserID;
-                        obj.CreatedById = request.CreatedById;
-                        obj.CreatedDate = request.CreatedDate;
-                        obj.IsDeleted = false;
-                        lst.Add(obj);
+                        UserName = request.Email,
+                        FirstName = request.FirstName,
+                        LastName = request.LastName,
+                        Email = request.Email,
+                        PhoneNumber = request.Phone
+                    };
+
+                    AppUser existUser = await _userManager.FindByNameAsync(request.Email);
+
+                    if (existUser == null)
+                    {
+                        IdentityResult objNew = await _userManager.CreateAsync(newUser, request.Password);
+
+                        UserDetails user = new UserDetails();
+
+                        user.FirstName = request.FirstName;
+                        user.LastName = request.LastName;
+                        user.Password = request.Password;
+                        user.Status = request.Status;
+                        user.Username = request.Email;
+                        user.CreatedById = request.CreatedById;
+                        user.CreatedDate = request.CreatedDate;
+                        user.UserType = request.UserType;
+                        user.AspNetUserId = newUser.Id;
+
+                        await _dbContext.UserDetails.AddAsync(user);
+                        await _dbContext.SaveChangesAsync();
+
+                        List<UserDetailOffices> lst = new List<UserDetailOffices>();
+                        foreach (var item in request.OfficeId)
+                        {
+                            UserDetailOffices obj = new UserDetailOffices();
+                            obj.OfficeId = item;
+                            obj.UserId = user.UserID;
+                            obj.CreatedById = request.CreatedById;
+                            obj.CreatedDate = request.CreatedDate;
+                            obj.IsDeleted = false;
+                            lst.Add(obj);
+                        }
+
+                        await _dbContext.UserDetailOffices.AddRangeAsync(lst);
+                        await _dbContext.SaveChangesAsync();
+                        tran.Commit();
+
+                        response.StatusCode = StaticResource.successStatusCode;
+                        response.Message = StaticResource.SuccessText;
                     }
-
-                    await _dbContext.UserDetailOffices.AddRangeAsync(lst);
-                    await _dbContext.SaveChangesAsync();
-
-                    response.StatusCode = StaticResource.successStatusCode;
-                    response.Message = StaticResource.SuccessText;
+                    else
+                    {
+                        response.StatusCode = StaticResource.MandateNameAlreadyExistCode;
+                        response.Message = StaticResource.UserAlreadyExist;
+                    }
                 }
-                else
+                catch (Exception ex)
                 {
-                    response.StatusCode = StaticResource.MandateNameAlreadyExistCode;
-                    response.Message = StaticResource.UserAlreadyExist;
+                    tran.Rollback();
+                    response.StatusCode = StaticResource.failStatusCode;
+                    response.Message = ex.Message;
                 }
             }
-            catch (Exception ex)
-            {
-                response.StatusCode = StaticResource.failStatusCode;
-                response.Message = ex.Message;
-            }
+
             return response;
         }
     }
