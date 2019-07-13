@@ -283,5 +283,89 @@ namespace HumanitarianAssistance.Application.CommonFunctions
                 throw new Exception(ex.Message);
             }
         }
+
+        /// <summary>
+        /// <summary>
+        /// Delete Voucher
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public async Task<bool> DeleteVoucher(long voucherId)
+        {
+            bool isVoucherDeleted= false;
+
+            try
+            {
+                var voucherdetail = await _dbContext.VoucherDetail.FirstOrDefaultAsync(c => c.VoucherNo == voucherId);
+
+                if (voucherdetail != null)
+                {
+                    voucherdetail.IsDeleted = true;
+                   // voucherdetail.ModifiedById = userId;
+                    voucherdetail.ModifiedDate = DateTime.UtcNow;
+
+                    _dbContext.VoucherDetail.Update(voucherdetail);
+                    await _dbContext.SaveChangesAsync();
+
+                    await DeleteTransaction(voucherId, "");
+
+                    isVoucherDeleted= true;
+                }
+                else
+                {
+                    isVoucherDeleted= false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                isVoucherDeleted= false;
+            }
+            return isVoucherDeleted;
+        }
+
+        /// <summary>
+        /// Delete Transaction
+        /// </summary>
+        /// <param name="transactionId"></param>
+        /// <returns>Success/failure</returns>
+        public async Task<bool> DeleteTransaction(long voucherId, string userId)
+        {
+            bool transactionDeleted= false;
+
+            using (var _dbTransaction = _dbContext.Database.BeginTransaction())
+            {
+                try
+                {
+                    var transactions = await _dbContext.VoucherTransactions.Where(x => x.VoucherNo == voucherId).ToListAsync();
+                    if (transactions.Any())
+                    {
+                        transactions.ForEach(x =>
+                        {
+                            x.IsDeleted = true;
+                            x.ModifiedDate = DateTime.UtcNow;
+                            x.ModifiedById = userId;
+                        });
+
+                        _dbContext.VoucherTransactions.UpdateRange(transactions);
+                        _dbContext.SaveChanges();
+                        _dbTransaction.Commit();
+
+                        transactionDeleted= true;
+                    }
+                    else
+                    {
+                        throw new Exception(StaticResource.TransactionNotFound);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    _dbTransaction.Rollback();
+                    Console.WriteLine(ex.Message);
+                    transactionDeleted= false;
+                }
+            }
+            return transactionDeleted;
+        }
     }
 }
