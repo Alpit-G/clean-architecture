@@ -12,6 +12,9 @@ namespace HumanitarianAssistance.Application.Infrastructure
     {
         public ApiResponse()
         {
+            data = new Data();
+            ItemAmount = new ItemAmount();
+            CommonId = new CommonId();
         }
         public int StatusCode { get; set; }
         public string Message { get; set; }
