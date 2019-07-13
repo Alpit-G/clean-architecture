@@ -15,7 +15,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
 {
     [ApiController]
     [Produces("application/json")]
-    [Route("api/ChartOfAccount/[Action]")]
+    [Route("api/ClientController/[Action]")]
     public class ClientController : Controller
     {
         private readonly IMediator _mediator;
@@ -30,11 +30,11 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             return await _mediator.Send(query);
         }
         [HttpPost]
-        public async Task<ApiResponse> GetClientDetailsById(int ClientId)
+        public async Task<ApiResponse> GetClientDetailsById([FromBody]int ClientId)
         {
             return await _mediator.Send(new GetClientDetailsByIdQuery { ClientId = ClientId });
         }
-        [HttpPost]
+        [HttpGet]
         public async Task<ApiResponse> GetAllClientList()
         {
             return await _mediator.Send(new GetAllClientQuery());
@@ -44,7 +44,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
         {
             return await _mediator.Send(query);
         }
-        [HttpPost]
+        [HttpGet]
         public async Task<ApiResponse> GetAllCategoryList()
         {
             return await _mediator.Send(new GetAllCategoryQuery());
@@ -61,7 +61,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             return await _mediator.Send(command);
         }
         [HttpPost]
-        public async Task<ApiResponse> DeleteClient(int ClientId)
+        public async Task<ApiResponse> DeleteClient([FromBody]int ClientId)
         {
             return await _mediator.Send(new DeleteClientDetailsCommand { ClientId = ClientId });
         }

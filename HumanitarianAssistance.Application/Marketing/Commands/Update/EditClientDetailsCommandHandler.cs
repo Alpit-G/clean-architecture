@@ -2,6 +2,7 @@
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Application.Marketing.Models;
 using HumanitarianAssistance.Common.Helpers;
+using HumanitarianAssistance.Domain.Entities.Marketing;
 using HumanitarianAssistance.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -29,7 +30,8 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Update
                 var data = await _dbContext.ClientDetails.Where(x => x.ClientId == request.ClientId && x.IsDeleted == false).SingleOrDefaultAsync();
                 if (data != null)
                 {
-                    _mapper.Map(request, data);
+                    //_mapper.Map(request, data);
+                    _mapper.Map<ClientDetails>(request);
                     _dbContext.ClientDetails.Update(data);
                     await _dbContext.SaveChangesAsync();
                     response.StatusCode = StaticResource.successStatusCode;
