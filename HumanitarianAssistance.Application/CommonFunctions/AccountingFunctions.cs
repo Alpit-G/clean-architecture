@@ -161,11 +161,51 @@ namespace HumanitarianAssistance.Application.CommonFunctions
             return false;
         }
 
+
+        /// <summary>
+        /// <summary>
+        /// Delete Voucher
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public async Task<bool> DeleteVoucher(long voucherId)
+        {
+            bool isVoucherDeleted = false;
+
+            try
+            {
+                var voucherdetail = await _dbContext.VoucherDetail.FirstOrDefaultAsync(c => c.VoucherNo == voucherId);
+
+                if (voucherdetail != null)
+                {
+                    voucherdetail.IsDeleted = true;
+                    // voucherdetail.ModifiedById = userId;
+                    voucherdetail.ModifiedDate = DateTime.UtcNow;
+
+                    _dbContext.VoucherDetail.Update(voucherdetail);
+                    await _dbContext.SaveChangesAsync();
+
+                    await DeleteTransaction(voucherId, "");
+
+                    isVoucherDeleted = true;
+                }
+                else
+                {
+                    isVoucherDeleted = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                isVoucherDeleted = false;
+            }
+            return isVoucherDeleted;
+        }
+
         #endregion
 
 
-
-
+        #region "Transaction"
 
         /// <summary>
         /// Add/Edit Transaction
@@ -284,45 +324,6 @@ namespace HumanitarianAssistance.Application.CommonFunctions
             }
         }
 
-        /// <summary>
-        /// <summary>
-        /// Delete Voucher
-        /// </summary>
-        /// <param name="model"></param>
-        /// <returns></returns>
-        public async Task<bool> DeleteVoucher(long voucherId)
-        {
-            bool isVoucherDeleted= false;
-
-            try
-            {
-                var voucherdetail = await _dbContext.VoucherDetail.FirstOrDefaultAsync(c => c.VoucherNo == voucherId);
-
-                if (voucherdetail != null)
-                {
-                    voucherdetail.IsDeleted = true;
-                   // voucherdetail.ModifiedById = userId;
-                    voucherdetail.ModifiedDate = DateTime.UtcNow;
-
-                    _dbContext.VoucherDetail.Update(voucherdetail);
-                    await _dbContext.SaveChangesAsync();
-
-                    await DeleteTransaction(voucherId, "");
-
-                    isVoucherDeleted= true;
-                }
-                else
-                {
-                    isVoucherDeleted= false;
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-                isVoucherDeleted= false;
-            }
-            return isVoucherDeleted;
-        }
 
         /// <summary>
         /// Delete Transaction
@@ -331,7 +332,7 @@ namespace HumanitarianAssistance.Application.CommonFunctions
         /// <returns>Success/failure</returns>
         public async Task<bool> DeleteTransaction(long voucherId, string userId)
         {
-            bool transactionDeleted= false;
+            bool transactionDeleted = false;
 
             using (var _dbTransaction = _dbContext.Database.BeginTransaction())
             {
@@ -351,7 +352,7 @@ namespace HumanitarianAssistance.Application.CommonFunctions
                         _dbContext.SaveChanges();
                         _dbTransaction.Commit();
 
-                        transactionDeleted= true;
+                        transactionDeleted = true;
                     }
                     else
                     {
@@ -362,10 +363,12 @@ namespace HumanitarianAssistance.Application.CommonFunctions
                 {
                     _dbTransaction.Rollback();
                     Console.WriteLine(ex.Message);
-                    transactionDeleted= false;
+                    transactionDeleted = false;
                 }
             }
             return transactionDeleted;
         }
+
+        #endregion
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using HumanitarianAssistance.Application.Accounting.Models;
 using HumanitarianAssistance.Application.Marketing.Models;
+using HumanitarianAssistance.Domain.Entities;
 using HumanitarianAssistance.Domain.Entities.Accounting;
 using HumanitarianAssistance.Domain.Entities.Marketing;
 
@@ -56,8 +57,43 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public ClientDetails clientDetails { get; set; }
         public ICollection<ClientDetails> ClientDetails { get; set; }
         public ICollection<Category> Categories { get; set; }
+        // public GainLossVoucherList GainLossVoucherDetail { get; set; }
+        public dynamic GainLossVoucherList { get; set; }
+        public dynamic AccountBalances { get; set; }
+        public dynamic GainLossVoucherDetail { get; set; }
+        // public List<NoteAccountBalances> NoteAccountBalances { get; set; }
+        public dynamic NoteAccountBalances { get; set; }
+        public dynamic GainLossSelectedAccounts { get; set; }
+        public dynamic TrialBalanceList { get; set; }
+        public dynamic VoucherSummaryTransactionList { get; set; }
 
 
+        // Marketing
+        public dynamic contractDetailsModel { get; set; }
+        public ContractDetails contractDetails { get; set; }
+        public ICollection<ContractDetails> ContractDetails { get; set; }
+        public ActivityType activityById { get; set; }
+        public ICollection<ActivityType> ActivityTypes { get; set; }
+        public ICollection<LanguageDetail> Languages { get; set; }
+        public ICollection<MediaCategory> MediaCategories { get; set; }
+        public Channel channelById { get; set; }
+        public ICollection<Channel> Channels { get; set; }
+        public ICollection<Medium> Mediums { get; set; }
+        public ICollection<Nature> Natures { get; set; }
+        public ICollection<Quality> Qualities { get; set; }
+        public List<UnitRateDetailsModel> UnitRateDetails { get; set; }
+        public ICollection<TimeCategory> TimeCategories { get; set; }
+        public List<ContractByClient> ContractByClientList { get; set; }
+        public ICollection<CurrencyDetails> Currencies { get; set; }
+        public ICollection<Producer> Producers { get; set; }
+        public MediaCategory mediaCategoryById { get; set; }
+        public Medium mediumById { get; set; }
+        public Nature natureById { get; set; }
+        public Quality qualityById { get; set; }
+        public TimeCategory timeCatergoryById { get; set; }
+        public UnitRate UnitRateByActivityId { get; set; }
+        public UnitRateDetailsModel rateDetailsById { get; set; }
+        public ICollection<UnitRate> UnitRates { get; set; }
 
     }
 

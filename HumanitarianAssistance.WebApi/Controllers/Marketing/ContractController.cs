@@ -156,6 +156,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             command.ModifiedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
         }
+        
+        [HttpPost]
         public async Task<ApiResponse> AddEditContractDetail([FromBody]AddEditContractDetailCommand command)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
