@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Accounting.Queries
 {
-    public class GetExchangeRatesDetailQueryHandler: IRequestHandler<GetExchangeRatesDetailQuery, ApiResponse>
+    public class GetExchangeRatesDetailQueryHandler : IRequestHandler<GetExchangeRatesDetailQuery, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
 
@@ -34,16 +34,16 @@ namespace HumanitarianAssistance.Application.Accounting.Queries
                                                                          {
                                                                              ExchangeRateId = x.ExchangeRateId,
                                                                              FromCurrency = x.FromCurrency,
-                                                                             Rate = (double)Math.Round(x.Rate,4),
+                                                                             Rate = (double)Math.Round(x.Rate, 4),
                                                                              ToCurrency = x.ToCurrency
-                                                                         }).OrderBy(x => x.FromCurrency).ThenBy(x=> x.ToCurrency).ToListAsync();
+                                                                         }).OrderBy(x => x.FromCurrency).ThenBy(x => x.ToCurrency).ToListAsync();
 
                 response.StatusCode = StaticResource.successStatusCode;
             }
             catch (Exception ex)
             {
                 response.StatusCode = StaticResource.failStatusCode;
-                response.Message = "Something went wrong " + ex.Message;
+                response.Message = ex.Message;
             }
 
             return response;
