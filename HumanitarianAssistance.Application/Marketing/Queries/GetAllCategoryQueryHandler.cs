@@ -17,7 +17,7 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
         private HumanitarianAssistanceDbContext _dbContext;
         public GetAllCategoryQueryHandler(HumanitarianAssistanceDbContext dbContext)
         {
-            _dbContext = dbContext; 
+            _dbContext = dbContext;
         }
         public async Task<ApiResponse> Handle(GetAllCategoryQuery request, CancellationToken cancellationToken)
         {

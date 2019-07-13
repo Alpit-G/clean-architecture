@@ -11,10 +11,10 @@ using HumanitarianAssistance.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace HumanitarianAssistance.Application.Accounting.Commands.Create
+namespace HumanitarianAssistance.Application.Accounting.Commands.Update
 {
 
-    public class EditVoucherDetailCommandHandler : IRequestHandler<AddVoucherDetailCommand, ApiResponse>
+    public class EditVoucherDetailCommandHandler : IRequestHandler<EditVoucherDetailCommand, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
         private IMapper _mapper;
@@ -25,7 +25,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
             _mapper = mapper;
         }
 
-        public async Task<ApiResponse> Handle(AddVoucherDetailCommand request, CancellationToken cancellationToken)
+        public async Task<ApiResponse> Handle(EditVoucherDetailCommand request, CancellationToken cancellationToken)
         {
             ApiResponse response = new ApiResponse();
 

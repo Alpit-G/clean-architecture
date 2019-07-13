@@ -411,6 +411,7 @@ namespace HumanitarianAssistance.Common.Helpers
         public const string HiringControlNotfound = "Hiring Control not found";
 
         public const string sameRoleAlreadyExistForTheUser = "Same Role already exist for this user";
+        public const string NoTransactionToUpDate = "No Transaction To UpDate";
 
     }
 }

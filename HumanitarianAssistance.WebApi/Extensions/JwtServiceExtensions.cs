@@ -32,19 +32,24 @@ namespace HumanitarianAssistance.WebApi.Extensions
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
 
             })
-           .AddJwtBearer(cfg =>
-           {
-               cfg.RequireHttpsMetadata = false;
-               cfg.SaveToken = true;
-               cfg.TokenValidationParameters = new TokenValidationParameters()
-               {
-                   ValidIssuer = Configuration["JwtIssuerOptions:Issuer"],
-                   ValidAudience = Configuration["JwtIssuerOption s:Audience"],
-                   IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtIssuerOptions:JwtKey"])),
-                   RequireExpirationTime = true,
-                   ClockSkew = TimeSpan.Zero
-               };
-           });
+            .AddJwtBearer(cfg =>
+            {
+                cfg.RequireHttpsMetadata = false;
+                cfg.SaveToken = true;
+                cfg.TokenValidationParameters = new TokenValidationParameters()
+                {
+                    ValidIssuer = Configuration["JwtIssuerOptions:Issuer"],
+                    ValidAudience = Configuration["JwtIssuerOptions:Audience"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtIssuerOptions:JwtKey"])),
+                    RequireExpirationTime = true,
+                    ClockSkew = TimeSpan.Zero
+                };
+            });
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Trust", policy => policy.RequireClaim("Roles", "Admin", "SuperAdmin", "Accounting Manager", "HR Manager", "Project Manager", "Administrator"));
+            });
 
             return services;
         }
