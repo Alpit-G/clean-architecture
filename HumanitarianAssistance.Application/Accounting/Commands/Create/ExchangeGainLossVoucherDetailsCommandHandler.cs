@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
+using HumanitarianAssistance.Application.Accounting.Commands.Common;
 using HumanitarianAssistance.Application.Accounting.Models;
+using HumanitarianAssistance.Application.CommonFunctions;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Persistence;
@@ -14,19 +17,21 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
     public class ExchangeGainLossVoucherDetailsCommandHandler: IRequestHandler<ExchangeGainLossVoucherDetailsCommand, ApiResponse>
     {
       private HumanitarianAssistanceDbContext _dbContext;
+      private IMapper _mapper;
 
-        public ExchangeGainLossVoucherDetailsCommandHandler(HumanitarianAssistanceDbContext dbContext)
+        public ExchangeGainLossVoucherDetailsCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
+            _mapper= mapper;
         }
 
-        public async Task<ApiResponse> CreateGainLossTransaction(ExchangeGainLossVoucherDetailsCommand model, CancellationToken cancellationToken)
+        public async Task<ApiResponse> Handle(ExchangeGainLossVoucherDetailsCommand model, CancellationToken cancellationToken)
         {
             ApiResponse response = new ApiResponse();
             try
             {
                 #region "Generate Voucher"
-                VoucherDetailModel voucherModel = new VoucherDetailModel
+                AddVoucherDetailCommand voucherModel = new AddVoucherDetailCommand
                 {
                     VoucherNo = model.VoucherNo,
                     CurrencyId = model.CurrencyId,
@@ -39,13 +44,14 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                     IsExchangeGainLossVoucher = true
                 };
 
-                var responseVoucher = await AddVoucherNewDetail(voucherModel);
+                AccountingFunctions accountingFunctions= new AccountingFunctions(_dbContext, _mapper);
+                var responseVoucher = await accountingFunctions.AddVoucherDetail(voucherModel);
 
                 #endregion
 
                 #region "Generate Transaction"
 
-                if (responseVoucher.StatusCode == 200)
+                if (responseVoucher != null)
                 {
                     List<VoucherTransactionsModel> transactions = new List<VoucherTransactionsModel>();
 
@@ -53,7 +59,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                     transactions.Add(new VoucherTransactionsModel
                     {
                         TransactionId = 0,
-                        VoucherNo = responseVoucher.data.VoucherDetailEntity.VoucherNo,
+                        VoucherNo = responseVoucher.VoucherNo,
                         AccountNo = model.CreditAccount,
                         Debit = 0,
                         Credit = Math.Abs(model.Amount),
@@ -65,7 +71,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                     transactions.Add(new VoucherTransactionsModel
                     {
                         TransactionId = 0,
-                        VoucherNo = responseVoucher.data.VoucherDetailEntity.VoucherNo,
+                        VoucherNo = responseVoucher.VoucherNo,
                         AccountNo = model.DebitAccount,
                         Debit = Math.Abs(model.Amount),
                         Credit = 0,
@@ -73,29 +79,29 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                         IsDeleted = false
                     });
 
-                    AddEditTransactionModel transactionVoucherDetail = new AddEditTransactionModel
+                    AddEditTransactionListCommand transactionVoucherDetail = new AddEditTransactionListCommand
                     {
-                        VoucherNo = responseVoucher.data.VoucherDetailEntity.VoucherNo,
+                        VoucherNo = responseVoucher.VoucherNo,
                         VoucherTransactions = transactions
                     };
 
-                    var responseTransaction = AddEditTransactionList(transactionVoucherDetail, userId);
+                    bool isTransactionSaved = accountingFunctions.AddEditTransactionList(transactionVoucherDetail);
 
-                    if (responseTransaction.StatusCode == 200)
+                    if (isTransactionSaved)
                     {
-                        string voucherName = _dbContext.VoucherDetail.FirstOrDefault(x => x.JournalCode == responseVoucher.data.VoucherDetailEntity.JournalCode)?.JournalDetails.JournalName;
+                        string voucherName = _dbContext.VoucherDetail.FirstOrDefault(x => x.JournalCode == responseVoucher.JournalCode)?.JournalDetails.JournalName;
 
-                        response.data.GainLossVoucherDetail = new GainLossVoucherList
+                        response.data.GainLossVoucherDetail = new GainLossVoucherListModel
                         {
-                            VoucherId = responseVoucher.data.VoucherDetailEntity.VoucherNo,
+                            VoucherId = responseVoucher.VoucherNo,
                             JournalName = voucherName != null ? voucherName : "",
-                            VoucherName = responseVoucher.data.VoucherDetailEntity.ReferenceNo,
-                            VoucherDate = responseVoucher.data.VoucherDetailEntity.VoucherDate
+                            VoucherName = responseVoucher.ReferenceNo,
+                            VoucherDate = responseVoucher.VoucherDate
                         };
                     }
                     else
                     {
-                        throw new Exception(responseTransaction.Message);
+                        throw new Exception(StaticResource.TransactionsNotSaved);
                     }
 
                     response.StatusCode = StaticResource.successStatusCode;
@@ -104,7 +110,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                 else
                 {
                     response.StatusCode = StaticResource.failStatusCode;
-                    response.Message = responseVoucher.Message;
+                    response.Message = StaticResource.VoucherNotSaved;
                 }
 
                 #endregion

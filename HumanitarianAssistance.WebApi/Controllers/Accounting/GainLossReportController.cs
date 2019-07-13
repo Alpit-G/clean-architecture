@@ -1,4 +1,5 @@
 using HumanitarianAssistance.Application.Accounting.Commands.Create;
+using HumanitarianAssistance.Application.Accounting.Commands.Delete;
 using HumanitarianAssistance.Application.Accounting.Queries;
 using HumanitarianAssistance.Application.Infrastructure;
 using MediatR;
@@ -40,6 +41,12 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
         public async Task<ApiResponse> AddExchangeGainLossVoucher([FromBody] ExchangeGainLossVoucherDetailsCommand model)
         {
             return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> DeleteGainLossVoucherTransaction([FromBody]long id)
+        {
+            return await _mediator.Send(new DeleteGainLossVoucherTransactionCommand {VoucherNo=id});
         }
 
     }

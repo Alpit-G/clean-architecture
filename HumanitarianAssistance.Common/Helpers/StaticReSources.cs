@@ -383,6 +383,7 @@ namespace HumanitarianAssistance.Common.Helpers
 
         public const string VoucherVerified = "Voucher is verified";
         public const string VoucherUnVerified = "Voucher is Unverified";
+        public const string VoucherNotSaved = "Unable to Create Voucher";
         public const string CurrencyNotFound = "Currency not found";
         public const string defaultFinancialYearIsNotSet = "Default Financial year is not set";
         public const string officeCodeNotFound = "Office Code Not Found";
@@ -390,7 +391,7 @@ namespace HumanitarianAssistance.Common.Helpers
         public const string AccountNotFound = "Account Not Found";
         public const string DeleteAllTransactions = "Transactions Exist";
         public const string DeleteAllChildAccount = "Child Account Exist";
-
+        public const string TransactionsNotSaved = "Transactions Not Saved";
 
         #endregion
 
