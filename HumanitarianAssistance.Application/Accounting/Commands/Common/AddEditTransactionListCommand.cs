@@ -1,9 +1,9 @@
+using MediatR;
 using System.Collections.Generic;
 using HumanitarianAssistance.Application.Accounting.Models;
 using HumanitarianAssistance.Application.Infrastructure;
-using MediatR;
 
-namespace HumanitarianAssistance.Application.Accounting.Commands.Update
+namespace HumanitarianAssistance.Application.Accounting.Commands.Common
 {
     public class AddEditTransactionListCommand : BaseModel, IRequest<ApiResponse>
     {
