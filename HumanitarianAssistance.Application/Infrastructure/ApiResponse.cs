@@ -27,6 +27,17 @@ namespace HumanitarianAssistance.Application.Infrastructure
     }
     public class Data
     {
+
+        // login
+        public string AspNetUserId { get; set; }
+        public string Token { get; set; }
+        public IList<string> Roles { get; set; }
+        public List<RolePermissionModel> RolePermissionModelList { get; set; }
+        public IList<ApproveRejectPermissionModel> ApproveRejectPermissionsInRole { get; set; }
+        public IList<AgreeDisagreePermissionModel> AgreeDisagreePermissionsInRole { get; set; }
+        public IList<OrderSchedulePermissionModel> OrderSchedulePermissionsInRole { get; set; }
+        public List<int> UserOfficeList { get; set; }
+
         public ChartOfAccountNew ChartOfAccountNewDetail { get; set; }
         public VoucherDetailEntityModel VoucherDetailEntity { get; set; }
         public bool IsVoucherVerified { get; set; }

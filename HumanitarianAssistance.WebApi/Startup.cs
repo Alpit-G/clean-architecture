@@ -61,6 +61,14 @@ namespace HumanitarianAssistance.WebApi
 
             }).AddEntityFrameworkStores<HumanitarianAssistanceDbContext>().AddDefaultTokenProviders();
 
+
+
+            // DI
+
+
+
+
+
             // Mediater Between Send To Handler
             services.AddMediatR(typeof(Startup));
             services.AddMediatR(typeof(GetMainLevelAccountQueryHandler).GetTypeInfo().Assembly);

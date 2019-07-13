@@ -6,12 +6,16 @@ using HumanitarianAssistance.Application.Accounting.Commands.Delete;
 using HumanitarianAssistance.Application.Accounting.Commands.Update;
 using HumanitarianAssistance.Application.Accounting.Queries;
 using HumanitarianAssistance.Application.Infrastructure;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
+using System;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Accounting
 {
     [ApiController]
     [Produces("application/json")]
     [Route("api/ChartOfAccount/[Action]")]
+    [Authorize]
     public class ChartOfAccountController : Controller
     {
         private readonly IMediator _mediator;
@@ -49,8 +53,14 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
         public async Task<ApiResponse> DeleteChartOfAccount([FromBody]long accountId)
         {
             // var user = await _userManager.FindByNameAsync(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            return await _mediator.Send(new DeleteChartOfAccountCommand { AccountId = accountId });
+            return await _mediator.Send(new DeleteChartOfAccountCommand
+            {
+                AccountId = accountId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            });
         }
 
     }
