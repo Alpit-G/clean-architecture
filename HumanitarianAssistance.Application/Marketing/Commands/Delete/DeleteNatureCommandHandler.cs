@@ -41,5 +41,6 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Delete
                 response.Message = ex.Message;
             }
             return response;
+        }
     }
 }
