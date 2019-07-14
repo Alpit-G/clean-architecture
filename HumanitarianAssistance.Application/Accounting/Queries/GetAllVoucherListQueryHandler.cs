@@ -11,7 +11,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Accounting.Queries
 {
-
     public class GetAllVoucherListQueryHandler : IRequestHandler<GetAllVoucherListQuery, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;

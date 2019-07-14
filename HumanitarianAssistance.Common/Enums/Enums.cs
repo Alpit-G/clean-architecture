@@ -4,6 +4,17 @@ using System.Text;
 
 namespace HumanitarianAssistance.Common.Enums
 {
+    public enum SwaggerGrouping
+    {
+        Accounting = 1,
+        Hr = 2,
+        Store = 3,
+        Project = 4,
+        Marketing = 5
+    }
+
+
+
     public enum BalanceType
     {
         SUM = 1,

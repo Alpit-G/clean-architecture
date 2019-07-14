@@ -15,7 +15,7 @@ namespace HumanitarianAssistance.Application.Accounting.Queries
 
     public class GetAllTransactionsByVoucherIdQueryHandler : IRequestHandler<GetAllTransactionsByVoucherIdQuery, ApiResponse>
     {
-        private HumanitarianAssistanceDbContext _dbContext;
+        private readonly HumanitarianAssistanceDbContext _dbContext;
 
         public GetAllTransactionsByVoucherIdQueryHandler(HumanitarianAssistanceDbContext dbContext)
         {

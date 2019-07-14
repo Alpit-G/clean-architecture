@@ -4,11 +4,10 @@ using HumanitarianAssistance.Application.Marketing.Commands.Delete;
 using HumanitarianAssistance.Application.Marketing.Commands.Update;
 using HumanitarianAssistance.Application.Marketing.Models;
 using HumanitarianAssistance.Application.Marketing.Queries;
+using HumanitarianAssistance.Common.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -17,6 +16,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
     [ApiController]
     [Produces("application/json")]
     [Route("api/ClientController/[Action]")]
+    [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Marketing))]
     public class ClientController : Controller
     {
         private readonly IMediator _mediator;

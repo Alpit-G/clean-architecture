@@ -13,11 +13,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Accounting.Queries
 {
-    public class GetSavedExchangeRatesHandler: IRequestHandler<GetSavedExchangeRatesQuery, ApiResponse>
+    public class GetSavedExchangeRatesQueryHandler: IRequestHandler<GetSavedExchangeRatesQuery, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
         
-        public GetSavedExchangeRatesHandler(HumanitarianAssistanceDbContext dbContext)
+        public GetSavedExchangeRatesQueryHandler(HumanitarianAssistanceDbContext dbContext)
         {
             _dbContext = dbContext;
         }

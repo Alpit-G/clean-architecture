@@ -26,15 +26,18 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Common
 
             try
             {
-                AccountingFunctions accountingObj = new AccountingFunctions(_dbContext);
-
-                // Common Function to Add/Update Transaction
-                bool transactionAddedFlag = accountingObj.AddEditTransactionList(request);
-
-                if (!transactionAddedFlag)
+                await Task.Run(() =>
                 {
-                    throw new Exception(StaticResource.SomethingWentWrong);
-                }
+                    AccountingFunctions accountingObj = new AccountingFunctions(_dbContext);
+
+                    // Common Function to Add/Update Transaction
+                    bool transactionAddedFlag = accountingObj.AddEditTransactionList(request);
+
+                    if (!transactionAddedFlag)
+                    {
+                        throw new Exception(StaticResource.SomethingWentWrong);
+                    }
+                });
 
                 response.StatusCode = StaticResource.successStatusCode;
                 response.Message = StaticResource.SuccessText;
