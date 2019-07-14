@@ -370,5 +370,63 @@ namespace HumanitarianAssistance.Application.CommonFunctions
         }
 
         #endregion
+
+
+        public async Task<bool> ReverseEmployeeSalaryVoucher(ReverseEmployeeSalaryVoucherCommand request)
+        {
+            VoucherDetail voucherDetail = new VoucherDetail();
+
+            try
+            {
+                //Retrieving the list of transactions based on voucher no
+                List<VoucherTransactions> voucherTransactionDetails = await _dbContext.VoucherTransactions
+                                                                                      .Where(x => x.IsDeleted == false &&
+                                                                                                  x.VoucherNo == request.VoucherNo)
+                                                                                      .ToListAsync();
+
+                //var exchangeRate = await _uow.GetDbContext().ExchangeRates.Where(x => x.OfficeId == 16).OrderByDescending(x => x.Date).ToListAsync();
+
+                if (voucherTransactionDetails.Any())
+                {
+                    //looping each transaction and reversing it.
+                    foreach (VoucherTransactions transaction in voucherTransactionDetails)
+                    {
+                        VoucherTransactions reverseTransactions = new VoucherTransactions();
+
+                        reverseTransactions.Debit = transaction.Credit;
+                        reverseTransactions.CreditAccount = transaction.DebitAccount;
+                        reverseTransactions.DebitAccount = transaction.CreditAccount;
+                        reverseTransactions.Credit = transaction.Debit;
+                        reverseTransactions.CurrencyId = transaction.CurrencyId;
+                        reverseTransactions.FinancialYearId = transaction.FinancialYearId;
+                        reverseTransactions.ChartOfAccountNewId = transaction.ChartOfAccountNewId;
+                        reverseTransactions.OfficeId = transaction.OfficeId;
+                        reverseTransactions.VoucherNo = transaction.VoucherNo;
+                        reverseTransactions.IsDeleted = false;
+                        reverseTransactions.TransactionDate = voucherDetail.VoucherDate;
+
+                        await _dbContext.VoucherTransactions.AddAsync(reverseTransactions);
+                        await _dbContext.SaveChangesAsync();
+
+                        //APIResponse apiResponse = await AddVoucherTransactionConvertedToExchangeRate(reverseTransactions, exchangeRate);
+                    }
+                }
+
+                //Getting the Salary Payment history record and updating the flag isSalaryReversed to true
+                var employeeSalaryPaymentHistory = await _dbContext.EmployeeSalaryPaymentHistory
+                                                                   .FirstOrDefaultAsync(x => x.IsDeleted == false &&
+                                                                                             x.IsSalaryReverse == false &&
+                                                                                             x.VoucherNo == request.VoucherNo);
+                employeeSalaryPaymentHistory.IsSalaryReverse = true;
+
+                await _dbContext.SaveChangesAsync();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

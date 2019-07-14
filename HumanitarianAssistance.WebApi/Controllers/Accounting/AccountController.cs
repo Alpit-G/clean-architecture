@@ -200,5 +200,30 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
             return await _mediator.Send(model);
         }
 
+        [HttpGet]
+        public async Task<ApiResponse> GetEmployeeSalaryVoucher(int EmployeeId, int Month, int Year)
+        {
+            return await _mediator.Send(new GetEmployeeSalaryVoucherQuery
+            {
+                EmployeeId = EmployeeId,
+                Month = Month,
+                Year = Year
+            });
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> ReverseEmployeeSalaryVoucher(long VoucherNo)
+        {
+            return await _mediator.Send(new ReverseEmployeeSalaryVoucherCommand
+            {
+                VoucherNo = VoucherNo
+            });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> DisapproveEmployeeApprovedSalary([FromBody]AssignRoleToUserCommand model)
+        {
+            return await _mediator.Send(model);
+        }
     }
 }
