@@ -13,6 +13,8 @@ namespace HumanitarianAssistance.Infrastructure.Extensions
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1.0", new Info { Title = "Humanitarian Assistance  API v1.0", Version = "v1.0" });
+                
+                // swagger tags config
                 c.DocInclusionPredicate((_, api) => !string.IsNullOrWhiteSpace(api.GroupName));
                 c.TagActionsBy(api => api.GroupName);
 

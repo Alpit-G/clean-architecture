@@ -66,6 +66,20 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public dynamic GainLossSelectedAccounts { get; set; }
         public dynamic TrialBalanceList { get; set; }
         public dynamic VoucherSummaryTransactionList { get; set; }
+        public List<Roles> RoleList { get; set; }
+        public IList<UserDetailsModel> UserDetailsList { get; set; }
+        public ICollection<UserDetails> UserDetailList { get; set; }
+        public UserDetailsModel UserDetails { get; set; }
+        public IList<PermissionsInRolesModel> PermissionsInRolesList { get; set; }
+        public IList<PermissionsModel> PermissionsList { get; set; }
+        public IList<VoucherTypeModel> VoucherTypeList { get; set; }
+        public IList<AccountDetailModel> AccountDetailList { get; set; }
+        public List<LoggerModel> LoggerDetailsModelList { get; set; }
+        public string VoucherReferenceNo { get; set; }
+        public long VoucherNo { get; set; }
+
+
+
 
 
         // Marketing
@@ -94,7 +108,7 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public UnitRate UnitRateByActivityId { get; set; }
         public UnitRateDetailsModel rateDetailsById { get; set; }
         public ICollection<UnitRate> UnitRates { get; set; }
-        public List<Roles> RoleList { get; set; }
+
 
     }
 

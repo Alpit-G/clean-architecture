@@ -3,7 +3,7 @@ using MediatR;
 
 namespace HumanitarianAssistance.Application.Accounting.Commands.Create
 {
-    public class ExchangeGainLossVoucherDetailsCommand: BaseModel, IRequest<ApiResponse>
+    public class ExchangeGainLossVoucherDetailsCommand : BaseModel, IRequest<ApiResponse>
     {
         public long VoucherNo { get; set; }
         public int CurrencyId { get; set; }
