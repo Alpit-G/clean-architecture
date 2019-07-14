@@ -9,12 +9,14 @@ using HumanitarianAssistance.Application.Infrastructure;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using System;
+using HumanitarianAssistance.Common.Enums;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Accounting
 {
     [ApiController]
     [Produces("application/json")]
     [Route("api/VoucherTransaction/[Action]")]
+    [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Accounting))]
     [Authorize]
     public class VoucherTransactionController : Controller
     {

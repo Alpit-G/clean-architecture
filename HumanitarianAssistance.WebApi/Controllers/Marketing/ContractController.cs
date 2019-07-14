@@ -2,6 +2,7 @@
 using HumanitarianAssistance.Application.Marketing.Commands.Common;
 using HumanitarianAssistance.Application.Marketing.Commands.Update;
 using HumanitarianAssistance.Application.Marketing.Queries;
+using HumanitarianAssistance.Common.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -15,6 +16,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
     [ApiController]
     [Produces("application/json")]
     [Route("api/ContractController/[Action]")]
+    [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Marketing))]
     public class ContractController : Controller
     {
         private readonly IMediator _mediator;

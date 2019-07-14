@@ -9,12 +9,14 @@ using HumanitarianAssistance.Application.Infrastructure;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using System;
+using HumanitarianAssistance.Common.Enums;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Accounting
 {
     [ApiController]
     [Produces("application/json")]
     [Route("api/ChartOfAccount/[Action]")]
+    [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Accounting))]
     [Authorize]
     public class ChartOfAccountController : Controller
     {

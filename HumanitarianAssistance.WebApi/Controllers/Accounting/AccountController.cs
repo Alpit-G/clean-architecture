@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using HumanitarianAssistance.Application.Accounting.Commands.Common;
@@ -8,9 +6,9 @@ using HumanitarianAssistance.Application.Accounting.Commands.Create;
 using HumanitarianAssistance.Application.Accounting.Commands.Update;
 using HumanitarianAssistance.Application.Accounting.Queries;
 using HumanitarianAssistance.Application.Infrastructure;
+using HumanitarianAssistance.Common.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Accounting
@@ -18,7 +16,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
     [ApiController]
     [Produces("application/json")]
     [Route("api/Account/[Action]")]
-    // [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize]
+    [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Accounting))]
     public class AccountController : Controller
     {
 
@@ -59,6 +58,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
         }
 
         [HttpPost]
+        [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Accounting))]
         public async Task<ApiResponse> ChangePassword([FromBody]ChangeUserPasswordCommand model)
         {
 
@@ -69,6 +69,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
         }
 
         [HttpPost]
+        [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Accounting))]
         public async Task<ApiResponse> ResetPassword([FromBody]ResetUserPasswordCommand model)
         {
 
@@ -79,16 +80,25 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
         }
 
         [HttpPost]
+        [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Accounting))]
         public async Task<ApiResponse> AssignRoleToUser([FromBody]AssignRoleToUserCommand model)
         {
             return await _mediator.Send(model);
         }
 
         [HttpGet]
-        public async Task<ApiResponse> GetRoles([FromBody]GetAllRolesQuery model)
+        [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Accounting))]
+        public async Task<ApiResponse> GetRoles()
         {
-            return await _mediator.Send(model);
+            return await _mediator.Send(new GetAllRolesQuery { });
         }
+
+
+        // [HttpGet]
+        // public async Task<ApiResponse> GetAllUserDetails([FromBody model)
+        // {
+        //     return await _mediator.Send(model);
+        // }
 
 
 

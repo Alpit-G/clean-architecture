@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using HumanitarianAssistance.Application.Accounting.Queries;
 using HumanitarianAssistance.Application.Infrastructure;
+using HumanitarianAssistance.Common.Enums;
 using MediatR;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Accounting
@@ -13,6 +12,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
     [ApiController]
     [Produces("application/json")]
     [Route("api/AccountReports/[Action]")]
+    [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Accounting))]
+    [Authorize]
     public class AccountReportsController : Controller
     {
         private readonly IMediator _mediator; 
@@ -64,7 +65,6 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        //[ApiExplorerSettings(GroupName = "accounting")]
         public async Task<ApiResponse> GetAllAccountBalancesByCategory([FromBody] GetAllAccountBalancesByCategoryQuery model)
         {
             return await _mediator.Send(model);
@@ -132,7 +132,6 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        //[ApiExplorerSettings(GroupName = "accounting")]
         public async Task<ApiResponse> GetTrialBalanceReport([FromBody] GetTrialBalanceReportQuery model)
         {
             return await _mediator.Send(model);

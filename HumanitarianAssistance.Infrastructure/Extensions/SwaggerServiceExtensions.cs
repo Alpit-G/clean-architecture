@@ -13,6 +13,8 @@ namespace HumanitarianAssistance.Infrastructure.Extensions
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1.0", new Info { Title = "Humanitarian Assistance  API v1.0", Version = "v1.0" });
+                c.DocInclusionPredicate((_, api) => !string.IsNullOrWhiteSpace(api.GroupName));
+                c.TagActionsBy(api => api.GroupName);
 
                 // Swagger 2.+ support
                 var security = new Dictionary<string, IEnumerable<string>>
