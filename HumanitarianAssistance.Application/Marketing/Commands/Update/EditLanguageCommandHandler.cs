@@ -39,5 +39,6 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Update
                 response.Message = ex.Message;
             }
             return response;
+        }
     }
 }
