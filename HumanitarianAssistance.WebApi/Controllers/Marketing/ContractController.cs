@@ -283,5 +283,106 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             command.ModifiedDate=DateTime.UtcNow;
             return await _mediator.Send(command);
         }
+        [HttpPost]
+        public async Task<ApiResponse> DeleteTimeCategory([FromBody]int TimeCategoryId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new DeleteTimeCategoryCommand
+            {
+                TimeCategoryId=TimeCategoryId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            } );
+        }
+        [HttpPost]
+        public async Task<ApiResponse> AddNature([FromBody]AddEditNatureCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById=userId;
+            command.ModifiedDate=DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> DeleteNature([FromBody]int NatureId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new DeleteNatureCommand
+            {
+                NatureId=NatureId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            } );
+        }
+        [HttpPost]
+        public async Task<ApiResponse> AddMediaCategory([FromBody]AddEditMediaCategoryCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById=userId;
+            command.ModifiedDate=DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> DeleteMediaCategory([FromBody]int MediaCategoryId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new DeleteMediaCategoryCommand
+            {
+                MediaCategoryId=MediaCategoryId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            } );
+        }
+        [HttpPost]
+        public async Task<ApiResponse> AddClientDetails([FromBody]AddClientDetailsCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> EditClientDetails([FromBody]EditClientDetailsCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> DeleteClientDetails([FromBody]int ClientId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new DeleteClientDetailsCommand
+            {
+                ClientId = ClientId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            });
+        }
+        [HttpPost]
+        public async Task<ApiResponse> AddUnitRate([FromBody]AddEditUnitRateCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById=userId;
+            command.ModifiedDate=DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> DeleteUnitRate([FromBody]int UnitRateId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new DeleteUnitRateCommand
+            {
+                UnitRateId = UnitRateId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            });
+        }
     }
 }
