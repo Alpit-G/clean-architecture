@@ -10,6 +10,7 @@ using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Domain.Entities;
 using HumanitarianAssistance.Persistence;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
@@ -18,7 +19,9 @@ namespace HumanitarianAssistance.Application.CommonFunctions
     internal class AccountingFunctions
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
-        private IMapper _mapper;
+        private readonly IMapper _mapper;
+        private readonly RoleManager<IdentityRole> _roleManager;
+
 
         public AccountingFunctions(HumanitarianAssistanceDbContext dbContext)
         {
@@ -29,6 +32,12 @@ namespace HumanitarianAssistance.Application.CommonFunctions
         {
             _dbContext = dbContext;
             _mapper = mapper;
+        }
+
+        public AccountingFunctions(HumanitarianAssistanceDbContext dbContext, RoleManager<IdentityRole> roleManager)
+        {
+            _dbContext = dbContext;
+            _roleManager = roleManager;
         }
 
         #region "Voucher"
@@ -428,5 +437,29 @@ namespace HumanitarianAssistance.Application.CommonFunctions
                 throw new Exception(ex.Message);
             }
         }
+
+        public async Task<bool> AddRole(string RoleName)
+        {
+
+            IdentityResult identityResult = new IdentityResult();
+
+            try
+            {
+                var roleExists = await _roleManager.FindByNameAsync(RoleName);
+
+                if (roleExists == null)
+                {
+                    var role = new IdentityRole();
+                    role.Name = RoleName;
+                    identityResult = await _roleManager.CreateAsync(role);
+                }
+            }
+            catch (Exception exception)
+            {
+                throw new Exception(exception.Message);
+            }
+            return identityResult.Succeeded;
+        }
+
     }
 }

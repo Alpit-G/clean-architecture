@@ -77,6 +77,9 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public List<LoggerModel> LoggerDetailsModelList { get; set; }
         public string VoucherReferenceNo { get; set; }
         public long VoucherNo { get; set; }
+        public List<AccountFilterType> AllAccountFilterList { get; set; }
+        public List<ApplicationPages> ApplicationPagesList { get; set; }
+        public IList<RolePermissionViewModel> PermissionsInRole { get; set; }
 
 
 
