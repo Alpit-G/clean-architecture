@@ -34,5 +34,19 @@ namespace HumanitarianAssistance.Application.Infrastructure
             else
                 return code = "" + ContractId;
         }
+        public static string GetJobCode(this string JobId)
+        {
+            string code = string.Empty;
+            if (JobId.Length == 1)
+                return code = "0000" + JobId;
+            else if (JobId.Length == 2)
+                return code = "000" + JobId;
+            else if (JobId.Length == 3)
+                return code = "00" + JobId;
+            else if (JobId.Length == 4)
+                return code = "0" + JobId;
+            else
+                return code = "" + JobId;
+        }
     }
 }

@@ -12,19 +12,19 @@ using System.Threading;
 using System.Threading.Tasks;
 
 namespace HumanitarianAssistance.Application.Marketing.Commands.Common
-{ 
-        public class AddEditContractDetailCommandHandler : IRequestHandler<AddEditContractDetailCommand, ApiResponse>
+{
+    public class AddEditContractDetailCommandHandler : IRequestHandler<AddEditContractDetailCommand, ApiResponse>
+    {
+        private HumanitarianAssistanceDbContext _dbContext;
+        private IMapper _mapper;
+        public AddEditContractDetailCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
         {
-            private HumanitarianAssistanceDbContext _dbContext;
-            private IMapper _mapper;
-            public AddEditContractDetailCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
-            {
-                _dbContext = dbContext;
-                _mapper = mapper;
-            }
-            public async Task<ApiResponse> Handle(AddEditContractDetailCommand request, CancellationToken cancellationToken)
-            {
-                ApiResponse response = new ApiResponse();
+            _dbContext = dbContext;
+            _mapper = mapper;
+        }
+        public async Task<ApiResponse> Handle(AddEditContractDetailCommand request, CancellationToken cancellationToken)
+        {
+            ApiResponse response = new ApiResponse();
             ContractDetails contractDetails = new ContractDetails();
             long LatestContractId = 0;
             var contractcode = string.Empty;

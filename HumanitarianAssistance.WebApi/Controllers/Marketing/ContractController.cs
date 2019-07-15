@@ -1,5 +1,7 @@
 ﻿using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Application.Marketing.Commands.Common;
+using HumanitarianAssistance.Application.Marketing.Commands.Create;
+using HumanitarianAssistance.Application.Marketing.Commands.Delete;
 using HumanitarianAssistance.Application.Marketing.Commands.Update;
 using HumanitarianAssistance.Application.Marketing.Queries;
 using HumanitarianAssistance.Common.Enums;
@@ -168,6 +170,219 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             command.CreatedById = userId;
             command.CreatedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
-        }       
+        }  
+        [HttpPost]
+        public async Task<ApiResponse> DeleteContractDetail([FromBody]int ContractId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new DeleteContractDetailCommand
+            {
+                ContractId=ContractId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            } );
+        } 
+        [HttpPost]
+        public async Task<ApiResponse> AddActivityType([FromBody]AddEditActivityTypeCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById=userId;
+            command.ModifiedDate=DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> DeleteActivityType([FromBody]int ActivityTypeId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new DeleteActivityTypeCommand
+            {
+                ActivityTypeId=ActivityTypeId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            } );
+        } 
+        [HttpPost]
+        public async Task<ApiResponse> AddQuality([FromBody]AddEditQualityCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById=userId;
+            command.ModifiedDate=DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> DeleteQuality([FromBody]int QualityId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new DeleteQualityCommand
+            {
+                QualityId=QualityId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            } );
+        }
+        [HttpPost]
+        public async Task<ApiResponse> AddLanguage([FromBody]AddLanguageCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> EditLanguage([FromBody]EditLanguageCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> DeleteLanguage([FromBody]int LanguageId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new DeleteLanguageCommand
+            {
+                LanguageId=LanguageId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            } );
+        }
+        [HttpPost]
+        public async Task<ApiResponse> AddMedium([FromBody]AddEditMediumCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById=userId;
+            command.ModifiedDate=DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> DeleteMedium([FromBody]int MediumId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new DeleteMediumCommand
+            {
+                MediumId=MediumId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            } );
+        }
+        [HttpPost]
+        public async Task<ApiResponse> AddTime([FromBody]AddEditTimeCategoryCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById=userId;
+            command.ModifiedDate=DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> DeleteTimeCategory([FromBody]int TimeCategoryId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new DeleteTimeCategoryCommand
+            {
+                TimeCategoryId=TimeCategoryId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            } );
+        }
+        [HttpPost]
+        public async Task<ApiResponse> AddNature([FromBody]AddEditNatureCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById=userId;
+            command.ModifiedDate=DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> DeleteNature([FromBody]int NatureId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new DeleteNatureCommand
+            {
+                NatureId=NatureId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            } );
+        }
+        [HttpPost]
+        public async Task<ApiResponse> AddMediaCategory([FromBody]AddEditMediaCategoryCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById=userId;
+            command.ModifiedDate=DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> DeleteMediaCategory([FromBody]int MediaCategoryId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new DeleteMediaCategoryCommand
+            {
+                MediaCategoryId=MediaCategoryId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            } );
+        }
+        [HttpPost]
+        public async Task<ApiResponse> AddClientDetails([FromBody]AddClientDetailsCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> EditClientDetails([FromBody]EditClientDetailsCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> DeleteClientDetails([FromBody]int ClientId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new DeleteClientDetailsCommand
+            {
+                ClientId = ClientId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            });
+        }
+        [HttpPost]
+        public async Task<ApiResponse> AddUnitRate([FromBody]AddEditUnitRateCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById=userId;
+            command.ModifiedDate=DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> DeleteUnitRate([FromBody]int UnitRateId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new DeleteUnitRateCommand
+            {
+                UnitRateId = UnitRateId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            });
+        }
     }
 }
