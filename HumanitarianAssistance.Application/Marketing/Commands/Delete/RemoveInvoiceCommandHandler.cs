@@ -1,4 +1,4 @@
-using AutoMapper;
+﻿using AutoMapper;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Application.Marketing.Models;
 using HumanitarianAssistance.Common.Helpers;
@@ -13,36 +13,38 @@ using System.Threading.Tasks;
 
 namespace HumanitarianAssistance.Application.Marketing.Commands.Delete
 {
-    public class DeleteActivityTypeCommandHandler : IRequestHandler<DeleteActivityTypeCommand, ApiResponse>
+    public class RemoveInvoiceCommandHandler : IRequestHandler<RemoveInvoiceCommand, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
         private IMapper _mapper;
-        public DeleteActivityTypeCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        public RemoveInvoiceCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;
         }
-        public async Task<ApiResponse> Handle(DeleteActivityTypeCommand request, CancellationToken cancellationToken)
+        public async Task<ApiResponse> Handle(RemoveInvoiceCommand request, CancellationToken cancellationToken)
         {
             ApiResponse response = new ApiResponse();
             try
             {
-                var activityType = await _dbContext.ActivityTypes.FirstOrDefaultAsync(x => x.IsDeleted == false && x.ActivityTypeId == request.ActivityTypeId);
-                if (activityType != null)
+                var invoiceDetails = await _dbContext.InvoiceGeneration.FirstOrDefaultAsync(x => x.JobId == request.jobId && x.IsDeleted == false);
+                if (invoiceDetails != null)
                 {
-                    activityType.ModifiedById = request.ModifiedById;
-                    activityType.ModifiedDate = request.ModifiedDate;
-                    activityType.IsDeleted = true;
+                    invoiceDetails.IsDeleted = true;
                     await _dbContext.SaveChangesAsync();
-
-                    response.StatusCode = StaticResource.successStatusCode;
+                    response.StatusCode = 200;
                     response.Message = "Success";
+                }
+                else
+                {
+                    response.StatusCode = 400;
+                    response.Message = "Data Not Found";
                 }
             }
             catch (Exception ex)
             {
                 response.StatusCode = StaticResource.failStatusCode;
-                response.Message = ex.Message;
+                response.Message = StaticResource.SomethingWrong + ex.Message;
             }
             return response;
         }

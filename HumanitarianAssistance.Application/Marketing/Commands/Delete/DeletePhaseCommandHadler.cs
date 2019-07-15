@@ -1,4 +1,4 @@
-using AutoMapper;
+﻿using AutoMapper;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Application.Marketing.Models;
 using HumanitarianAssistance.Common.Helpers;
@@ -13,30 +13,30 @@ using System.Threading.Tasks;
 
 namespace HumanitarianAssistance.Application.Marketing.Commands.Delete
 {
-    public class DeleteActivityTypeCommandHandler : IRequestHandler<DeleteActivityTypeCommand, ApiResponse>
+    public class DeletePhaseCommandHadler : IRequestHandler<DeletePhaseCommand, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
         private IMapper _mapper;
-        public DeleteActivityTypeCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        public DeletePhaseCommandHadler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;
         }
-        public async Task<ApiResponse> Handle(DeleteActivityTypeCommand request, CancellationToken cancellationToken)
+        public async Task<ApiResponse> Handle(DeletePhaseCommand request, CancellationToken cancellationToken)
         {
             ApiResponse response = new ApiResponse();
             try
             {
-                var activityType = await _dbContext.ActivityTypes.FirstOrDefaultAsync(x => x.IsDeleted == false && x.ActivityTypeId == request.ActivityTypeId);
-                if (activityType != null)
+                var phaseDetails = await _dbContext.JobPhases.FirstOrDefaultAsync(x => x.IsDeleted == false && x.JobPhaseId == request.JobPhaseId);
+                if (phaseDetails != null)
                 {
-                    activityType.ModifiedById = request.ModifiedById;
-                    activityType.ModifiedDate = request.ModifiedDate;
-                    activityType.IsDeleted = true;
+                    phaseDetails.ModifiedById = request.ModifiedById;
+                    phaseDetails.ModifiedDate = request.ModifiedDate;
+                    phaseDetails.IsDeleted = true;
                     await _dbContext.SaveChangesAsync();
 
                     response.StatusCode = StaticResource.successStatusCode;
-                    response.Message = "Success";
+                    response.Message = "Phase deleted successfully";
                 }
             }
             catch (Exception ex)
