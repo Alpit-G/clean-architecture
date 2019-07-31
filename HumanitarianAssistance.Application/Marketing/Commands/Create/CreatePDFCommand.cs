@@ -8,6 +8,6 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Create
 {
     public class CreatePDFCommand : BaseModel, IRequest<ApiResponse>
     {
-        public int jobId { get; set; }  
+        public int JobId { get; set; }  
     }
 }

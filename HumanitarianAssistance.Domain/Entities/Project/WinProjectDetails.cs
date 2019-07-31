@@ -6,12 +6,12 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities.Project
 {
-    public class WinProjectDetails: BaseEntityWithoutId
+    public class WinProjectDetails : BaseEntityWithoutId
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column(Order = 1)]
-        public long WinProjectId { get; set; } 
+        public long WinProjectId { get; set; }
         [ForeignKey("ProjectId")]
         public long ProjectId { get; set; }
         public ProjectDetail ProjectDetail { get; set; }

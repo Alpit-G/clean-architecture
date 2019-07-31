@@ -6,14 +6,14 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities
 {
-    public partial class FuelTransportDetail : BaseEntityWithoutId
+    public class FuelTransportDetail : BaseEntityWithoutId
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column(Order = 1)]
         public int FuelTransportID { get; set; }
         [StringLength(50)]
-	    public string Title { get; set; }
+        public string Title { get; set; }
         public float? FuelCurrentKM { get; set; }
         public float? FuelStartKM { get; set; }
         public float? FuelTotalKM { get; set; }

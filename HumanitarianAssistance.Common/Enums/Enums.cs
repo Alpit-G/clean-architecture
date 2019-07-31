@@ -21,7 +21,7 @@ namespace HumanitarianAssistance.Common.Enums
         DR = 2,
         CR = 3
     }
-    public enum AccountType
+    public enum AccountTypeEnum
     {
 
         CapitalAssetsWrittenOff = 1,

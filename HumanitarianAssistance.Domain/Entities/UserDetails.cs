@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities
 {
-    public partial class UserDetails : BaseEntity
+    public class UserDetails : BaseEntityWithoutId
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -24,8 +24,8 @@ namespace HumanitarianAssistance.Domain.Entities
         [StringLength(10)]
         public string OfficeCode { get; set; }
         public int DepartmentId { get; set; }
-        public byte? Status { get; set; }     
+        public byte? Status { get; set; }
         public string AspNetUserId { get; set; }
-		public int? OfficeId { get; set; }
+        public int? OfficeId { get; set; }
     }
 }

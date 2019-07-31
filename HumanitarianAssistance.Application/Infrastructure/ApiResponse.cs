@@ -86,16 +86,29 @@ namespace HumanitarianAssistance.Application.Infrastructure
 
 
         // Marketing
+        public byte[] pdf { get; set; }
         public dynamic contractDetailsModel { get; set; }
+        public ICollection<JobPriceDetails> JobPriceDetails { get; set; }
+        public JobPriceModel JobPriceDetail { get; set; }
         public ContractDetails contractDetails { get; set; }
         public ICollection<ContractDetails> ContractDetails { get; set; }
         public ActivityType activityById { get; set; }
         public ICollection<ActivityType> ActivityTypes { get; set; }
         public ICollection<LanguageDetail> Languages { get; set; }
         public ICollection<MediaCategory> MediaCategories { get; set; }
+        public JobPhase phaseById { get; set; }
         public Channel channelById { get; set; }
         public ICollection<Channel> Channels { get; set; }
+        public JobDetails JobDetailModel { get; set; }
+        public ICollection<JobDetails> JobDetails { get; set; }
+        public JobDetailsModel JobDetail { get; set; }
+        public InvoiceModel invoiceDetails { get; set; }
+        public List<JobDetailsModel> JobPriceDetailList { get; set; }
+        public List<JobDetailsModel> JobDetailsModel { get; set; }
         public ICollection<Medium> Mediums { get; set; }
+        public ICollection<JobPhase> JobPhases { get; set; }
+        public UnitRate unitRateDetailsById { get; set; }
+        public dynamic unitRateDetails { get; set; }
         public ICollection<Nature> Natures { get; set; }
         public ICollection<Quality> Qualities { get; set; }
         public List<UnitRateDetailsModel> UnitRateDetails { get; set; }

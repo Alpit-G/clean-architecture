@@ -12,7 +12,6 @@ namespace HumanitarianAssistance.Domain.Entities
         {
             IsDeleted = false;
         }
-
         public DateTime? CreatedDate { get; set; }
         public DateTime? ModifiedDate { get; set; }
         public string CreatedById { get; set; }

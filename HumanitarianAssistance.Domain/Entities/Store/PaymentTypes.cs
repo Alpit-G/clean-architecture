@@ -16,6 +16,6 @@ namespace HumanitarianAssistance.Domain.Entities.Store
         public string Name { get; set; }
         public long ChartOfAccountNewId { get; set; }
         [ForeignKey("ChartOfAccountNewId")]
-        public ChartOfAccountNew ChartOfAccountNew { get; set; }
+        ChartOfAccountNew ChartOfAccountNew { get; set; }
     }
 }

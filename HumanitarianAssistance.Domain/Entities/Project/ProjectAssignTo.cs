@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using HumanitarianAssistance.Domain.Entities.HR;
 
 namespace HumanitarianAssistance.Domain.Entities.Project
 {
@@ -18,6 +19,6 @@ namespace HumanitarianAssistance.Domain.Entities.Project
         public int EmployeeId { get; set; }
         [ForeignKey("EmployeeId")]
         public EmployeeDetail EmployeeDetail { get; set; }
-        
+
     }
 }

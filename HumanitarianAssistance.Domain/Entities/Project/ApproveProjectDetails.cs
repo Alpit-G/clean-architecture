@@ -6,12 +6,12 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities.Project
 {
-   public class ApproveProjectDetails: BaseEntityWithoutId
+    public class ApproveProjectDetails : BaseEntityWithoutId
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column(Order = 1)]
-        public long ApproveProjrctId { get; set; }       
+        public long ApproveProjrctId { get; set; }
         [ForeignKey("ProjectId")]
         public long ProjectId { get; set; }
         public ProjectDetail ProjectDetail { get; set; }

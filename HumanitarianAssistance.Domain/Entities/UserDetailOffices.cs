@@ -6,13 +6,13 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities
 {
-    public class UserDetailOffices: BaseEntityWithoutId
+    public class UserDetailOffices : BaseEntityWithoutId
     {
-		[Key]
-		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-		[Column(Order = 1)]
-		public int UserOfficesId { get; set; }
-		public int OfficeId { get; set; }
-		public int UserId { get; set; }
-	}	
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Column(Order = 1)]
+        public int UserOfficesId { get; set; }
+        public int OfficeId { get; set; }
+        public int UserId { get; set; }
+    }
 }
