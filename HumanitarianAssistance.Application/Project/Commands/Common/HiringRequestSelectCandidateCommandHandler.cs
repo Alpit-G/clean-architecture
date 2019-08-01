@@ -40,7 +40,7 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
                     {
                         hiringRequestCandidates.IsSelected = true;
                         hiringRequestCandidates.ModifiedById = request.ModifiedById;
-                        hiringRequestCandidates.ModifiedDate = request.ModifiedDate
+                        hiringRequestCandidates.ModifiedDate = request.ModifiedDate;
                         hiringRequestCandidates.IsDeleted = false;
                         await _dbContext.SaveChangesAsync();
                     }
