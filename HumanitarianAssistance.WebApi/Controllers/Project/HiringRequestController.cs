@@ -8,8 +8,6 @@ using HumanitarianAssistance.Common.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -18,7 +16,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
     [ApiController]
     [Produces("application/json")]
     [Route("api/HiringRequestController/[Action]")]
-    [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Marketing))]
+    [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Project))]
     public class HiringRequestController : Controller
     {
         private readonly IMediator _mediator;
