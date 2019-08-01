@@ -7,15 +7,15 @@ using System.Text;
 
 namespace HumanitarianAssistance.Persistence.Configurations
 {
-    public class AccountHeadTypeConfiguration : IEntityTypeConfiguration<AccountHeadType>
-    {
-        public void Configure(EntityTypeBuilder<AccountHeadType> builder)
-        {
-            builder.Property(e => e.AccountHeadTypeId).HasColumnName("AccountHeadTypeId");
+    // public class AccountHeadTypeConfiguration : IEntityTypeConfiguration<AccountHeadType>
+    // {
+    //     public void Configure(EntityTypeBuilder<AccountHeadType> builder)
+    //     {
+    //         builder.Property(e => e.AccountHeadTypeId).HasColumnName("AccountHeadTypeId");
 
-            builder.Property(e => e.AccountHeadTypeName)
-                .IsRequired()
-                .HasMaxLength(15);
-        }
-    }
+    //         builder.Property(e => e.AccountHeadTypeName)
+    //             .IsRequired()
+    //             .HasMaxLength(15);
+    //     }
+    // }
 }

@@ -8,7 +8,6 @@ namespace HumanitarianAssistance.Domain.Entities.Project
 {
     public class ProjectMonitoringReviewDetail : BaseEntityWithoutId
     {
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column(Order = 1)]

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using HumanitarianAssistance.Domain.Entities.HR;
 
 namespace HumanitarianAssistance.Domain.Entities.Project
 {
@@ -66,29 +67,6 @@ namespace HumanitarianAssistance.Domain.Entities.Project
         [Range(0, 100)]
         public float? Achieved { get; set; }
         public string SubActivityTitle { get; set; }
-        //public DateTime? ActualStartDate { get; set; }
-        //public DateTime? ActualEndDate { get; set; }
-        //public string ImplementationMethod { get; set; }
-        //public string ImplementationChalanges { get; set; }
-        //public string OvercomingChallanges { get; set; }
-        //public DateTime? ExtensionStartDate { get; set; }
-        //public DateTime? ExtensionEndDate { get; set; }
 
-        //Monitoring
-        //[Range(0, 100)]
-        //public float? MonitoringProgress { get; set; }
-        //public bool? MonitoringStatus { get; set; }
-
-        //public int? MonitoringScore { get; set; }
-
-        //public int? MonitoringFrequency { get; set; }
-        //public string VerificationSource { get; set; }
-
-        //public string Strengths { get; set; }
-
-        //public string Weeknesses { get; set; }
-        //public string MonitoringChallenges { get; set; }
-        //public string Recommendation { get; set; }
-        //public string Comments { get; set; }
     }
 }

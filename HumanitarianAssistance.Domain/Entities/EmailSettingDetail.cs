@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities
 {
-    public partial class EmailSettingDetail : BaseEntityWithoutId
+    public class EmailSettingDetail : BaseEntityWithoutId
     {
         public EmailSettingDetail()
         {

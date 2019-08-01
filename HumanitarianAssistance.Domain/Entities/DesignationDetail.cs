@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities
 {
-    public partial class DesignationDetail : BaseEntityWithoutId
+    public class DesignationDetail : BaseEntityWithoutId
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -15,6 +15,6 @@ namespace HumanitarianAssistance.Domain.Entities
         [StringLength(100)]
         public string Designation { get; set; }
         public string DesignationDari { get; set; }
-        
+
     }
 }

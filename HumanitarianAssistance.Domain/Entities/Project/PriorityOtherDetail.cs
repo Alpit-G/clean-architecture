@@ -6,8 +6,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities.Project
 {
-    
-    public class PriorityOtherDetail: BaseEntityWithoutId
+    public class PriorityOtherDetail : BaseEntityWithoutId
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

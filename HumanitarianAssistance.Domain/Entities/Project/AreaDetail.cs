@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities.Project
 {
-    public class AreaDetail: BaseEntityWithoutId
+    public class AreaDetail : BaseEntityWithoutId
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -14,6 +14,6 @@ namespace HumanitarianAssistance.Domain.Entities.Project
         public long AreaId { get; set; }
         public string AreaName { get; set; }
         public string AreaCode { get; set; }
-        
+
     }
 }

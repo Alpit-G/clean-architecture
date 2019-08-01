@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 using HumanitarianAssistance.Application.CommonFunctions;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
-using HumanitarianAssistance.Domain.Entities;
+using HumanitarianAssistance.Domain.Entities.Accounting;
 using HumanitarianAssistance.Persistence;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Accounting.Commands.Common
 {

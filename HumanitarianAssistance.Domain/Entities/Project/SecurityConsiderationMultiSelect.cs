@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities.Project
 {
-   public class SecurityConsiderationMultiSelect: BaseEntityWithoutId
+    public class SecurityConsiderationMultiSelect : BaseEntityWithoutId
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -19,7 +19,5 @@ namespace HumanitarianAssistance.Domain.Entities.Project
         public SecurityConsiderationDetail SecurityConsiderationDetail { get; set; }
         public long SecurityConsiderationId { get; set; }
         public long? SecurityConsiderationSelectedId { get; set; }
-
-
     }
 }

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities
 {
-    public partial class FuelGeneratorDetail : BaseEntityWithoutId
+    public class FuelGeneratorDetail : BaseEntityWithoutId
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -15,7 +15,7 @@ namespace HumanitarianAssistance.Domain.Entities
         [StringLength(50)]
         public string Title { get; set; }
         [StringLength(50)]
-	    public string GeneratorLocation { get; set; }
+        public string GeneratorLocation { get; set; }
         public float? StartUsed { get; set; }
         public float? CurrentUsed { get; set; }
         public float? TotalMonthUse { get; set; }

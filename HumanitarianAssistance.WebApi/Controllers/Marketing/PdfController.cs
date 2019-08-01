@@ -1,9 +1,5 @@
 ﻿using HumanitarianAssistance.Application.Infrastructure;
-using HumanitarianAssistance.Application.Marketing.Commands.Common;
 using HumanitarianAssistance.Application.Marketing.Commands.Create;
-using HumanitarianAssistance.Application.Marketing.Commands.Delete;
-using HumanitarianAssistance.Application.Marketing.Commands.Update;
-using HumanitarianAssistance.Application.Marketing.Queries;
 using HumanitarianAssistance.Common.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using HumanitarianAssistance.Domain.Entities.HR;
 
 namespace HumanitarianAssistance.Domain.Entities.Project
 {
-   public class ProjectHiringRequestDetail: BaseEntityWithoutId
+    public class ProjectHiringRequestDetail : BaseEntityWithoutId
     {
         public ProjectHiringRequestDetail()
         {
             IsCompleted = false;
         }
+
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column(Order = 1)]
@@ -34,7 +36,7 @@ namespace HumanitarianAssistance.Domain.Entities.Project
         public long? BudgetLineId { get; set; }
         [ForeignKey("BudgetLineId")]
         public ProjectBudgetLineDetail ProjectBudgetLineDetail { get; set; }
-       
+
         [ForeignKey("OfficeId")]
         public int? OfficeId { get; set; }
         public OfficeDetail OfficeDetails { get; set; }

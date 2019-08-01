@@ -6,14 +6,14 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities
 {
-    public partial class NonExpendableStoreItemDetail : BaseEntityWithoutId
+    public class NonExpendableStoreItemDetail : BaseEntityWithoutId
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column(Order = 1)]
         public long StoreItemID { get; set; }
         [StringLength(20)]
-	    public string StoreItemCode { get; set; }
+        public string StoreItemCode { get; set; }
         [StringLength(10)]
         public string MasterCode { get; set; }
         [StringLength(200)]

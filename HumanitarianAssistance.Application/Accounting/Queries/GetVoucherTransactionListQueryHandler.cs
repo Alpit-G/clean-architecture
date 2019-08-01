@@ -7,21 +7,21 @@ using HumanitarianAssistance.Application.Accounting.Models;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Enums;
 using HumanitarianAssistance.Common.Helpers;
-using HumanitarianAssistance.Domain.Entities;
+using HumanitarianAssistance.Domain.Entities.Accounting;
 using HumanitarianAssistance.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Accounting.Queries
 {
-    public class GetVoucherTransactionListQueryHandler: IRequestHandler<GetVoucherTransactionListQuery, ApiResponse>
+    public class GetVoucherTransactionListQueryHandler : IRequestHandler<GetVoucherTransactionListQuery, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
-        
-        public GetVoucherTransactionListQueryHandler( HumanitarianAssistanceDbContext dbContext)
+
+        public GetVoucherTransactionListQueryHandler(HumanitarianAssistanceDbContext dbContext)
         {
 
-            _dbContext= dbContext;
+            _dbContext = dbContext;
         }
 
         public async Task<ApiResponse> Handle(GetVoucherTransactionListQuery model, CancellationToken cancellationToken)

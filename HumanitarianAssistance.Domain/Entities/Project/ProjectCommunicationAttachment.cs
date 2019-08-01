@@ -18,8 +18,8 @@ namespace HumanitarianAssistance.Domain.Entities.Project
         public long ProjectId { get; set; }
         [ForeignKey("ProjectId")]
         public ProjectDetail ProjectDetail { get; set; }
-        public string FileName  { get; set; }
-        public string FilePath  { get; set; }
+        public string FileName { get; set; }
+        public string FilePath { get; set; }
 
     }
 }

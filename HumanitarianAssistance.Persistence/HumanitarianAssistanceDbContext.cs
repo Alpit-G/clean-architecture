@@ -1,4 +1,5 @@
 ﻿using HumanitarianAssistance.Domain.Entities;
+using HumanitarianAssistance.Domain.Entities.HR;
 using HumanitarianAssistance.Domain.Entities.Accounting;
 using HumanitarianAssistance.Domain.Entities.ErrorLog;
 using HumanitarianAssistance.Domain.Entities.Marketing;
@@ -107,7 +108,6 @@ namespace HumanitarianAssistance.Persistence
         public DbSet<EmployeeEvaluationTraining> EmployeeEvaluationTraining { get; set; }
         public DbSet<EmployeeAppraisalTeamMember> EmployeeAppraisalTeamMember { get; set; }
         public DbSet<RatingBasedCriteria> RatingBasedCriteria { get; set; }
-        public DbSet<CategoryPopulator> CategoryPopulator { get; set; }
         public DbSet<LoggerDetails> LoggerDetails { get; set; }
 
         // Store
@@ -118,8 +118,6 @@ namespace HumanitarianAssistance.Persistence
         public DbSet<ItemPurchaseDocument> ItemPurchaseDocuments { get; set; }
         public DbSet<PurchaseVehicle> PurchaseVehicles { get; set; }
         public DbSet<MotorFuel> VehicleFuel { get; set; }
-        public DbSet<VehicleLocation> VehicleLocations { get; set; }
-        public DbSet<VehicleMileage> VehicleMileages { get; set; }
         public DbSet<PurchaseGenerator> PurchaseGenerators { get; set; }
         public DbSet<MotorMaintenance> MotorMaintenances { get; set; }
         public DbSet<MotorSparePart> MotorSpareParts { get; set; }
@@ -146,7 +144,6 @@ namespace HumanitarianAssistance.Persistence
         public DbSet<EmployeeHealthInfo> EmployeeHealthInfo { get; set; }
         public DbSet<EmployeeHealthQuestion> EmployeeHealthQuestion { get; set; }
         public DbSet<EmployeeMonthlyAttendance> EmployeeMonthlyAttendance { get; set; }
-        public DbSet<EmployeePayrollDetailTest> EmployeePayrollDetailTest { get; set; }//to be removed after data transfer
         public DbSet<PensionPaymentHistory> PensionPaymentHistory { get; set; }
         public DbSet<PayrollAccountHead> PayrollAccountHead { get; set; }
         public DbSet<EmployeePayrollAccountHead> EmployeePayrollAccountHead { get; set; }
