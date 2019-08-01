@@ -8,7 +8,6 @@ namespace HumanitarianAssistance.Domain.Entities.Project
 {
     public class ProjectProposalDetail : BaseEntityWithoutId
     {
-
         public ProjectProposalDetail()
         {
             ProposalBudget = 0;

@@ -6,11 +6,11 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities.Project
 {
-  public  class ActivityStatusDetail:BaseEntityWithoutId
+    public class ActivityStatusDetail : BaseEntityWithoutId
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column(Order =1,TypeName ="serial")]
+        [Column(Order = 1, TypeName = "serial")]
         public int StatusId { get; set; }
         public string StatusName { get; set; }
     }

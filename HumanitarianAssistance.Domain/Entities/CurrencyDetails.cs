@@ -6,18 +6,18 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities
 {
-    public partial class CurrencyDetails : BaseEntityWithoutId
+    public class CurrencyDetails : BaseEntityWithoutId
     {
-		[Key]
-		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-		[Column(Order = 1)]
-		public int CurrencyId { get; set; }		
-		[StringLength(5)]
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Column(Order = 1)]
+        public int CurrencyId { get; set; }
+        [StringLength(5)]
         public string CurrencyCode { get; set; }
         [StringLength(50)]
         public string CurrencyName { get; set; }
         public float? CurrencyRate { get; set; }
-		public bool? Status { get; set; }
+        public bool? Status { get; set; }
         public bool? SalaryTaxFlag { get; set; }
     }
 }

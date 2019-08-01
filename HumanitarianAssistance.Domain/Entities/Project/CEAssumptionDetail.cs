@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities.Project
 {
-    public class CEAssumptionDetail: BaseEntityWithoutId
+    public class CEAssumptionDetail : BaseEntityWithoutId
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -16,6 +16,6 @@ namespace HumanitarianAssistance.Domain.Entities.Project
         public long ProjectId { get; set; }
         [ForeignKey("ProjectId")]
         public ProjectDetail ProjectDetail { get; set; }
-    
+
     }
 }

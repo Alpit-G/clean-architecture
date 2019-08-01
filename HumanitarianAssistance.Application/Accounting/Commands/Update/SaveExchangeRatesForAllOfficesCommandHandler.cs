@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Domain.Entities;
+using HumanitarianAssistance.Domain.Entities.Accounting;
 using HumanitarianAssistance.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Accounting.Commands.Update
 {
-    public class SaveExchangeRatesForAllOfficesCommandHandler: IRequestHandler<SaveExchangeRatesForAllOfficesCommand, ApiResponse>
+    public class SaveExchangeRatesForAllOfficesCommandHandler : IRequestHandler<SaveExchangeRatesForAllOfficesCommand, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
         public SaveExchangeRatesForAllOfficesCommandHandler(HumanitarianAssistanceDbContext dbContext)
@@ -46,7 +47,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Update
                 }
                 else
                 {
-                  exchangeRateList = await _dbContext.ExchangeRateDetail.Where(x => x.IsDeleted == false && x.Date.Date == officeExchangeRateViewModel.GenerateExchangeRateModel.FirstOrDefault().Date.Date && x.OfficeId== officeExchangeRateViewModel.OfficeId).ToListAsync();
+                    exchangeRateList = await _dbContext.ExchangeRateDetail.Where(x => x.IsDeleted == false && x.Date.Date == officeExchangeRateViewModel.GenerateExchangeRateModel.FirstOrDefault().Date.Date && x.OfficeId == officeExchangeRateViewModel.OfficeId).ToListAsync();
 
                     if (exchangeRateList.Any())
                     {

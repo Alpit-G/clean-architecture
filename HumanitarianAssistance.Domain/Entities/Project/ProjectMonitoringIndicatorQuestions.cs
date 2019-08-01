@@ -4,7 +4,6 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-
 namespace HumanitarianAssistance.Domain.Entities.Project
 {
     public class ProjectMonitoringIndicatorQuestions : BaseEntityWithoutId

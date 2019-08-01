@@ -1,6 +1,7 @@
 using AutoMapper;
 using HumanitarianAssistance.Application.Accounting.Models;
 using HumanitarianAssistance.Domain.Entities;
+using HumanitarianAssistance.Domain.Entities.Accounting;
 
 namespace HumanitarianAssistance.WebApi.Extensions
 {

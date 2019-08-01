@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities.Project
 {
-   public class ProjectPhaseTime : BaseEntityWithoutId
+    public class ProjectPhaseTime : BaseEntityWithoutId
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -19,7 +19,7 @@ namespace HumanitarianAssistance.Domain.Entities.Project
         [ForeignKey("ProjectPhaseDetailsId")]
         public ProjectPhaseDetails ProjectPhaseDetails { get; set; }
         public DateTime? PhaseStartData { get; set; }
-        public DateTime? PhaseEndDate { get; set; } 
+        public DateTime? PhaseEndDate { get; set; }
 
     }
 }

@@ -7,7 +7,7 @@ using HumanitarianAssistance.Domain.Entities.Project;
 
 namespace HumanitarianAssistance.Domain.Entities
 {
-    public partial class JobHiringDetails : BaseEntityWithoutId
+    public class JobHiringDetails : BaseEntityWithoutId
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -17,7 +17,6 @@ namespace HumanitarianAssistance.Domain.Entities
         public string JobCode { get; set; }
         public string JobDescription { get; set; }
         public int? ProfessionId { get; set; }
-        //public ProfessionDetails ProfessionDetails { get; set; }
         public int Unit { get; set; }
         public int OfficeId { get; set; }
         public OfficeDetail OfficeDetails { get; set; }

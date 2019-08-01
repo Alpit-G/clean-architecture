@@ -6,13 +6,13 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities
 {
-    public partial class ModulePermissionDetail : BaseEntityWithoutId
+    public class ModulePermissionDetail : BaseEntityWithoutId
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column(Order = 1)]
         public int ModuleID { get; set; }
-        [Key, Column(Order =2)]
+        [Key, Column(Order = 2)]
         [ForeignKey("UserDetails")]
         public int? UserID { get; set; }
         [StringLength(100)]
