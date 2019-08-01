@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using HumanitarianAssistance.Application.Accounting.Models;
 using HumanitarianAssistance.Application.Marketing.Models;
+using HumanitarianAssistance.Application.Project.Models;
 using HumanitarianAssistance.Domain.Entities;
 using HumanitarianAssistance.Domain.Entities.Accounting;
 using HumanitarianAssistance.Domain.Entities.Marketing;
@@ -127,6 +128,11 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public PolicyDetail policyDetails { get; set; }
 
 
+
+        //Project
+        public IList<ProjectHiringCandidateDetailModel> ProjectHiringCandidateDetailModel { get; set; }
+        public List<EmployeeDetailListModel> EmployeeDetailListData { get; set; }
+        public IList<ProjectHiringRequestModel> ProjectHiringRequestModel { get; set; }
     }
 
 
