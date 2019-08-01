@@ -124,6 +124,7 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public UnitRate UnitRateByActivityId { get; set; }
         public UnitRateDetailsModel rateDetailsById { get; set; }
         public ICollection<UnitRate> UnitRates { get; set; }
+        public PolicyDetail policyDetails { get; set; }
 
 
     }

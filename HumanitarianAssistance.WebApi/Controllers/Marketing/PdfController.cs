@@ -28,7 +28,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return await _mediator.Send(new CreatePDFCommand
             {
-                jobId = jobId, 
+                JobId = jobId, 
                 ModifiedById = userId,
                 ModifiedDate = DateTime.UtcNow
             });
