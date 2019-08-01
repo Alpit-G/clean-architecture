@@ -42,8 +42,5 @@ namespace HumanitarianAssistance.Domain.Entities.Accounting
         public AccountFilterType AccountFilterType { get; set; }
 
         public virtual List<VoucherTransactions> VoucherTransactionsList { get; set; }
-        //public virtual List<VoucherTransactions> DebitAccountlist { get; set; }
-
-        //public List<VoucherDetail> VoucherList { get; set; }
     }
 }

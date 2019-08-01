@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities.Project
 {
-   public class FeasibilityCriteriaDetail: BaseEntityWithoutId
+    public class FeasibilityCriteriaDetail : BaseEntityWithoutId
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -41,6 +41,6 @@ namespace HumanitarianAssistance.Domain.Entities.Project
         public bool? IsSecurity { get; set; }
         public bool? IsGeographical { get; set; }
         public bool? IsSeasonal { get; set; }
-       
+
     }
 }

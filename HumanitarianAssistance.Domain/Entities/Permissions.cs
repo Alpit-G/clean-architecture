@@ -1,6 +1,4 @@
-﻿using HumanitarianAssistance.Common.Helpers;
-using System;
-using System.Text;
+﻿using System;
 
 namespace HumanitarianAssistance.Domain.Entities
 {
@@ -8,7 +6,7 @@ namespace HumanitarianAssistance.Domain.Entities
     {
         public Permissions()
         {
-            Id = StaticFunctions.GuidGenerator().ToString();
+            Id = Guid.NewGuid().ToString();
         }
         public string Id { get; set; }
         public string Name { get; set; }

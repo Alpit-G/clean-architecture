@@ -6,12 +6,12 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities
 {
-    public partial class OfficeDetail : BaseEntityWithoutId
+    public class OfficeDetail : BaseEntityWithoutId
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column(Order = 1)]
-        public int OfficeId { get; set; }        
+        public int OfficeId { get; set; }
         [StringLength(5)]
         public string OfficeCode { get; set; }
         [StringLength(100)]

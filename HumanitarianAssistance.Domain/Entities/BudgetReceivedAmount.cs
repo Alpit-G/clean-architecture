@@ -6,17 +6,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HumanitarianAssistance.Domain.Entities
 {
-	public partial class BudgetReceivedAmount : BaseEntityWithoutId
-	{
-		[Key]
-		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-		[Column(Order = 1)]
-		public long BudgetReceivedAmountId { get; set; }
-		public long BudgetReceivalbeId { get; set; }
-		public BudgetReceivable BudgetReceivable { get; set; }
-		public long ReceiptId { get; set; }
-		public DateTime ReceivedDate { get; set; }
-		public double Amount { get; set; }
+    public class BudgetReceivedAmount : BaseEntityWithoutId
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [Column(Order = 1)]
+        public long BudgetReceivedAmountId { get; set; }
+        public long BudgetReceivalbeId { get; set; }
+        public BudgetReceivable BudgetReceivable { get; set; }
+        public long ReceiptId { get; set; }
+        public DateTime ReceivedDate { get; set; }
+        public double Amount { get; set; }
         public string Remark { get; set; }
-	}
+    }
 }

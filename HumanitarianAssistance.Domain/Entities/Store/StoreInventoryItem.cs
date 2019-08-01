@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using HumanitarianAssistance.Domain.Entities.Store;
 
-namespace HumanitarianAssistance.Domain.Entities
+namespace HumanitarianAssistance.Domain.Entities.Store
 {
     // when creating inventory items, a type must be specified for it.
     // general type items are just base items, but the other item types
@@ -37,9 +36,9 @@ namespace HumanitarianAssistance.Domain.Entities
         public string MasterInventoryCode { get; set; }
 
         [ForeignKey("ItemInventory")]
-		public StoreInventory Inventory { get; set; }
-		//[ForeignKey("Voucher")]
-  //      public VoucherDetail VoucherDetail { get; set; }
+        public StoreInventory Inventory { get; set; }
+        //[ForeignKey("Voucher")]
+        //      public VoucherDetail VoucherDetail { get; set; }
         [ForeignKey("ItemType")]
         public InventoryItemType ItemTypes { get; set; }
 

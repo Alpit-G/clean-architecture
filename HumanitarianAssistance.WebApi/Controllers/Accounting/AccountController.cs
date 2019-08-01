@@ -221,9 +221,43 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
         }
 
         [HttpPost]
-        public async Task<ApiResponse> DisapproveEmployeeApprovedSalary([FromBody]AssignRoleToUserCommand model)
+        public async Task<ApiResponse> DisapproveEmployeeApprovedSalary([FromBody]DisapproveEmployeeApprovedSalaryCommand model)
         {
             return await _mediator.Send(model);
         }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllAccountFilter()
+        {
+            return await _mediator.Send(new GetAllAccountFilterTypesQuery());
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllApplicationPages()
+        {
+            return await _mediator.Send(new GetAllApplicationPagesQuery());
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetPermissionsOnSelectedRole([FromQuery]string RoleId)
+        {
+            return await _mediator.Send(new GetPermissionsOnSelectedRoleQuery { RoleId = RoleId });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddRoleWithPagePermissions([FromBody]AddRoleWithPagePermissionsCommand model)
+        {
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> UpdatePermissionsOnSelectedRole([FromBody]UpdatePermissionsOnSelectedRoleCommand model)
+        {
+            return await _mediator.Send(model);
+        }
+
+
+
+
     }
 }

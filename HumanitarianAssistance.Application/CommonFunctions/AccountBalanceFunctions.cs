@@ -14,7 +14,6 @@ namespace HumanitarianAssistance.Application.CommonFunctions
 {
     internal class AccountBalanceFunctions
     {
-
         private readonly HumanitarianAssistanceDbContext _dbContext;
 
         public AccountBalanceFunctions(HumanitarianAssistanceDbContext dbContext)
@@ -162,7 +161,7 @@ namespace HumanitarianAssistance.Application.CommonFunctions
             return response;
         }
 
-         private async Task<List<VoucherTransactions>> GetAccountTransactions(List<ChartOfAccountNew> inputLevelAccounts, DateTime endDate)
+        private async Task<List<VoucherTransactions>> GetAccountTransactions(List<ChartOfAccountNew> inputLevelAccounts, DateTime endDate)
         {
             return await _dbContext.VoucherTransactions
                 .Where(x => x.TransactionDate != null ? x.TransactionDate.Value.Date <= endDate.Date : x.TransactionDate <= endDate

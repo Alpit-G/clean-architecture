@@ -22,7 +22,7 @@ namespace HumanitarianAssistance.Domain.Entities.Store
         public string VehicleImageName { get; set; }
         public string VehicleImageFileName { get; set; }
         public string VehicleImageFileType { get; set; }
-        
+
         [ForeignKey("Purchase")]
         public StoreItemPurchase ItemPurchase { get; set; }
     }

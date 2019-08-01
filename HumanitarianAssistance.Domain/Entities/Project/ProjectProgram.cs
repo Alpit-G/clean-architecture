@@ -6,15 +6,15 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities.Project
 {
-  public  class ProjectProgram : BaseEntityWithoutId
+    public class ProjectProgram : BaseEntityWithoutId
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column(Order = 1)]
-        public long ProjectProgramId  { get; set; }
+        public long ProjectProgramId { get; set; }
         public long ProjectId { get; set; }
         [ForeignKey("ProjectId")]
-        public ProjectDetail ProjectDetail { get; set; }      
+        public ProjectDetail ProjectDetail { get; set; }
         public long ProgramId { get; set; }
         [ForeignKey("ProgramId")]
         public ProgramDetail ProgramDetail { get; set; }
