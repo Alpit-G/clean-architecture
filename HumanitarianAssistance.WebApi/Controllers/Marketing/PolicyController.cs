@@ -1,5 +1,6 @@
 ﻿using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Application.Marketing.Commands.Common;
+using HumanitarianAssistance.Application.Marketing.Queries;
 using HumanitarianAssistance.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -32,6 +33,12 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
                 Formatting = Formatting.Indented,
                 NullValueHandling = NullValueHandling.Ignore
             };
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetPolicyList()
+        {
+            return await _mediator.Send(new GetPolicyListQuery());
         }
 
         [HttpPost]
