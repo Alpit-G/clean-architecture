@@ -10,6 +10,9 @@
     <Folder Include="Hr\Commands\" />
     <Folder Include="Hr\Models\" />
     <Folder Include="Hr\Queries\" />
+    <Folder Include="Project\Commands\Common\" />
+    <Folder Include="Project\Commands\Delete\" />
+    <Folder Include="Project\Commands\Update\" />
   </ItemGroup>
 
   <ItemGroup>
