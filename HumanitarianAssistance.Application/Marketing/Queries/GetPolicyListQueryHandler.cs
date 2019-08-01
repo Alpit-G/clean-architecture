@@ -1,9 +1,12 @@
 ﻿using HumanitarianAssistance.Application.Infrastructure;
+using HumanitarianAssistance.Application.Marketing.Models;
+using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Persistence;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -21,11 +24,11 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
             ApiResponse response = new ApiResponse();
             try
             {
-                int count = await _uow.GetDbContext().PolicyDetails.CountAsync(x => x.IsDeleted == false);
-                var policyDetail = await (from j in _uow.GetDbContext().PolicyDetails
-                                          join jp in _uow.GetDbContext().LanguageDetail on j.LanguageId equals jp.LanguageId
-                                          join me in _uow.GetDbContext().Mediums on j.MediumId equals me.MediumId
-                                          join mc in _uow.GetDbContext().MediaCategories on j.MediaCategoryId equals mc.MediaCategoryId
+                int count = await _dbContext.PolicyDetails.CountAsync(x => x.IsDeleted == false);
+                var policyDetail = await (from j in _dbContext.PolicyDetails
+                                          join jp in _dbContext.LanguageDetail on j.LanguageId equals jp.LanguageId
+                                          join me in _dbContext.Mediums on j.MediumId equals me.MediumId
+                                          join mc in _dbContext.MediaCategories on j.MediaCategoryId equals mc.MediaCategoryId
                                           where !j.IsDeleted.Value && !jp.IsDeleted.Value && !me.IsDeleted.Value
                                           && !mc.IsDeleted.Value
                                           select (new PolicyModel
