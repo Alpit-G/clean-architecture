@@ -186,5 +186,78 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         {
             return await _mediator.Send(new GetProjectActivityByActivityIdQuery { activityId = activityId });
         }
+
+
+
+        [HttpPost]
+        public async Task<ApiResponse> GetProjectActivityExtension([FromBody]long activityId)
+        {
+            return await _mediator.Send(new GetProjectActivityExtensionQuery { activityId = activityId }); 
+        }
+        [HttpPost]
+        public async Task<ApiResponse> AddProjectActivityExtension([FromBody]AddProjectActivityExtensionCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value; 
+            command.CreatedById = userId; 
+            command.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(command); 
+        }
+        [HttpPost]
+        public async Task<ApiResponse> EditProjectActivityExtension([FromBody]EditProjectActivityExtensionCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.ModifiedById = userId; 
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command); 
+        }
+        [HttpPost]
+        public async Task<ApiResponse> DeleteProjectActivityExtension([FromBody]long extensionId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            return await _mediator.Send(new DeleteProjectActivityExtensionCommand
+            {
+                extensionId = extensionId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow,
+            }); 
+        }
+
+
+
+        [HttpPost]
+        public async Task<ApiResponse> AddProjectMonitoringReview([FromBody]AddProjectMonitoringReviewCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(command); 
+        }
+        [HttpPost]
+        public async Task<ApiResponse> GetProjectActivityAdvanceFilterList([FromBody]GetProjectActivityAdvanceFilterListQuery query)
+        {
+            return await _mediator.Send(query); 
+        }
+        [HttpPost]
+        public async Task<ApiResponse> GetProjectMonitoringList([FromBody]long activityId)
+        {
+            return await _mediator.Send(new GetProjectMonitoringListQuery { activityId = activityId });
+        }
+        [HttpPost]
+        public async Task<ApiResponse> GetProjectMonitoringByMonitoringId([FromBody]int Id)
+        {
+            return await _mediator.Send(new GetProjectMonitoringByMonitoringIdQuery { Id = Id }); 
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> EditProjectMonitoringByMonitoringId([FromBody]EditProjectMonitoringByMonitoringIdCommand command) 
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow; 
+            return await _mediator.Send(command); 
+        } 
     }
 }

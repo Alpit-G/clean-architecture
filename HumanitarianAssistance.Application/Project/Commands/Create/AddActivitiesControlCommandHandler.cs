@@ -1,8 +1,6 @@
 ﻿using AutoMapper;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
-using HumanitarianAssistance.Domain.Entities;
-using HumanitarianAssistance.Domain.Entities.HR;
 using HumanitarianAssistance.Domain.Entities.Project;
 using HumanitarianAssistance.Persistence;
 using MediatR;

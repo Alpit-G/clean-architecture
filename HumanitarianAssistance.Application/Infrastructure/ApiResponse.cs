@@ -159,6 +159,10 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public ProjectActivityModel ProjectActivityModel { get; set; }
         public ProjectActivityDetail ProjectActivityDetail { get; set; }
         public ProjectActivityModel ProjectActivityDetails { get; set; }
+        public ICollection<ProjectActivityExtensions> ProjectActivityExtensionsList { get; set; }
+        public ICollection<ProjectActivityModel> ProjectActivityList { get; set; }
+        public List<ProjectMonitoringViewModel> ProjectMonitoring { get; set; }
+        public ProjectMonitoringViewModel ProjectMonitoringModel { get; set; }
     }
 
 
