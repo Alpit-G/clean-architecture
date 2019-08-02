@@ -165,6 +165,7 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public ICollection<ProjectActivityModel> ProjectActivityList { get; set; }
         public List<ProjectMonitoringViewModel> ProjectMonitoring { get; set; }
         public ProjectMonitoringViewModel ProjectMonitoringModel { get; set; }
+        public EligibilityCriteriaDetail eligibilityCriteriaDetail { get; set; }
     }
 
 

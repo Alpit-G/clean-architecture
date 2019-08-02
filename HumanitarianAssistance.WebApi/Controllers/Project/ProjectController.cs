@@ -19,6 +19,7 @@ using HumanitarianAssistance.Application.Project.Queries;
 using HumanitarianAssistance.Application.Project.Commands.Create;
 using HumanitarianAssistance.Application.Project.Commands.Delete;
 using HumanitarianAssistance.Application.Project.Commands.Update;
+using HumanitarianAssistance.Application.Project.Commands.Common;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Project
 {
@@ -94,14 +95,14 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         }
         #endregion
 
-    #region Sector Information
+        #region Sector Information
 
         [HttpGet]
         public async Task<ApiResponse> GetAllSectorList()
         {
             return await _mediator.Send(new GetAllSectorListQuery { });
         }
-  
+
         [HttpPost]
         public async Task<ApiResponse> AddSectorDetails([FromBody]AddSectorDetailsCommand model)
         {
@@ -125,7 +126,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
             return await _mediator.Send(model);
         }
-        
+
         [HttpPost]
         public async Task<ApiResponse> DeleteSectorDetails([FromBody]DeleteSectorDetailCommand model)
         {
@@ -138,9 +139,9 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             return await _mediator.Send(model);
         }
 
-    #endregion
+        #endregion
 
-    #region Program Information
+        #region Program Information
         [HttpGet]
         public async Task<ApiResponse> GetAllProgramList()
         {
@@ -338,6 +339,87 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         }
 
         //Ending code of arjun singh 02082019
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        #region "Criteria evaluation form 2nd Aug 2019" 
+        [HttpPost]
+        public async Task<ApiResponse> AddEditDonorCriteria([FromBody]AddEditDonorCriteriaCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditPurposeofInitiativeCriteria([FromBody]AddEditPurposeofInitiativeCriteriaCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditEligibilityCriteriaDetail([FromBody]AddEditEligibilityCriteriaDetailCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditFeasibilityCriteria([FromBody]AddEditFeasibilityCriteriaCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> AddEditPriorityCriteria([FromBody]AddEditPriorityCriteriaCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditFinancialCriteria([FromBody]AddEditFinancialCriteriaCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditRiskCriteria([FromBody]AddEditFinancialCriteriaCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+
+        #endregion
     }
 
 }
