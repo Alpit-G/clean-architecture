@@ -62,5 +62,10 @@ namespace HumanitarianAssistance.Application.Infrastructure
             else
                 return code = "" + PolicyId;
         }
+
+        public static string GenerateCode(long id)
+        {
+            return string.Format("{0:D5}", id);
+        }
     }
 }
