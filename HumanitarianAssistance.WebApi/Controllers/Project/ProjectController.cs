@@ -94,6 +94,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         }
         #endregion
 
+    #region Sector Information
+
         [HttpGet]
         public async Task<ApiResponse> GetAllSectorList()
         {
@@ -259,5 +261,88 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             command.ModifiedDate = DateTime.UtcNow; 
             return await _mediator.Send(command); 
         } 
+
+        [HttpPost]
+        public async Task<ApiResponse> AddSectorDetails([FromBody]AddSectorDetailsCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> EditSectorDetails([FromBody]EditSectorDetailCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(model);
+        }
+        
+        [HttpPost]
+        public async Task<ApiResponse> DeleteSectorDetails([FromBody]DeleteSectorDetailCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(model);
+        }
+
+    #endregion
+
+    #region Program Information
+        [HttpGet]
+        public async Task<ApiResponse> GetAllProgramList()
+        {
+            return await _mediator.Send(new GetAllProgramListQuery());
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddProgramDetails([FromBody]AddProgramDetailCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> EditProgramDetails([FromBody]EditProgramDetailCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> DeleteProgramDetails([FromBody]DeleteProgramDetailCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(model);
+        }
+
+    #endregion
     }
 }
