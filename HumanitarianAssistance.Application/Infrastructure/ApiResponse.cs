@@ -128,6 +128,15 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public ICollection<UnitRate> UnitRates { get; set; }
         public PolicyDetail policyDetails { get; set; }
         public List<PolicyModel> policyList { get; set; }
+        public List<PolicyModel> policyFilterList { get; set; }
+        public PolicyModel policyDetailsById { get; set; }
+        public List<PolicyScheduleModel> policySchedulesByDateList { get; set; }
+        public PolicyTimeSchedule policyTimeScheduleDetails { get; set; }
+        public List<PolicyTimeScheduleModel> policySchedulesByTimeList { get; set; }
+        public PolicyTimeScheduleModel policyTimeDetailsById { get; set; }
+        public PolicyDaySchedule policyDayScheduleDetails { get; set; }
+        public Producer producerById { get; set; }
+        public List<PolicyModel> PolicyFilteredList { get; set; }
 
         //Project
         public ICollection<DonorDetail> DonorDetail { get; set; }
