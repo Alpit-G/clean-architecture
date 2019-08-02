@@ -1,8 +1,10 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace HumanitarianAssistance.Application.Accounting.Models
+namespace HumanitarianAssistance.Application.Project.Models
 {
-    public class ProjectBudgetLineDetailModel
+    public class ProjectBudgetLineDetailsModel
     {
         public long? BudgetLineId { get; set; }
         public string BudgetCode { get; set; }
