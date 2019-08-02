@@ -184,5 +184,78 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         }
 
     #endregion
+
+    #region Area Details
+        [HttpGet]
+        public async Task<ApiResponse> GetAllAreaList()
+        {
+            return await _mediator.Send(new GetAllAreaListQuery());
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddAreaDetails([FromBody]AddAreaDetailCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> EditAreaDetails([FromBody]EditAreaDetailCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> DeleteAreaDetails([FromBody]DeleteAreaDetailCommand model)
+        {
+           var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(model);
+        }
+
+    #endregion
+
+     #region GenderConsiderationList
+
+     [HttpGet]
+        public async Task<ApiResponse> GenderConsiderationList()
+        {
+            return await _mediator.Send(new GenderConsiderationListQuery());
+        }
+        
+     #endregion
+
+     #region StrengthConsiderationDetailList
+
+        [HttpGet]
+        public async Task<ApiResponse> StrengthConsiderationDetailList()
+        {
+             return await _mediator.Send(new StrengthConsiderationDetailListQuery());
+        }
+
+     #endregion
+
+     #region SecurityDetailList
+        [HttpGet]
+        public async Task<ApiResponse> SecurityDetailList()
+        {
+            return await _mediator.Send(new GetSecurityDetailListQuery());
+        }
+     #endregion
     }
 }
