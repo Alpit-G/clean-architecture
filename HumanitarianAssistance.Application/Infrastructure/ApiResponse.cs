@@ -152,6 +152,14 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public ICollection<DonorDetail> DonorDetail { get; set; }
         public DonorDetail DonorDetailById { get; set; }
         public ICollection<SectorDetails> sectorDetails { get; set; }
+        public ICollection<ProgramDetail> programDetails { get; set; }
+        public ProgramDetail ProgramDetail { get; set; }
+        public ICollection<AreaDetail> AreaDetail { get; set; }
+        public ICollection<GenderConsiderationDetail> GenderConsiderationDetail { get; set; }
+        public ICollection<StrengthConsiderationDetail> StrengthConsiderationDetail { get; set; }
+        public ICollection<SecurityDetail> SecurityDetail { get; set; }
+
+
 
 
         //Project
@@ -163,6 +171,23 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public List<ActivitiesControlViewModel> ActivitiesControlList { get; set; }
         public List<ProjectActivityPermissionModel> ProjectActivityPermissionList { get; set; }
         public List<HiringControlViewModel> HiringControlList { get; set; }
+        public SectorDetails SectorDetails { get; set; }
+        public ICollection<ProjectJobDetail> ProjectJobDetail { get; set; }
+        public IList<ProjectBudgetLineDetailsModel> ProjectBudgetLineDetailList { get; set; }
+        public ICollection<ProjectSubActivityListModel> ProjectSubActivityListModel { get; set; }
+        public ProjectActivityModel ProjectActivityModel { get; set; }
+        public ProjectActivityDetail ProjectActivityDetail { get; set; }
+        public ProjectActivityModel ProjectActivityDetails { get; set; }
+        public ICollection<ProjectActivityExtensions> ProjectActivityExtensionsList { get; set; }
+        public ICollection<ProjectActivityModel> ProjectActivityList { get; set; }
+        public List<ProjectMonitoringViewModel> ProjectMonitoring { get; set; }
+        public ProjectMonitoringViewModel ProjectMonitoringModel { get; set; }
+        public List<ProjectProposalAmountSummary> ProjectProposalAmountSummary { get; set; }
+        public ProjectIndicatorModel ProjectIndicatorList { get; set; }
+        public EditIndicatorModel IndicatorModel { get; set; }
+        public ProjectIndicatorViewModel ProjectIndicator { get; set; }
+        public List<IndicatorQuestions> Questions { get; set; }
+        public List<SPProjectProposalReportModel> ProjectProposalReportList { get; set; }
     }
 
 

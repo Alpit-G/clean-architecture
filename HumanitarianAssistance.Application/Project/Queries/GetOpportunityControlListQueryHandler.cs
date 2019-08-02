@@ -14,7 +14,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
 {
     public class GetOpportunityControlListQueryHandler : IRequestHandler<GetOpportunityControlListQuery, ApiResponse>
     {
-        private HumanitarianAssistanceDbContext _dbContext;
+        private readonly HumanitarianAssistanceDbContext _dbContext;
 
         public GetOpportunityControlListQueryHandler(HumanitarianAssistanceDbContext dbContext)
         {
