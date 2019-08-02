@@ -17,6 +17,7 @@ using MediatR;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Application.Project.Queries;
 using HumanitarianAssistance.Application.Project.Commands.Create;
+using HumanitarianAssistance.Application.Project.Commands.Delete;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Project
 {
@@ -46,6 +47,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             };
         }
 
+    #region Donor Details
         [HttpPost]
         public async Task<ApiResponse> GetAllDonorFilterList([FromBody]GetAllDonorFilterListQuery model)
         {
@@ -69,19 +71,32 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             return await _mediator.Send(model);
         }
 
-        // [HttpPost]
-        // public async Task<ApiResponse> DeleteDonorDetails([FromBody]long DonarId)
-        // {
-        //     ApiResponse apiRespone = null;
-        //     var user = await _userManager.FindByNameAsync(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
-        //     if (user != null)
-        //     {
-        //         var id = user.Id;
+        [HttpPost]
+        public async Task<ApiResponse> DeleteDonorDetails([FromBody]long DonarId)
+        {
+            DeleteDonorDetailCommand model= new DeleteDonorDetailCommand();
 
-        //         apiRespone = await _iProject.DeleteDonorDetails(DonarId, id);
-        //     }
-        //     return apiRespone;
-        // }
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.DonorId= DonarId;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
 
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetDonarListById([FromBody]long DonarId)
+        {
+            return await _mediator.Send(new GetDonarListByIdQuery { DonorId= DonarId });
+        }
+    #endregion
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllSectorList()
+        {
+            return await _mediator.Send(new GetAllSectorListQuery { });
+        }
     }
 }

@@ -7,6 +7,7 @@ using HumanitarianAssistance.Application.Project.Models;
 using HumanitarianAssistance.Domain.Entities;
 using HumanitarianAssistance.Domain.Entities.Accounting;
 using HumanitarianAssistance.Domain.Entities.Marketing;
+using HumanitarianAssistance.Domain.Entities.Project;
 
 namespace HumanitarianAssistance.Application.Infrastructure
 {
@@ -131,6 +132,7 @@ namespace HumanitarianAssistance.Application.Infrastructure
         //Project
         public ICollection<DonorDetail> DonorDetail { get; set; }
         public DonorDetail DonorDetailById { get; set; }
+        public ICollection<SectorDetails> sectorDetails { get; set; }
 
 
         //Project
