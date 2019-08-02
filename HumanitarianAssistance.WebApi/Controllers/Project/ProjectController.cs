@@ -94,14 +94,14 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         }
         #endregion
 
-    #region Sector Information
+        #region Sector Information
 
         [HttpGet]
         public async Task<ApiResponse> GetAllSectorList()
         {
             return await _mediator.Send(new GetAllSectorListQuery { });
         }
-  
+
         [HttpPost]
         public async Task<ApiResponse> AddSectorDetails([FromBody]AddSectorDetailsCommand model)
         {
@@ -125,7 +125,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
             return await _mediator.Send(model);
         }
-        
+
         [HttpPost]
         public async Task<ApiResponse> DeleteSectorDetails([FromBody]DeleteSectorDetailCommand model)
         {
@@ -138,9 +138,9 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             return await _mediator.Send(model);
         }
 
-    #endregion
+        #endregion
 
-    #region Program Information
+        #region Program Information
         [HttpGet]
         public async Task<ApiResponse> GetAllProgramList()
         {
@@ -186,7 +186,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         #endregion
 
         //arjun singh 02082019
-
+        #region "Voucher summary reports"
         [HttpPost]
         public async Task<ApiResponse> GetProjectJobsByProjectIds([FromBody] List<long> projectIds)
         {
@@ -198,9 +198,9 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         {
             return await _mediator.Send(new GetBudgetLinesByMultipleProjectJobIdsQuery { projectJobIds = projectJobIds });
         }
+        #endregion
 
-
-
+        #region "Project sub activity"
         [HttpPost]
         public async Task<ApiResponse> GetProjectSubActivityDetail([FromBody]int projectId)
         {
@@ -263,8 +263,9 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         {
             return await _mediator.Send(new GetProjectActivityByActivityIdQuery { activityId = activityId });
         }
+        #endregion
 
-
+        #region"Project activity extension"
 
         [HttpPost]
         public async Task<ApiResponse> GetProjectActivityExtension([FromBody]long activityId)
@@ -299,9 +300,9 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
                 ModifiedDate = DateTime.UtcNow,
             });
         }
+        #endregion
 
-
-
+        #region "Project activity monitoring"
         [HttpPost]
         public async Task<ApiResponse> AddProjectMonitoringReview([FromBody]AddProjectMonitoringReviewCommand command)
         {
@@ -336,8 +337,82 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             command.ModifiedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
         }
+        #endregion
 
-        //Ending code of arjun singh 02082019
+        #region "GetProjectProposalAmountSummary"
+
+        [HttpPost]
+        public async Task<ApiResponse> GetProjectProposalAmountSummary([FromBody]GetProjectProposalAmountSummaryQuery query)
+        {
+            return await _mediator.Send(query);
+        }
+        #endregion 
+
+        #region "ProjectIndicators"
+        [HttpPost]
+        public async Task<ApiResponse> GetAllProjectIndicators([FromBody]GetAllProjectIndicatorsQuery query)
+        {
+            return await _mediator.Send(query);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> GetProjectIndicatorDetailById([FromBody]long indicatorId)
+        {
+            return await _mediator.Send(new GetProjectIndicatorDetailByIdQuery { indicatorId = indicatorId });
+        }
+        [HttpPost]
+        public async Task<ApiResponse> AddProjectIndicator()
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new AddProjectIndicatorCommand
+            {
+                CreatedById = userId,
+                CreatedDate = DateTime.UtcNow,
+            });
+        }
+        [HttpPost]
+        public async Task<ApiResponse> EditProjectIndicator([FromBody]EditProjectIndicatorCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        } 
+        [HttpPost]
+        public async Task<ApiResponse> GetProjectIndicatorQuestionsById([FromBody]long indicatorId)
+        {
+            return await _mediator.Send(new GetProjectIndicatorQuestionsByIdQuery { indicatorId = indicatorId });
+        }
+
+        #endregion
+
+        #region "GetProjectProposalReport"
+        [HttpPost]
+        public async Task<ApiResponse> GetProjectProposalReport([FromBody]GetProjectProposalReportQuery query)
+        {
+            return await _mediator.Send(query);
+        }
+
+        #endregion
+
+        #region "DeleteActivityDocument"
+
+        [HttpPost]
+        public async Task<ApiResponse> DeleteActivityDocument([FromBody]long activityDocumentId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            return await _mediator.Send(new DeleteActivityDocumentCommand 
+            {
+                activityDocumentId = activityDocumentId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow,
+            });
+        }
+        #endregion
+
+        //Ending code of arjun singh 02082019   
     }
 
 }
