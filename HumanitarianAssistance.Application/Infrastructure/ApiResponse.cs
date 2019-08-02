@@ -137,6 +137,16 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public PolicyDaySchedule policyDayScheduleDetails { get; set; }
         public Producer producerById { get; set; }
         public List<PolicyModel> PolicyFilteredList { get; set; }
+        public ICollection<ProjectDetailNewModel> ProjectDetailModel { get; set; }
+        public List<ScheduleDetailModel> scheduleDetailsList { get; set; }
+        public List<string> RepeatDays { get; set; }
+        public SchedulerModel scheduleDetailsModel { get; set; }
+        public ICollection<ChannelModel> ChannelList { get; set; }
+        public ScheduleDetails scheduleDetails { get; set; }
+        public List<SchedulerModel> SchedulerList { get; internal set; }
+        public ScheduleDetails schedulerDetails { get; set; }
+        public PlayoutMinutes playoutMinutesDetails { get; set; }
+
 
         //Project
         public ICollection<DonorDetail> DonorDetail { get; set; }
