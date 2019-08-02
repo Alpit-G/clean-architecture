@@ -133,7 +133,8 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public ICollection<DonorDetail> DonorDetail { get; set; }
         public DonorDetail DonorDetailById { get; set; }
         public ICollection<SectorDetails> sectorDetails { get; set; }
-
+        public ICollection<ProgramDetail> programDetails { get; set; }
+        public ProgramDetail ProgramDetail { get; set; }
 
         //Project
         public IList<ProjectHiringCandidateDetailModel> ProjectHiringCandidateDetailModel { get; set; }
@@ -144,6 +145,7 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public List<ActivitiesControlViewModel> ActivitiesControlList { get; set; }
         public List<ProjectActivityPermissionModel> ProjectActivityPermissionList { get; set; }
         public List<HiringControlViewModel> HiringControlList { get; set; }
+        public SectorDetails SectorDetails { get; set; }
     }
 
 
