@@ -48,5 +48,24 @@ namespace HumanitarianAssistance.Application.Infrastructure
             else
                 return code = "" + JobId;
         }
+        public static string GetPolicyCode(this string PolicyId)
+        {
+            string code = string.Empty;
+            if (PolicyId.Length == 1)
+                return code = "0000" + PolicyId;
+            else if (PolicyId.Length == 2)
+                return code = "000" + PolicyId;
+            else if (PolicyId.Length == 3)
+                return code = "00" + PolicyId;
+            else if (PolicyId.Length == 4)
+                return code = "0" + PolicyId;
+            else
+                return code = "" + PolicyId;
+        }
+
+        public static string GenerateCode(long id)
+        {
+            return string.Format("{0:D5}", id);
+        }
     }
 }
