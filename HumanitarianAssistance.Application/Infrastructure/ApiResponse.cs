@@ -153,6 +153,12 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public List<ActivitiesControlViewModel> ActivitiesControlList { get; set; }
         public List<ProjectActivityPermissionModel> ProjectActivityPermissionList { get; set; }
         public List<HiringControlViewModel> HiringControlList { get; set; }
+        public ICollection<ProjectJobDetail> ProjectJobDetail { get; set; }
+        public IList<ProjectBudgetLineDetailsModel> ProjectBudgetLineDetailList { get; set; }
+        public ICollection<ProjectSubActivityListModel> ProjectSubActivityListModel { get; set; }
+        public ProjectActivityModel ProjectActivityModel { get; set; }
+        public ProjectActivityDetail ProjectActivityDetail { get; set; }
+        public ProjectActivityModel ProjectActivityDetails { get; set; }
     }
 
 

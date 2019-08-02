@@ -18,6 +18,7 @@ using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Application.Project.Queries;
 using HumanitarianAssistance.Application.Project.Commands.Create;
 using HumanitarianAssistance.Application.Project.Commands.Delete;
+using HumanitarianAssistance.Application.Project.Commands.Update;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Project
 {
@@ -39,7 +40,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         {
             _userManager = userManager;
             _hostingEnvironment = hostingEnvironment;
-            _mediator= mediator;
+            _mediator = mediator;
             _serializerSettings = new JsonSerializerSettings
             {
                 Formatting = Formatting.Indented,
@@ -47,7 +48,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             };
         }
 
-    #region Donor Details
+        #region Donor Details
         [HttpPost]
         public async Task<ApiResponse> GetAllDonorFilterList([FromBody]GetAllDonorFilterListQuery model)
         {
@@ -74,10 +75,10 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         [HttpPost]
         public async Task<ApiResponse> DeleteDonorDetails([FromBody]long DonarId)
         {
-            DeleteDonorDetailCommand model= new DeleteDonorDetailCommand();
+            DeleteDonorDetailCommand model = new DeleteDonorDetailCommand();
 
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            model.DonorId= DonarId;
+            model.DonorId = DonarId;
             model.ModifiedById = userId;
             model.ModifiedDate = DateTime.UtcNow;
             model.CreatedById = userId;
@@ -89,14 +90,101 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         [HttpPost]
         public async Task<ApiResponse> GetDonarListById([FromBody]long DonarId)
         {
-            return await _mediator.Send(new GetDonarListByIdQuery { DonorId= DonarId });
+            return await _mediator.Send(new GetDonarListByIdQuery { DonorId = DonarId });
         }
-    #endregion
+        #endregion
 
         [HttpGet]
         public async Task<ApiResponse> GetAllSectorList()
         {
             return await _mediator.Send(new GetAllSectorListQuery { });
+        }
+
+
+
+
+
+
+
+
+
+        //arjun singh 02082019
+
+        [HttpPost]
+        public async Task<ApiResponse> GetProjectJobsByProjectIds([FromBody] List<long> projectIds)
+        {
+            return await _mediator.Send(new GetProjectJobsByMultipleProjectIdsQuery { projectIds = projectIds });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetProjectBudgetLinesByProjectJobIds([FromBody] List<long?> projectJobIds)
+        {
+            return await _mediator.Send(new GetBudgetLinesByMultipleProjectJobIdsQuery { projectJobIds = projectJobIds });
+        }
+
+
+
+        [HttpPost]
+        public async Task<ApiResponse> GetProjectSubActivityDetail([FromBody]int projectId)
+        {
+            return await _mediator.Send(new GetProjectSubActivityDetailsQuery { projectId = projectId });
+        }
+        [HttpPost]
+        public async Task<ApiResponse> AddProjectSubActivityDetail([FromBody]AddProjectSubActivityDetailCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> EditProjectSubActivity([FromBody]EditProjectSubActivityDetailCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> ProjectSubActivityIscomplete([FromBody]long activityId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            return await _mediator.Send(new ProjectSubActivityIscompleteCommand
+            {
+                activityId = activityId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow,                
+            });
+        }
+        [HttpPost]
+        public async Task<ApiResponse> StartProjectSubActivity([FromBody]long activityId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            return await _mediator.Send(new StartProjectSubActivityCommand 
+            {
+                activityId = activityId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow,
+            });
+        }
+        [HttpPost]
+        public async Task<ApiResponse> EndProjectSubActivity([FromBody]long activityId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            return await _mediator.Send(new EndProjectSubActivityCommand
+            {
+                activityId = activityId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow, 
+            }); 
+        }
+        [HttpPost]
+        public async Task<ApiResponse> GetProjectActivityDetailByActivityId([FromBody]long activityId)
+        {
+            return await _mediator.Send(new GetProjectActivityByActivityIdQuery { activityId = activityId });
         }
     }
 }
