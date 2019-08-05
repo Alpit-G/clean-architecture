@@ -178,6 +178,13 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public ProjectIndicatorViewModel ProjectIndicator { get; set; }
         public List<IndicatorQuestions> Questions { get; set; }
         public List<SPProjectProposalReportModel> ProjectProposalReportList { get; set; }
+
+
+        //Web Link Url 05082019
+        public string SignedUrl { get; set; }
+        public WinProjectDetails WinProjectDetails { get; set; }
+        public ApproveProjectDetails ApproveProjectDetails { get; set; }
+        public ProjectProposalDetail ProjectProposalDetail { get; set; }
     }
 
 

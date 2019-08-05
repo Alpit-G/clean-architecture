@@ -19,6 +19,8 @@ using HumanitarianAssistance.Application.Project.Queries;
 using HumanitarianAssistance.Application.Project.Commands.Create;
 using HumanitarianAssistance.Application.Project.Commands.Delete;
 using HumanitarianAssistance.Application.Project.Commands.Update;
+using HumanitarianAssistance.Application.Project.Commands.Common;
+using HumanitarianAssistance.Application.Project.Models;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Project
 {
@@ -183,9 +185,9 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             return await _mediator.Send(model);
         }
 
-    #endregion
+        #endregion
 
-    #region Area Details
+        #region Area Details
         [HttpGet]
         public async Task<ApiResponse> GetAllAreaList()
         {
@@ -219,7 +221,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         [HttpPost]
         public async Task<ApiResponse> DeleteAreaDetails([FromBody]DeleteAreaDetailCommand model)
         {
-           var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.ModifiedById = userId;
             model.ModifiedDate = DateTime.UtcNow;
             model.CreatedById = userId;
@@ -228,35 +230,35 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             return await _mediator.Send(model);
         }
 
-    #endregion
+        #endregion
 
-     #region GenderConsiderationList
+        #region GenderConsiderationList
 
-     [HttpGet]
+        [HttpGet]
         public async Task<ApiResponse> GenderConsiderationList()
         {
             return await _mediator.Send(new GenderConsiderationListQuery());
         }
-        
-     #endregion
 
-     #region StrengthConsiderationDetailList
+        #endregion
+
+        #region StrengthConsiderationDetailList
 
         [HttpGet]
         public async Task<ApiResponse> StrengthConsiderationDetailList()
         {
-             return await _mediator.Send(new StrengthConsiderationDetailListQuery());
+            return await _mediator.Send(new StrengthConsiderationDetailListQuery());
         }
 
-     #endregion
+        #endregion
 
-     #region SecurityDetailList
+        #region SecurityDetailList
         [HttpGet]
         public async Task<ApiResponse> SecurityDetailList()
         {
             return await _mediator.Send(new GetSecurityDetailListQuery());
         }
-     #endregion
+        #endregion
 
         //arjun singh 02082019
         #region "Voucher summary reports"
@@ -279,7 +281,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         {
             return await _mediator.Send(new GetProjectSubActivityDetailsQuery { projectId = projectId });
         }
-        
+
         [HttpPost]
         public async Task<ApiResponse> AddProjectSubActivityDetail([FromBody]AddProjectSubActivityDetailCommand command)
         {
@@ -452,7 +454,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             command.ModifiedById = userId;
             command.ModifiedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
-        } 
+        }
         [HttpPost]
         public async Task<ApiResponse> GetProjectIndicatorQuestionsById([FromBody]long indicatorId)
         {
@@ -477,7 +479,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            return await _mediator.Send(new DeleteActivityDocumentCommand 
+            return await _mediator.Send(new DeleteActivityDocumentCommand
             {
                 activityDocumentId = activityDocumentId,
                 ModifiedById = userId,
@@ -487,6 +489,201 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         #endregion
 
         //Ending code of arjun singh 02082019   
+
+        //arjun singh 05-08-2019
+
+        #region "DownloadFileFromBucket"
+
+        [HttpPost]
+        public async Task<ApiResponse> DownloadFileFromBucket([FromBody]DownloadFileFromBucketQuery query)
+        {
+            return await _mediator.Send(query);
+        }
+        #endregion
+
+        #region"UploadFinalizeFile"
+
+        [HttpPost, DisableRequestSizeLimit]
+        public async Task<ApiResponse> UploadFinalizeFile([FromForm] IFormFile filesData, UploadFinalizeDragAndDropCommand command)
+        {
+            ApiResponse apiRespone = new ApiResponse();
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            try
+            {
+                command.file = Request.Form.Files[0];
+                command.ProjectId = Convert.ToInt64(command.ProjectId);
+                command.FileName = Request.Form.Files[0].FileName;
+
+                command.ext = System.IO.Path.GetExtension(command.FileName).ToLower();
+                if (command.ext != ".jpeg" && command.ext != ".png" && command.ext != ".jpg" && command.ext != ".gif")
+                {
+                    var user = await _userManager.FindByNameAsync(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+                    if (user != null)
+                    {
+                        command.logginUserEmailId = user.Email;
+                        return await _mediator.Send(command);
+                    }
+                }
+                else
+                {
+                    apiRespone.StatusCode = StaticResource.FileNotSupported;
+                    apiRespone.Message = StaticResource.FileText;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return apiRespone;
+        }
+
+        #endregion
+
+        #region"UploadReviewFile"
+        [HttpPost, DisableRequestSizeLimit]
+        public async Task<ApiResponse> UploadReviewFile([FromForm] IFormFile filesData, ApproveProjectDetailModel model)
+        {
+            ApiResponse apiRespone = new ApiResponse();
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            try
+            {
+                if (filesData == null)
+                {
+                    var user = await _userManager.FindByNameAsync(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+                    if (user != null)
+                    {
+                        return await _mediator.Send(new AddApprovalDetailCommand
+                        {
+                            ApproveProjrctId = model.ApproveProjrctId,
+                            ProjectId = model.ProjectId,
+                            CommentText = model.CommentText,
+                            FileName = model.FileName,
+                            FilePath = model.FilePath,
+                            IsApproved = model.IsApproved,
+                            UploadedFile = model.UploadedFile,
+                            ReviewCompletionDate = model.ReviewCompletionDate,
+                            CreatedById = userId,
+                            CreatedDate = DateTime.UtcNow,
+                            ModifiedById = userId,
+                            ModifiedDate = DateTime.UtcNow
+                        });
+                    }
+                    else
+                    {
+                        apiRespone.StatusCode = StaticResource.FileNotSupported;
+                        apiRespone.Message = StaticResource.FileText;
+                    }
+                }
+                else
+                {
+                    var file = Request.Form.Files[0];
+                    long ProjectId = Convert.ToInt64(model.ProjectId);
+                    string fileName = Request.Form.Files[0].FileName;
+
+                    string ext = System.IO.Path.GetExtension(fileName).ToLower();
+                    if (ext != ".jpeg" && ext != ".png" && ext != ".jpg" && ext != ".gif")
+                    {
+                        var user = await _userManager.FindByNameAsync(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+                        if (user != null)
+                        {
+                            string logginUserEmailId = user.Email;
+                            // apiRespone = await _iProject.UploadReviewDragAndDrop(file, id, ProjectId, fileName, logginUserEmailId, ext, model);
+                            return await _mediator.Send(new UploadReviewDragAndDropCommand
+                            {
+                                ApproveProjrctId = model.ApproveProjrctId,
+                                ProjectId = ProjectId,
+                                CommentText = model.CommentText,
+                                FileName = fileName,
+                                FilePath = model.FilePath,
+                                IsApproved = model.IsApproved,
+                                UploadedFile = model.UploadedFile,
+                                ReviewCompletionDate = model.ReviewCompletionDate,
+                                CreatedById = userId,
+                                CreatedDate = DateTime.UtcNow,
+                                ModifiedById = userId,
+                                ModifiedDate = DateTime.UtcNow,
+                                logginUserEmailId = logginUserEmailId,
+                                file = file,
+                                ext = ext,
+                            });
+
+                        }
+                    }
+
+                    else
+                    {
+                        apiRespone.StatusCode = StaticResource.FileNotSupported;
+                        apiRespone.Message = StaticResource.FileText;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return apiRespone;
+        }
+
+        #endregion
+
+        #region "Start Proposal Drag and Drop PK 26/03/2019" 
+
+        [HttpPost, DisableRequestSizeLimit]
+        public async Task<ApiResponse> StartProposalDragAndDropFile([FromForm] IFormFile filesData, string projectId, string data)
+        {
+            ApiResponse apiRespone = new ApiResponse();
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            try
+            {
+
+                var file = Request.Form.Files[0];
+                long ProjectId = Convert.ToInt64(projectId);
+                string ProposalType = data;
+                string fileName = Request.Form.Files[0].FileName;
+
+                string ext = Path.GetExtension(fileName).ToLower();
+                if (ext == ".doc" || ext == ".docx")
+                {
+                    var user = await _userManager.FindByNameAsync(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+                    if (user != null)
+                    {
+                        string logginUserEmailId = user.Email;
+
+                        return await _mediator.Send(new StartProposalDragAndDropCommand
+                        {
+                            file = file,
+                            ProjectId = ProjectId,
+                            FileName = fileName,
+                            ProposalType = ProposalType,
+                            ext = ext,
+                            logginUserEmailId = logginUserEmailId,
+                            CreatedById = userId,
+                            CreatedDate = DateTime.UtcNow,
+                            ModifiedById = userId,
+                            ModifiedDate = DateTime.UtcNow
+                        });
+                    }
+                }
+                else
+                {
+                    apiRespone.StatusCode = StaticResource.FileNotSupported;
+                    apiRespone.Message = StaticResource.FileText;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return apiRespone;
+        }
+
+        #endregion
+
+        //Ending code of arjun singh 05082019 StartProposalDragAndDropFile([FromForm] IFormFile filesData, string projectId, string data)
     }
 
 }
