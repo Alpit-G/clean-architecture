@@ -683,7 +683,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
         #endregion
 
-        //Ending code of arjun singh 05082019 StartProposalDragAndDropFile([FromForm] IFormFile filesData, string projectId, string data)
+        //Ending code of arjun singh 05082019 
     }
 
 }
