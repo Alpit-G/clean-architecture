@@ -683,7 +683,157 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
         #endregion
 
-        //Ending code of arjun singh 05082019 StartProposalDragAndDropFile([FromForm] IFormFile filesData, string projectId, string data)
+        #region "Demo Upload File"
+
+        [HttpPost, DisableRequestSizeLimit]
+        public async Task<ApiResponse> UploadFileDemo([FromForm] IFormFile fileData, string activityId, string statusId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            return await _mediator.Send(new UploadFileDemoCommand 
+            {
+                fileData=fileData,
+                activityId=activityId,
+                statusId=statusId,
+                CreatedById = userId,
+                CreatedDate = DateTime.UtcNow,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            });
+        }
+        #endregion
+
+        #region "FilterProjectCashFlow"
+
+        [HttpPost]
+        public async Task<ApiResponse> FilterProjectCashFlow([FromBody]FilterProjectCashFlowQuery query)
+        {
+            return await _mediator.Send(query); 
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> FilterBudgetLineBreakdown([FromBody]FilterBudgetLineBreakdownQuery query) 
+        {
+            return await _mediator.Send(query);
+        }
+        #endregion
+
+        #region Upload Files for Activity Documents 28/03/2019
+
+        [HttpPost, DisableRequestSizeLimit]
+        public async Task<ApiResponse> UploadProjectDocumnentFile([FromForm] IFormFile filesData, string activityId, string statusId, string monitoringId)
+        {
+            ApiResponse apiRespone = new ApiResponse();
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            string localFolderfullPath1 = string.Empty;
+            try
+            {
+                long monitoringID = monitoringId != null ? Convert.ToInt64(monitoringId) : 0;
+                var file = Request.Form.Files[0];
+                long activityID = Convert.ToInt64(activityId);
+                int statusID = Convert.ToInt32(statusId);
+                string fileName = Request.Form.Files[0].FileName;
+                string ext = Path.GetExtension(fileName).ToLower();
+                if (ext != ".jpeg" && ext != ".png" && ext != ".jpg" && ext != ".gif")
+                {
+                    var user = await _userManager.FindByNameAsync(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
+                    if (user != null)
+                    {
+                        string logginUserEmailId = user.Email;
+                        return await _mediator.Send(new UploadProjectActivityDocumentFileCommand
+                        {
+                            File=file,
+                            MonitoringID=monitoringID,
+                            ActivityID=activityID,
+                            StatusID=statusID,
+                            FileName=fileName,
+                            Ext=ext,
+                            CreatedById = userId,
+                            CreatedDate = DateTime.UtcNow,
+                            ModifiedById = userId,
+                            ModifiedDate = DateTime.UtcNow
+                        });                        
+                    }
+                }
+                else
+                {
+                    apiRespone.StatusCode = StaticResource.FileNotSupported;
+                    apiRespone.Message = StaticResource.FileText;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return apiRespone;
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetActivityDocumentDetails([FromBody]GetUploadedDocumentsQuery query)
+        { 
+            return await _mediator.Send(query); 
+        }
+
+        #endregion
+
+        #region ProjectActivity
+
+        [HttpPost]
+        public async Task<ApiResponse> GetProjectActivityDetail([FromBody]long id)
+        {
+            return await _mediator.Send(new GetallProjectActivityDetailQuery { ProjectId = id }); 
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddProjectActivityDetail([FromBody]AddProjectActivityDetailCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow; 
+            return await _mediator.Send(command);
+        }
+         
+        [HttpPost]
+        public async Task<ApiResponse> EditProjectActivityDetail([FromBody]EditProjectActivityDetailCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> DeleteActivityDetail([FromBody]long activityId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value; 
+
+            return await _mediator.Send(new DeleteProjectActivityCommand
+            {
+                ActivityId = activityId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow,
+            });
+        }
+        [HttpPost]
+        public async Task<ApiResponse> AllProjectActivityStatus([FromBody]long projectId) 
+        {
+            return await _mediator.Send(new AllProjectActivityStatusQuery { ProjectId = projectId });
+        }
+        #endregion
+
+        #region BudgetLine Detail
+        [HttpPost]
+        public async Task<ApiResponse> AddBudgetLineDetail([FromBody]AddEditProjectBudgetLineDetailCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(command); 
+        }
+        #endregion
+        //Ending code of arjun singh 05082019 
     }
 
 }

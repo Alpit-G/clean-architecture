@@ -3,16 +3,16 @@ using MediatR;
 using System;
 using System.Collections.Generic;
 
-namespace HumanitarianAssistance.Application.Project.Commands.Create
+namespace HumanitarianAssistance.Application.Project.Commands.Update
 {
-    public class AddProjectSubActivityDetailCommand : BaseModel, IRequest<ApiResponse>
+    public class EditProjectActivityDetailCommand : BaseModel, IRequest<ApiResponse>
     {
-        public AddProjectSubActivityDetailCommand()
+        public EditProjectActivityDetailCommand()
         {
             Recurring = false;
             RecurringCount = 0;
         }
-        //Planning 
+        //Planning
         public long? ActivityId { get; set; }
         public string ActivityName { get; set; }
         public string ActivityDescription { get; set; }
@@ -42,8 +42,6 @@ namespace HumanitarianAssistance.Application.Project.Commands.Create
         public double? Progress { get; set; }
         public double? Slippage { get; set; }
         public string SubActivityTitle { get; set; }
-        public new bool?  IsDeleted { get; set; }
-
-
+        public new bool? IsDeleted { get; set; }
     }
 }
