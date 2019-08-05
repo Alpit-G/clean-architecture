@@ -184,7 +184,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             return await _mediator.Send(model);
         }
 
-    #endregion
+        #endregion
 
         #region Area Details
         [HttpGet]
@@ -220,7 +220,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         [HttpPost]
         public async Task<ApiResponse> DeleteAreaDetails([FromBody]DeleteAreaDetailCommand model)
         {
-           var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.ModifiedById = userId;
             model.ModifiedDate = DateTime.UtcNow;
             model.CreatedById = userId;
@@ -229,35 +229,35 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             return await _mediator.Send(model);
         }
 
-    #endregion
+        #endregion
 
         #region GenderConsiderationList
 
-     [HttpGet]
+        [HttpGet]
         public async Task<ApiResponse> GenderConsiderationList()
         {
             return await _mediator.Send(new GenderConsiderationListQuery());
         }
-        
-     #endregion
+
+        #endregion
 
         #region StrengthConsiderationDetailList
 
         [HttpGet]
         public async Task<ApiResponse> StrengthConsiderationDetailList()
         {
-             return await _mediator.Send(new StrengthConsiderationDetailListQuery());
+            return await _mediator.Send(new StrengthConsiderationDetailListQuery());
         }
 
-     #endregion
-  
+        #endregion
+
         #region SecurityDetailList
         [HttpGet]
         public async Task<ApiResponse> SecurityDetailList()
         {
             return await _mediator.Send(new GetSecurityDetailListQuery());
         }
-     #endregion
+        #endregion
 
         //arjun singh 02082019
         #region "Voucher summary reports"
@@ -280,7 +280,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         {
             return await _mediator.Send(new GetProjectSubActivityDetailsQuery { projectId = projectId });
         }
-        
+
         [HttpPost]
         public async Task<ApiResponse> AddProjectSubActivityDetail([FromBody]AddProjectSubActivityDetailCommand command)
         {
@@ -453,7 +453,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             command.ModifiedById = userId;
             command.ModifiedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
-        } 
+        }
         [HttpPost]
         public async Task<ApiResponse> GetProjectIndicatorQuestionsById([FromBody]long indicatorId)
         {
@@ -478,7 +478,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            return await _mediator.Send(new DeleteActivityDocumentCommand 
+            return await _mediator.Send(new DeleteActivityDocumentCommand
             {
                 activityDocumentId = activityDocumentId,
                 ModifiedById = userId,
@@ -490,12 +490,15 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         //Ending code of arjun singh 02082019   
 
         #region "Criteria evaluation form 2nd Aug 2019" 
+        #region add/edit
         [HttpPost]
         public async Task<ApiResponse> AddEditDonorCriteria([FromBody]AddEditDonorCriteriaCommand command)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             command.CreatedById = userId;
             command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
         }
 
@@ -505,6 +508,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             command.CreatedById = userId;
             command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
         }
 
@@ -515,6 +520,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             command.CreatedById = userId;
             command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
         }
 
@@ -524,6 +531,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             command.CreatedById = userId;
             command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
         }
         [HttpPost]
@@ -532,6 +541,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             command.CreatedById = userId;
             command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
         }
 
@@ -542,6 +553,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             command.CreatedById = userId;
             command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
         }
 
@@ -551,9 +564,132 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             command.CreatedById = userId;
             command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
         }
 
+        [HttpPost]
+        public async Task<ApiResponse> AddEditTargetBeneficiary([FromBody]AddEditTargetBeneficiaryCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditFinancialProjectDetail([FromBody]AddEditFinancialProjectDetailCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddPriorityOtherDetail([FromBody]AddPriorityOtherDetailCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(command);
+        }
+
+
+        [HttpPost]
+        public async Task<ApiResponse> EditPriorityOtherDetail([FromBody]EditPriorityOtherDetailCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllPriorityOtherDetailList()
+        {
+            return await _mediator.Send(new GetAllPriorityOtherDetailQuery());
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllPriorityOtherDetailByProjectId([FromBody] long projectId)
+        {
+            return await _mediator.Send(new GetAllPriorityOtherDetailByProjectIdQuery { ProjectId = projectId });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> DeletePriorityDetails([FromBody]long priorityOtherDetailId)
+        {
+            DeletePriorityOtherDetailCommand model = new DeletePriorityOtherDetailCommand();
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.PriorityOtherDetailId = priorityOtherDetailId;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(model);
+        }
+
+        #endregion
+
+        #region feasibility Expert detail
+        [HttpGet]
+        public async Task<ApiResponse> GetAllFeasibilityExpertDetailList()
+        {
+            return await _mediator.Send(new GetAllFeasibilityExpertDetailQuery());
+        }
+
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllExpertDetailByProjectId([FromBody] long projectId)
+        {
+            return await _mediator.Send(new GetAllExpertDetailByProjectIdQuery { ProjectId = projectId });
+        }
+
+
+        [HttpPost]
+        public async Task<ApiResponse> AddFeasibleExpertOtherDetail([FromBody]AddFeasibleExpertOtherDetailCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(command);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> EditFeasibilityExpertDetail([FromBody]EditFeasibilityExpertDetailCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> DeleteFeasibilityExperrtDetails([FromBody]long expertOtherDetailId)
+        {
+            DeleteFeasibilityExperrtDetailsCommand model = new DeleteFeasibilityExperrtDetailsCommand();
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ExpertOtherDetailId = expertOtherDetailId;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(model);
+        }
+        
+        #endregion
         #endregion
     }
 

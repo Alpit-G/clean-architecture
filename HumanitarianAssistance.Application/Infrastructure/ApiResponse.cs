@@ -179,6 +179,10 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public ProjectIndicatorViewModel ProjectIndicator { get; set; }
         public List<IndicatorQuestions> Questions { get; set; }
         public List<SPProjectProposalReportModel> ProjectProposalReportList { get; set; }
+        public ICollection<PriorityOtherDetail> PriorityOtherDetail { get; set; }
+        public ICollection<CEFeasibilityExpertOtherDetail> FeasibilityExpertOtherDetail { get; set; }
+
+
     }
 
 
