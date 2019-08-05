@@ -71,6 +71,5 @@ namespace HumanitarianAssistance.Application.Infrastructure
         {
             return projectCode + "-B" + string.Format("{0:D5}", id);
         }
-        }
-    }
+    } 
 }

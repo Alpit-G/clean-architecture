@@ -64,6 +64,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
             {
                 response.StatusCode = StaticResource.failStatusCode;
                 response.Message = StaticResource.SomethingWrong + ex.Message;
+                await Task.Delay(0);
             }
             return response;     
         }
