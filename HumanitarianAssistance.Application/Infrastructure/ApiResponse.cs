@@ -144,6 +144,13 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public ICollection<SectorDetails> sectorDetails { get; set; }
         public ICollection<ProgramDetail> programDetails { get; set; }
         public ProgramDetail ProgramDetail { get; set; }
+        public ICollection<AreaDetail> AreaDetail { get; set; }
+        public ICollection<GenderConsiderationDetail> GenderConsiderationDetail { get; set; }
+        public ICollection<StrengthConsiderationDetail> StrengthConsiderationDetail { get; set; }
+        public ICollection<SecurityDetail> SecurityDetail { get; set; }
+
+
+
 
         //Project
         public IList<ProjectHiringCandidateDetailModel> ProjectHiringCandidateDetailModel { get; set; }
@@ -166,6 +173,12 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public List<ProjectMonitoringViewModel> ProjectMonitoring { get; set; }
         public ProjectMonitoringViewModel ProjectMonitoringModel { get; set; }
         public EligibilityCriteriaDetail eligibilityCriteriaDetail { get; set; }
+        public List<ProjectProposalAmountSummary> ProjectProposalAmountSummary { get; set; }
+        public ProjectIndicatorModel ProjectIndicatorList { get; set; }
+        public EditIndicatorModel IndicatorModel { get; set; }
+        public ProjectIndicatorViewModel ProjectIndicator { get; set; }
+        public List<IndicatorQuestions> Questions { get; set; }
+        public List<SPProjectProposalReportModel> ProjectProposalReportList { get; set; }
     }
 
 
