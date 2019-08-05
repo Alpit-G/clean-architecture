@@ -185,6 +185,11 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public WinProjectDetails WinProjectDetails { get; set; }
         public ApproveProjectDetails ApproveProjectDetails { get; set; }
         public ProjectProposalDetail ProjectProposalDetail { get; set; }
+        public ProjectCashFlowModel ProjectCashFlowModel { get; set; }
+        public BudgetLineBreakdownModel BudgetLineBreakdownModel { get; set; }
+        public ActivityDocumentDetailModel activityDocumnentDetail { get; set; }
+        public List<ActivityDocumentDetailModel> ActivityDocumentDetailModel { get; set; }
+        public ProjectActivityStatusModel ProjectActivityStatusModel { get; set; }
     }
 
 
