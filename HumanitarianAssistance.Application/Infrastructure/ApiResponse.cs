@@ -203,11 +203,24 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public ICollection<DonorEligibilityCriteria> DonorEligibilityCriteria { get; set; }
         public bool IsApprovedCriteriaEvaluation { get; set; }
         public CriteriaEveluationModel CriteriaEveluationModel { get; set; }
-        public ApproveProjectDetails ApproveProjectDetails { get; set; }
 
-        public ProjectProposalDetail ProjectProposalDetail { get; set; }
         public ProjectProposalModel ProjectProposalModel { get; set; }
 
+        #region "proposal web link" 
+        public string ProposalWebLink { get; set; }
+        public string EDIWebLink { get; set; }
+        public string BudgetWebLink { get; set; }
+        public string ConceptWebLink { get; set; }
+        public string PresentationWebLink { get; set; }
+
+        public string ProposalWebLinkExtType { get; set; }
+        public string EDIWebLinkExtType { get; set; }
+        public string BudgetWebLinkExtType { get; set; }
+        public string ConceptWebLinkExtType { get; set; }
+        public string PresentationWebLinkExtType { get; set; }
+
+
+        #endregion
 
     }
 
