@@ -5,14 +5,14 @@ using System.Collections.Generic;
 
 namespace HumanitarianAssistance.Application.Project.Commands.Create
 {
-    public class AddProjectSubActivityDetailCommand : BaseModel, IRequest<ApiResponse>
+    public class AddProjectActivityDetailCommand : BaseModel, IRequest<ApiResponse>
     {
-        public AddProjectSubActivityDetailCommand()
+        public AddProjectActivityDetailCommand()
         {
             Recurring = false;
             RecurringCount = 0;
         }
-        //Planning 
+        //Planning
         public long? ActivityId { get; set; }
         public string ActivityName { get; set; }
         public string ActivityDescription { get; set; }
@@ -42,7 +42,7 @@ namespace HumanitarianAssistance.Application.Project.Commands.Create
         public double? Progress { get; set; }
         public double? Slippage { get; set; }
         public string SubActivityTitle { get; set; }
-        public new bool?  IsDeleted { get; set; }
+        public new bool? IsDeleted { get; set; }
 
 
     }

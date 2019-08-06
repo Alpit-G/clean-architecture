@@ -179,6 +179,23 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public ProjectIndicatorViewModel ProjectIndicator { get; set; }
         public List<IndicatorQuestions> Questions { get; set; }
         public List<SPProjectProposalReportModel> ProjectProposalReportList { get; set; }
+
+
+        //Web Link Url 05082019
+        public string SignedUrl { get; set; }
+        public WinProjectDetails WinProjectDetails { get; set; }
+        public ApproveProjectDetails ApproveProjectDetails { get; set; }
+        public ProjectProposalDetail ProjectProposalDetail { get; set; }
+        public ProjectCashFlowModel ProjectCashFlowModel { get; set; }
+        public BudgetLineBreakdownModel BudgetLineBreakdownModel { get; set; }
+        public ActivityDocumentDetailModel activityDocumnentDetail { get; set; }
+        public List<ActivityDocumentDetailModel> ActivityDocumentDetailModel { get; set; }
+        public ProjectActivityStatusModel ProjectActivityStatusModel { get; set; }
+        public IList<ProjectBudgetLineDetailsModel> ProjectBudgetLineDetailByBudgetId { get; set; }
+        public IList<ProjectBudgetLineDetailsModel> ProjectBudgetLineList { get; set; }
+        public IList<TransactionBudgetModel> TransactionBudgetModelList { get; set; }
+        public List<ProjectJobDetailModel> ProjectJobDetailModel { get; set; }
+        public ProjectJobDetailModel ProjectJobModel { get; set; }
         public ICollection<PriorityOtherDetail> PriorityOtherDetail { get; set; }
         public ICollection<CEFeasibilityExpertOtherDetail> FeasibilityExpertOtherDetail { get; set; }
         public ICollection<CEAgeGroupDetail> CEAgeGroupDetail { get; set; }

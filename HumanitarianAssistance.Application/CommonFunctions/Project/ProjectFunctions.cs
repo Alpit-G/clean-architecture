@@ -108,5 +108,27 @@ namespace HumanitarianAssistance.Application.CommonFunctions.Project
             return response;
         }
 
+        public async Task<string> GetProjectBudgetLineCode(ProjectBudgetLineDetail model)
+        {
+            ProjectDetail projectDetail = await _dbContext.ProjectDetail
+                                                                   .FirstOrDefaultAsync(x => x.ProjectId == model.ProjectId &&
+                                                                                             x.IsDeleted == false);
+            long projectjobCount = await _dbContext.ProjectBudgetLineDetail
+                                                            .LongCountAsync(x => x.ProjectId == model.ProjectId &&
+                                                                                 x.IsDeleted == false);
+
+            return ProjectUtility.GenerateProjectBudgetLineCode(projectDetail.ProjectCode, projectjobCount++);
+        }
+
+        public async Task<string> GetProjectJobCode(ProjectJobDetail model)
+        {
+            ProjectDetail projectDetail = await _dbContext.ProjectDetail.FirstOrDefaultAsync(x => x.ProjectId == model.ProjectId &&
+                                                                                                           x.IsDeleted == false);
+            long projectjobCount = await _dbContext.ProjectJobDetail.LongCountAsync(x => x.ProjectId == model.ProjectId &&
+                                                                                                  x.IsDeleted == false);
+
+            return ProjectUtility.GenerateProjectJobCode(projectDetail.ProjectCode, projectjobCount++);
+        }
+
     }
 }
