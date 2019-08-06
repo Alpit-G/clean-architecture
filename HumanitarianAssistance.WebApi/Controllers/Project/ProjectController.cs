@@ -19,6 +19,7 @@ using HumanitarianAssistance.Application.Project.Queries;
 using HumanitarianAssistance.Application.Project.Commands.Create;
 using HumanitarianAssistance.Application.Project.Commands.Delete;
 using HumanitarianAssistance.Application.Project.Commands.Update;
+using HumanitarianAssistance.Application.Project.Commands.Common;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Project
 {
@@ -258,6 +259,176 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         }
      #endregion
 
+     #region SecurityConsiderationDetailList
+        [HttpGet]
+        public async Task<ApiResponse> SecurityConsiderationDetailList()
+        {
+            return await _mediator.Send(new SecurityConsiderationListQuery());
+        }
+     #endregion
+
+    #region Project Details
+        [HttpPost]
+        public async Task<ApiResponse> AddEditProjectDetail([FromBody]AddEditProjectDetailCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> DeleteProjectDetail([FromBody]long ProjectId)
+        {
+            DeleteProjectDetailCommand model= new DeleteProjectDetailCommand();
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetAllProjectFilterList([FromBody]GetAllProjectFilterListQuery model)
+        {
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetProjectListById([FromBody]long Id)
+        {
+            return await _mediator.Send(new GetProjectListByIdQuery{ Id= Id });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetProjectOtherDetailById([FromBody]long Id)
+        {
+            return await _mediator.Send(new GetProjectListByIdQuery{ Id= Id });
+        }
+
+
+    #endregion
+
+     #region Add/Update Assign Employee to Project
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditProjectAssignToEmployee([FromBody]AddEditProjectAssignToEmployeeCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> DeleteProjectAssignToEmployee([FromBody]RemoveEmployeeFromAssignedProjectCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+     #endregion
+
+     #region Add/Edit Project Program to Current Project
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditProjectProgram([FromBody]AddEditProjectProgramCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> getProjectProgramById([FromBody]long ProjectId)
+        {
+            return await _mediator.Send(new GetProjectProgramByIdQuery { ProjectId= ProjectId });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditProjectArea([FromBody]AddEditProjectAreaCommand model)
+        {
+           var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> getProjectAreaById([FromBody]long ProjectId)
+        {
+            return await _mediator.Send(new GetProjectAreaByIdQuery { ProjectId= ProjectId });
+        }
+
+         [HttpPost]
+        public async Task<ApiResponse> getProjectSectorById([FromBody]long ProjectId)
+        {
+            return await _mediator.Send(new GetProjectAreaByIdQuery { ProjectId= ProjectId });
+        }
+
+         [HttpPost]
+        public async Task<ApiResponse> DeleteProjectProgram([FromBody]DeleteProjectProgramCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+     #endregion
+
+     #region Add/Edit Project Sector Area to Current Project
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditProjectSector([FromBody]AddEditProjectSectorCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> DeleteProjectArea([FromBody]DeleteProjectAreaCommand model)
+        {
+           var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+     #endregion
+
+     #region "GetProjectWinLossStatus"
+
+
+     #endregion
+
+
+
+     
+
         //arjun singh 02082019
 
         [HttpPost]
@@ -373,7 +544,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
                 ModifiedDate = DateTime.UtcNow,
             });
         }
-
+ 
 
 
         [HttpPost]
