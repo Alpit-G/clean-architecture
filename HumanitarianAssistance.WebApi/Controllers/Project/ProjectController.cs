@@ -553,10 +553,48 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             model.CreatedDate = DateTime.UtcNow;
             return await _mediator.Send(model);
         }
-
-
-
      #endregion
+
+     #region "BudgetLineExcelImport"
+        [HttpPost, DisableRequestSizeLimit]
+        public async Task<ApiResponse> ExcelImportOfBudgetLine([FromForm] IFormFile fileKey, string projectId)
+        {
+            ApiResponse apiRespone = new ApiResponse();
+
+            var user = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            if (user != null)
+            {
+                if (fileKey != null)
+                {
+                    string fileExtension = Path.GetExtension(fileKey.FileName);
+
+                    if (fileExtension == ".xls" || fileExtension == ".xlsx")
+                    {
+                        var stream = fileKey.OpenReadStream();
+                        StreamReader reader = new StreamReader(stream);
+
+                        string result = reader.ReadToEnd();
+
+                        var id = user;
+                        //var userName = user.UserName;
+                        long projectID = Convert.ToInt64(projectId);
+                        return await _mediator.Send(new ExcelImportOfBudgetLineQuery {
+                            ProjectId= projectID,
+                            File= stream,
+                            UserId= id
+                        });
+                    }
+                    else
+                    {
+                        apiRespone.StatusCode = StaticResource.FileNotSupported;
+                        apiRespone.Message = StaticResource.FileText;
+                    }
+                }
+            }
+            return apiRespone;
+        }
+        #endregion
 
 
 

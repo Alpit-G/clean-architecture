@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Application.Project.Models;
@@ -108,5 +110,29 @@ namespace HumanitarianAssistance.Application.CommonFunctions.Project
             return response;
         }
 
+        public List<ProjectBudgetLineDetailModel> GetBudgetLineByProjectId(List<ProjectBudgetLineDetailModel> data, long projectId)
+        {
+
+            List<ProjectBudgetLineDetailModel> newobj = new List<ProjectBudgetLineDetailModel>();
+            var selectedProjectData = data.Where(x => x.ProjectId == projectId).Select(x => new ProjectBudgetLineDetailModel
+            {
+                ProjectId = x.ProjectId,
+                ProjectJobId = x.ProjectJobId,
+                ProjectJobCode = x.ProjectJobCode,
+                ProjectJobName = x.ProjectJobName,
+                BudgetLineId = x.BudgetLineId,
+                BudgetCode = x.BudgetCode,
+                BudgetName = x.BudgetName,
+                InitialBudget = x.InitialBudget,
+                CurrencyId = x.CurrencyId,
+                CurrencyName = x.CurrencyName,
+                CreatedDate = x.CreatedDate,
+            }).ToList();
+
+            return selectedProjectData;
+
+        }
+
+        
     }
 }
