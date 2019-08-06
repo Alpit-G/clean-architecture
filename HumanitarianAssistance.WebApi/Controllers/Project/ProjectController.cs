@@ -489,7 +489,90 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
         //Ending code of arjun singh 02082019   
 
+        #region  "ApprovalProjectDetail"
+        [HttpPost]
+        public async Task<ApiResponse> AddApprovalProjectDetail([FromBody]AddApprovalProjectDetailCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        #endregion
+
+        #region "Win/loss project approval"
+
+        [HttpPost]
+        public async Task<ApiResponse> WinApprovalProjectDetail([FromBody]WinApprovalProjectDetailCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        #endregion
+
+        #region "AddEditProjectproposals"
+        /// <summary>
+        /// proposal other detail due date ,assign to ,budget
+        /// </summary>
+        /// <param name="ProjectId"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<ApiResponse> AddEditProjectProposalDetail([FromBody]AddEditProjectproposalsCommand command)
+        {
+            var user = await _userManager.FindByIdAsync(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var id = user.Id;
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            command.Id = user.Id;
+            command.logginUserEmailId = user.Email;
+            return await _mediator.Send(command);
+        }
+
+        #endregion
+
+        #region "GetProjectproposalsById"
+        [HttpGet]
+        public async Task<ApiResponse> GetProjectproposalsById([FromBody] long projectId)
+        {
+            return await _mediator.Send(new GetProjectproposalsByIdQuery { ProjectId = projectId });
+        }
+        #endregion
+
+        #region "UploadEDIProposalFile"
+        /// <summary>
+        /// upload other proposal document using service account credentails new 26/03/2019 poonam
+        /// </summary>
+        [HttpPost, DisableRequestSizeLimit]
+
+        public async Task<ApiResponse> UploadEDIProposalFile([FromBody]AddEditProjectproposalsCommand command)
+        {
+            var user = await _userManager.FindByIdAsync(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
+
+            var id = user.Id;
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            command.Id = user.Id;
+            command.logginUserEmailId = user.Email;
+            return await _mediator.Send(command);
+        }
+        #endregion
+
         #region "Criteria evaluation form 2nd Aug 2019" 
+
         #region add/edit
         [HttpPost]
         public async Task<ApiResponse> AddEditDonorCriteria([FromBody]AddEditDonorCriteriaCommand command)
@@ -688,8 +771,183 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
             return await _mediator.Send(model);
         }
-        
+
         #endregion
+
+        #region  "ageGroup" 
+        [HttpGet]
+        public async Task<ApiResponse> GetAllAgeGroupDetailList()
+        {
+            return await _mediator.Send(new GetAllAgeGroupDetailQuery());
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllAgeGroupByProjectId([FromBody] long projectId)
+        {
+            return await _mediator.Send(new GetAllAgeGroupByProjectIdQuery { ProjectId = projectId });
+        }
+
+
+        [HttpPost]
+        public async Task<ApiResponse> AddAgeGroupDetail([FromBody]AddAgeGroupDetailCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(command);
+        }
+
+
+        [HttpPost]
+        public async Task<ApiResponse> EditAgeGroupDetail([FromBody]EditAgeGroupDetailCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> DeleteAgeGroupDetails([FromBody]long ageGroupOtherDetailId)
+        {
+            DeleteAgeGroupDetailsCommand model = new DeleteAgeGroupDetailsCommand();
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.AgeGroupOtherDetailId = ageGroupOtherDetailId;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(model);
+        }
+        #endregion
+
+        #region "assumprtionDetail"
+        [HttpGet]
+        public async Task<ApiResponse> GetAllAssumptionDetailList()
+        {
+            return await _mediator.Send(new GetAllAssumptionQuery());
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllAssumptionByProjectId([FromBody] long projectId)
+        {
+            return await _mediator.Send(new GetAllAssumptionByProjectIdQuery { ProjectId = projectId });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddAssumptionDetail([FromBody]AddAssumptionDetailCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(command);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> EditAssumptionDetail([FromBody]EditAssumptionDetailCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+
+
+        [HttpPost]
+        public async Task<ApiResponse> DeleteAssumptionDetails([FromBody]long assumptionDetailId)
+        {
+            DeleteAssumptionDetailsCommand model = new DeleteAssumptionDetailsCommand();
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.AssumptionDetailId = assumptionDetailId;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(model);
+        }
+        #endregion
+
+        #region "donorEligibilityCriteria"
+        [HttpGet]
+        public async Task<ApiResponse> GetAllDonorEligibilityDetailList()
+        {
+            return await _mediator.Send(new GetAllDonorEligibilityDetailQuery());
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllDonorEligibilityByProjectId([FromBody] long projectId)
+        {
+            return await _mediator.Send(new GetAllDonorEligibilityByProjectIdQuery { ProjectId = projectId });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddDonorEligibilityOtherDetail([FromBody]AddDonorEligibilityOtherDetailCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> EditDonorEligibilityDetail([FromBody]EditDonorEligibilityDetailCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> DeleteDonorEligibilityDetails([FromBody]long donorEligibilityDetailId)
+        {
+            DeleteDonorEligibilityDetailsCommand model = new DeleteDonorEligibilityDetailsCommand();
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.DonorEligibilityDetailId = donorEligibilityDetailId;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(model);
+        }
+
+        #endregion
+
+        #region "submit criteria evaluation detail"
+        [HttpPost]
+        public async Task<ApiResponse> AddEditCriteriaEvaluationSubmit([FromBody]AddEditCriteriaEvaluationSubmitCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetIsApprovedCriteriaEvaluationStatus([FromBody] long projectId)
+        {
+            return await _mediator.Send(new GetIsApprovedCriteriaEvaluationStatusQuery { ProjectId = projectId });
+        }
+        #endregion
+
+        #region "GetAllCriteriaEvaluationDetail"
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllCriteriaEvaluationDetail([FromBody] long projectId)
+        {
+            return await _mediator.Send(new GetAllCriteriaEvaluationDetailQuery { ProjectId = projectId });
+        }
+
+        #endregion
+
         #endregion
     }
 

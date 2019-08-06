@@ -181,6 +181,15 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public List<SPProjectProposalReportModel> ProjectProposalReportList { get; set; }
         public ICollection<PriorityOtherDetail> PriorityOtherDetail { get; set; }
         public ICollection<CEFeasibilityExpertOtherDetail> FeasibilityExpertOtherDetail { get; set; }
+        public ICollection<CEAgeGroupDetail> CEAgeGroupDetail { get; set; }
+        public ICollection<CEAssumptionDetail> CEAssumptionDetail { get; set; }
+        public ICollection<DonorEligibilityCriteria> DonorEligibilityCriteria { get; set; }
+        public bool IsApprovedCriteriaEvaluation { get; set; }
+        public CriteriaEveluationModel CriteriaEveluationModel { get; set; }
+        public ApproveProjectDetails ApproveProjectDetails { get; set; }
+
+        public ProjectProposalDetail ProjectProposalDetail { get; set; }
+        public ProjectProposalModel ProjectProposalModel { get; set; }
 
 
     }
