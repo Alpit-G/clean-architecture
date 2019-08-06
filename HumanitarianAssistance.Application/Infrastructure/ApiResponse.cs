@@ -156,6 +156,17 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public ProjectProgram projectProgram { get; set; }
         public ProjectArea projectArea { get; set; }
         public ProjectSector projectSector { get; set; }
+        public bool ProjectWinLoss { get; set; }
+        public IList<ProvinceDetailModel> ProvinceDetailsList { get; set; }
+        public List<int?> CountryMultiSelectById { get; set; } 
+        public List<int> ProvinceMultiSelectById { get; set; }
+        public List<long> DistrictMultiSelectById { get; set; }
+        public List<DistrictDetail> Districtlist { get; set; }
+        public List<long> SecurityConsiderationMultiSelectById { get; set; }
+
+
+
+
 
 
         //Project

@@ -422,6 +422,139 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
      #region "GetProjectWinLossStatus"
 
+        [HttpPost]
+        public async Task<ApiResponse> GetProjectWinLossStatus([FromBody]long ProjectId)
+        {
+            return await _mediator.Send(new GetProjectWinLossStatusQuery { ProjectId= ProjectId });
+        }
+
+     #endregion
+
+     #region Other Details dropdown
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllStrengthConsiderationDetails()
+        {
+           return await _mediator.Send(new GetAllStrengthConsiderationDetailsQuery());
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllGenderConsiderationDetails()
+        {
+            return await _mediator.Send(new GetAllGenderConsiderationQuery());
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllSecurityDetails()
+        {
+            return await _mediator.Send(new GetAllSecurityDetailQuery());
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllProvinceDetails()
+        {
+            return await _mediator.Send(new GetAllProvinceDetailQuery());
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetAllProvinceDetailsByCountryId([FromBody]int[] countryId)
+        {
+
+            return await _mediator.Send(new GetAllProvincesByCountryIdQuery { CountryId= countryId });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetCountryMultiSelectByProjectId([FromBody]long Id)
+        {
+            return await _mediator.Send(new GetCountryByProjectIdQuery { ProjectId= Id });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetProvinceMultiSelectByProjectId([FromBody]long Id)
+        {
+           return await _mediator.Send(new GetSelectedProvinceByProjectIdQuery { ProjectId= Id });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetDistrictMultiSelectByProjectId([FromBody]long Id)
+        {
+            return await _mediator.Send(new GetSelectedDistrictByProjectIdQuery { ProjectId= Id });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditDistrictMultiselect([FromBody]AddEditSelectedDistrictsCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditCountryMultiselect([FromBody]AddEditCountryByProjectIdCommand model) 
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditProvinceMultiselect([FromBody]AddEditProvinceByProjectIdCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetAllDistrictvalueByProvinceId([FromBody]int[] ProvinceId)
+        {
+            return await _mediator.Send(new GetAllDistrictByProvinceIdQuery { ProvinceId= ProvinceId });
+        }
+
+         [HttpPost]
+        public async Task<ApiResponse> AddEditProjectotherDetail([FromBody]AddEditProjectOtherDetailCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllSecurityConsiderationDetails()
+        {
+             return await _mediator.Send(new GetSecurityConsiderationDetailQuery());
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetSecurityConsiMultiSelectByProjectId([FromBody]long Id)
+        {
+             return await _mediator.Send(new GetSecurityConsiderationByProjectIdQuery());
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditSecurityConsiMultiselect([FromBody]AddEditSecurityConsiderationCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+
 
      #endregion
 
