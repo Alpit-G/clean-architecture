@@ -16,7 +16,7 @@ namespace HumanitarianAssistance.Infrastructure.Extensions
                 
                 // swagger tags config
                 c.DocInclusionPredicate((_, api) => !string.IsNullOrWhiteSpace(api.GroupName));
-                c.TagActionsBy(api => api.GroupName);
+               c.TagActionsBy(api => api.GroupName);
 
                 // Swagger 2.+ support
                 var security = new Dictionary<string, IEnumerable<string>>

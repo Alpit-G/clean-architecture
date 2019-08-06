@@ -949,14 +949,14 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         #endregion
 
         #endregion
-    
+
 
         [HttpPost]
         public async Task<ApiResponse> FilterBudgetLineBreakdown([FromBody]FilterBudgetLineBreakdownQuery query)
         {
             return await _mediator.Send(query);
         }
-    
+
 
         #region Upload Files for Activity Documents 28/03/2019
 
@@ -1144,20 +1144,21 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         public async Task<ApiResponse> DeleteProjectJob([FromBody]long jobId)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return await _mediator.Send(new DeleteProjectJobCommand {
+            return await _mediator.Send(new DeleteProjectJobCommand
+            {
                 JobId = jobId,
-                ModifiedById=userId,
-                ModifiedDate = DateTime.UtcNow                
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
             });
         }
 
-        [HttpPost] 
+        [HttpPost]
         public async Task<ApiResponse> GetProjectJobDetailByProjectJobId([FromBody] long projectJobId)
         {
             return await _mediator.Send(new GetAllProjectJobByProjectIdQuery { ProjectJobId = projectJobId });
-        }    
+        }
         [HttpPost]
-        public async Task<ApiResponse> GetAllProjectJobFilterList([FromBody]GetAllProjectJobsFilterListQuery query) 
+        public async Task<ApiResponse> GetAllProjectJobFilterList([FromBody]GetAllProjectJobsFilterListQuery query)
         {
             return await _mediator.Send(query);
         }
