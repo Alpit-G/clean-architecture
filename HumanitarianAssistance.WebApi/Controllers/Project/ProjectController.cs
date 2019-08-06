@@ -20,12 +20,15 @@ using HumanitarianAssistance.Application.Project.Commands.Delete;
 using HumanitarianAssistance.Application.Project.Commands.Update;
 using HumanitarianAssistance.Application.Project.Commands.Common;
 using HumanitarianAssistance.Application.Project.Models;
+using HumanitarianAssistance.Common.Enums;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Project
 {
+    [ApiController]
     [Produces("application/json")]
     [Route("api/Project/[Action]")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize]
+    [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Project))]
     public class ProjectController : Controller
     {
 
@@ -520,7 +523,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
                 command.ext = System.IO.Path.GetExtension(command.FileName).ToLower();
                 if (command.ext != ".jpeg" && command.ext != ".png" && command.ext != ".jpg" && command.ext != ".gif")
                 {
-                    var user = await _userManager.FindByNameAsync(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+                    var user = await _userManager.FindByIdAsync(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
                     if (user != null)
                     {
                         command.logginUserEmailId = user.Email;
@@ -552,7 +555,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             {
                 if (filesData == null)
                 {
-                    var user = await _userManager.FindByNameAsync(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+                    var user = await _userManager.FindByIdAsync(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
                     if (user != null)
                     {
                         return await _mediator.Send(new AddApprovalDetailCommand
@@ -586,7 +589,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
                     string ext = System.IO.Path.GetExtension(fileName).ToLower();
                     if (ext != ".jpeg" && ext != ".png" && ext != ".jpg" && ext != ".gif")
                     {
-                        var user = await _userManager.FindByNameAsync(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+                        var user = await _userManager.FindByIdAsync(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
                         if (user != null)
                         {
                             string logginUserEmailId = user.Email;
@@ -647,7 +650,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
                 string ext = Path.GetExtension(fileName).ToLower();
                 if (ext == ".doc" || ext == ".docx")
                 {
-                    var user = await _userManager.FindByNameAsync(HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
+                    var user = await _userManager.FindByIdAsync(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
                     if (user != null)
                     {
                         string logginUserEmailId = user.Email;
@@ -737,7 +740,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
                 string ext = Path.GetExtension(fileName).ToLower();
                 if (ext != ".jpeg" && ext != ".png" && ext != ".jpg" && ext != ".gif")
                 {
-                    var user = await _userManager.FindByNameAsync(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
+                    var user = await _userManager.FindByIdAsync(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
                     if (user != null)
                     {
                         string logginUserEmailId = user.Email;
@@ -856,7 +859,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         [HttpPost]
         public async Task<ApiResponse> GetTransactionListByProjectId([FromBody] long projectId)
         {
-            var user = await _userManager.FindByNameAsync(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var user = await _userManager.FindByIdAsync(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
             var UserName = user.UserName;
             return await _mediator.Send(new GetTransactionListByProjectIdQuery
             {
@@ -868,7 +871,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         [HttpPost]
         public async Task<ApiResponse> GetTransactionList([FromBody]GetTransactionListQuery query)
         {
-            var user = await _userManager.FindByNameAsync(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var user = await _userManager.FindByIdAsync(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
             var UserName = user.UserName;
             return await _mediator.Send(query);
         }
