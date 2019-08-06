@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using HumanitarianAssistance.Common.Helpers;
 using System.Collections.Generic;
-using System.Linq;
 using Newtonsoft.Json;
 using HumanitarianAssistance.Domain.Entities;
 using MediatR;
@@ -490,7 +489,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
         //Ending code of arjun singh 02082019   
 
-        //arjun singh 05-08-2019
+        //arjun singh 05082019_06082019
 
         #region "DownloadFileFromBucket"
 
@@ -690,11 +689,11 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            return await _mediator.Send(new UploadFileDemoCommand 
+            return await _mediator.Send(new UploadFileDemoCommand
             {
-                fileData=fileData,
-                activityId=activityId,
-                statusId=statusId,
+                fileData = fileData,
+                activityId = activityId,
+                statusId = statusId,
                 CreatedById = userId,
                 CreatedDate = DateTime.UtcNow,
                 ModifiedById = userId,
@@ -708,11 +707,11 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         [HttpPost]
         public async Task<ApiResponse> FilterProjectCashFlow([FromBody]FilterProjectCashFlowQuery query)
         {
-            return await _mediator.Send(query); 
+            return await _mediator.Send(query);
         }
 
         [HttpPost]
-        public async Task<ApiResponse> FilterBudgetLineBreakdown([FromBody]FilterBudgetLineBreakdownQuery query) 
+        public async Task<ApiResponse> FilterBudgetLineBreakdown([FromBody]FilterBudgetLineBreakdownQuery query)
         {
             return await _mediator.Send(query);
         }
@@ -744,17 +743,17 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
                         string logginUserEmailId = user.Email;
                         return await _mediator.Send(new UploadProjectActivityDocumentFileCommand
                         {
-                            File=file,
-                            MonitoringID=monitoringID,
-                            ActivityID=activityID,
-                            StatusID=statusID,
-                            FileName=fileName,
-                            Ext=ext,
+                            File = file,
+                            MonitoringID = monitoringID,
+                            ActivityID = activityID,
+                            StatusID = statusID,
+                            FileName = fileName,
+                            Ext = ext,
                             CreatedById = userId,
                             CreatedDate = DateTime.UtcNow,
                             ModifiedById = userId,
                             ModifiedDate = DateTime.UtcNow
-                        });                        
+                        });
                     }
                 }
                 else
@@ -772,8 +771,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
         [HttpPost]
         public async Task<ApiResponse> GetActivityDocumentDetails([FromBody]GetUploadedDocumentsQuery query)
-        { 
-            return await _mediator.Send(query); 
+        {
+            return await _mediator.Send(query);
         }
 
         #endregion
@@ -783,7 +782,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         [HttpPost]
         public async Task<ApiResponse> GetProjectActivityDetail([FromBody]long id)
         {
-            return await _mediator.Send(new GetallProjectActivityDetailQuery { ProjectId = id }); 
+            return await _mediator.Send(new GetallProjectActivityDetailQuery { ProjectId = id });
         }
 
         [HttpPost]
@@ -791,10 +790,10 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             command.CreatedById = userId;
-            command.CreatedDate = DateTime.UtcNow; 
+            command.CreatedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
         }
-         
+
         [HttpPost]
         public async Task<ApiResponse> EditProjectActivityDetail([FromBody]EditProjectActivityDetailCommand command)
         {
@@ -807,7 +806,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         [HttpPost]
         public async Task<ApiResponse> DeleteActivityDetail([FromBody]long activityId)
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value; 
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
             return await _mediator.Send(new DeleteProjectActivityCommand
             {
@@ -817,7 +816,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             });
         }
         [HttpPost]
-        public async Task<ApiResponse> AllProjectActivityStatus([FromBody]long projectId) 
+        public async Task<ApiResponse> AllProjectActivityStatus([FromBody]long projectId)
         {
             return await _mediator.Send(new AllProjectActivityStatusQuery { ProjectId = projectId });
         }
@@ -830,10 +829,104 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             command.CreatedById = userId;
             command.CreatedDate = DateTime.UtcNow;
-            return await _mediator.Send(command); 
+            return await _mediator.Send(command);
+        }
+        [HttpGet]
+        public async Task<ApiResponse> GetProjectBudgetLineDetail()
+        {
+            return await _mediator.Send(new GetallBudgetLineDetailQuery());
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetProjectBudgetLineDetail([FromBody] long projectId)
+        {
+            return await _mediator.Send(new GetallBudgetLineDetailByIdQuery { ProjectId = projectId });
+        }
+        [HttpPost]
+        public async Task<ApiResponse> GetBudgetLineDetailByBudgetId([FromBody] int budgetId)
+        {
+            return await _mediator.Send(new GetBudgetLineDetailByBudgetIdQuery { BudgetId = budgetId });
+        }
+        [HttpPost]
+        public async Task<ApiResponse> GetAllBudgetLineList([FromBody]GetAllBudgetFilterListQuery query, long projectId)
+        {
+            query.ProjectId = projectId;
+            return await _mediator.Send(query);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> GetTransactionListByProjectId([FromBody] long projectId)
+        {
+            var user = await _userManager.FindByNameAsync(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var UserName = user.UserName;
+            return await _mediator.Send(new GetTransactionListByProjectIdQuery
+            {
+                ProjectId = projectId,
+                UserName = UserName
+            });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetTransactionList([FromBody]GetTransactionListQuery query)
+        {
+            var user = await _userManager.FindByNameAsync(HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value);
+            var UserName = user.UserName;
+            return await _mediator.Send(query);
         }
         #endregion
-        //Ending code of arjun singh 05082019 
-    }
 
+        #region ProjectJob
+
+        [HttpGet]
+        public async Task<ApiResponse> GetProjectJobDetail()
+        {
+            return await _mediator.Send(new GetAllProjectJobDetailQuery());
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetProjectJobDetailByProjectId([FromBody] long projectId)
+        {
+            return await _mediator.Send(new GetProjectJobDetailByProjectIdQuery { ProjectId = projectId });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddProjectJobDetail([FromBody]AddEditProjectJobDetailCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> DeleteProjectJob([FromBody]long jobId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new DeleteProjectJobCommand {
+                JobId = jobId,
+                ModifiedById=userId,
+                ModifiedDate = DateTime.UtcNow                
+            });
+        }
+
+        [HttpPost] 
+        public async Task<ApiResponse> GetProjectJobDetailByProjectJobId([FromBody] long projectJobId)
+        {
+            return await _mediator.Send(new GetAllProjectJobByProjectIdQuery { ProjectJobId = projectJobId });
+        }    
+        [HttpPost]
+        public async Task<ApiResponse> GetAllProjectJobFilterList([FromBody]GetAllProjectJobsFilterListQuery query) 
+        {
+            return await _mediator.Send(query);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> GetProjectJobDetailByBudgetLineId([FromBody] long budgetLineId)
+        {
+            return await _mediator.Send(new GetProjectJobDetailByBudgetLineIdQuery { BudgetLineId = budgetLineId });
+        }
+        #endregion
+
+        //Ending code of arjun singh 05082019_06082019  
+    }
 }

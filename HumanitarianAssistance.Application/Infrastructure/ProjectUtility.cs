@@ -67,9 +67,15 @@ namespace HumanitarianAssistance.Application.Infrastructure
         {
             return string.Format("{0:D5}", id);
         }
+
         public static string GenerateProjectBudgetLineCode(string projectCode, long id)
         {
             return projectCode + "-B" + string.Format("{0:D5}", id);
+        }
+
+        public static string GenerateProjectJobCode(string projectCode, long id)
+        {
+            return projectCode + "-J" + string.Format("{0:D3}", id);
         }
     } 
 }
