@@ -1,8 +1,6 @@
 using System;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
@@ -10,9 +8,6 @@ using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using HumanitarianAssistance.Common.Helpers;
 using System.Collections.Generic;
-using Newtonsoft.Json;
-using HumanitarianAssistance.Domain.Entities;
-using MediatR;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Application.Project.Queries;
 using HumanitarianAssistance.Application.Project.Commands.Create;
@@ -20,27 +15,22 @@ using HumanitarianAssistance.Application.Project.Commands.Delete;
 using HumanitarianAssistance.Application.Project.Commands.Update;
 using HumanitarianAssistance.Application.Project.Commands.Common;
 using HumanitarianAssistance.Application.Project.Models;
+using HumanitarianAssistance.Common.Enums;
+using System.Linq;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Project
 {
+    [ApiController]
     [Produces("application/json")]
     [Route("api/Project/[Action]")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Project))]
+    [Authorize]
     public class ProjectController : BaseController
     {
-        private readonly JsonSerializerSettings _serializerSettings;
         private IHostingEnvironment _hostingEnvironment;
-        public ProjectController(
-          IHostingEnvironment hostingEnvironment,
-          IMediator mediator
-          )
+        public ProjectController(IHostingEnvironment hostingEnvironment)
         {
             _hostingEnvironment = hostingEnvironment;
-            _serializerSettings = new JsonSerializerSettings
-            {
-                Formatting = Formatting.Indented,
-                NullValueHandling = NullValueHandling.Ignore
-            };
         }
 
         #region Donor Details
@@ -253,15 +243,17 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         }
         #endregion
 
-     #region SecurityConsiderationDetailList
+        #region SecurityConsiderationDetailList
         [HttpGet]
         public async Task<ApiResponse> SecurityConsiderationDetailList()
         {
             return await _mediator.Send(new SecurityConsiderationListQuery());
         }
-     #endregion
+        #endregion
 
-    #region Project Details
+        #region Add/Edit/Delete Project Info
+
+        #region Project Details
         [HttpPost]
         public async Task<ApiResponse> AddEditProjectDetail([FromBody]AddEditProjectDetailCommand model)
         {
@@ -307,7 +299,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
     #endregion
 
-     #region Add/Update Assign Employee to Project
+        #region Add/Update Assign Employee to Project
 
         [HttpPost]
         public async Task<ApiResponse> AddEditProjectAssignToEmployee([FromBody]AddEditProjectAssignToEmployeeCommand model)
@@ -333,7 +325,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
      #endregion
 
-     #region Add/Edit Project Program to Current Project
+        #region Add/Edit Project Program to Current Project
 
         [HttpPost]
         public async Task<ApiResponse> AddEditProjectProgram([FromBody]AddEditProjectProgramCommand model)
@@ -388,7 +380,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
      #endregion
 
-     #region Add/Edit Project Sector Area to Current Project
+        #region Add/Edit Project Sector Area to Current Project
 
         [HttpPost]
         public async Task<ApiResponse> AddEditProjectSector([FromBody]AddEditProjectSectorCommand model)
@@ -412,9 +404,11 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             return await _mediator.Send(model);
         }
 
-     #endregion
+        #endregion
 
-     #region "GetProjectWinLossStatus"
+        #endregion
+
+        #region "GetProjectWinLossStatus"
 
         [HttpPost]
         public async Task<ApiResponse> GetProjectWinLossStatus([FromBody]long ProjectId)
@@ -424,7 +418,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
      #endregion
 
-     #region Other Details dropdown
+        #region Other Details dropdown
 
         [HttpGet]
         public async Task<ApiResponse> GetAllStrengthConsiderationDetails()
@@ -549,7 +543,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         }
      #endregion
 
-     #region "BudgetLineExcelImport"
+        #region "BudgetLineExcelImport"
         [HttpPost, DisableRequestSizeLimit]
         public async Task<ApiResponse> ExcelImportOfBudgetLine([FromForm] IFormFile fileKey, string projectId)
         {
@@ -589,12 +583,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             return apiRespone;
         }
         #endregion
-
-
-
-     
-
-        //arjun singh 02082019
+    
         #region  "ApprovalProjectDetail"
         [HttpPost]
         public async Task<ApiResponse> AddApprovalProjectDetail([FromBody]AddApprovalProjectDetailCommand command)
@@ -1093,9 +1082,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         #endregion
 
         #endregion
-
-
-        //arjun singh 02082019
+       
         #region "Voucher summary reports"
         [HttpPost]
         public async Task<ApiResponse> GetProjectJobsByProjectIds([FromBody] List<long> projectIds)
@@ -1760,7 +1747,64 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         }
         #endregion
 
-        //Ending code of arjun singh 05082019_06082019  
+        #region "Create and Download Excel format"
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult CreateAndDownloadExcelFormat() 
+        {
 
+            ApiResponse apiRespone = new ApiResponse();
+            string fileName;
+            fileName = "ExcellData.xlsx";
+            var file = new FileInfo(fileName);
+            using (var package = new OfficeOpenXml.ExcelPackage(file))
+            {
+                var worksheet = package.Workbook.Worksheets.FirstOrDefault(x => x.Name == "Attempts");
+                worksheet = package.Workbook.Worksheets.Add("Assessment Attempts");
+                worksheet.Row(1).Height = 15;
+
+                //worksheet.TabColor = Color.Gold;
+                worksheet.DefaultRowHeight = 15;
+                worksheet.Row(1).Height = 15;
+
+                worksheet.Cells[1, 1].Value = "ProjectId";
+                worksheet.Cells[1, 2].Value = "ProjectJobCode";
+                worksheet.Cells[1, 3].Value = "ProjectJobName";
+                worksheet.Cells[1, 4].Value = "BudgetCode";
+                worksheet.Cells[1, 5].Value = "BudgetName";
+                worksheet.Cells[1, 6].Value = "InitialBudget";
+                worksheet.Cells[1, 7].Value = "CurrencyId";
+                worksheet.Cells[1, 8].Value = "CurrencyName";
+
+                var cells = worksheet.Cells["A1:J1"];
+
+                //worksheet.Column(1).AutoFit();
+                //worksheet.Column(2).AutoFit();
+                //worksheet.Column(3).AutoFit();
+                //worksheet.Column(4).AutoFit();
+                //worksheet.Column(5).AutoFit();
+                //worksheet.Column(6).AutoFit();
+                //worksheet.Column(7).AutoFit();
+                //worksheet.Column(8).AutoFit();
+
+
+                package.Workbook.Properties.Title = "Attempts";
+                var FileBytesArray = package.GetAsByteArray();
+                return File(
+                   fileContents: FileBytesArray,
+                   contentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                   fileDownloadName: "Budget-Line-Excel-Import-Sample.xlsx"
+               );
+            }         
+        }
+        #endregion
+
+        #region "Upload File Using Signed Url"
+        [HttpPost]
+        public async Task<ApiResponse> UploadDemoUsingBSignedUrlBucket([FromBody]DownloadFileFromBucketCommand command)
+        {
+            return await _mediator.Send(command);
+        }
+        #endregion
     }
 }
