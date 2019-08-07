@@ -33,7 +33,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             _hostingEnvironment = hostingEnvironment;
         }
 
-        #region Donor Details
+        #region Donor Information
         [HttpPost]
         public async Task<ApiResponse> GetAllDonorFilterList([FromBody]GetAllDonorFilterListQuery model)
         {
@@ -796,7 +796,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         }
 
         [HttpPost]
-        public async Task<ApiResponse> AddEditFinancialProjectDetail([FromBody]AddEditFinancialProjectDetailCommand command)
+        public async Task<ApiResponse> AddEditFinanacialProjectDetail([FromBody]AddEditFinancialProjectDetailCommand command)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             command.CreatedById = userId;
@@ -881,7 +881,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         }
 
         [HttpPost]
-        public async Task<ApiResponse> EditFeasibilityExpertDetail([FromBody]EditFeasibilityExpertDetailCommand command)
+        public async Task<ApiResponse> EditFeasibleExpertOtherDetail([FromBody]EditFeasibilityExpertDetailCommand command)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             command.ModifiedById = userId;
@@ -890,7 +890,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         }
 
         [HttpPost]
-        public async Task<ApiResponse> DeleteFeasibilityExperrtDetails([FromBody]long expertOtherDetailId)
+        public async Task<ApiResponse> DeleteFeasibleExpertDetails([FromBody]long expertOtherDetailId)
         {
             DeleteFeasibilityExperrtDetailsCommand model = new DeleteFeasibilityExperrtDetailsCommand();
 
@@ -922,7 +922,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
 
         [HttpPost]
-        public async Task<ApiResponse> AddAgeGroupDetail([FromBody]AddAgeGroupDetailCommand command)
+        public async Task<ApiResponse> AddAgeGRoupDetail([FromBody]AddAgeGroupDetailCommand command)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             command.CreatedById = userId;
@@ -933,7 +933,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
 
         [HttpPost]
-        public async Task<ApiResponse> EditAgeGroupDetail([FromBody]EditAgeGroupDetailCommand command)
+        public async Task<ApiResponse> EditAGeGroupDetail([FromBody]EditAgeGroupDetailCommand command)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             command.ModifiedById = userId;
@@ -1020,7 +1020,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         }
 
         [HttpPost]
-        public async Task<ApiResponse> AddDonorEligibilityOtherDetail([FromBody]AddDonorEligibilityOtherDetailCommand command)
+        public async Task<ApiResponse> AddDonorEligibilityDetail([FromBody]AddDonorEligibilityOtherDetailCommand command)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             command.CreatedById = userId;
