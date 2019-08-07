@@ -283,11 +283,15 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         {
             return await _mediator.Send(model);
         }
-
+        [HttpPost]
+        public async Task<ApiResponse> GetAllProjectList()
+        {
+            return await _mediator.Send(new GetAllProjectListQuery());
+        }
         [HttpPost]
         public async Task<ApiResponse> GetProjectListById([FromBody]long Id)
         {
-            return await _mediator.Send(new GetProjectListByIdQuery{ Id= Id });
+            return await _mediator.Send(new GetProjectListByIdQuery{ Id= Id }); 
         }
 
         [HttpPost]
@@ -295,7 +299,6 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         {
             return await _mediator.Send(new GetProjectListByIdQuery{ Id= Id });
         }
-
 
     #endregion
 
@@ -390,9 +393,16 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             model.ModifiedDate = DateTime.UtcNow;
             model.CreatedById = userId;
             model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model); 
+        }
+        [HttpPost]
+        public async Task<ApiResponse> DeleteProjectSector([FromBody]DeleteProjectSectorCommand model) 
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
             return await _mediator.Send(model);
         }
-
         [HttpPost]
         public async Task<ApiResponse> DeleteProjectArea([FromBody]DeleteProjectAreaCommand model)
         {
@@ -1635,7 +1645,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             });
         }
         [HttpPost]
-        public async Task<ApiResponse> AllProjectActivityStatus([FromBody]long projectId)
+        public async Task<ApiResponse> AllActivityStatus([FromBody]long projectId) 
         {
             return await _mediator.Send(new AllProjectActivityStatusQuery { ProjectId = projectId });
         }
