@@ -19,12 +19,16 @@ using HumanitarianAssistance.Application.Project.Commands.Delete;
 using HumanitarianAssistance.Application.Project.Commands.Update;
 using HumanitarianAssistance.Application.Project.Commands.Common;
 using HumanitarianAssistance.Application.Project.Models;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using HumanitarianAssistance.Common.Enums;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Project
 {
+    [ApiController]
     [Produces("application/json")]
     [Route("api/Project/[Action]")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Project))]
+    [Authorize]
     public class ProjectController : Controller
     {
 
