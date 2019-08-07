@@ -259,7 +259,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         }
         #endregion
 
-     #region SecurityConsiderationDetailList
+        #region SecurityConsiderationDetailList
         [HttpGet]
         public async Task<ApiResponse> SecurityConsiderationDetailList()
         {
@@ -267,7 +267,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         }
      #endregion
 
-    #region Project Details
+        #region Project Details
         [HttpPost]
         public async Task<ApiResponse> AddEditProjectDetail([FromBody]AddEditProjectDetailCommand model)
         {
@@ -313,7 +313,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
     #endregion
 
-     #region Add/Update Assign Employee to Project
+        #region Add/Update Assign Employee to Project
 
         [HttpPost]
         public async Task<ApiResponse> AddEditProjectAssignToEmployee([FromBody]AddEditProjectAssignToEmployeeCommand model)
@@ -339,7 +339,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
      #endregion
 
-     #region Add/Edit Project Program to Current Project
+        #region Add/Edit Project Program to Current Project
 
         [HttpPost]
         public async Task<ApiResponse> AddEditProjectProgram([FromBody]AddEditProjectProgramCommand model)
@@ -394,7 +394,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
      #endregion
 
-     #region Add/Edit Project Sector Area to Current Project
+        #region Add/Edit Project Sector Area to Current Project
 
         [HttpPost]
         public async Task<ApiResponse> AddEditProjectSector([FromBody]AddEditProjectSectorCommand model)
@@ -420,7 +420,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
      #endregion
 
-     #region "GetProjectWinLossStatus"
+        #region "GetProjectWinLossStatus"
 
         [HttpPost]
         public async Task<ApiResponse> GetProjectWinLossStatus([FromBody]long ProjectId)
@@ -430,7 +430,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
      #endregion
 
-     #region Other Details dropdown
+        #region Other Details dropdown
 
         [HttpGet]
         public async Task<ApiResponse> GetAllStrengthConsiderationDetails()
@@ -555,7 +555,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         }
      #endregion
 
-     #region "BudgetLineExcelImport"
+        #region "BudgetLineExcelImport"
         [HttpPost, DisableRequestSizeLimit]
         public async Task<ApiResponse> ExcelImportOfBudgetLine([FromForm] IFormFile fileKey, string projectId)
         {
@@ -596,11 +596,6 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         }
         #endregion
 
-
-
-     
-
-        //arjun singh 02082019
         #region  "ApprovalProjectDetail"
         [HttpPost]
         public async Task<ApiResponse> AddApprovalProjectDetail([FromBody]AddApprovalProjectDetailCommand command)
@@ -1100,8 +1095,6 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
         #endregion
 
-
-        //arjun singh 02082019
         #region "Voucher summary reports"
         [HttpPost]
         public async Task<ApiResponse> GetProjectJobsByProjectIds([FromBody] List<long> projectIds)
@@ -1765,8 +1758,5 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             return await _mediator.Send(new GetProjectJobDetailByBudgetLineIdQuery { BudgetLineId = budgetLineId });
         }
         #endregion
-
-        //Ending code of arjun singh 05082019_06082019  
-
     }
 }
