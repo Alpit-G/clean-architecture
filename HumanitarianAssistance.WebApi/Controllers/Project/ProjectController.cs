@@ -262,6 +262,343 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         }
         #endregion
 
+        #region SecurityConsiderationDetailList
+        [HttpGet]
+        public async Task<ApiResponse> SecurityConsiderationDetailList()
+        {
+            return await _mediator.Send(new SecurityConsiderationListQuery());
+        }
+     #endregion
+
+        #region Project Details
+        [HttpPost]
+        public async Task<ApiResponse> AddEditProjectDetail([FromBody]AddEditProjectDetailCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> DeleteProjectDetail([FromBody]long ProjectId)
+        {
+            DeleteProjectDetailCommand model= new DeleteProjectDetailCommand();
+
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetAllProjectFilterList([FromBody]GetAllProjectFilterListQuery model)
+        {
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetProjectListById([FromBody]long Id)
+        {
+            return await _mediator.Send(new GetProjectListByIdQuery{ Id= Id });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetProjectOtherDetailById([FromBody]long Id)
+        {
+            return await _mediator.Send(new GetProjectListByIdQuery{ Id= Id });
+        }
+
+
+    #endregion
+
+        #region Add/Update Assign Employee to Project
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditProjectAssignToEmployee([FromBody]AddEditProjectAssignToEmployeeCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> DeleteProjectAssignToEmployee([FromBody]RemoveEmployeeFromAssignedProjectCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+     #endregion
+
+        #region Add/Edit Project Program to Current Project
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditProjectProgram([FromBody]AddEditProjectProgramCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> getProjectProgramById([FromBody]long ProjectId)
+        {
+            return await _mediator.Send(new GetProjectProgramByIdQuery { ProjectId= ProjectId });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditProjectArea([FromBody]AddEditProjectAreaCommand model)
+        {
+           var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> getProjectAreaById([FromBody]long ProjectId)
+        {
+            return await _mediator.Send(new GetProjectAreaByIdQuery { ProjectId= ProjectId });
+        }
+
+         [HttpPost]
+        public async Task<ApiResponse> getProjectSectorById([FromBody]long ProjectId)
+        {
+            return await _mediator.Send(new GetProjectAreaByIdQuery { ProjectId= ProjectId });
+        }
+
+         [HttpPost]
+        public async Task<ApiResponse> DeleteProjectProgram([FromBody]DeleteProjectProgramCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+     #endregion
+
+        #region Add/Edit Project Sector Area to Current Project
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditProjectSector([FromBody]AddEditProjectSectorCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> DeleteProjectArea([FromBody]DeleteProjectAreaCommand model)
+        {
+           var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+     #endregion
+
+        #region "GetProjectWinLossStatus"
+
+        [HttpPost]
+        public async Task<ApiResponse> GetProjectWinLossStatus([FromBody]long ProjectId)
+        {
+            return await _mediator.Send(new GetProjectWinLossStatusQuery { ProjectId= ProjectId });
+        }
+
+     #endregion
+
+        #region Other Details dropdown
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllStrengthConsiderationDetails()
+        {
+           return await _mediator.Send(new GetAllStrengthConsiderationDetailsQuery());
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllGenderConsiderationDetails()
+        {
+            return await _mediator.Send(new GetAllGenderConsiderationQuery());
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllSecurityDetails()
+        {
+            return await _mediator.Send(new GetAllSecurityDetailQuery());
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllProvinceDetails()
+        {
+            return await _mediator.Send(new GetAllProvinceDetailQuery());
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetAllProvinceDetailsByCountryId([FromBody]int[] countryId)
+        {
+
+            return await _mediator.Send(new GetAllProvincesByCountryIdQuery { CountryId= countryId });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetCountryMultiSelectByProjectId([FromBody]long Id)
+        {
+            return await _mediator.Send(new GetCountryByProjectIdQuery { ProjectId= Id });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetProvinceMultiSelectByProjectId([FromBody]long Id)
+        {
+           return await _mediator.Send(new GetSelectedProvinceByProjectIdQuery { ProjectId= Id });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetDistrictMultiSelectByProjectId([FromBody]long Id)
+        {
+            return await _mediator.Send(new GetSelectedDistrictByProjectIdQuery { ProjectId= Id });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditDistrictMultiselect([FromBody]AddEditSelectedDistrictsCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditCountryMultiselect([FromBody]AddEditCountryByProjectIdCommand model) 
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditProvinceMultiselect([FromBody]AddEditProvinceByProjectIdCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetAllDistrictvalueByProvinceId([FromBody]int[] ProvinceId)
+        {
+            return await _mediator.Send(new GetAllDistrictByProvinceIdQuery { ProvinceId= ProvinceId });
+        }
+
+         [HttpPost]
+        public async Task<ApiResponse> AddEditProjectotherDetail([FromBody]AddEditProjectOtherDetailCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllSecurityConsiderationDetails()
+        {
+             return await _mediator.Send(new GetSecurityConsiderationDetailQuery());
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetSecurityConsiMultiSelectByProjectId([FromBody]long Id)
+        {
+             return await _mediator.Send(new GetSecurityConsiderationByProjectIdQuery());
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditSecurityConsiMultiselect([FromBody]AddEditSecurityConsiderationCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+     #endregion
+
+        #region "BudgetLineExcelImport"
+        [HttpPost, DisableRequestSizeLimit]
+        public async Task<ApiResponse> ExcelImportOfBudgetLine([FromForm] IFormFile fileKey, string projectId)
+        {
+            ApiResponse apiRespone = new ApiResponse();
+
+            var user = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            if (user != null)
+            {
+                if (fileKey != null)
+                {
+                    string fileExtension = Path.GetExtension(fileKey.FileName);
+
+                    if (fileExtension == ".xls" || fileExtension == ".xlsx")
+                    {
+                        var stream = fileKey.OpenReadStream();
+                        StreamReader reader = new StreamReader(stream);
+
+                        string result = reader.ReadToEnd();
+
+                        var id = user;
+                        //var userName = user.UserName;
+                        long projectID = Convert.ToInt64(projectId);
+                        return await _mediator.Send(new ExcelImportOfBudgetLineQuery {
+                            ProjectId= projectID,
+                            File= stream,
+                            UserId= id
+                        });
+                    }
+                    else
+                    {
+                        apiRespone.StatusCode = StaticResource.FileNotSupported;
+                        apiRespone.Message = StaticResource.FileText;
+                    }
+                }
+            }
+            return apiRespone;
+        }
+        #endregion
+    
         #region  "ApprovalProjectDetail"
         [HttpPost]
         public async Task<ApiResponse> AddApprovalProjectDetail([FromBody]AddApprovalProjectDetailCommand command)
@@ -581,6 +918,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
             return await _mediator.Send(model);
         }
+ 
 
         #endregion
 
@@ -759,9 +1097,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         #endregion
 
         #endregion
-
-
-        //arjun singh 02082019_05082019_06082019
+       
         #region "Voucher summary reports"
         [HttpPost]
         public async Task<ApiResponse> GetProjectJobsByProjectIds([FromBody] List<long> projectIds)
@@ -1426,7 +1762,6 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         }
         #endregion
 
-        //Ending code of arjun singh 02082019_05082019_06082019  
 
     }
 }

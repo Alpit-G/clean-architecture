@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,25 +11,29 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Project.Queries
 {
-    public class GenderConsiderationListQueryHandler: IRequestHandler<GenderConsiderationListQuery, ApiResponse>
+    public class GetSelectedDistrictByProjectIdQueryHandler: IRequestHandler<GetSelectedDistrictByProjectIdQuery, ApiResponse>
     {
 
         private readonly HumanitarianAssistanceDbContext _dbContext;
-        
-        public GenderConsiderationListQueryHandler(HumanitarianAssistanceDbContext dbContext)
+
+        public GetSelectedDistrictByProjectIdQueryHandler(HumanitarianAssistanceDbContext dbContext)
         {
             _dbContext= dbContext;
         }
 
-        public async Task<ApiResponse> Handle(GenderConsiderationListQuery request, CancellationToken cancellationToken)
+        public async Task<ApiResponse> Handle(GetSelectedDistrictByProjectIdQuery request, CancellationToken cancellationToken)
         {
             ApiResponse response = new ApiResponse();
-            
+
             try
             {
-                var list = await _dbContext.GenderConsiderationDetail.Where(x => !x.IsDeleted.Value).ToListAsync();
-                response.data.GenderConsiderationDetail = list;
-                response.StatusCode = 200;
+
+                List<long> SelectedProvinceList = await _dbContext.DistrictMultiSelect
+                                                            .Where(x => x.ProjectId == request.ProjectId && x.IsDeleted == false)
+                                                            .Select(x => x.DistrictID).ToListAsync();
+
+                response.data.DistrictMultiSelectById = SelectedProvinceList;
+                response.StatusCode = StaticResource.successStatusCode;
                 response.Message = "Success";
             }
             catch (Exception ex)

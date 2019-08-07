@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using HumanitarianAssistance.Application.Infrastructure;
@@ -10,25 +9,28 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Project.Queries
 {
-    public class GenderConsiderationListQueryHandler: IRequestHandler<GenderConsiderationListQuery, ApiResponse>
+    public class GetProjectAreaByIdQueryHandler: IRequestHandler<GetProjectAreaByIdQuery, ApiResponse>
     {
 
-        private readonly HumanitarianAssistanceDbContext _dbContext;
-        
-        public GenderConsiderationListQueryHandler(HumanitarianAssistanceDbContext dbContext)
+        private HumanitarianAssistanceDbContext _dbContext;
+
+        public GetProjectAreaByIdQueryHandler(HumanitarianAssistanceDbContext dbContext)
         {
+
             _dbContext= dbContext;
         }
 
-        public async Task<ApiResponse> Handle(GenderConsiderationListQuery request, CancellationToken cancellationToken)
+        public async Task<ApiResponse> Handle(GetProjectAreaByIdQuery request, CancellationToken cancellationToken)
         {
             ApiResponse response = new ApiResponse();
-            
+
             try
             {
-                var list = await _dbContext.GenderConsiderationDetail.Where(x => !x.IsDeleted.Value).ToListAsync();
-                response.data.GenderConsiderationDetail = list;
-                response.StatusCode = 200;
+                var Projectarea = await _dbContext.ProjectArea
+                       .FirstOrDefaultAsync(x => !x.IsDeleted.Value && x.ProjectId == request.ProjectId);
+                       
+                response.data.projectArea = Projectarea;
+                response.StatusCode = StaticResource.successStatusCode;
                 response.Message = "Success";
             }
             catch (Exception ex)

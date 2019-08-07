@@ -148,6 +148,23 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public ICollection<GenderConsiderationDetail> GenderConsiderationDetail { get; set; }
         public ICollection<StrengthConsiderationDetail> StrengthConsiderationDetail { get; set; }
         public ICollection<SecurityDetail> SecurityDetail { get; set; }
+        public ICollection<SecurityConsiderationDetail> SecurityConsiderationDetail { get; set; }
+        public ProjectDetail ProjectDetail { get; set; }
+        public ICollection<ProjectDetailModel> ProjectDetailModel { get; set; }
+        public ProjectDetailModel ProjectDetailModel1 { get; set; }
+        public ProjectOtherDetail OtherProjectDetailById { get; set; }
+        public ProjectProgram projectProgram { get; set; }
+        public ProjectArea projectArea { get; set; }
+        public ProjectSector projectSector { get; set; }
+        public bool ProjectWinLoss { get; set; }
+        public IList<ProvinceDetailModel> ProvinceDetailsList { get; set; }
+        public List<int?> CountryMultiSelectById { get; set; } 
+        public List<int> ProvinceMultiSelectById { get; set; }
+        public List<long> DistrictMultiSelectById { get; set; }
+        public List<DistrictDetail> Districtlist { get; set; }
+        public List<long> SecurityConsiderationMultiSelectById { get; set; }
+
+
 
 
 

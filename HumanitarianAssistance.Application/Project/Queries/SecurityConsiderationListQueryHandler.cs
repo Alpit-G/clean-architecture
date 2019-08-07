@@ -10,24 +10,22 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Project.Queries
 {
-    public class GenderConsiderationListQueryHandler: IRequestHandler<GenderConsiderationListQuery, ApiResponse>
+    public class SecurityConsiderationListQueryHandler: IRequestHandler<SecurityConsiderationListQuery, ApiResponse>
     {
-
         private readonly HumanitarianAssistanceDbContext _dbContext;
-        
-        public GenderConsiderationListQueryHandler(HumanitarianAssistanceDbContext dbContext)
+        public SecurityConsiderationListQueryHandler(HumanitarianAssistanceDbContext dbContext)
         {
-            _dbContext= dbContext;
+            _dbContext = dbContext;
         }
 
-        public async Task<ApiResponse> Handle(GenderConsiderationListQuery request, CancellationToken cancellationToken)
+        public async Task<ApiResponse> Handle(SecurityConsiderationListQuery request, CancellationToken cancellationToken)
         {
             ApiResponse response = new ApiResponse();
-            
+
             try
             {
-                var list = await _dbContext.GenderConsiderationDetail.Where(x => !x.IsDeleted.Value).ToListAsync();
-                response.data.GenderConsiderationDetail = list;
+                var list = await _dbContext.SecurityConsiderationDetail.Where(x => !x.IsDeleted.Value).ToListAsync();
+                response.data.SecurityConsiderationDetail = list;
                 response.StatusCode = 200;
                 response.Message = "Success";
             }
