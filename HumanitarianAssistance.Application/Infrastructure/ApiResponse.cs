@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using HumanitarianAssistance.Application.Accounting.Models;
+using HumanitarianAssistance.Application.Configuration.Models;
 using HumanitarianAssistance.Application.Marketing.Models;
 using HumanitarianAssistance.Application.Project.Models;
 using HumanitarianAssistance.Domain.Entities;
@@ -238,6 +239,12 @@ namespace HumanitarianAssistance.Application.Infrastructure
 
 
         #endregion
+
+
+        //Code
+
+        public List<EmployeeAppraisalDetailsModel> EmployeeAppraisalDetailsModelLst { get; set; }
+        public List<InterviewTechnicalQuestions> InterviewTechnicalQuestionsList { get; set; }
 
     }
 
