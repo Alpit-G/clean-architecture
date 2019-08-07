@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using HumanitarianAssistance.Application.Accounting.Models;
+using HumanitarianAssistance.Application.Configuration.Models;
 using HumanitarianAssistance.Application.Marketing.Models;
 using HumanitarianAssistance.Application.Project.Models;
 using HumanitarianAssistance.Domain.Entities;
@@ -82,6 +83,10 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public List<AccountFilterType> AllAccountFilterList { get; set; }
         public List<ApplicationPages> ApplicationPagesList { get; set; }
         public IList<RolePermissionViewModel> PermissionsInRole { get; set; }
+
+        //Code
+        public IList<OfficeDetailModel> OfficeDetailsList { get; set; }
+        public IList<CurrencyModel> CurrencyList { get; set; }
 
 
 
