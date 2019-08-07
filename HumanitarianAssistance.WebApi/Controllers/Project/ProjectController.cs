@@ -26,22 +26,16 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
     [Produces("application/json")]
     [Route("api/Project/[Action]")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class ProjectController : Controller
+    public class ProjectController : BaseController
     {
-
         private readonly JsonSerializerSettings _serializerSettings;
-        private readonly UserManager<AppUser> _userManager;
-        private readonly IMediator _mediator;
         private IHostingEnvironment _hostingEnvironment;
         public ProjectController(
-           UserManager<AppUser> userManager,
           IHostingEnvironment hostingEnvironment,
           IMediator mediator
           )
         {
-            _userManager = userManager;
             _hostingEnvironment = hostingEnvironment;
-            _mediator = mediator;
             _serializerSettings = new JsonSerializerSettings
             {
                 Formatting = Formatting.Indented,

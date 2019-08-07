@@ -22,17 +22,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
     [Route("api/Account/[Action]")]
     [Authorize]
     [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Accounting))]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
-
-        private readonly IMediator _mediator;
-        private readonly UserManager<AppUser> _userManager;
-
-        public AccountController(IMediator mediator, UserManager<AppUser> userManager)
-        {
-            _mediator = mediator;
-            _userManager = userManager;
-        }
 
         [HttpPost]
         [AllowAnonymous]

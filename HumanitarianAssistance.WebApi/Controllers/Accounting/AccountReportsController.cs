@@ -14,15 +14,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
     [Route("api/AccountReports/[Action]")]
     [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Accounting))]
     [Authorize]
-    public class AccountReportsController : Controller
+    public class AccountReportsController : BaseController
     {
-        private readonly IMediator _mediator; 
-
-       public AccountReportsController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
-
         /// <summary>
         /// Get All Account Balances (Balance Sheet Report)
         /// </summary>

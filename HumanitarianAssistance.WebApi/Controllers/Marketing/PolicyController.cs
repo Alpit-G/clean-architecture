@@ -21,15 +21,12 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
     [Produces("application/json")]
     [Route("api/Policy/[Action]")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class PolicyController : Controller
+    public class PolicyController : BaseController
     {
         private readonly JsonSerializerSettings _serializerSettings;
-        private readonly UserManager<AppUser> _userManager;
-        private readonly IMediator _mediator;
-        public PolicyController(UserManager<AppUser> userManager, IMediator mediator)
+        
+        public PolicyController()
         {
-            _userManager = userManager;
-            _mediator = mediator;
             _serializerSettings = new JsonSerializerSettings
             {
                 Formatting = Formatting.Indented,

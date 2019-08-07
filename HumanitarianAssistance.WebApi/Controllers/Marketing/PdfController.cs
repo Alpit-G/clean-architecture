@@ -14,14 +14,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
     [Produces("application/json")]
     [Route("api/PdfController/[Action]")]
     [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Marketing))]
-    public class PdfController : Controller
+    public class PdfController : BaseController
     {
-        private readonly IMediator _mediator;
-        public PdfController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
-
         [HttpPost]
         public async Task<ApiResponse> CreatePDF([FromBody]int jobId)
         {

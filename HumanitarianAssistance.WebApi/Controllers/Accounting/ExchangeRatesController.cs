@@ -18,14 +18,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
     [Route("api/ExchangeRates/[Action]/")]
     [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Accounting))]
     [Authorize]
-    public class ExchangeRatesController: Controller
+    public class ExchangeRatesController: BaseController
     {
-       private readonly IMediator _mediator; 
-
-       public ExchangeRatesController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
 
         [HttpPost]
         public async Task<ApiResponse> GetSavedExchangeRatesAsync([FromBody] GetSavedExchangeRatesQuery filter)

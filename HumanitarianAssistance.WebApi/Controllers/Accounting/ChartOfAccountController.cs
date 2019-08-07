@@ -18,14 +18,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
     [Route("api/ChartOfAccount/[Action]")]
     [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Accounting))]
     [Authorize]
-    public class ChartOfAccountController : Controller
+    public class ChartOfAccountController : BaseController
     {
-        private readonly IMediator _mediator;
-
-        public ChartOfAccountController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
 
         [HttpPost]
         public async Task<ApiResponse> GetMainLevelAccount([FromBody]long id)
