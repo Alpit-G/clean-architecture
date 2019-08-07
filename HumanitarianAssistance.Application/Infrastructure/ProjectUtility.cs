@@ -89,26 +89,14 @@ namespace HumanitarianAssistance.Application.Infrastructure
         /// <param name="projectCode"></param>
         /// <param name="id"></param>
         /// <returns></returns>
-        public static string GenerateProjectJobCode(string projectCode, long id)
-        {
-            return projectCode + "-J" + string.Format("{0:D3}", id);
-        }
-
-        /// <summary>
-        /// Format: Project#1 Budget_Line#1: P0001-B00001
-        ///         Project#1 Budget_Line#2: P0001-B00002
-        ///         Project#1 Budget_Line#3: P0001-B00003
-        ///         
-        ///         Project#2 Budget_Line#1: P0002-B00001
-        ///         Project#2 Budget_Line#2: P0002-B00002
-        ///         Project#2 Budget_Line#3: P0002-B00003
-        /// </summary>
-        /// <param name="projectCode"></param>
-        /// <param name="id"></param>
-        /// <returns></returns>
         public static string GenerateProjectBudgetLineCode(string projectCode, long id)
         {
             return projectCode + "-B" + string.Format("{0:D5}", id);
         }
-    }
+
+        public static string GenerateProjectJobCode(string projectCode, long id)
+        {
+            return projectCode + "-J" + string.Format("{0:D3}", id);
+        }
+    } 
 }
