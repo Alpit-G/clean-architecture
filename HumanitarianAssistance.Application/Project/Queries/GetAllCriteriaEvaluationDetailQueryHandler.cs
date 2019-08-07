@@ -13,7 +13,7 @@ using System;
 
 namespace HumanitarianAssistance.Application.Project.Queries
 {
-   public class GetAllCriteriaEvaluationDetailQueryHandler : IRequestHandler<GetAllCriteriaEvaluationDetailQuery, ApiResponse>
+    public class GetAllCriteriaEvaluationDetailQueryHandler : IRequestHandler<GetAllCriteriaEvaluationDetailQuery, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
 
@@ -224,4 +224,5 @@ namespace HumanitarianAssistance.Application.Project.Queries
             }
             return response;
         }
+    }
 }

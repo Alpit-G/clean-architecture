@@ -11,7 +11,7 @@ using HumanitarianAssistance.Common.Helpers;
 
 namespace HumanitarianAssistance.Application.Project.Queries
 {
-   public class GetAllPriorityOtherDetailQueryHandler : IRequestHandler<GetAllPriorityOtherDetailQuery, ApiResponse>
+    public class GetAllPriorityOtherDetailQueryHandler : IRequestHandler<GetAllPriorityOtherDetailQuery, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
         private IMapper _mapper;
@@ -31,7 +31,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
                                                                                ).OrderByDescending(x => x.PriorityOtherDetailId)
                                                                                 .ToListAsync();
 
-                 response.data.PriorityOtherDetail = list;
+                response.data.PriorityOtherDetail = list;
                 response.StatusCode = StaticResource.successStatusCode;
                 response.Message = "Success";
             }
@@ -41,5 +41,6 @@ namespace HumanitarianAssistance.Application.Project.Queries
                 response.Message = StaticResource.SomethingWrong + ex.Message;
             }
             return response;
+        }
     }
 }
