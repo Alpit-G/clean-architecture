@@ -595,7 +595,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             return apiRespone;
         }
         #endregion
-
+    
         #region  "ApprovalProjectDetail"
         [HttpPost]
         public async Task<ApiResponse> AddApprovalProjectDetail([FromBody]AddApprovalProjectDetailCommand command)
@@ -1094,7 +1094,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         #endregion
 
         #endregion
-
+       
         #region "Voucher summary reports"
         [HttpPost]
         public async Task<ApiResponse> GetProjectJobsByProjectIds([FromBody] List<long> projectIds)
@@ -1758,5 +1758,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             return await _mediator.Send(new GetProjectJobDetailByBudgetLineIdQuery { BudgetLineId = budgetLineId });
         }
         #endregion
+
+
     }
 }
