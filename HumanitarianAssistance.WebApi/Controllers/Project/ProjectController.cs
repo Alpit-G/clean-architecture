@@ -19,8 +19,8 @@ using HumanitarianAssistance.Application.Project.Commands.Delete;
 using HumanitarianAssistance.Application.Project.Commands.Update;
 using HumanitarianAssistance.Application.Project.Commands.Common;
 using HumanitarianAssistance.Application.Project.Models;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using HumanitarianAssistance.Common.Enums;
+using System.Linq;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Project
 {
@@ -268,7 +268,9 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         {
             return await _mediator.Send(new SecurityConsiderationListQuery());
         }
-     #endregion
+        #endregion
+
+        #region Add/Edit/Delete Project Info
 
         #region Project Details
         [HttpPost]
@@ -421,7 +423,9 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             return await _mediator.Send(model);
         }
 
-     #endregion
+        #endregion
+
+        #endregion
 
         #region "GetProjectWinLossStatus"
 
@@ -1762,6 +1766,64 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         }
         #endregion
 
+        #region "Create and Download Excel format"
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult CreateAndDownloadExcelFormat() 
+        {
 
+            ApiResponse apiRespone = new ApiResponse();
+            string fileName;
+            fileName = "ExcellData.xlsx";
+            var file = new FileInfo(fileName);
+            using (var package = new OfficeOpenXml.ExcelPackage(file))
+            {
+                var worksheet = package.Workbook.Worksheets.FirstOrDefault(x => x.Name == "Attempts");
+                worksheet = package.Workbook.Worksheets.Add("Assessment Attempts");
+                worksheet.Row(1).Height = 15;
+
+                //worksheet.TabColor = Color.Gold;
+                worksheet.DefaultRowHeight = 15;
+                worksheet.Row(1).Height = 15;
+
+                worksheet.Cells[1, 1].Value = "ProjectId";
+                worksheet.Cells[1, 2].Value = "ProjectJobCode";
+                worksheet.Cells[1, 3].Value = "ProjectJobName";
+                worksheet.Cells[1, 4].Value = "BudgetCode";
+                worksheet.Cells[1, 5].Value = "BudgetName";
+                worksheet.Cells[1, 6].Value = "InitialBudget";
+                worksheet.Cells[1, 7].Value = "CurrencyId";
+                worksheet.Cells[1, 8].Value = "CurrencyName";
+
+                var cells = worksheet.Cells["A1:J1"];
+
+                //worksheet.Column(1).AutoFit();
+                //worksheet.Column(2).AutoFit();
+                //worksheet.Column(3).AutoFit();
+                //worksheet.Column(4).AutoFit();
+                //worksheet.Column(5).AutoFit();
+                //worksheet.Column(6).AutoFit();
+                //worksheet.Column(7).AutoFit();
+                //worksheet.Column(8).AutoFit();
+
+
+                package.Workbook.Properties.Title = "Attempts";
+                var FileBytesArray = package.GetAsByteArray();
+                return File(
+                   fileContents: FileBytesArray,
+                   contentType: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                   fileDownloadName: "Budget-Line-Excel-Import-Sample.xlsx"
+               );
+            }         
+        }
+        #endregion
+
+        #region "Upload File Using Signed Url"
+        [HttpPost]
+        public async Task<ApiResponse> UploadDemoUsingBSignedUrlBucket([FromBody]DownloadFileFromBucketCommand command)
+        {
+            return await _mediator.Send(command);
+        }
+        #endregion
     }
 }
