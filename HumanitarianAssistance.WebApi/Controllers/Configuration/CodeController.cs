@@ -2,6 +2,9 @@ using HumanitarianAssistance.Common.Enums;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using HumanitarianAssistance.Application.Infrastructure;
+using System;
+using System.Threading.Tasks;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Configuration
 {
@@ -9,8 +12,9 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
     [Route("api/Code/[Action]")]
     [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Configuration))]
     [Authorize]
-    public class CodeController: BaseController
+    public class CodeController : BaseController
     {
+
         
     }
 }
