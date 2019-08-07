@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using HumanitarianAssistance.Application.Accounting.Models;
+using HumanitarianAssistance.Application.Configuration.Models;
 using HumanitarianAssistance.Application.Marketing.Models;
 using HumanitarianAssistance.Application.Project.Models;
 using HumanitarianAssistance.Domain.Entities;
@@ -235,6 +236,17 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public string BudgetWebLinkExtType { get; set; }
         public string ConceptWebLinkExtType { get; set; }
         public string PresentationWebLinkExtType { get; set; }
+
+
+        #endregion
+
+
+        #region "Code"
+        public IList<ProjectDetail> ProjectDetailList { get; set; }
+        public IList<ProfessionModel> ProfessionList { get; set; }
+        public IList<CountryDetailsModel> CountryDetailsList { get; set; }
+
+
 
 
         #endregion
