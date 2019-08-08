@@ -7,10 +7,11 @@ namespace HumanitarianAssistance.Common.Enums
     public enum SwaggerGrouping
     {
         Accounting = 1,
-        Hr = 2,
-        Store = 3,
-        Project = 4,
-        Marketing = 5
+        Configuration = 2,
+        Hr = 3,
+        Store = 4,
+        Project = 5,
+        Marketing = 6
     }
 
 

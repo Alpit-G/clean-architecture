@@ -19,14 +19,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
     [Produces("application/json")]
     [Route("api/ProjectPeopleController/[Action]")]
     [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Project))]
-    public class ProjectPeopleController : Controller
+    public class ProjectPeopleController : BaseController
     {
-        private readonly IMediator _mediator;
-        public ProjectPeopleController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
-
         [HttpPost]
         public async Task<ApiResponse> GetOpportunityControlList([FromBody] long projectId)
         {

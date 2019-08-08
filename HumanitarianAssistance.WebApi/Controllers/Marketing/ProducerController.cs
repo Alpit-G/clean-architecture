@@ -20,15 +20,11 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
     [Produces("application/json")]
     [Route("api/Producer/[Action]")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class ProducerController:Controller
+    public class ProducerController:BaseController
     {
         private readonly JsonSerializerSettings _serializerSettings;
-        private readonly UserManager<AppUser> _userManager;
-        private readonly IMediator _mediator;
-        public ProducerController(UserManager<AppUser> userManager, IMediator mediator)
+        public ProducerController()
         {
-            _userManager = userManager;
-            _mediator = mediator;
             _serializerSettings = new JsonSerializerSettings
             {
                 Formatting = Formatting.Indented,

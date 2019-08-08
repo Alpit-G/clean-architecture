@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using HumanitarianAssistance.Application.Accounting.Models;
+using HumanitarianAssistance.Application.Configuration.Models;
 using HumanitarianAssistance.Application.Marketing.Models;
 using HumanitarianAssistance.Application.Project.Models;
 using HumanitarianAssistance.Domain.Entities;
 using HumanitarianAssistance.Domain.Entities.Accounting;
+using HumanitarianAssistance.Domain.Entities.HR;
 using HumanitarianAssistance.Domain.Entities.Marketing;
 using HumanitarianAssistance.Domain.Entities.Project;
 
@@ -83,6 +85,10 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public List<ApplicationPages> ApplicationPagesList { get; set; }
         public IList<RolePermissionViewModel> PermissionsInRole { get; set; }
 
+        //Code
+        public IList<OfficeDetailModel> OfficeDetailsList { get; set; }
+        public IList<CurrencyModel> CurrencyList { get; set; }
+
 
 
 
@@ -158,6 +164,23 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public ICollection<GenderConsiderationDetail> GenderConsiderationDetail { get; set; }
         public ICollection<StrengthConsiderationDetail> StrengthConsiderationDetail { get; set; }
         public ICollection<SecurityDetail> SecurityDetail { get; set; }
+        public ICollection<SecurityConsiderationDetail> SecurityConsiderationDetail { get; set; }
+        public ProjectDetail ProjectDetail { get; set; }
+        public ICollection<ProjectDetailModel> ProjectDetailModel { get; set; }
+        public ProjectDetailModel ProjectDetailModel1 { get; set; }
+        public ProjectOtherDetail OtherProjectDetailById { get; set; }
+        public ProjectProgram projectProgram { get; set; }
+        public ProjectArea projectArea { get; set; }
+        public ProjectSector projectSector { get; set; }
+        public bool ProjectWinLoss { get; set; }
+        public IList<ProvinceDetailModel> ProvinceDetailsList { get; set; }
+        public List<int?> CountryMultiSelectById { get; set; } 
+        public List<int> ProvinceMultiSelectById { get; set; }
+        public List<long> DistrictMultiSelectById { get; set; }
+        public List<DistrictDetail> Districtlist { get; set; }
+        public List<long> SecurityConsiderationMultiSelectById { get; set; }
+
+
 
 
 
@@ -182,12 +205,69 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public ICollection<ProjectActivityModel> ProjectActivityList { get; set; }
         public List<ProjectMonitoringViewModel> ProjectMonitoring { get; set; }
         public ProjectMonitoringViewModel ProjectMonitoringModel { get; set; }
+        public EligibilityCriteriaDetail eligibilityCriteriaDetail { get; set; }
         public List<ProjectProposalAmountSummary> ProjectProposalAmountSummary { get; set; }
         public ProjectIndicatorModel ProjectIndicatorList { get; set; }
         public EditIndicatorModel IndicatorModel { get; set; }
         public ProjectIndicatorViewModel ProjectIndicator { get; set; }
         public List<IndicatorQuestions> Questions { get; set; }
         public List<SPProjectProposalReportModel> ProjectProposalReportList { get; set; }
+
+
+        //Web Link Url 05082019
+        public string SignedUrl { get; set; }
+        public WinProjectDetails WinProjectDetails { get; set; }
+        public ApproveProjectDetails ApproveProjectDetails { get; set; }
+        public ProjectProposalDetail ProjectProposalDetail { get; set; }
+        public ProjectCashFlowModel ProjectCashFlowModel { get; set; }
+        public BudgetLineBreakdownModel BudgetLineBreakdownModel { get; set; }
+        public ActivityDocumentDetailModel activityDocumnentDetail { get; set; }
+        public List<ActivityDocumentDetailModel> ActivityDocumentDetailModel { get; set; }
+        public ProjectActivityStatusModel ProjectActivityStatusModel { get; set; }
+        public IList<ProjectBudgetLineDetailsModel> ProjectBudgetLineDetailByBudgetId { get; set; }
+        public IList<ProjectBudgetLineDetailsModel> ProjectBudgetLineList { get; set; }
+        public IList<TransactionBudgetModel> TransactionBudgetModelList { get; set; }
+        public List<ProjectJobDetailModel> ProjectJobDetailModel { get; set; }
+        public ProjectJobDetailModel ProjectJobModel { get; set; }
+        public ICollection<PriorityOtherDetail> PriorityOtherDetail { get; set; }
+        public ICollection<CEFeasibilityExpertOtherDetail> FeasibilityExpertOtherDetail { get; set; }
+        public ICollection<CEAgeGroupDetail> CEAgeGroupDetail { get; set; }
+        public ICollection<CEAssumptionDetail> CEAssumptionDetail { get; set; }
+        public ICollection<DonorEligibilityCriteria> DonorEligibilityCriteria { get; set; }
+        public bool IsApprovedCriteriaEvaluation { get; set; }
+        public CriteriaEveluationModel CriteriaEveluationModel { get; set; }
+
+        public ProjectProposalModel ProjectProposalModel { get; set; }
+
+        #region "proposal web link" 
+        public string ProposalWebLink { get; set; }
+        public string EDIWebLink { get; set; }
+        public string BudgetWebLink { get; set; }
+        public string ConceptWebLink { get; set; }
+        public string PresentationWebLink { get; set; }
+
+        public string ProposalWebLinkExtType { get; set; }
+        public string EDIWebLinkExtType { get; set; }
+        public string BudgetWebLinkExtType { get; set; }
+        public string ConceptWebLinkExtType { get; set; }
+        public string PresentationWebLinkExtType { get; set; }
+
+
+        #endregion
+
+
+        //Code
+
+        public List<EmployeeAppraisalDetailsModel> EmployeeAppraisalDetailsModelLst { get; set; }
+        public List<InterviewTechnicalQuestionsModel> InterviewTechnicalQuestionsList { get; set; }
+        public List<ExitInterviewModel> ExitInterviewList { get; set; }
+        public SalaryTaxReportContent SalaryTaxReportContentDetails { get; set; }
+        public List<AdvancesHistoryModel> AdvanceHistory { get; set; }
+        public ICollection<PayrollAccountHead> PayrollAccountHead { get; set; }
+        public List<AccountType> AccountTypeList { get; set; }
+        public long? PensionDebitAccountId { get; set; }
+        public List<AttendanceGroupMasterModel> AttendanceGroupMasterList { get; set; }
+
     }
 
 

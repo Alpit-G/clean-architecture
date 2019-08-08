@@ -17,14 +17,9 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
     [Produces("application/json")]
     [Route("api/ClientController/[Action]")]
     [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Marketing))]
-    public class ClientController : Controller
+    public class ClientController : BaseController
     {
-        private readonly IMediator _mediator;
-        public ClientController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
-
+        
         [HttpPost]
         public async Task<ApiResponse> GetClientsPaginatedList([FromBody]GetClientsPaginatedListQuery query)
         {

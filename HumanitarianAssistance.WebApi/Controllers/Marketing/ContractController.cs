@@ -19,13 +19,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
     [Produces("application/json")]
     [Route("api/ContractController/[Action]")]
     [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Marketing))]
-    public class ContractController : Controller
+    public class ContractController : BaseController
     {
-        private readonly IMediator _mediator;
-        public ContractController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
         [HttpGet]
         public async Task<ApiResponse> GetMasterPagesValues()
         {

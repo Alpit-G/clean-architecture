@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
+using HumanitarianAssistance.Domain.Entities;
 using HumanitarianAssistance.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -26,7 +27,8 @@ namespace HumanitarianAssistance.Application.Project.Commands.Delete
             ApiResponse response = new ApiResponse();
             try
             {
-                var DonorInfo = await _dbContext.DonorDetail.FirstOrDefaultAsync(c => c.DonorId == request.DonorId);
+                DonorDetail DonorInfo = await _dbContext.DonorDetail.FirstOrDefaultAsync(c => c.DonorId == request.DonorId &&
+                                                                                              c.IsDeleted == false);
                 DonorInfo.IsDeleted = true;
                 DonorInfo.ModifiedById = request.ModifiedById;
                 DonorInfo.ModifiedDate = DateTime.UtcNow;

@@ -18,15 +18,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
     [Route("api/VoucherTransaction/[Action]")]
     [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Accounting))]
     [Authorize]
-    public class VoucherTransactionController : Controller
+    public class VoucherTransactionController : BaseController
     {
-        private readonly IMediator _mediator;
-
-        public VoucherTransactionController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
-
         [HttpPost]
         public async Task<ApiResponse> GetAllVoucherList([FromBody]GetAllVoucherListQuery model)
         {

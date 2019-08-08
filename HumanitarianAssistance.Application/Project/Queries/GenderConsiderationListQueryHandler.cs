@@ -13,7 +13,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
     public class GenderConsiderationListQueryHandler: IRequestHandler<GenderConsiderationListQuery, ApiResponse>
     {
 
-        private HumanitarianAssistanceDbContext _dbContext;
+        private readonly HumanitarianAssistanceDbContext _dbContext;
         
         public GenderConsiderationListQueryHandler(HumanitarianAssistanceDbContext dbContext)
         {

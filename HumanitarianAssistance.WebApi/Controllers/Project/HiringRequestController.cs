@@ -17,13 +17,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
     [Produces("application/json")]
     [Route("api/HiringRequestController/[Action]")]
     [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Project))]
-    public class HiringRequestController : Controller
+    public class HiringRequestController : BaseController
     {
-        private readonly IMediator _mediator;
-        public HiringRequestController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
 
         [HttpPost]
         public async Task<ApiResponse> GetProjectHiringRequestDetail([FromBody]GetallHiringRequestDetailQuery query)

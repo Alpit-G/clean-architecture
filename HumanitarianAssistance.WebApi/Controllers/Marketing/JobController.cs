@@ -19,14 +19,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
     [Produces("application/json")]
     [Route("api/JobController/[Action]")]
     [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Marketing))]
-    public class JobController : Controller
+    public class JobController : BaseController
     {
-        private readonly IMediator _mediator;
-        public JobController(IMediator mediator)
-        {
-            _mediator = mediator; 
-        }
-
         [HttpGet]
         public async Task<ApiResponse> GetJobsList()
         {

@@ -18,14 +18,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
     [Route("api/GainLossReport/[Action]/")]
     [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Accounting))]
     [Authorize]
-    public class GainLossReportController: Controller
+    public class GainLossReportController: BaseController
     {
-       private readonly IMediator _mediator; 
-
-       public  GainLossReportController(IMediator mediator)
-       {
-            _mediator = mediator;
-       }
 
         [HttpGet]
         public async Task<ApiResponse> GetExchangeGainLossFilterAccountList()

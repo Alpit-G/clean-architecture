@@ -235,7 +235,7 @@ namespace HumanitarianAssistance.Persistence
 
         public DbSet<ProjectHiringRequestDetail> ProjectHiringRequestDetail { get; set; }
         public DbSet<HiringRequestCandidates> HiringRequestCandidates { get; set; }
-
+        public DbSet<CountryMultiSelectDetails> CountryMultiSelectDetails { get; set; }
 
         #endregion
 
