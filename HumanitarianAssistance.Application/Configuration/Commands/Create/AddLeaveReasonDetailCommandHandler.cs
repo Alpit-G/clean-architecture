@@ -5,28 +5,34 @@ using HumanitarianAssistance.Domain.Entities;
 using HumanitarianAssistance.Persistence;
 using MediatR;
 using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace HumanitarianAssistance.Application.Configuration.Commands.Create
 {
-    public class AddProfessionCommandHandler : IRequestHandler<AddProfessionCommand, ApiResponse>
+    public class AddLeaveReasonDetailCommandHandler : IRequestHandler<AddLeaveReasonDetailCommand, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
         private IMapper _mapper;
-        public AddProfessionCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        public AddLeaveReasonDetailCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;
         }
-        public async Task<ApiResponse> Handle(AddProfessionCommand request, CancellationToken cancellationToken)
+        public async Task<ApiResponse> Handle(AddLeaveReasonDetailCommand request, CancellationToken cancellationToken)
         {
             ApiResponse response = new ApiResponse();
             try
             {
-                ProfessionDetails obj = _mapper.Map<ProfessionDetails>(request);
-                await _dbContext.ProfessionDetails.AddAsync(obj);
-                await _dbContext.SaveChangesAsync();
+                if (request != null)
+                {
+                    LeaveReasonDetail obj = _mapper.Map<LeaveReasonDetail>(request);
+                    obj.IsDeleted = false;
+                    await _dbContext.LeaveReasonDetail.AddAsync(obj);
+                    await _dbContext.SaveChangesAsync();
+                }
                 response.StatusCode = StaticResource.successStatusCode;
                 response.Message = "Success";
             }

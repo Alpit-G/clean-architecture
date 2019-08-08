@@ -8,7 +8,6 @@
     <Folder Include="Accounting\Commands\" />
     <Folder Include="Accounting\Models\" />
     <Folder Include="Configuration\Commands\Common\" />
-    <Folder Include="Configuration\Commands\Delete\" />
     <Folder Include="Hr\Commands\" />
     <Folder Include="Hr\Models\" />
     <Folder Include="Hr\Queries\" />

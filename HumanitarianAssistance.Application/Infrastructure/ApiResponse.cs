@@ -245,6 +245,15 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public IList<ProjectDetail> ProjectDetailList { get; set; }
         public IList<ProfessionModel> ProfessionList { get; set; }
         public IList<CountryDetailsModel> CountryDetailsList { get; set; }
+        public IList<QualificationDetailsModel> QualificationDetailsList { get; set; }
+        public IList<LeaveReasonDetailModel> LeaveReasonList { get; set; }
+        public IList<FinancialYearDetailModel> FinancialYearDetailList { get; set; }
+        public IList<EmployeeTypeModel> EmployeeTypeList { get; set; }
+        public IList<BudgetLineTypeModel> BudgetLineTypeList { get; set; }
+        public IList<CurrentFinancialYearModel> CurrentFinancialYearList { get; set; }
+        public IList<DepartmentModel> Departments { get; set; }
+        public IList<SalaryHeadModel> SalaryHeadList { get; set; }
+        public List<EmployeePensionRateModel> EmployeePensionRateList { get; set; }
 
 
 
