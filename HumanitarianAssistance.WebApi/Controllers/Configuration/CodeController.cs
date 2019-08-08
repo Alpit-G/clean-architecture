@@ -3,27 +3,15 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Hosting;
-using System.IO;
-using HumanitarianAssistance.Common.Helpers;
 using System.Collections.Generic;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Enums;
-using System.Linq;
 using HumanitarianAssistance.Application.Configuration.Commands.Common;
 using HumanitarianAssistance.Application.Configuration.Commands.Create;
 using HumanitarianAssistance.Application.Configuration.Commands.Update;
 using HumanitarianAssistance.Application.Configuration.Queries;
 using HumanitarianAssistance.Application.Configuration.Commands.Delete;
 using HumanitarianAssistance.Application.Accounting.Models;
-using HumanitarianAssistance.Application.Infrastructure;
-using System;
-using System.Threading.Tasks;
-using HumanitarianAssistance.Application.Configuration.Commands.Create;
-using HumanitarianAssistance.Application.Configuration.Commands.Update;
-using HumanitarianAssistance.Application.Configuration.Commands.Delete;
-using HumanitarianAssistance.Application.Configuration.Queries;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Configuration
 {
@@ -33,6 +21,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
     [Authorize]
     public class CodeController : BaseController
     {
+
+        #region "Created by Arjun Singh"
         [HttpPost]
         public async Task<ApiResponse> ApproveEmployeeAppraisalRequest([FromQuery] int EmployeeAppraisalDetailsId)
         {
@@ -328,16 +318,11 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
             command.ModifiedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
         }
-    }    
-}
+
+        #endregion
 
 
 
-
-
-
-    public class CodeController : BaseController
-    {
 
         [HttpPost]
         public async Task<ApiResponse> AddOfficeDetail([FromBody]AddOfficeDetailCommand model)
