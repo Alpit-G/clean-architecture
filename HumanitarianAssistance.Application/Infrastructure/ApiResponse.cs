@@ -7,6 +7,7 @@ using HumanitarianAssistance.Application.Marketing.Models;
 using HumanitarianAssistance.Application.Project.Models;
 using HumanitarianAssistance.Domain.Entities;
 using HumanitarianAssistance.Domain.Entities.Accounting;
+using HumanitarianAssistance.Domain.Entities.HR;
 using HumanitarianAssistance.Domain.Entities.Marketing;
 using HumanitarianAssistance.Domain.Entities.Project;
 
@@ -147,6 +148,16 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public PolicyDaySchedule policyDayScheduleDetails { get; set; }
         public Producer producerById { get; set; }
         public List<PolicyModel> PolicyFilteredList { get; set; }
+        public ICollection<ProjectDetailNewModel> ProjectDetailModel { get; set; }
+        public List<ScheduleDetailModel> scheduleDetailsList { get; set; }
+        public List<string> RepeatDays { get; set; }
+        public SchedulerModel scheduleDetailsModel { get; set; }
+        public ICollection<ChannelModel> ChannelList { get; set; }
+        public ScheduleDetails scheduleDetails { get; set; }
+        public List<SchedulerModel> SchedulerList { get; internal set; }
+        public ScheduleDetails schedulerDetails { get; set; }
+        public PlayoutMinutes playoutMinutesDetails { get; set; }
+
 
         //Project
         public ICollection<DonorDetail> DonorDetail { get; set; }
@@ -248,6 +259,19 @@ namespace HumanitarianAssistance.Application.Infrastructure
 
 
         #endregion
+
+
+        //Code
+
+        public List<EmployeeAppraisalDetailsModel> EmployeeAppraisalDetailsModelLst { get; set; }
+        public List<InterviewTechnicalQuestionsModel> InterviewTechnicalQuestionsList { get; set; }
+        public List<ExitInterviewModel> ExitInterviewList { get; set; }
+        public SalaryTaxReportContent SalaryTaxReportContentDetails { get; set; }
+        public List<AdvancesHistoryModel> AdvanceHistory { get; set; }
+        public ICollection<PayrollAccountHead> PayrollAccountHead { get; set; }
+        public List<AccountType> AccountTypeList { get; set; }
+        public long? PensionDebitAccountId { get; set; }
+        public List<AttendanceGroupMasterModel> AttendanceGroupMasterList { get; set; }
 
     }
 
