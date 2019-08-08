@@ -10,7 +10,7 @@ using HumanitarianAssistance.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
-namespace HumanitarianAssistance.Application.Project.Commands.Create
+namespace HumanitarianAssistance.Application.Project.Commands.Common
 {
     public class AddEditDonorDetailsCommandHandler: IRequestHandler<AddEditDonorDetailsCommand, ApiResponse>
     {

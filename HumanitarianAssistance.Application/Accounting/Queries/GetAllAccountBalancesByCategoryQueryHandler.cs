@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using HumanitarianAssistance.Application.Accounting.Models;
-using HumanitarianAssistance.Application.CommonFunctions;
+using HumanitarianAssistance.Application.CommonServices;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Enums;
 using HumanitarianAssistance.Common.Helpers;
@@ -37,9 +37,9 @@ namespace HumanitarianAssistance.Application.Accounting.Queries
                 if (inputLevelList.Any(x => x.AccountTypeId == null))
                     throw new Exception("Some accounts do not have notes assigned to them!");
 
-                AccountBalanceFunctions accountBalanceFunctions= new AccountBalanceFunctions(_dbContext);
+                AccountBalanceServices AccountBalanceServices= new AccountBalanceServices(_dbContext);
 
-                var accountBalances = await accountBalanceFunctions.GetAccountBalances(inputLevelList, request.asOfDate, request.currency);
+                var accountBalances = await AccountBalanceServices.GetAccountBalances(inputLevelList, request.asOfDate, request.currency);
 
                 var notes = inputLevelList.Select(x => x.AccountType).Distinct().ToList();
                 List<NoteAccountBalancesModel> noteAccountBalances = new List<NoteAccountBalancesModel>();
@@ -48,7 +48,7 @@ namespace HumanitarianAssistance.Application.Accounting.Queries
                 {
                     var currNoteBalances = accountBalances.Where(x => x.Key.AccountTypeId == note.AccountTypeId).ToDictionary(x => x.Key, x => x.Value);
 
-                    var vmNoteBalances = accountBalanceFunctions.GenerateBalanceViewModels(currNoteBalances);
+                    var vmNoteBalances = AccountBalanceServices.GenerateBalanceViewModels(currNoteBalances);
 
                     var currNoteAccountBalances = new NoteAccountBalancesModel();
 

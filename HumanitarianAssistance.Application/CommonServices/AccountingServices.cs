@@ -6,6 +6,7 @@ using AutoMapper;
 using HumanitarianAssistance.Application.Accounting.Commands.Common;
 using HumanitarianAssistance.Application.Accounting.Commands.Create;
 using HumanitarianAssistance.Application.Accounting.Models;
+using HumanitarianAssistance.Application.CommonServicesInterface;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Domain.Entities;
@@ -15,27 +16,27 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace HumanitarianAssistance.Application.CommonFunctions
+namespace HumanitarianAssistance.Application.CommonServices
 {
-    internal class AccountingFunctions
+    internal class AccountingServices: IAccountingServices
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
         private readonly IMapper _mapper;
         private readonly RoleManager<IdentityRole> _roleManager;
 
 
-        public AccountingFunctions(HumanitarianAssistanceDbContext dbContext)
+        public AccountingServices(HumanitarianAssistanceDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public AccountingFunctions(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        public AccountingServices(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;
         }
 
-        public AccountingFunctions(HumanitarianAssistanceDbContext dbContext, RoleManager<IdentityRole> roleManager)
+        public AccountingServices(HumanitarianAssistanceDbContext dbContext, RoleManager<IdentityRole> roleManager)
         {
             _dbContext = dbContext;
             _roleManager = roleManager;

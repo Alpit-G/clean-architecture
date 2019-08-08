@@ -1,7 +1,7 @@
 ﻿using HumanitarianAssistance.Application.Infrastructure;
 using MediatR;
 
-namespace HumanitarianAssistance.Application.Project.Commands.Create
+namespace HumanitarianAssistance.Application.Project.Commands.Common
 {
     public class AddEditProjectJobDetailCommand : BaseModel, IRequest<ApiResponse>
     {

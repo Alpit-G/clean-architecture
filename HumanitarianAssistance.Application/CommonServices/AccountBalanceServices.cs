@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using HumanitarianAssistance.Application.Accounting.Models;
+using HumanitarianAssistance.Application.CommonServicesInterface;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Domain.Entities;
@@ -10,13 +11,13 @@ using HumanitarianAssistance.Domain.Entities.Accounting;
 using HumanitarianAssistance.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace HumanitarianAssistance.Application.CommonFunctions
+namespace HumanitarianAssistance.Application.CommonServices
 {
-    internal class AccountBalanceFunctions
+    internal class AccountBalanceServices: IAccountBalanceServices
     {
-        private readonly HumanitarianAssistanceDbContext _dbContext;
+        public readonly HumanitarianAssistanceDbContext _dbContext;
 
-        public AccountBalanceFunctions(HumanitarianAssistanceDbContext dbContext)
+        public AccountBalanceServices(HumanitarianAssistanceDbContext dbContext)
         {
             _dbContext = dbContext;
         }
@@ -24,7 +25,7 @@ namespace HumanitarianAssistance.Application.CommonFunctions
         // Generate view models for key value pairs of accounts(full objects) and their balances.
         // Dictionaries cannot be converted to json objects properly by the framework so use
         // this helper function to prepare your account balances for json.
-        internal List<AccountBalanceModel> GenerateBalanceViewModels(Dictionary<ChartOfAccountNew, double> rawBalances)
+        public List<AccountBalanceModel> GenerateBalanceViewModels(Dictionary<ChartOfAccountNew, double> rawBalances)
         {
             List<AccountBalanceModel> vmBalances = new List<AccountBalanceModel>();
             foreach (var balance in rawBalances)
@@ -161,7 +162,7 @@ namespace HumanitarianAssistance.Application.CommonFunctions
             return response;
         }
 
-        private async Task<List<VoucherTransactions>> GetAccountTransactions(List<ChartOfAccountNew> inputLevelAccounts, DateTime endDate)
+        public async Task<List<VoucherTransactions>> GetAccountTransactions(List<ChartOfAccountNew> inputLevelAccounts, DateTime endDate)
         {
             return await _dbContext.VoucherTransactions
                 .Where(x => x.TransactionDate != null ? x.TransactionDate.Value.Date <= endDate.Date : x.TransactionDate <= endDate
@@ -172,7 +173,7 @@ namespace HumanitarianAssistance.Application.CommonFunctions
                 .ToListAsync();
         }
 
-        private async Task<List<VoucherTransactions>> GetAccountTransactions(List<ChartOfAccountNew> inputLevelAccounts, DateTime startDate,
+        public async Task<List<VoucherTransactions>> GetAccountTransactions(List<ChartOfAccountNew> inputLevelAccounts, DateTime startDate,
             DateTime endDate)
         {
             return await _dbContext.VoucherTransactions
@@ -185,7 +186,7 @@ namespace HumanitarianAssistance.Application.CommonFunctions
                 .ToListAsync();
         }
 
-        private double DetermineTransactionExrate(VoucherTransactions transaction,
+        public double DetermineTransactionExrate(VoucherTransactions transaction,
             List<ExchangeRateDetail> rates, int toCurrencyId)
         {
             double xExchangeRate = 0.0;
@@ -210,7 +211,7 @@ namespace HumanitarianAssistance.Application.CommonFunctions
 
         }
 
-        private double DetermineTransactionExrate(VoucherTransactions transaction,
+        public double DetermineTransactionExrate(VoucherTransactions transaction,
             List<ExchangeRateDetail> rates, int toCurrencyId, DateTime onDate)
         {
             double xExchangeRate = 0.0;
@@ -236,7 +237,7 @@ namespace HumanitarianAssistance.Application.CommonFunctions
         }
 
         // Value after exchange on the transaction date
-        private async Task<List<VoucherTransactions>> GetTransactionValuesAfterExchange(List<VoucherTransactions> transactions, int toCurrencyId)
+        public async Task<List<VoucherTransactions>> GetTransactionValuesAfterExchange(List<VoucherTransactions> transactions, int toCurrencyId)
         {
             var ratesQuery = _dbContext.ExchangeRateDetail.Where(x => x.ToCurrency == toCurrencyId
                                                                                && transactions.Select(y => y.CurrencyId).Contains(x.FromCurrency)
@@ -258,7 +259,7 @@ namespace HumanitarianAssistance.Application.CommonFunctions
             return outputTransactions;
         }
 
-        private Dictionary<ChartOfAccountNew, double> CalculateAccountBalances(
+        public Dictionary<ChartOfAccountNew, double> CalculateAccountBalances(
             List<ChartOfAccountNew> inputLevelAccounts, List<VoucherTransactions> accountTransactions)
         {
             Dictionary<ChartOfAccountNew, double> accountBalances = new Dictionary<ChartOfAccountNew, double>();
@@ -279,7 +280,7 @@ namespace HumanitarianAssistance.Application.CommonFunctions
         }
 
         // thhis override calculates transaction credit/debit value after exchange on the transaction date
-        internal async Task<Dictionary<ChartOfAccountNew, double>> GetAccountBalances(List<ChartOfAccountNew> inputLevelAccounts, DateTime transactionsTillDate,
+        public async Task<Dictionary<ChartOfAccountNew, double>> GetAccountBalances(List<ChartOfAccountNew> inputLevelAccounts, DateTime transactionsTillDate,
             int toCurrencyId)
         {
             var transactions = await GetAccountTransactions(inputLevelAccounts, transactionsTillDate);
@@ -289,7 +290,7 @@ namespace HumanitarianAssistance.Application.CommonFunctions
         }
 
         // this override calculates transaction credit/debit values after exchange based on the given transactionCompareDate
-        internal async Task<Dictionary<ChartOfAccountNew, double>> GetAccountBalances(List<ChartOfAccountNew> inputLevelAccounts, DateTime transactionsTillDate,
+        public async Task<Dictionary<ChartOfAccountNew, double>> GetAccountBalances(List<ChartOfAccountNew> inputLevelAccounts, DateTime transactionsTillDate,
             DateTime transactionExchangeDate, int toCurrencyId)
         {
             var transactions = await GetAccountTransactions(inputLevelAccounts, transactionsTillDate);
@@ -298,7 +299,7 @@ namespace HumanitarianAssistance.Application.CommonFunctions
             return CalculateAccountBalances(inputLevelAccounts, exchangeValuedTransactions);
         }
 
-        internal async Task<Dictionary<ChartOfAccountNew, double>> GetAccountBalances(List<ChartOfAccountNew> inputLevelAccounts,
+        public async Task<Dictionary<ChartOfAccountNew, double>> GetAccountBalances(List<ChartOfAccountNew> inputLevelAccounts,
             int toCurrencyId, DateTime transactionsStartingFrom, DateTime transactionsUntil)
         {
             var transactions = await GetAccountTransactions(inputLevelAccounts, transactionsStartingFrom, transactionsUntil);
@@ -307,7 +308,7 @@ namespace HumanitarianAssistance.Application.CommonFunctions
             return CalculateAccountBalances(inputLevelAccounts, exchangeValuedTransactions);
         }
 
-        internal async Task<Dictionary<ChartOfAccountNew, double>> GetAccountBalances(List<ChartOfAccountNew> inputLevelAccounts,
+        public async Task<Dictionary<ChartOfAccountNew, double>> GetAccountBalances(List<ChartOfAccountNew> inputLevelAccounts,
             int toCurrencyId, DateTime transactionsStartingFrom, DateTime transactionsUntil, DateTime transactionExchangeDate)
         {
             var transactions = await GetAccountTransactions(inputLevelAccounts, transactionsStartingFrom, transactionsUntil);
@@ -316,7 +317,7 @@ namespace HumanitarianAssistance.Application.CommonFunctions
             return CalculateAccountBalances(inputLevelAccounts, exchangeValuedTransactions);
         }
 
-        private async Task<List<VoucherTransactions>> GetAccountTransactions(List<ChartOfAccountNew> inputLevelAccounts, DateTime startDate,
+        public async Task<List<VoucherTransactions>> GetAccountTransactions(List<ChartOfAccountNew> inputLevelAccounts, DateTime startDate,
             DateTime endDate, List<int?> journalList, List<int?> officeList, List<long?> projectIdList)
         {
             var data = await _dbContext.VoucherTransactions
@@ -336,7 +337,7 @@ namespace HumanitarianAssistance.Application.CommonFunctions
             return data;
         }
 
-        internal async Task<Dictionary<ChartOfAccountNew, double>> GetAccountBalances(List<ChartOfAccountNew> inputLevelAccounts,
+        public async Task<Dictionary<ChartOfAccountNew, double>> GetAccountBalances(List<ChartOfAccountNew> inputLevelAccounts,
            int toCurrencyId, DateTime transactionsStartingFrom, DateTime transactionsUntil, List<int?> journalList, List<int?> officeList, List<long?> projectIdList)
         {
             var transactions = await GetAccountTransactions(inputLevelAccounts, transactionsStartingFrom, transactionsUntil, journalList, officeList, projectIdList);
@@ -405,7 +406,7 @@ namespace HumanitarianAssistance.Application.CommonFunctions
             return response;
         }
 
-        internal async Task<Dictionary<ChartOfAccountNew, double>> GetAccountBalances(List<ChartOfAccountNew> inputLevelAccounts,
+        public async Task<Dictionary<ChartOfAccountNew, double>> GetAccountBalances(List<ChartOfAccountNew> inputLevelAccounts,
             int toCurrencyId, DateTime transactionsStartingFrom, DateTime transactionsUntil, DateTime transactionExchangeDate, List<int?> journalList, List<int?> officeList, List<long?> projectIdList)
         {
             var transactions = await GetAccountTransactions(inputLevelAccounts, transactionsStartingFrom, transactionsUntil, journalList, officeList, projectIdList);
@@ -415,7 +416,7 @@ namespace HumanitarianAssistance.Application.CommonFunctions
         }
 
         // Value after exchange on the given onDate
-        private async Task<List<VoucherTransactions>> GetTransactionValuesAfterExchange(List<VoucherTransactions> transactions, int toCurrencyId, DateTime onDate)
+        public async Task<List<VoucherTransactions>> GetTransactionValuesAfterExchange(List<VoucherTransactions> transactions, int toCurrencyId, DateTime onDate)
         {
             if (!transactions.Any())
             {
@@ -446,6 +447,5 @@ namespace HumanitarianAssistance.Application.CommonFunctions
 
             return outputTransactions;
         }
-
     }
 }

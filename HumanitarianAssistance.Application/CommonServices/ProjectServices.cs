@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HumanitarianAssistance.Application.CommonServicesInterface;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Application.Project.Models;
 using HumanitarianAssistance.Common.Helpers;
@@ -9,12 +10,12 @@ using HumanitarianAssistance.Domain.Entities.Project;
 using HumanitarianAssistance.Persistence;
 using Microsoft.EntityFrameworkCore;
 
-namespace HumanitarianAssistance.Application.CommonFunctions.Project
+namespace HumanitarianAssistance.Application.CommonServices
 {
-    internal class ProjectFunctions
+    internal class ProjectServices: IProjectServices
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
-        public ProjectFunctions(HumanitarianAssistanceDbContext dbContext)
+        public ProjectServices(HumanitarianAssistanceDbContext dbContext)
         {
             _dbContext = dbContext;
         }
