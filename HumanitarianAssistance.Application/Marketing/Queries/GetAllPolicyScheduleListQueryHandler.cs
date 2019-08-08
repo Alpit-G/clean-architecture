@@ -1,5 +1,6 @@
 ﻿using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Application.Marketing.Models;
+using HumanitarianAssistance.Application.Project.Models;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Persistence;
 using MediatR;
@@ -27,7 +28,7 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
                 List<JobDetailsModel> JobList = await GetJobsList();
                 List<ScheduleDetailModel> policyScheduleList = await GetPolicyScheduleList();
                 List<PolicyModel> policyDetail = await PolicyList();
-                List<ProjectDetailNewModel> ProjectList = await GetProjectList();
+                List<ProjectDetailModel> ProjectList = await GetProjectList();
                 response.data.ProjectDetailModel = ProjectList;
                 response.data.policyList = policyDetail;
                 response.data.JobDetailsModel = JobList;
@@ -126,11 +127,11 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
             return policyDetail;
         }
 
-        public async Task<List<ProjectDetailNewModel>> GetProjectList()
+        public async Task<List<ProjectDetailModel>> GetProjectList()
         {
             var ProjectList = await _dbContext.ProjectDetail
                                          .Where(x => x.IsDeleted == false && x.ProjectName != "")
-                                         .OrderByDescending(x => x.ProjectId).Select(x => new ProjectDetailNewModel
+                                         .OrderByDescending(x => x.ProjectId).Select(x => new ProjectDetailModel
                                          {
                                              ProjectId = x.ProjectId,
                                              ProjectCode = x.ProjectCode,

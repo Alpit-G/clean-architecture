@@ -265,10 +265,10 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
                 ModifiedDate = DateTime.UtcNow
             });
         }
-        [HttpPost] 
+        [HttpPost]
         public async Task<ApiResponse> GetAllAccountByAccountHeadTypeId([FromBody]int id)
         {
-            return await _mediator.Send(new GetAllAccountByAccountHeadTypeIdQuery { Id = id }); 
+            return await _mediator.Send(new GetAllAccountByAccountHeadTypeIdQuery { Id = id });
         }
         [HttpGet]
         [AllowAnonymous]
@@ -284,21 +284,21 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
             return await _mediator.Send(new AddEditPensionDebitAccountCommand
             {
                 accountId = accountId,
-                CreatedById=userId,
-                CreatedDate=DateTime.UtcNow,
+                CreatedById = userId,
+                CreatedDate = DateTime.UtcNow,
                 ModifiedById = userId,
                 ModifiedDate = DateTime.UtcNow
             });
         }
         [HttpGet]
-        public async Task<ApiResponse> GetPensionDebitAccount() 
+        public async Task<ApiResponse> GetPensionDebitAccount()
         {
-            return await _mediator.Send(new GetPensionDebitAccountQuery()); 
+            return await _mediator.Send(new GetPensionDebitAccountQuery());
         }
         [HttpGet]
         public async Task<ApiResponse> GetAttendanceGroups()
         {
-            return await _mediator.Send(new GetAttendanceGroupsQuery()); 
+            return await _mediator.Send(new GetAttendanceGroupsQuery());
         }
 
         [HttpPost]
@@ -312,7 +312,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         [HttpPost]
         public async Task<ApiResponse> EditAttendanceGroups([FromBody]EditAttendanceGroupsCommand command)
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value; 
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             command.ModifiedById = userId;
             command.ModifiedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
@@ -524,6 +524,91 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         {
             return await _mediator.Send(new GetAllAccountTypeByCategoryQuery());
         }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllEmployeeAppraisalDetailsByEmployeeId([FromQuery] int EmployeeId, DateTime CurrentAppraisalDate)
+        {
+            return await _mediator.Send(new GetEmployeeAppraisalByIdQuery { EmployeeId = EmployeeId, CurrentAppraisalDate = CurrentAppraisalDate });
+        }
+
+        [HttpGet]
+        public async Task<object> GetAllEmployeeAppraisalDetails([FromQuery] int OfficeId)
+        {
+            return await _mediator.Send(new GetEmployeeAppraisalDetailQuery { OfficeId = OfficeId });
+        }
+
+        [HttpPost]
+        public async Task<object> EditEmployeeAppraisalDetails([FromBody] EditEmployeeAppraisalDetailCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<object> AddEmployeeAppraisalDetails([FromBody] AddEmployeeAppraisalCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpGet]
+        public async Task<object> GetAppraisalQuestions()
+        {
+            return await _mediator.Send(new GetAppraisalQuestionsQuery());
+        }
+
+        [HttpPost]
+        public async Task<object> EditAppraisalQuestion([FromBody] EditAppraisalQuestionCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<object> AddAppraisalQuestion([FromBody] AddAppraisalQuestionCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<object> EditPensionRate([FromBody] EditPensionRateCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<object> AddPensionRate([FromBody] AddPensionRateCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
 
     }
 }

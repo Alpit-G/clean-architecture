@@ -93,7 +93,8 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public IList<EmailTypeModel> EmailTypeList { get; set; }
         public List<AccountType> AccountTypeList { get; set; }
         public IList<DesignationModel> DesignationList { get; set; }
-
+        public EmployeeAppraisalDetailsModel EmployeeAppraisalDetailsModel { get; set; }
+        public List<AppraisalGeneralQuestions> AppraisalList { get; set; }
 
 
 
@@ -148,7 +149,7 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public PolicyDaySchedule policyDayScheduleDetails { get; set; }
         public Producer producerById { get; set; }
         public List<PolicyModel> PolicyFilteredList { get; set; }
-        public ICollection<ProjectDetailNewModel> ProjectDetailModel { get; set; }
+        public ICollection<ProjectDetailModel> ProjectDetailModel { get; set; }
         public List<ScheduleDetailModel> scheduleDetailsList { get; set; }
         public List<string> RepeatDays { get; set; }
         public SchedulerModel scheduleDetailsModel { get; set; }
@@ -171,7 +172,6 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public ICollection<SecurityDetail> SecurityDetail { get; set; }
         public ICollection<SecurityConsiderationDetail> SecurityConsiderationDetail { get; set; }
         public ProjectDetail ProjectDetail { get; set; }
-        public ICollection<ProjectDetailModel> ProjectDetailModel { get; set; }
         public ProjectDetailModel ProjectDetailModel1 { get; set; }
         public ProjectOtherDetail OtherProjectDetailById { get; set; }
         public ProjectProgram projectProgram { get; set; }
@@ -269,7 +269,6 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public SalaryTaxReportContent SalaryTaxReportContentDetails { get; set; }
         public List<AdvancesHistoryModel> AdvanceHistory { get; set; }
         public ICollection<PayrollAccountHead> PayrollAccountHead { get; set; }
-        public List<AccountType> AccountTypeList { get; set; }
         public long? PensionDebitAccountId { get; set; }
         public List<AttendanceGroupMasterModel> AttendanceGroupMasterList { get; set; }
 
