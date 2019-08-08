@@ -5,11 +5,13 @@ using HumanitarianAssistance.Application.Accounting.Models;
 using HumanitarianAssistance.Application.Configuration.Models;
 using HumanitarianAssistance.Application.Marketing.Models;
 using HumanitarianAssistance.Application.Project.Models;
+using HumanitarianAssistance.Application.Store.Models;
 using HumanitarianAssistance.Domain.Entities;
 using HumanitarianAssistance.Domain.Entities.Accounting;
 using HumanitarianAssistance.Domain.Entities.HR;
 using HumanitarianAssistance.Domain.Entities.Marketing;
 using HumanitarianAssistance.Domain.Entities.Project;
+using HumanitarianAssistance.Domain.Entities.Store;
 
 namespace HumanitarianAssistance.Application.Infrastructure
 {
@@ -166,7 +168,6 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public ICollection<SecurityDetail> SecurityDetail { get; set; }
         public ICollection<SecurityConsiderationDetail> SecurityConsiderationDetail { get; set; }
         public ProjectDetail ProjectDetail { get; set; }
-        public ICollection<ProjectDetailModel> ProjectDetailModel { get; set; }
         public ProjectDetailModel ProjectDetailModel1 { get; set; }
         public ProjectOtherDetail OtherProjectDetailById { get; set; }
         public ProjectProgram projectProgram { get; set; }
@@ -174,7 +175,7 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public ProjectSector projectSector { get; set; }
         public bool ProjectWinLoss { get; set; }
         public IList<ProvinceDetailModel> ProvinceDetailsList { get; set; }
-        public List<int?> CountryMultiSelectById { get; set; } 
+        public List<int?> CountryMultiSelectById { get; set; }
         public List<int> ProvinceMultiSelectById { get; set; }
         public List<long> DistrictMultiSelectById { get; set; }
         public List<DistrictDetail> Districtlist { get; set; }
@@ -267,6 +268,17 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public List<AccountType> AccountTypeList { get; set; }
         public long? PensionDebitAccountId { get; set; }
         public List<AttendanceGroupMasterModel> AttendanceGroupMasterList { get; set; }
+
+        // Store
+        public string ItemGroupCode { get; set; }
+        public string StoreSourceCode { get; set; }
+        public List<StoreInventoryModel> InventoryList { get; set; }
+        public List<StoreInventoryItemModel> InventoryItemList { get; set; }
+        public List<InventoryItemTypeModel> InventoryItemTypeList { get; set; }
+        public List<StoreItemPurchaseViewModel> StoreItemsPurchaseViewList { get; set; }
+        public List<StoreItemGroupModel> storeItemGroupList { get; set; }
+        public ICollection<PaymentTypes> PaymentTypesList { get; set; }
+        public List<StoreSourceCodeDetailModel> SourceCodeDatalist { get; set; }
 
     }
 
