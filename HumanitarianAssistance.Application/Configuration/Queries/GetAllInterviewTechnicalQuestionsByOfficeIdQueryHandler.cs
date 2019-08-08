@@ -30,7 +30,7 @@ namespace HumanitarianAssistance.Application.Configuration.Queries
 
                 response.data.InterviewTechnicalQuestionsList = await (from i in _dbContext.InterviewTechnicalQuestions.AsNoTracking()
                                                                        where i.OfficeId == request.OfficeId
-                                                                       select new InterviewTechnicalQuestions
+                                                                       select new InterviewTechnicalQuestionsModel
                                                                        {
                                                                            OfficeId=i.OfficeId,
                                                                            InterviewTechnicalQuestionsId=i.InterviewTechnicalQuestionsId,

@@ -7,6 +7,7 @@ using HumanitarianAssistance.Application.Marketing.Models;
 using HumanitarianAssistance.Application.Project.Models;
 using HumanitarianAssistance.Domain.Entities;
 using HumanitarianAssistance.Domain.Entities.Accounting;
+using HumanitarianAssistance.Domain.Entities.HR;
 using HumanitarianAssistance.Domain.Entities.Marketing;
 using HumanitarianAssistance.Domain.Entities.Project;
 
@@ -244,7 +245,14 @@ namespace HumanitarianAssistance.Application.Infrastructure
         //Code
 
         public List<EmployeeAppraisalDetailsModel> EmployeeAppraisalDetailsModelLst { get; set; }
-        public List<InterviewTechnicalQuestions> InterviewTechnicalQuestionsList { get; set; }
+        public List<InterviewTechnicalQuestionsModel> InterviewTechnicalQuestionsList { get; set; }
+        public List<ExitInterviewModel> ExitInterviewList { get; set; }
+        public SalaryTaxReportContent SalaryTaxReportContentDetails { get; set; }
+        public List<AdvancesHistoryModel> AdvanceHistory { get; set; }
+        public ICollection<PayrollAccountHead> PayrollAccountHead { get; set; }
+        public List<AccountType> AccountTypeList { get; set; }
+        public long? PensionDebitAccountId { get; set; }
+        public List<AttendanceGroupMasterModel> AttendanceGroupMasterList { get; set; }
 
     }
 

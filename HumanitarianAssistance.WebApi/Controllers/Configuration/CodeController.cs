@@ -15,6 +15,8 @@ using HumanitarianAssistance.Application.Configuration.Commands.Common;
 using HumanitarianAssistance.Application.Configuration.Commands.Create;
 using HumanitarianAssistance.Application.Configuration.Commands.Update;
 using HumanitarianAssistance.Application.Configuration.Queries;
+using HumanitarianAssistance.Application.Configuration.Commands.Delete;
+using HumanitarianAssistance.Application.Accounting.Models;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Configuration
 {
@@ -35,7 +37,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
                 CreatedDate = DateTime.UtcNow,
                 ModifiedById = userId,
                 ModifiedDate = DateTime.UtcNow
-            }); 
+            });
         }
         [HttpPost]
         public async Task<ApiResponse> RejectEmployeeAppraisalRequest([FromQuery] int EmployeeAppraisalDetailsId)
@@ -43,19 +45,19 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return await _mediator.Send(new RejectEmployeeAppraisalRequestCommand
             {
-                EmployeeAppraisalDetailsId = EmployeeAppraisalDetailsId, 
+                EmployeeAppraisalDetailsId = EmployeeAppraisalDetailsId,
                 CreatedById = userId,
                 CreatedDate = DateTime.UtcNow,
                 ModifiedById = userId,
                 ModifiedDate = DateTime.UtcNow
-            }); 
+            });
         }
 
         [HttpPost]
         public async Task<ApiResponse> ApproveEmployeeEvaluationRequest([FromQuery] int EmployeeEvaluationId)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return await _mediator.Send(new ApproveEmployeeEvaluationRequestCommand 
+            return await _mediator.Send(new ApproveEmployeeEvaluationRequestCommand
             {
                 EmployeeEvaluationId = EmployeeEvaluationId,
                 ModifiedById = userId,
@@ -66,7 +68,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         [HttpPost]
         public async Task<ApiResponse> RejectEmployeeEvaluationRequest([FromQuery] int EmployeeEvaluationId)
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value; 
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return await _mediator.Send(new RejectEmployeeEvaluationRequestCommand
             {
                 EmployeeEvaluationId = EmployeeEvaluationId,
@@ -78,7 +80,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         [HttpPost]
         public async Task<ApiResponse> ApproveEmployeeInterviewRequest([FromQuery] int InterviewDetailsId)
         {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value; 
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return await _mediator.Send(new ApproveEmployeeInterviewRequestCommand
             {
                 InterviewDetailsId = InterviewDetailsId,
@@ -109,12 +111,12 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         }
 
         [HttpPost]
-        public async Task<ApiResponse> EditEmployeeAppraisalMoreDetails([FromBody]EditEmployeeAppraisalMoreDetailsCommand command) 
+        public async Task<ApiResponse> EditEmployeeAppraisalMoreDetails([FromBody]EditEmployeeAppraisalMoreDetailsCommand command)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             command.ModifiedById = userId;
-            command.ModifiedDate = DateTime.UtcNow; 
-            return await _mediator.Send(command); 
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
         }
         [HttpPost]
         public async Task<ApiResponse> GetAllEmployeeAppraisalMoreDetails([FromQuery] int OfficeId)
@@ -130,20 +132,20 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         [HttpPost]
         public async Task<ApiResponse> GetEmployeeDetailByOfficeId([FromQuery] int OfficeId)
         {
-            return await _mediator.Send(new GetEmployeeDetailByOfficeIdQuery { OfficeId = OfficeId }); 
+            return await _mediator.Send(new GetEmployeeDetailByOfficeIdQuery { OfficeId = OfficeId });
         }
         [HttpPost]
         public async Task<ApiResponse> GetEmployeeDetailByEmployeeId([FromQuery] int EmployeeId)
         {
             return await _mediator.Send(new GetEmployeeDetailByEmployeeIdQuery { EmployeeId = EmployeeId });
         }
-        
-       [HttpPost]
-        public async Task<ApiResponse> AddInterviewTechnicalQuestions([FromBody]AddInterviewTechnicalQuestionsCommand command) 
+
+        [HttpPost]
+        public async Task<ApiResponse> AddInterviewTechnicalQuestions([FromBody]AddInterviewTechnicalQuestionsCommand command)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             command.CreatedById = userId;
-            command.CreatedDate = DateTime.UtcNow;  
+            command.CreatedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
         }
         [HttpPost]
@@ -152,12 +154,12 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             command.ModifiedById = userId;
             command.ModifiedDate = DateTime.UtcNow;
-            return await _mediator.Send(command); 
+            return await _mediator.Send(command);
         }
         [HttpPost]
         public async Task<ApiResponse> GetAllInterviewTechnicalQuestionsByOfficeId([FromQuery] int OfficeId)
         {
-            return await _mediator.Send(new GetAllInterviewTechnicalQuestionsByOfficeIdQuery { OfficeId = OfficeId }); 
+            return await _mediator.Send(new GetAllInterviewTechnicalQuestionsByOfficeIdQuery { OfficeId = OfficeId });
         }
         [HttpPost]
         public async Task<ApiResponse> AddExitInterview([FromBody]AddExitInterviewCommand command)
@@ -165,10 +167,164 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             command.CreatedById = userId;
             command.CreatedDate = DateTime.UtcNow;
-            return await _mediator.Send(command); 
+            return await _mediator.Send(command);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> EditExitInterview([FromBody]EditExitInterviewCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> DeleteExitInterview([FromQuery] int existInterviewDetailsId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new DeleteExitInterviewCommand
+            {
+                existInterviewDetailsId = existInterviewDetailsId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            });
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllExitInterview()
+        {
+            return await _mediator.Send(new GetAllExitInterviewQuery());
+        }
+        [HttpPost]
+        public async Task<ApiResponse> GetSalaryTaxReportContentDetails(int OfficeId)
+        {
+            return await _mediator.Send(new GetSalaryTaxReportContentDetailsQuery { OfficeId = OfficeId });
+        }
+        [HttpPost]
+        public async Task<ApiResponse> AddSalaryTaxReportContentDetails([FromBody]AddSalaryTaxReportContentDetailsCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> EditSalaryTaxReportContentDetails([FromBody]EditSalaryTaxReportContentDetailsCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> GetEmployeeAdvanceHistoryDetail(long AdvanceID)
+        {
+            return await _mediator.Send(new GetEmployeeAdvanceHistoryDetailQuery { AdvanceID = AdvanceID });
+        }
+        [HttpGet]
+        public async Task<ApiResponse> GetAllPayrollHead()
+        {
+            return await _mediator.Send(new GetAllPayrollHeadQuery());
+        }
+        [HttpPost]
+        public async Task<ApiResponse> AddPayrollAccountHead([FromBody]AddPayrollAccountHeadCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> UpdatePayrollAccountHead([FromBody]UpdatePayrollAccountHeadCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> DeletePayrollAccountHead([FromBody]DeletePayrollAccountHeadCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> GetAllDistrictDetailByProvinceId([FromBody] List<int?> ProvinceId)
+        {
+            return await _mediator.Send(new GetAllDistrictDetailByProvinceIdQuery { ProvinceId = ProvinceId });
+        }
+
+        //need to change later now this is only implemented to test
+        [HttpPost]
+        public async Task<ApiResponse> UpdatePayrollAccountHeadAllEmployees([FromBody] List<PayrollHeadModel> model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new UpdatePayrollAccountHeadAllEmployeesCommand
+            {
+                PayrollHead = model,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            });
+        }
+        [HttpPost] 
+        public async Task<ApiResponse> GetAllAccountByAccountHeadTypeId([FromBody]int id)
+        {
+            return await _mediator.Send(new GetAllAccountByAccountHeadTypeIdQuery { Id = id }); 
+        }
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<ApiResponse> GetApplicationPages()
+        {
+            return await _mediator.Send(new GetApplicationPagesQuery());
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEditPensionDebitAccount([FromBody]long accountId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new AddEditPensionDebitAccountCommand
+            {
+                accountId = accountId,
+                CreatedById=userId,
+                CreatedDate=DateTime.UtcNow,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            });
+        }
+        [HttpGet]
+        public async Task<ApiResponse> GetPensionDebitAccount() 
+        {
+            return await _mediator.Send(new GetPensionDebitAccountQuery()); 
+        }
+        [HttpGet]
+        public async Task<ApiResponse> GetAttendanceGroups()
+        {
+            return await _mediator.Send(new GetAttendanceGroupsQuery()); 
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddAttendanceGroups([FromBody]AddAttendanceGroupsCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> EditAttendanceGroups([FromBody]EditAttendanceGroupsCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value; 
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
         }
     }    
 }
+
+
 
 
 
