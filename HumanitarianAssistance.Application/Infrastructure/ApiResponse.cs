@@ -85,6 +85,10 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public List<ApplicationPages> ApplicationPagesList { get; set; }
         public IList<RolePermissionViewModel> PermissionsInRole { get; set; }
 
+        //Code
+        public IList<OfficeDetailModel> OfficeDetailsList { get; set; }
+        public IList<CurrencyModel> CurrencyList { get; set; }
+
 
 
 

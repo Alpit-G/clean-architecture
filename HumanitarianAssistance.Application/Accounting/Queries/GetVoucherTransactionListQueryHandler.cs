@@ -16,11 +16,10 @@ namespace HumanitarianAssistance.Application.Accounting.Queries
 {
     public class GetVoucherTransactionListQueryHandler : IRequestHandler<GetVoucherTransactionListQuery, ApiResponse>
     {
-        private HumanitarianAssistanceDbContext _dbContext;
+        private readonly HumanitarianAssistanceDbContext _dbContext;
 
         public GetVoucherTransactionListQueryHandler(HumanitarianAssistanceDbContext dbContext)
         {
-
             _dbContext = dbContext;
         }
 
