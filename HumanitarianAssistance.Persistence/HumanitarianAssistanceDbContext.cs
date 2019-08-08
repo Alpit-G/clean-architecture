@@ -274,7 +274,8 @@ namespace HumanitarianAssistance.Persistence
 
         #endregion
 
-
+        //Added by Saksham
+        public DbSet<PurchaseUnitType> PurchaseUnitType { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
