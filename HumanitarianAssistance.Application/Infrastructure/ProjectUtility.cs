@@ -98,5 +98,20 @@ namespace HumanitarianAssistance.Application.Infrastructure
         {
             return projectCode + "-J" + string.Format("{0:D3}", id);
         }
-    } 
+        public static string getScheduleCode(this string ScheduleId)
+        {
+            string code = string.Empty;
+            if (ScheduleId.Length == 1)
+                return code = "0000" + ScheduleId;
+            else if (ScheduleId.Length == 2)
+                return code = "000" + ScheduleId;
+            else if (ScheduleId.Length == 3)
+                return code = "00" + ScheduleId;
+            else if (ScheduleId.Length == 4)
+                return code = "0" + ScheduleId;
+            else
+                return code = "" + ScheduleId;
+        }
+    }
 }
+

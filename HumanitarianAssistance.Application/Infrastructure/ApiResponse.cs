@@ -7,6 +7,7 @@ using HumanitarianAssistance.Application.Marketing.Models;
 using HumanitarianAssistance.Application.Project.Models;
 using HumanitarianAssistance.Domain.Entities;
 using HumanitarianAssistance.Domain.Entities.Accounting;
+using HumanitarianAssistance.Domain.Entities.HR;
 using HumanitarianAssistance.Domain.Entities.Marketing;
 using HumanitarianAssistance.Domain.Entities.Project;
 
@@ -84,6 +85,16 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public List<ApplicationPages> ApplicationPagesList { get; set; }
         public IList<RolePermissionViewModel> PermissionsInRole { get; set; }
 
+        //Code
+        public IList<OfficeDetailModel> OfficeDetailsList { get; set; }
+        public IList<CurrencyModel> CurrencyList { get; set; }
+        public IList<JournalDetailModel> JournalDetailList { get; set; }
+        public IList<EmailSettingModel> EmailSettingList { get; set; }
+        public IList<EmailTypeModel> EmailTypeList { get; set; }
+        public List<AccountType> AccountTypeList { get; set; }
+        public IList<DesignationModel> DesignationList { get; set; }
+        public EmployeeAppraisalDetailsModel EmployeeAppraisalDetailsModel { get; set; }
+        public List<AppraisalGeneralQuestions> AppraisalList { get; set; }
 
 
 
@@ -138,6 +149,16 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public PolicyDaySchedule policyDayScheduleDetails { get; set; }
         public Producer producerById { get; set; }
         public List<PolicyModel> PolicyFilteredList { get; set; }
+        public ICollection<ProjectDetailModel> ProjectDetailModel { get; set; }
+        public List<ScheduleDetailModel> scheduleDetailsList { get; set; }
+        public List<string> RepeatDays { get; set; }
+        public SchedulerModel scheduleDetailsModel { get; set; }
+        public ICollection<ChannelModel> ChannelList { get; set; }
+        public ScheduleDetails scheduleDetails { get; set; }
+        public List<SchedulerModel> SchedulerList { get; internal set; }
+        public ScheduleDetails schedulerDetails { get; set; }
+        public PlayoutMinutes playoutMinutesDetails { get; set; }
+
 
         //Project
         public ICollection<DonorDetail> DonorDetail { get; set; }
@@ -151,7 +172,6 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public ICollection<SecurityDetail> SecurityDetail { get; set; }
         public ICollection<SecurityConsiderationDetail> SecurityConsiderationDetail { get; set; }
         public ProjectDetail ProjectDetail { get; set; }
-        public ICollection<ProjectDetailModel> ProjectDetailModel { get; set; }
         public ProjectDetailModel ProjectDetailModel1 { get; set; }
         public ProjectOtherDetail OtherProjectDetailById { get; set; }
         public ProjectProgram projectProgram { get; set; }
@@ -254,11 +274,17 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public IList<DepartmentModel> Departments { get; set; }
         public IList<SalaryHeadModel> SalaryHeadList { get; set; }
         public List<EmployeePensionRateModel> EmployeePensionRateList { get; set; }
-
-
-
-
+        public List<EmployeeAppraisalDetailsModel> EmployeeAppraisalDetailsModelLst { get; set; }
+        public List<InterviewTechnicalQuestionsModel> InterviewTechnicalQuestionsList { get; set; }
+        public List<ExitInterviewModel> ExitInterviewList { get; set; }
+        public SalaryTaxReportContent SalaryTaxReportContentDetails { get; set; }
+        public List<AdvancesHistoryModel> AdvanceHistory { get; set; }
+        public ICollection<PayrollAccountHead> PayrollAccountHead { get; set; }
+        public long? PensionDebitAccountId { get; set; }
+        public List<AttendanceGroupMasterModel> AttendanceGroupMasterList { get; set; }
         #endregion
+
+
 
     }
 

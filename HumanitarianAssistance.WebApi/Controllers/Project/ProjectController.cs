@@ -1659,6 +1659,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             command.CreatedById = userId;
             command.CreatedDate = DateTime.UtcNow;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
         }
         [HttpGet]
