@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using HumanitarianAssistance.Application.CommonFunctions;
+using HumanitarianAssistance.Application.CommonServices;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Domain.Entities.Accounting;
@@ -29,7 +29,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Common
 
             try
             {
-                AccountingFunctions accountingObj = new AccountingFunctions(_dbContext);
+                AccountingServices accountingObj = new AccountingServices(_dbContext);
 
                 if (await accountingObj.ReverseEmployeeSalaryVoucher(request))
                 {

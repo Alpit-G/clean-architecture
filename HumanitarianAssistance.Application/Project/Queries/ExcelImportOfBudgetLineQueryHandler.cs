@@ -4,7 +4,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using HumanitarianAssistance.Application.CommonFunctions.Project;
+using HumanitarianAssistance.Application.CommonServices;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Application.Project.Models;
 using HumanitarianAssistance.Common.Helpers;
@@ -34,7 +34,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
             {
                 if (request.ProjectId != 0)
                 {
-                    ProjectFunctions projectFunctions= new ProjectFunctions(_dbContext);
+                    ProjectServices ProjectServices= new ProjectServices(_dbContext);
 
                     using (ExcelPackage package = new ExcelPackage(request.File))
                     {
@@ -63,7 +63,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
                         }
 
                         //Note: GetBudgetLine List by project Id 
-                        List<ProjectBudgetLineDetailModel> projectListdata = projectFunctions.GetBudgetLineByProjectId(DataList, request.ProjectId);
+                        List<ProjectBudgetLineDetailModel> projectListdata = ProjectServices.GetBudgetLineByProjectId(DataList, request.ProjectId);
 
                         if (projectListdata.Count > 0)
                         {

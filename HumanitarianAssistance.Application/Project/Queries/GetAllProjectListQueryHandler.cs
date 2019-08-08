@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using HumanitarianAssistance.Common.Helpers;
-using HumanitarianAssistance.Application.Project.Models;
+using HumanitarianAssistance.Application.Marketing.Models;
 
 namespace HumanitarianAssistance.Application.Project.Queries
 {
@@ -28,7 +28,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
             {
                 var ProjectList = await _dbContext.ProjectDetail
                                           .Where(x => !x.IsDeleted.Value)
-                                          .OrderByDescending(x => x.ProjectId).Select(x => new ProjectDetailModel
+                                          .OrderByDescending(x => x.ProjectId).Select(x => new ProjectDetailNewModel
                                           {
                                               ProjectId = x.ProjectId,
                                               ProjectCode = x.ProjectCode,
@@ -37,11 +37,6 @@ namespace HumanitarianAssistance.Application.Project.Queries
                                               IsWin = _dbContext.WinProjectDetails.Where(y => y.ProjectId == x.ProjectId).Select(y => y.IsWin).FirstOrDefault(),
                                               IsCriteriaEvaluationSubmit = x.IsCriteriaEvaluationSubmit,
                                               ProjectPhase = x.ProjectPhaseDetailsId == x.ProjectPhaseDetails.ProjectPhaseDetailsId ? x.ProjectPhaseDetails.ProjectPhase.ToString() : "",
-                                              //? "Data Entry"
-                                              // : x.ProjectPhaseDetailsId == (long)ProjectPhaseType.DataEntryPhase
-                                              //   ? ""
-                                              // : "",
-
                                               TotalDaysinHours = x.EndDate == null ? (Convert.ToString(Math.Round(DateTime.UtcNow.Subtract(x.StartDate.Value).TotalHours, 0) + ":" + DateTime.UtcNow.Subtract(x.StartDate.Value).Minutes)) : (Convert.ToString(Math.Round(x.EndDate.Value.Subtract(x.StartDate.Value).TotalHours, 0) + ":" + x.EndDate.Value.Subtract(x.StartDate.Value).Minutes))
                                           }).ToListAsync();
                 response.data.ProjectDetailModel = ProjectList;

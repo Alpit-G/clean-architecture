@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using HumanitarianAssistance.Application.CommonFunctions;
+using HumanitarianAssistance.Application.CommonServices;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Persistence;
@@ -28,7 +28,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Common
             {
                 await Task.Run(() =>
                 {
-                    AccountingFunctions accountingObj = new AccountingFunctions(_dbContext);
+                    AccountingServices accountingObj = new AccountingServices(_dbContext);
 
                     // Common Function to Add/Update Transaction
                     bool transactionAddedFlag = accountingObj.AddEditTransactionList(request);

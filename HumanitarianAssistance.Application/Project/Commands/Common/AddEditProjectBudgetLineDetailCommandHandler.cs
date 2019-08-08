@@ -1,14 +1,10 @@
 ﻿using AutoMapper;
-using HumanitarianAssistance.Application.Accounting.Models;
-using HumanitarianAssistance.Application.CommonFunctions.Project;
+using HumanitarianAssistance.Application.CommonServices;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
-using HumanitarianAssistance.Domain.Entities;
-using HumanitarianAssistance.Domain.Entities.HR;
 using HumanitarianAssistance.Domain.Entities.Project;
 using HumanitarianAssistance.Persistence;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
 using System.Threading;
@@ -42,9 +38,9 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
 
                     if (obj.BudgetLineId != 0)
                     {
-                        ProjectFunctions projectFunctions = new ProjectFunctions(_dbContext);
+                        ProjectServices ProjectServices = new ProjectServices(_dbContext);
 
-                        obj.BudgetCode = await projectFunctions.GetProjectBudgetLineCode(obj);
+                        obj.BudgetCode = await ProjectServices.GetProjectBudgetLineCode(obj);
 
                         await _dbContext.SaveChangesAsync();
                     }

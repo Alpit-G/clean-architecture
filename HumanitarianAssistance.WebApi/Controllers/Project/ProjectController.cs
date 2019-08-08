@@ -54,6 +54,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             model.ModifiedDate = DateTime.UtcNow;
             model.CreatedById = userId;
             model.CreatedDate = DateTime.UtcNow;
+            model.CreatedDate = DateTime.UtcNow;
             return await _mediator.Send(model);
         }
 

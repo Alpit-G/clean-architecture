@@ -8,6 +8,7 @@ using HumanitarianAssistance.Domain.Entities.Store;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Threading.Tasks;
 
 namespace HumanitarianAssistance.Persistence
 {
@@ -169,6 +170,9 @@ namespace HumanitarianAssistance.Persistence
         public DbSet<Errorlog> Errorlog { get; set; }
         public DbSet<DocumentFileDetail> DocumentFileDetail { get; set; }
         public DbSet<AttendanceGroupMaster> AttendanceGroupMaster { get; set; }
+
+        //created by arjun singh
+        public DbSet<InventoryItemType> InventoryItemType { get; set; }
 
 
         #region Project
