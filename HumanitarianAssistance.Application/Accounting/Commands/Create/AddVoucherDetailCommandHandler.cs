@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using HumanitarianAssistance.Application.Accounting.Models;
-using HumanitarianAssistance.Application.CommonFunctions;
+using HumanitarianAssistance.Application.CommonServices;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Domain.Entities;
@@ -32,7 +32,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
 
             try
             {
-                AccountingFunctions accountingObj = new AccountingFunctions(_dbContext, _mapper);
+                AccountingServices accountingObj = new AccountingServices(_dbContext, _mapper);
 
                 // Common Function to Add/Update Transaction
                 VoucherDetailEntityModel voucherDetail = await accountingObj.AddVoucherDetail(request);
