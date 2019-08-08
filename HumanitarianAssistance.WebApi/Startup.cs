@@ -15,42 +15,40 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using AutoMapper;
+using Newtonsoft.Json;
+using System;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
+using HumanitarianAssistance.WebApi.SignalRHub;
 
 namespace HumanitarianAssistance.WebApi
 {
     public class Startup
     {
-
-        string DefaultCorsPolicyName = string.Empty;
+        private string defaultCorsPolicyName = string.Empty;
 
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        private IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // db connection
-            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+            //get and set environment variable at run time
+            string connectionString = Environment.GetEnvironmentVariable("LINUX_DBCONNECTION_STRING");
+            string DefaultCorsPolicyUrl = Environment.GetEnvironmentVariable("DEFAULT_CORS_POLICY_URL");
+            // string DefaultsPolicyName = Environment.GetEnvironmentVariable("DEFAULT_CORS_POLICY_NAME");
+
+            defaultCorsPolicyName = Configuration["DEFAULT_CORS_POLICY_NAME"];
+
+            // Database connection
+            Console.WriteLine("Connection string: {0}\n", connectionString);
             services.AddDbContextPool<HumanitarianAssistanceDbContext>(options => options.UseNpgsql(connectionString));
 
-            DefaultCorsPolicyName = Configuration["DefaultCorsPolicyName:PolicyName"];
-            string DefaultCorsPolicyUrl = Configuration["DefaultCorsPolicyName:PolicyUrl"];
-
-            //For Cors Setting
-            services.AddCors(options =>
-            {
-                options.AddPolicy(DefaultCorsPolicyName, p =>
-                {
-                    //todo: Get from configuration
-                    p.WithOrigins(DefaultCorsPolicyUrl).AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
-
-                });
-            });
-
+            // identity
             services.AddIdentity<AppUser, IdentityRole>(o =>
             {
                 o.Password.RequireDigit = false;
@@ -62,50 +60,56 @@ namespace HumanitarianAssistance.WebApi
             }).AddEntityFrameworkStores<HumanitarianAssistanceDbContext>().AddDefaultTokenProviders();
 
 
-
-            // DI
-
-
-
-
-
             // Mediater Between Send To Handler
             services.AddMediatR(typeof(Startup));
             services.AddMediatR(typeof(GetMainLevelAccountQueryHandler).GetTypeInfo().Assembly);
 
-            // Jwt Config
-            services.AddJwtAuthentication(Configuration);
-
-
-            // swagger configuration
-            services.AddSwaggerDocumentation();
+            // Dependency Injection
+            services.AddDependencyInjection();
 
             // AutoMapper will scan our assembly and look for classes that inherit from Profile, then load their mapping configurations.
             services.AddAutoMapper();
 
-            //important to run your application
-            services.AddMvc()
-                .AddJsonOptions(c =>
+            // api user claim policy
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("Trust", policy => policy.RequireClaim("Roles", "Admin", "SuperAdmin", "Accounting Manager", "HR Manager", "Project Manager", "Administrator"));
+            });
+
+
+            //For Cors Setting
+            services.AddCors(options =>
+            {
+                options.AddPolicy(defaultCorsPolicyName, p =>
                 {
-                    c.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
+                    //todo: Get from configuration
+                    p.WithOrigins(DefaultCorsPolicyUrl).AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+
                 });
-
-            services.AddRouting();
-
+            });
 
 
-
-
-
-
-
+            // set compatibility
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            // In production, the Angular files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
+            // default response set to json  
+            services.AddMvc().AddJsonOptions(c =>
             {
-                configuration.RootPath = "ClientApp/dist";
+                c.SerializerSettings.ContractResolver = new Newtonsoft.Json.Serialization.DefaultContractResolver();
+                c.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
             });
+
+            services.AddRouting();
+            services.AddSignalR();
+
+
+            // Jwt Config
+            services.AddJwtAuthentication(Configuration);
+
+            // swagger configuration
+            services.AddSwaggerDocumentation();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -122,35 +126,93 @@ namespace HumanitarianAssistance.WebApi
                 app.UseHsts();
             }
 
-            // swagger configuration
-            app.UseSwaggerDocumentation();
-
-            // to use identity
-            app.UseAuthentication();
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
 
+            app.UseCookiePolicy();
+            app.UseCors(defaultCorsPolicyName);
+            app.UseAuthentication();
+
+            // swagger configuration
+            app.UseSwaggerDocumentation();
+
+            // signal-R
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<NotifyHub>("/notifyhub");
+            });
+
+           
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
-                    name: "default",
-                    template: "{controller}/{action=Index}/{id?}");
+                name: "default",
+                template: "{controller}/{action=Index}/{id?}");
             });
 
+
+
+
+            // for each angular client we want to host. 
+            app.Map(new PathString("/oldui"), client =>
+            {
+                string oldUiPath = env.IsDevelopment() ? "OldUI" : @"OldUI/dist";
+
+                // Each map gets its own physical path for it to map the static files to. 
+                StaticFileOptions olduiDist = new StaticFileOptions()
+                {
+                    FileProvider = new PhysicalFileProvider(
+                            Path.Combine(Directory.GetCurrentDirectory(), oldUiPath)
+                        )
+                };
+
+                // Each map its own static files otherwise it will only ever serve index.html no matter the filename 
+                client.UseSpaStaticFiles(olduiDist);
+
+                client.UseSpa(spa =>
+                {
+                    spa.Options.StartupTimeout = new TimeSpan(0, 5, 0);
+                    spa.Options.SourcePath = "OldUI";
+
+                    if (env.IsDevelopment())
+                    {
+                        // it will use package.json & will search for start command to run
+                        spa.UseAngularCliServer(npmScript: "start");
+                    }
+                    else
+                    {
+                        spa.Options.DefaultPageStaticFileOptions = olduiDist;
+                    }
+                });
+            });
+
+            // without map redirect to newui
+            string defaultPath = env.IsDevelopment() ? "NewUI" : @"NewUI/dist";
+            StaticFileOptions defaultDist = new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(
+                        Path.Combine(Directory.GetCurrentDirectory(), defaultPath)
+                    )
+            };
+            app.UseSpaStaticFiles(defaultDist);
             app.UseSpa(spa =>
             {
-                // To learn more about options for serving an Angular SPA from ASP.NET Core,
-                // see https://go.microsoft.com/fwlink/?linkid=864501
-
-                spa.Options.SourcePath = "ClientApp";
+                spa.Options.StartupTimeout = new TimeSpan(0, 5, 0);
+                spa.Options.SourcePath = "NewUI";
 
                 if (env.IsDevelopment())
                 {
+                    // it will use package.json & will search for start command to run
                     spa.UseAngularCliServer(npmScript: "start");
                 }
+                else
+                {
+                    spa.Options.DefaultPageStaticFileOptions = defaultDist;
+                }
             });
+
+
 
             app.Run(async (context) =>
             {
