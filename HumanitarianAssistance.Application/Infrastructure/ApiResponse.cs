@@ -87,6 +87,11 @@ namespace HumanitarianAssistance.Application.Infrastructure
         //Code
         public IList<OfficeDetailModel> OfficeDetailsList { get; set; }
         public IList<CurrencyModel> CurrencyList { get; set; }
+        public IList<JournalDetailModel> JournalDetailList { get; set; }
+        public IList<EmailSettingModel> EmailSettingList { get; set; }
+        public IList<EmailTypeModel> EmailTypeList { get; set; }
+        public List<AccountType> AccountTypeList { get; set; }
+        public IList<DesignationModel> DesignationList { get; set; }
 
 
 

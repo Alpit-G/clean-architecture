@@ -114,5 +114,115 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
             model.CreatedDate = DateTime.UtcNow;
             return await _mediator.Send(model);
         }
+
+        [HttpPost]
+        public async Task<object> DeleteJournalDetail([FromBody] DeleteJournalDetailCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpGet]
+        public async Task<object> GetAllJournalDetail()
+        {
+            return await _mediator.Send(new GetAllCurrencyQuery());
+        }
+
+        //Email Setting Details Module Controller
+        [HttpGet]
+        public async Task<object> GetAllEmailSettingDetail()
+        {
+            return await _mediator.Send(new GetAllCurrencyQuery());
+        }
+
+        [HttpPost]
+        public async Task<object> AddEmailSettingDetail([FromBody] AddEmailSettingCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<object> EditEmailSettingDetail([FromBody] EditEmailSettingCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpGet]
+        public async Task<object> GetAllEmailType()
+        {
+            return await _mediator.Send(new GetAllEmailTypeQuery());
+        }
+
+        [HttpPost]
+
+        public async Task<ApiResponse> AddAccountType([FromBody]AddAccountTypeCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> EditAccountType([FromBody]EditAccountTypeCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<object> GetAllAccountTypeByCategory([FromBody]int id)
+        {
+            return await _mediator.Send(new GetAllAccountTypeByCategoryQuery());
+        }
+
+        [HttpPost]
+        public async Task<object> AddDesignation([FromBody] AddDesignationCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<object> EditDesignation([FromBody] EditDesignationCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllDesignation()
+        {
+            return await _mediator.Send(new GetAllAccountTypeByCategoryQuery());
+        }
+
     }
 }
