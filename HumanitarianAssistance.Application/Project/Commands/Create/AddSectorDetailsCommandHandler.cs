@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using HumanitarianAssistance.Application.CommonFunctions.Project;
+using HumanitarianAssistance.Application.CommonServices;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Application.Project.Models;
 using HumanitarianAssistance.Common.Helpers;
@@ -69,11 +69,11 @@ namespace HumanitarianAssistance.Application.Project.Commands.Create
                                 ProjectSectorId = 0
                             };
 
-                            ProjectFunctions projectFunctions= new ProjectFunctions(_dbContext);
+                            ProjectServices ProjectServices= new ProjectServices(_dbContext);
 
 
 
-                            var addEditProjectSector = await projectFunctions.AddEditProjectSector(projectSectorModel, request.CreatedById);
+                            var addEditProjectSector = await ProjectServices.AddEditProjectSector(projectSectorModel, request.CreatedById);
 
                             if (addEditProjectSector.StatusCode == 200)
                             {

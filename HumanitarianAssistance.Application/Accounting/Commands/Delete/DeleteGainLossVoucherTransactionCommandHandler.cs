@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using HumanitarianAssistance.Application.CommonFunctions;
+using HumanitarianAssistance.Application.CommonServices;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Persistence;
@@ -34,8 +34,8 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Delete
             {
                 if (command.VoucherNo != 0)
                 { 
-                    AccountingFunctions accountingFunctions= new AccountingFunctions(_dbContext, _mapper);
-                    var voucherResponse = await accountingFunctions.DeleteVoucher(command.VoucherNo);
+                    AccountingServices AccountingServices= new AccountingServices(_dbContext, _mapper);
+                    var voucherResponse = await AccountingServices.DeleteVoucher(command.VoucherNo);
                     response.StatusCode = StaticResource.successStatusCode;
                     response.Message = StaticResource.SuccessText;
                 }

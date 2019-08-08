@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using HumanitarianAssistance.Application.Accounting.Commands.Common;
 using HumanitarianAssistance.Application.Accounting.Models;
-using HumanitarianAssistance.Application.CommonFunctions;
+using HumanitarianAssistance.Application.CommonServices;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Persistence;
@@ -44,8 +44,8 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                     IsExchangeGainLossVoucher = true
                 };
 
-                AccountingFunctions accountingFunctions= new AccountingFunctions(_dbContext, _mapper);
-                var responseVoucher = await accountingFunctions.AddVoucherDetail(voucherModel);
+                AccountingServices AccountingServices= new AccountingServices(_dbContext, _mapper);
+                var responseVoucher = await AccountingServices.AddVoucherDetail(voucherModel);
 
                 #endregion
 
@@ -85,7 +85,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                         VoucherTransactions = transactions
                     };
 
-                    bool isTransactionSaved = accountingFunctions.AddEditTransactionList(transactionVoucherDetail);
+                    bool isTransactionSaved = AccountingServices.AddEditTransactionList(transactionVoucherDetail);
 
                     if (isTransactionSaved)
                     {

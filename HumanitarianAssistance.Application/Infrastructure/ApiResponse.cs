@@ -90,7 +90,13 @@ namespace HumanitarianAssistance.Application.Infrastructure
         //Code
         public IList<OfficeDetailModel> OfficeDetailsList { get; set; }
         public IList<CurrencyModel> CurrencyList { get; set; }
-
+        public IList<JournalDetailModel> JournalDetailList { get; set; }
+        public IList<EmailSettingModel> EmailSettingList { get; set; }
+        public IList<EmailTypeModel> EmailTypeList { get; set; }
+        public List<AccountType> AccountTypeList { get; set; }
+        public IList<DesignationModel> DesignationList { get; set; }
+        public EmployeeAppraisalDetailsModel EmployeeAppraisalDetailsModel { get; set; }
+        public List<AppraisalGeneralQuestions> AppraisalList { get; set; }
 
 
 
@@ -145,7 +151,7 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public PolicyDaySchedule policyDayScheduleDetails { get; set; }
         public Producer producerById { get; set; }
         public List<PolicyModel> PolicyFilteredList { get; set; }
-        public ICollection<ProjectDetailNewModel> ProjectDetailModel { get; set; }
+        public ICollection<ProjectDetailModel> ProjectDetailModel { get; set; }
         public List<ScheduleDetailModel> scheduleDetailsList { get; set; }
         public List<string> RepeatDays { get; set; }
         public SchedulerModel scheduleDetailsModel { get; set; }
@@ -257,17 +263,30 @@ namespace HumanitarianAssistance.Application.Infrastructure
         #endregion
 
 
-        //Code
-
+        #region "Code"
+        public IList<ProjectDetail> ProjectDetailList { get; set; }
+        public IList<ProfessionModel> ProfessionList { get; set; }
+        public IList<CountryDetailsModel> CountryDetailsList { get; set; }
+        public IList<QualificationDetailsModel> QualificationDetailsList { get; set; }
+        public IList<LeaveReasonDetailModel> LeaveReasonList { get; set; }
+        public IList<FinancialYearDetailModel> FinancialYearDetailList { get; set; }
+        public IList<EmployeeTypeModel> EmployeeTypeList { get; set; }
+        public IList<BudgetLineTypeModel> BudgetLineTypeList { get; set; }
+        public IList<CurrentFinancialYearModel> CurrentFinancialYearList { get; set; }
+        public IList<DepartmentModel> Departments { get; set; }
+        public IList<SalaryHeadModel> SalaryHeadList { get; set; }
+        public List<EmployeePensionRateModel> EmployeePensionRateList { get; set; }
         public List<EmployeeAppraisalDetailsModel> EmployeeAppraisalDetailsModelLst { get; set; }
         public List<InterviewTechnicalQuestionsModel> InterviewTechnicalQuestionsList { get; set; }
         public List<ExitInterviewModel> ExitInterviewList { get; set; }
         public SalaryTaxReportContent SalaryTaxReportContentDetails { get; set; }
         public List<AdvancesHistoryModel> AdvanceHistory { get; set; }
         public ICollection<PayrollAccountHead> PayrollAccountHead { get; set; }
-        public List<AccountType> AccountTypeList { get; set; }
         public long? PensionDebitAccountId { get; set; }
         public List<AttendanceGroupMasterModel> AttendanceGroupMasterList { get; set; }
+        #endregion
+
+
 
         // Store
         public string ItemGroupCode { get; set; }
