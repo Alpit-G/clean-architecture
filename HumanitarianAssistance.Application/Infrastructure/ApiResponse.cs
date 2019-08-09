@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using HumanitarianAssistance.Application.Accounting.Models;
 using HumanitarianAssistance.Application.Configuration.Models;
+using HumanitarianAssistance.Application.HR.Models;
 using HumanitarianAssistance.Application.Marketing.Models;
 using HumanitarianAssistance.Application.Project.Models;
 using HumanitarianAssistance.Application.Store.Models;
@@ -312,6 +313,10 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public string InventoryCode { get; set; }
         public string InventoryItemCode { get; set; }
         public List<CodeType> SourceCodeTypelist { get; set; }
+
+
+        //HR
+        public List<EmployeeHistoryOutsideOrganizationModel> EmployeeHistoryOutsideOrganizationList { get; set; }
     }
 
 
