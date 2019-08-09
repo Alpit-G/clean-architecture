@@ -9,6 +9,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Application.Marketing.Models;
+using HumanitarianAssistance.Application.Project.Models;
 
 namespace HumanitarianAssistance.Application.Project.Queries
 {
@@ -28,7 +29,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
             {
                 var ProjectList = await _dbContext.ProjectDetail
                                           .Where(x => !x.IsDeleted.Value)
-                                          .OrderByDescending(x => x.ProjectId).Select(x => new ProjectDetailNewModel
+                                          .OrderByDescending(x => x.ProjectId).Select(x => new ProjectDetailModel
                                           {
                                               ProjectId = x.ProjectId,
                                               ProjectCode = x.ProjectCode,
