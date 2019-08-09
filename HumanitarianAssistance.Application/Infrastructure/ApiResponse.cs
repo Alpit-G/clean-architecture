@@ -12,6 +12,8 @@ using HumanitarianAssistance.Domain.Entities.HR;
 using HumanitarianAssistance.Domain.Entities.Marketing;
 using HumanitarianAssistance.Domain.Entities.Project;
 using HumanitarianAssistance.Domain.Entities.Store;
+using VoucherDetailModel = HumanitarianAssistance.Application.Accounting.Models.VoucherDetailModel;
+using VoucherTransactionsModel = HumanitarianAssistance.Application.Accounting.Models.VoucherTransactionsModel;
 
 namespace HumanitarianAssistance.Application.Infrastructure
 {
@@ -299,6 +301,7 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public List<StoreItemGroupModel> storeItemGroupList { get; set; }
         public ICollection<PaymentTypes> PaymentTypesList { get; set; }
         public List<StoreSourceCodeDetailModel> SourceCodeDatalist { get; set; }
+        public List<ItemSpecificationDetailModel> ItemSpecificationDetailList { get; set; }
 
         //Store
         public List<ItemOrderModel> ItemOrderModelList { get; set; }
