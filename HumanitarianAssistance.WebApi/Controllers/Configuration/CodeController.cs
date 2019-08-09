@@ -48,7 +48,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         }
 
         [HttpPost]
-        public async Task<object> DeleteOfficeDetails([FromBody] DeleteOfficeDetailCommand model)
+        public async Task<ApiResponse> DeleteOfficeDetails([FromBody] DeleteOfficeDetailCommand model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.ModifiedById = userId;
@@ -67,7 +67,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
 
         #region "Currency Detail"
         [HttpPost]
-        public async Task<object> AddCurrency([FromBody] AddCurrencyCommand model)
+        public async Task<ApiResponse> AddCurrency([FromBody] AddCurrencyCommand model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.ModifiedById = userId;
@@ -78,7 +78,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         }
 
         [HttpPost]
-        public async Task<object> EditCurrency([FromBody] EditCurrencyCommand model)
+        public async Task<ApiResponse> EditCurrency([FromBody] EditCurrencyCommand model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.ModifiedById = userId;
@@ -89,13 +89,13 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         }
 
         [HttpGet]
-        public async Task<object> GetAllCurrency()
+        public async Task<ApiResponse> GetAllCurrency()
         {
             return await _mediator.Send(new GetAllCurrencyQuery());
         }
 
         [HttpGet]
-        public async Task<object> GetCurrencyByCurrencyCode(string CurrencyCode)
+        public async Task<ApiResponse> GetCurrencyByCurrencyCode(string CurrencyCode)
         {
             return await _mediator.Send(new GetCurrencyByCurrencyCodeQuery { CurrencyCode = CurrencyCode });
         }
@@ -103,7 +103,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
 
         #region "Journal detail"
         [HttpPost]
-        public async Task<object> AddJournalDetail([FromBody] AddJournalDetailCommand model)
+        public async Task<ApiResponse> AddJournalDetail([FromBody] AddJournalDetailCommand model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.ModifiedById = userId;
@@ -114,7 +114,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         }
 
         [HttpPost]
-        public async Task<object> EditJournalDetail([FromBody] EditJournalDetailCommand model)
+        public async Task<ApiResponse> EditJournalDetail([FromBody] EditJournalDetailCommand model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.ModifiedById = userId;
@@ -125,7 +125,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         }
 
         [HttpPost]
-        public async Task<object> DeleteJournalDetail([FromBody] DeleteJournalDetailCommand model)
+        public async Task<ApiResponse> DeleteJournalDetail([FromBody] DeleteJournalDetailCommand model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.ModifiedById = userId;
@@ -136,7 +136,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         }
 
         [HttpGet]
-        public async Task<object> GetAllJournalDetail()
+        public async Task<ApiResponse> GetAllJournalDetail()
         {
             return await _mediator.Send(new GetAllCurrencyQuery());
         }
@@ -146,13 +146,13 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         #region "Email detail"
         //Email Setting Details Module Controller
         [HttpGet]
-        public async Task<object> GetAllEmailSettingDetail()
+        public async Task<ApiResponse> GetAllEmailSettingDetail()
         {
             return await _mediator.Send(new GetAllCurrencyQuery());
         }
 
         [HttpPost]
-        public async Task<object> AddEmailSettingDetail([FromBody] AddEmailSettingCommand model)
+        public async Task<ApiResponse> AddEmailSettingDetail([FromBody] AddEmailSettingCommand model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.ModifiedById = userId;
@@ -163,7 +163,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         }
 
         [HttpPost]
-        public async Task<object> EditEmailSettingDetail([FromBody] EditEmailSettingCommand model)
+        public async Task<ApiResponse> EditEmailSettingDetail([FromBody] EditEmailSettingCommand model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.ModifiedById = userId;
@@ -174,7 +174,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         }
 
         [HttpGet]
-        public async Task<object> GetAllEmailType()
+        public async Task<ApiResponse> GetAllEmailType()
         {
             return await _mediator.Send(new GetAllEmailTypeQuery());
         }
@@ -207,7 +207,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         }
 
         [HttpPost]
-        public async Task<object> GetAllAccountTypeByCategory([FromBody]int id)
+        public async Task<ApiResponse> GetAllAccountTypeByCategory([FromBody]int id)
         {
             return await _mediator.Send(new GetAllAccountTypeByCategoryQuery());
         }
@@ -217,7 +217,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
 
         #region "Designation detail"
         [HttpPost]
-        public async Task<object> AddDesignation([FromBody] AddDesignationCommand model)
+        public async Task<ApiResponse> AddDesignation([FromBody] AddDesignationCommand model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.ModifiedById = userId;
@@ -228,7 +228,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         }
 
         [HttpPost]
-        public async Task<object> EditDesignation([FromBody] EditDesignationCommand model)
+        public async Task<ApiResponse> EditDesignation([FromBody] EditDesignationCommand model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.ModifiedById = userId;
@@ -255,13 +255,13 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         }
 
         [HttpGet]
-        public async Task<object> GetAllEmployeeAppraisalDetails([FromQuery] int OfficeId)
+        public async Task<ApiResponse> GetAllEmployeeAppraisalDetails([FromQuery] int OfficeId)
         {
             return await _mediator.Send(new GetEmployeeAppraisalDetailQuery { OfficeId = OfficeId });
         }
 
         [HttpPost]
-        public async Task<object> EditEmployeeAppraisalDetails([FromBody] EditEmployeeAppraisalDetailCommand model)
+        public async Task<ApiResponse> EditEmployeeAppraisalDetails([FromBody] EditEmployeeAppraisalDetailCommand model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.ModifiedById = userId;
@@ -272,7 +272,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         }
 
         [HttpPost]
-        public async Task<object> AddEmployeeAppraisalDetails([FromBody] AddEmployeeAppraisalCommand model)
+        public async Task<ApiResponse> AddEmployeeAppraisalDetails([FromBody] AddEmployeeAppraisalCommand model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.ModifiedById = userId;
@@ -287,13 +287,13 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
 
         #region "Appraisal question detail"
         [HttpGet]
-        public async Task<object> GetAppraisalQuestions()
+        public async Task<ApiResponse> GetAppraisalQuestions()
         {
             return await _mediator.Send(new GetAppraisalQuestionsQuery());
         }
 
         [HttpPost]
-        public async Task<object> EditAppraisalQuestion([FromBody] EditAppraisalQuestionCommand model)
+        public async Task<ApiResponse> EditAppraisalQuestion([FromBody] EditAppraisalQuestionCommand model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.ModifiedById = userId;
@@ -304,7 +304,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         }
 
         [HttpPost]
-        public async Task<object> AddAppraisalQuestion([FromBody] AddAppraisalQuestionCommand model)
+        public async Task<ApiResponse> AddAppraisalQuestion([FromBody] AddAppraisalQuestionCommand model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.ModifiedById = userId;
@@ -314,23 +314,14 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
             return await _mediator.Send(model);
         }
 
-        [HttpPost]
-        public async Task<object> EditPensionRate([FromBody] EditPensionRateCommand model)
-        {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            model.ModifiedById = userId;
-            model.ModifiedDate = DateTime.UtcNow;
-            model.CreatedById = userId;
-            model.CreatedDate = DateTime.UtcNow;
-            return await _mediator.Send(model);
-        }
+       
 
 
         #endregion
 
         #region "Pension detail"
         [HttpPost]
-        public async Task<object> AddPensionRate([FromBody] AddPensionRateCommand model)
+        public async Task<ApiResponse> AddPensionRate([FromBody] AddPensionRateCommand model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.ModifiedById = userId;
@@ -340,6 +331,16 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
             return await _mediator.Send(model);
         }
 
+        [HttpPost]
+        public async Task<ApiResponse> EditPensionRate([FromBody] EditPensionRateCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
         [HttpGet]
         public async Task<ApiResponse> GetAllPensionRate()
         {
@@ -585,15 +586,11 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
 
 
         [HttpPost]
-        public async Task<ApiResponse> DeleteSalaryHead([FromBody] int id)
+        public async Task<ApiResponse> DeleteSalaryHead([FromBody]DeleteSalaryHeadCommand model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return await _mediator.Send(new DeleteSalaryHeadCommand
-            {
-                SalaryHeadId = id,
-                ModifiedById = userId,
-                ModifiedDate = DateTime.UtcNow
-            });
+            return await _mediator.Send(model);
+            
         }
 
 
@@ -605,7 +602,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         #endregion
 
         #region "approve /reject appraisal question details"
-        [HttpPost]
+        [HttpGet]
         public async Task<ApiResponse> ApproveEmployeeAppraisalRequest([FromQuery] int EmployeeAppraisalDetailsId)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -618,7 +615,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
                 ModifiedDate = DateTime.UtcNow
             });
         }
-        [HttpPost]
+        [HttpGet]
         public async Task<ApiResponse> RejectEmployeeAppraisalRequest([FromQuery] int EmployeeAppraisalDetailsId)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -632,7 +629,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
             });
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<ApiResponse> ApproveEmployeeEvaluationRequest([FromQuery] int EmployeeEvaluationId)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -644,7 +641,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
             });
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<ApiResponse> RejectEmployeeEvaluationRequest([FromQuery] int EmployeeEvaluationId)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -656,7 +653,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
             });
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<ApiResponse> ApproveEmployeeInterviewRequest([FromQuery] int InterviewDetailsId)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -668,7 +665,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
             });
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<ApiResponse> RejectEmployeeInterviewRequest([FromQuery] int InterviewDetailsId)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -710,12 +707,12 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
             return await _mediator.Send(new GetAllEmployeeListQuery());
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<ApiResponse> GetEmployeeDetailByOfficeId([FromQuery] int OfficeId)
         {
             return await _mediator.Send(new GetEmployeeDetailByOfficeIdQuery { OfficeId = OfficeId });
         }
-        [HttpPost]
+        [HttpGet]
         public async Task<ApiResponse> GetEmployeeDetailByEmployeeId([FromQuery] int EmployeeId)
         {
             return await _mediator.Send(new GetEmployeeDetailByEmployeeIdQuery { EmployeeId = EmployeeId });
@@ -740,7 +737,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
             command.ModifiedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
         }
-        [HttpPost]
+        [HttpGet]
         public async Task<ApiResponse> GetAllInterviewTechnicalQuestionsByOfficeId([FromQuery] int OfficeId)
         {
             return await _mediator.Send(new GetAllInterviewTechnicalQuestionsByOfficeIdQuery { OfficeId = OfficeId });
@@ -767,7 +764,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
             command.ModifiedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
         }
-        [HttpPost]
+        [HttpGet]
         public async Task<ApiResponse> DeleteExitInterview([FromQuery] int existInterviewDetailsId)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -788,8 +785,8 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         #endregion
 
         #region "Salary Tax Report Details"
-        [HttpPost]
-        public async Task<ApiResponse> GetSalaryTaxReportContentDetails(int OfficeId)
+        [HttpGet]
+        public async Task<ApiResponse> GetSalaryTaxReportContentDetails(int officeId)
         {
             return await _mediator.Send(new GetSalaryTaxReportContentDetailsQuery { OfficeId = OfficeId });
         }
@@ -809,7 +806,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
             command.ModifiedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
         }
-        [HttpPost]
+        [HttpGet]
         public async Task<ApiResponse> GetEmployeeAdvanceHistoryDetail(long AdvanceID)
         {
             return await _mediator.Send(new GetEmployeeAdvanceHistoryDetailQuery { AdvanceID = AdvanceID });
