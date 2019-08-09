@@ -11,6 +11,7 @@
     <Folder Include="Hr\Commands\" />
     <Folder Include="Hr\Models\" />
     <Folder Include="Hr\Queries\" />
+    <Folder Include="Store\Commands\Common\" />
   </ItemGroup>
 
   <ItemGroup>
