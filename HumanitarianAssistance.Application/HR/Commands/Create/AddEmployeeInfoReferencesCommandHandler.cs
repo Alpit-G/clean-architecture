@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -10,28 +10,27 @@ using MediatR;
 
 namespace HumanitarianAssistance.Application.HR.Commands.Create
 {
-    public class AddEmployeeHistoryOutsideOrganizationCommandHandler : IRequestHandler<AddEmployeeHistoryOutsideOrganizationCommand, ApiResponse>
+    public class AddEmployeeInfoReferencesCommandHandler : IRequestHandler<AddEmployeeRelativeInformationCommand, ApiResponse>
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
         private readonly IMapper _mapper;
 
-        public AddEmployeeHistoryOutsideOrganizationCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        public AddEmployeeInfoReferencesCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;
         }
 
-        public async Task<ApiResponse> Handle(AddEmployeeHistoryOutsideOrganizationCommand request, CancellationToken cancellationToken)
+        public async Task<ApiResponse> Handle(AddEmployeeRelativeInformationCommand request, CancellationToken cancellationToken)
         {
             ApiResponse response = new ApiResponse();
-
             try
             {
-                EmployeeHistoryOutsideOrganization obj = _mapper.Map<EmployeeHistoryOutsideOrganization>(request);
+                EmployeeInfoReferences obj = _mapper.Map<EmployeeInfoReferences>(request);
                 obj.IsDeleted = false;
                 obj.CreatedById = request.CreatedById;
                 obj.CreatedDate = DateTime.Now;
-                await _dbContext.EmployeeHistoryOutsideOrganization.AddAsync(obj);
+                await _dbContext.EmployeeInfoReferences.AddAsync(obj);
                 await _dbContext.SaveChangesAsync();
                 response.StatusCode = StaticResource.successStatusCode;
                 response.Message = "Success";
@@ -43,6 +42,5 @@ namespace HumanitarianAssistance.Application.HR.Commands.Create
             }
             return response;
         }
-
     }
 }

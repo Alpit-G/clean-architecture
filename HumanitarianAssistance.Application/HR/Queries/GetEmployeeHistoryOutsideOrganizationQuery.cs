@@ -5,6 +5,6 @@ namespace HumanitarianAssistance.Application.HR.Queries
 {
     public class GetEmployeeHistoryOutsideOrganizationQuery: IRequest<ApiResponse>
     {
-        public long EmployeeId { get; set; }
+        public int EmployeeId { get; set; }
     }
 }
