@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using HumanitarianAssistance.Application.Infrastructure;
-using HumanitarianAssistance.Application.Marketing.Models;
+using HumanitarianAssistance.Application.Project.Models;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Persistence;
 using MediatR;
@@ -63,7 +63,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
                                                    ) : true
                                           )
                                           .OrderByDescending(x => x.ProjectId)
-                                          .Select(x => new ProjectDetailNewModel
+                                          .Select(x => new ProjectDetailModel
                                           {
                                               ProjectId = x.ProjectId,
                                               ProjectCode = x.ProjectCode,

@@ -1,9 +1,10 @@
 using AutoMapper;
 using HumanitarianAssistance.Application.Accounting.Models;
-using HumanitarianAssistance.Domain.Entities;
+using HumanitarianAssistance.Application.Project.Commands.Update;
 using HumanitarianAssistance.Domain.Entities.Accounting;
+using HumanitarianAssistance.Domain.Entities.Project;
 
-namespace HumanitarianAssistance.WebApi.Extensions
+namespace HumanitarianAssistance.WebApi.Infrastructure
 {
     public class AutoMapperProfile : Profile
     {
@@ -15,6 +16,7 @@ namespace HumanitarianAssistance.WebApi.Extensions
         {
             CreateMap<VoucherDetail, VoucherDetailEntityModel>().ReverseMap();
             CreateMap<VoucherDetail, VoucherDetailModel>().ReverseMap();
+            CreateMap<ProgramDetail, EditProgramDetailCommand>().ReverseMap();
 
 
 

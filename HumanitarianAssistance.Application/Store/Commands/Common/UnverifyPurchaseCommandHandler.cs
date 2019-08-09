@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using HumanitarianAssistance.Application.CommonFunctions;
+using HumanitarianAssistance.Application.CommonModels;
+using HumanitarianAssistance.Application.CommonServices;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Application.Store.Models;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Domain.Entities.Accounting;
-using HumanitarianAssistance.Domain.Entities.Store;
 using HumanitarianAssistance.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -118,7 +118,7 @@ namespace HumanitarianAssistance.Application.Store.Commands.Common
                                     VoucherNo = voucherDetail.VoucherNo,
                                     VoucherTransactions = transactions
                                 };
-                                StoreFunctions storeObj = new StoreFunctions(_dbContext);
+                                StoreServices storeObj = new StoreServices(_dbContext);
                                 var responseTransaction = storeObj.AddEditTransactionList(transactionVoucherDetail, request.CreatedById);
 
                                 if (responseTransaction.StatusCode == 200)

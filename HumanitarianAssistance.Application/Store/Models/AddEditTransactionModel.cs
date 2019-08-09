@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using HumanitarianAssistance.Application.CommonModels;
 
 namespace HumanitarianAssistance.Application.Store.Models
 {

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using HumanitarianAssistance.Application.Accounting.Commands.Common;
 using HumanitarianAssistance.Application.Accounting.Models;
+using HumanitarianAssistance.Application.CommonModels;
 using HumanitarianAssistance.Application.CommonServices;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
@@ -14,15 +15,15 @@ using MediatR;
 
 namespace HumanitarianAssistance.Application.Accounting.Commands.Create
 {
-    public class ExchangeGainLossVoucherDetailsCommandHandler: IRequestHandler<ExchangeGainLossVoucherDetailsCommand, ApiResponse>
+    public class ExchangeGainLossVoucherDetailsCommandHandler : IRequestHandler<ExchangeGainLossVoucherDetailsCommand, ApiResponse>
     {
-      private HumanitarianAssistanceDbContext _dbContext;
-      private IMapper _mapper;
+        private HumanitarianAssistanceDbContext _dbContext;
+        private IMapper _mapper;
 
         public ExchangeGainLossVoucherDetailsCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
-            _mapper= mapper;
+            _mapper = mapper;
         }
 
         public async Task<ApiResponse> Handle(ExchangeGainLossVoucherDetailsCommand model, CancellationToken cancellationToken)
@@ -44,7 +45,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                     IsExchangeGainLossVoucher = true
                 };
 
-                AccountingServices AccountingServices= new AccountingServices(_dbContext, _mapper);
+                AccountingServices AccountingServices = new AccountingServices(_dbContext, _mapper);
                 var responseVoucher = await AccountingServices.AddVoucherDetail(voucherModel);
 
                 #endregion
@@ -121,6 +122,6 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                 response.Message = StaticResource.SomethingWrong + ex.Message;
             }
             return response;
-        } 
+        }
     }
 }
