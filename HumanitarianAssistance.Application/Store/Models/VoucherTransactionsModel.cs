@@ -23,4 +23,4 @@ namespace HumanitarianAssistance.Application.Store.Models
         public List<ProjectBudgetLineDetailModel> BudgetLineList { get; set; }
     }
 }
-}
+

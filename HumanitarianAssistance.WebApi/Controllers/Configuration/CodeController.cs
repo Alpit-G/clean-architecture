@@ -788,7 +788,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         [HttpGet]
         public async Task<ApiResponse> GetSalaryTaxReportContentDetails(int officeId)
         {
-            return await _mediator.Send(new GetSalaryTaxReportContentDetailsQuery { OfficeId = OfficeId });
+            return await _mediator.Send(new GetSalaryTaxReportContentDetailsQuery { OfficeId = officeId });
         }
         [HttpPost]
         public async Task<ApiResponse> AddSalaryTaxReportContentDetails([FromBody]AddSalaryTaxReportContentDetailsCommand command)
