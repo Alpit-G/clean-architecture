@@ -1,7 +1,7 @@
 using MediatR;
 using System.Collections.Generic;
-using HumanitarianAssistance.Application.Accounting.Models;
 using HumanitarianAssistance.Application.Infrastructure;
+using HumanitarianAssistance.Application.CommonModels;
 
 namespace HumanitarianAssistance.Application.Accounting.Commands.Common
 {

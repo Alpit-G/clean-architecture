@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using HumanitarianAssistance.Common.Helpers;
-using HumanitarianAssistance.Application.Marketing.Models;
 using HumanitarianAssistance.Application.Project.Models;
 
 namespace HumanitarianAssistance.Application.Project.Queries

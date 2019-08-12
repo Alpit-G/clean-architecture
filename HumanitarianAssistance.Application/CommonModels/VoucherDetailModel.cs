@@ -1,9 +1,7 @@
-﻿using HumanitarianAssistance.Application.Infrastructure;
 using System;
-using System.Collections.Generic;
-using System.Text;
+using HumanitarianAssistance.Application.Infrastructure;
 
-namespace HumanitarianAssistance.Application.Store.Models
+namespace HumanitarianAssistance.Application.CommonModels
 {
     public class VoucherDetailModel : BaseModel
     {

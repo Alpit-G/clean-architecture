@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using HumanitarianAssistance.Application.Accounting.Models;
+using HumanitarianAssistance.Application.CommonModels;
 using HumanitarianAssistance.Application.Configuration.Models;
 using HumanitarianAssistance.Application.Hr.Models;
 using HumanitarianAssistance.Application.HR.Models;
@@ -14,8 +15,6 @@ using HumanitarianAssistance.Domain.Entities.HR;
 using HumanitarianAssistance.Domain.Entities.Marketing;
 using HumanitarianAssistance.Domain.Entities.Project;
 using HumanitarianAssistance.Domain.Entities.Store;
-using VoucherDetailModel = HumanitarianAssistance.Application.Accounting.Models.VoucherDetailModel;
-using VoucherTransactionsModel = HumanitarianAssistance.Application.Accounting.Models.VoucherTransactionsModel;
 
 namespace HumanitarianAssistance.Application.Infrastructure
 {

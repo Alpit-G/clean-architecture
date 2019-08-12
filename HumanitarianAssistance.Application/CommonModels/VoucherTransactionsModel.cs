@@ -1,7 +1,6 @@
-﻿using HumanitarianAssistance.Application.Project.Models;
 using System.Collections.Generic;
 
-namespace HumanitarianAssistance.Application.Store.Models
+namespace HumanitarianAssistance.Application.CommonModels
 {
     public class VoucherTransactionsModel
     {
@@ -23,4 +22,3 @@ namespace HumanitarianAssistance.Application.Store.Models
         public List<ProjectBudgetLineDetailModel> BudgetLineList { get; set; }
     }
 }
-

@@ -1,37 +1,33 @@
-﻿using AutoMapper;
+using AutoMapper;
 using HumanitarianAssistance.Application.Accounting.Models;
+using HumanitarianAssistance.Application.CommonModels;
+using HumanitarianAssistance.Application.CommonServicesInterface;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Application.Store.Models;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Domain.Entities;
 using HumanitarianAssistance.Domain.Entities.Accounting;
 using HumanitarianAssistance.Persistence;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using VoucherDetailModel = HumanitarianAssistance.Application.Store.Models.VoucherDetailModel;
-using VoucherTransactionsModel = HumanitarianAssistance.Application.Store.Models.VoucherTransactionsModel;
 
-namespace HumanitarianAssistance.Application.CommonFunctions
+namespace HumanitarianAssistance.Application.CommonServices
 {
-
-    internal class StoreFunctions
+    public class StoreServices: IStoreServices
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
         private readonly IMapper _mapper;
-     //   private readonly RoleManager<IdentityRole> _roleManager;
 
-
-        public StoreFunctions(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        public StoreServices(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;
         }
+
         public ApiResponse AddEditTransactionList(AddEditTransactionModel voucherTransactions, string userId)
         {
             ApiResponse response = new ApiResponse();

@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using HumanitarianAssistance.Application.CommonServices;
+using HumanitarianAssistance.Application.CommonServicesInterface;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Application.Project.Models;
 using HumanitarianAssistance.Common.Helpers;
@@ -13,15 +14,18 @@ using MediatR;
 
 namespace HumanitarianAssistance.Application.Project.Commands.Create
 {
-    public class AddSectorDetailsCommandHandler: IRequestHandler<AddSectorDetailsCommand, ApiResponse>
+    public class AddSectorDetailsCommandHandler : IRequestHandler<AddSectorDetailsCommand, ApiResponse>
     {
 
         private readonly HumanitarianAssistanceDbContext _dbContext;
         private readonly IMapper _mapper;
-        public AddSectorDetailsCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        private readonly IProjectServices _iProjectServices;
+
+        public AddSectorDetailsCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper, IProjectServices iProjectServices)
         {
             _dbContext = dbContext;
             _mapper = mapper;
+            _iProjectServices = iProjectServices;
         }
 
         public async Task<ApiResponse> Handle(AddSectorDetailsCommand request, CancellationToken cancellationToken)
@@ -69,11 +73,8 @@ namespace HumanitarianAssistance.Application.Project.Commands.Create
                                 ProjectSectorId = 0
                             };
 
-                            ProjectServices ProjectServices= new ProjectServices(_dbContext);
 
-
-
-                            var addEditProjectSector = await ProjectServices.AddEditProjectSector(projectSectorModel, request.CreatedById);
+                            var addEditProjectSector = await _iProjectServices.AddEditProjectSector(projectSectorModel, request.CreatedById);
 
                             if (addEditProjectSector.StatusCode == 200)
                             {
@@ -111,6 +112,6 @@ namespace HumanitarianAssistance.Application.Project.Commands.Create
             }
             return response;
         }
-        
+
     }
 }

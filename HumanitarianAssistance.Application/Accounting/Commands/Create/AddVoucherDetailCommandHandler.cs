@@ -1,17 +1,13 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using HumanitarianAssistance.Application.Accounting.Models;
-using HumanitarianAssistance.Application.CommonServices;
+using HumanitarianAssistance.Application.CommonServicesInterface;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
-using HumanitarianAssistance.Domain.Entities;
 using HumanitarianAssistance.Persistence;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Accounting.Commands.Create
 {
@@ -19,11 +15,13 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
         private readonly IMapper _mapper;
+        private readonly IAccountingServices _iAccountingServices;
 
-        public AddVoucherDetailCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        public AddVoucherDetailCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper, IAccountingServices iAccountingServices)
         {
             _dbContext = dbContext;
             _mapper = mapper;
+            _iAccountingServices = iAccountingServices;
         }
 
         public async Task<ApiResponse> Handle(AddVoucherDetailCommand request, CancellationToken cancellationToken)
@@ -32,10 +30,8 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
 
             try
             {
-                AccountingServices accountingObj = new AccountingServices(_dbContext, _mapper);
-
                 // Common Function to Add/Update Transaction
-                VoucherDetailEntityModel voucherDetail = await accountingObj.AddVoucherDetail(request);
+                VoucherDetailEntityModel voucherDetail = await _iAccountingServices.AddVoucherDetail(request);
 
                 response.data.VoucherDetailEntity = voucherDetail;
                 response.StatusCode = StaticResource.successStatusCode;

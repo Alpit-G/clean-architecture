@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using HumanitarianAssistance.Application.Infrastructure;
-using HumanitarianAssistance.Application.Marketing.Models;
 using HumanitarianAssistance.Application.Project.Models;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Persistence;
@@ -12,13 +11,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Project.Queries
 {
-    public class GetAllProjectFilterListQueryHandler: IRequestHandler<GetAllProjectFilterListQuery, ApiResponse>
+    public class GetAllProjectFilterListQueryHandler : IRequestHandler<GetAllProjectFilterListQuery, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
 
         public GetAllProjectFilterListQueryHandler(HumanitarianAssistanceDbContext dbContext)
         {
-            _dbContext= dbContext;
+            _dbContext = dbContext;
         }
 
         public async Task<ApiResponse> Handle(GetAllProjectFilterListQuery request, CancellationToken cancellationToken)
@@ -91,6 +90,6 @@ namespace HumanitarianAssistance.Application.Project.Queries
             }
             return response;
         }
-        
+
     }
 }
