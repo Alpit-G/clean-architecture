@@ -324,6 +324,12 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public List<EmployeeRelativeInfoModel> EmployeeRelativeInfoList { get; set; }
         public List<EmployeeOtherSkillsModel> EmployeeOtherSkillsList { get; set; }
         public List<EmployeeSalaryBudgetModel> EmployeeSalaryBudgetList { get; set; }
+        public List<EmployeeEducationsModel> EmployeeEducationsList { get; set; }
+
+        public List<EmployeeSalaryAnalyticalInfoModel> EmployeeSalaryAnalyticalInfoList { get; set; }
+        public EmployeeHealthInformationModel EmployeeHealthInfo { get; set; }
+
+
 
         #endregion
     }
