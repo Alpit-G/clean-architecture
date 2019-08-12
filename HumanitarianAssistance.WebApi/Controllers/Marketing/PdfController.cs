@@ -12,7 +12,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
 {
     [ApiController]
     [Produces("application/json")]
-    [Route("api/PdfController/[Action]")]
+    [Route("api/Pdf/[Action]")]
     [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Marketing))]
     public class PdfController : BaseController
     {
