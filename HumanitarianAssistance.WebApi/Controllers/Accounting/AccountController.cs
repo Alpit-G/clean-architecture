@@ -44,7 +44,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
         }
 
         [HttpPost]
-        public async Task<ApiResponse> EditUsers([FromBody]EditUsersCommand model)
+        public async Task<ApiResponse> EditUser([FromBody]EditUsersCommand model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
 

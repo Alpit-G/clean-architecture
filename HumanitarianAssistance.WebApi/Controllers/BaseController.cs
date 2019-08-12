@@ -6,8 +6,6 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace HumanitarianAssistance.WebApi.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]/[action]")]
     public abstract class BaseController : Controller
     {
         private IMediator mediator;
