@@ -6,6 +6,8 @@ using HumanitarianAssistance.Application.Marketing.Commands.Update;
 using HumanitarianAssistance.Application.Marketing.Queries;
 using HumanitarianAssistance.Common.Enums;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -28,9 +30,9 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
         }
 
         [HttpPost]
-        public async Task<ApiResponse> GetFilteredContractList()
+        public async Task<ApiResponse> GetFilteredContractList(FilterContractListQuery query)
         {
-            return await _mediator.Send(new FilterContractListQuery());
+            return await _mediator.Send(query);
         }
         [HttpPost]
         public async Task<ApiResponse> GetContractDetailsById([FromBody]int contractId)
@@ -53,14 +55,14 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             return await _mediator.Send(query);
         }
         [HttpPost]
-        public async Task<ApiResponse> GetContractByClientId([FromBody]int ClientId)
+        public async Task<ApiResponse> GetContractByClientId([FromBody]int model)
         {
-            return await _mediator.Send(new GetContractByClientIdQuery { ClientId = ClientId });
+            return await _mediator.Send(new GetContractByClientIdQuery { ClientId = model });
         }
         [HttpPost]
-        public async Task<ApiResponse> GetActivityById([FromBody]int ActivityTypeId)
+        public async Task<ApiResponse> GetActivityById([FromBody]int model)
         {
-            return await _mediator.Send(new GetActivityByIdQuery { ActivityTypeId = ActivityTypeId });
+            return await _mediator.Send(new GetActivityByIdQuery { ActivityTypeId = model });
         }
         [HttpGet]
         public async Task<ApiResponse> GetAllActivityTypeList()
@@ -68,9 +70,9 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             return await _mediator.Send(new GetAllActivityTypeQuery());
         }
         [HttpPost]
-        public async Task<ApiResponse> GetQualityById([FromBody]int QualityId)
+        public async Task<ApiResponse> GetQualityById([FromBody]int model)
         {
-            return await _mediator.Send(new GetQualityByIdQuery { QualityId = QualityId });
+            return await _mediator.Send(new GetQualityByIdQuery { QualityId = model });
         }
         [HttpGet]
         public async Task<ApiResponse> GetAllQualityList()
@@ -83,9 +85,9 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             return await _mediator.Send(new GetAllLanguageQuery());
         }
         [HttpPost]
-        public async Task<ApiResponse> GetMediumById([FromBody]int MediumId)
+        public async Task<ApiResponse> GetMediumById([FromBody]int model)
         {
-            return await _mediator.Send(new GetMediumByIdQuery { MediumId = MediumId });
+            return await _mediator.Send(new GetMediumByIdQuery { MediumId = model });
         }
         [HttpGet]
         public async Task<ApiResponse> GetAllMediumList()
@@ -93,9 +95,9 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             return await _mediator.Send(new GetAllMediumListQuery());
         }
         [HttpPost]
-        public async Task<ApiResponse> GetTimeCategoryById([FromBody]int TimeCategoryId)
+        public async Task<ApiResponse> GetTimeCategoryById([FromBody]int model)
         {
-            return await _mediator.Send(new GetTimeCategoryByIdQuery { TimeCategoryId = TimeCategoryId });
+            return await _mediator.Send(new GetTimeCategoryByIdQuery { TimeCategoryId = model });
         }
         [HttpGet]
         public async Task<ApiResponse> GetAllTimeCategoryList()
@@ -103,9 +105,9 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             return await _mediator.Send(new GetAllTimeCategoryQuery());
         }
         [HttpPost]
-        public async Task<ApiResponse> GetNatureById([FromBody]int NatureId)
+        public async Task<ApiResponse> GetNatureById([FromBody]int model)
         {
-            return await _mediator.Send(new GetNatureByIdQuery { NatureId = NatureId });
+            return await _mediator.Send(new GetNatureByIdQuery { NatureId = model });
         }
         [HttpGet]
         public async Task<ApiResponse> GetAllNatureList()
@@ -118,9 +120,9 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             return await _mediator.Send(new GetAllMediaCategoryQuery());
         }
         [HttpPost]
-        public async Task<ApiResponse> GetMediaCategoryById([FromBody]int MediaCategoryId)
+        public async Task<ApiResponse> GetMediaCategoryById([FromBody]int model)
         {
-            return await _mediator.Send(new GetMediaCategoryByIdQuery { MediaCategoryId = MediaCategoryId });
+            return await _mediator.Send(new GetMediaCategoryByIdQuery { MediaCategoryId = model });
         }
         [HttpGet]
         public async Task<ApiResponse> GetAllClientList()
@@ -167,12 +169,12 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             return await _mediator.Send(command);
         }  
         [HttpPost]
-        public async Task<ApiResponse> DeleteContractDetail([FromBody]int ContractId)
+        public async Task<ApiResponse> DeleteContractDetail([FromBody]int model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return await _mediator.Send(new DeleteContractDetailCommand
             {
-                ContractId=ContractId,
+                ContractId= model,
                 ModifiedById = userId,
                 ModifiedDate = DateTime.UtcNow
             } );
@@ -210,12 +212,12 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             return await _mediator.Send(command);
         }
         [HttpPost]
-        public async Task<ApiResponse> DeleteQuality([FromBody]int QualityId)
+        public async Task<ApiResponse> DeleteQuality([FromBody]int model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return await _mediator.Send(new DeleteQualityCommand
             {
-                QualityId=QualityId,
+                QualityId= model,
                 ModifiedById = userId,
                 ModifiedDate = DateTime.UtcNow
             } );
@@ -237,15 +239,12 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             return await _mediator.Send(command);
         }
         [HttpPost]
-        public async Task<ApiResponse> DeleteLanguage([FromBody]int LanguageId)
+        public async Task<ApiResponse> DeleteLanguage([FromBody]DeleteLanguageCommand command)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return await _mediator.Send(new DeleteLanguageCommand
-            {
-                LanguageId=LanguageId,
-                ModifiedById = userId,
-                ModifiedDate = DateTime.UtcNow
-            } );
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
         }
         [HttpPost]
         public async Task<ApiResponse> AddMedium([FromBody]AddEditMediumCommand command)
@@ -258,12 +257,12 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             return await _mediator.Send(command);
         }
         [HttpPost]
-        public async Task<ApiResponse> DeleteMedium([FromBody]int MediumId)
+        public async Task<ApiResponse> DeleteMedium([FromBody]int model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return await _mediator.Send(new DeleteMediumCommand
             {
-                MediumId=MediumId,
+                MediumId= model,
                 ModifiedById = userId,
                 ModifiedDate = DateTime.UtcNow
             } );
@@ -279,12 +278,12 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             return await _mediator.Send(command);
         }
         [HttpPost]
-        public async Task<ApiResponse> DeleteTimeCategory([FromBody]int TimeCategoryId)
+        public async Task<ApiResponse> DeleteTimeCategory([FromBody]int model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return await _mediator.Send(new DeleteTimeCategoryCommand
             {
-                TimeCategoryId=TimeCategoryId,
+                TimeCategoryId= model,
                 ModifiedById = userId,
                 ModifiedDate = DateTime.UtcNow
             } );
@@ -300,12 +299,12 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             return await _mediator.Send(command);
         }
         [HttpPost]
-        public async Task<ApiResponse> DeleteNature([FromBody]int NatureId)
+        public async Task<ApiResponse> DeleteNature([FromBody]int model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return await _mediator.Send(new DeleteNatureCommand
             {
-                NatureId=NatureId,
+                NatureId= model,
                 ModifiedById = userId,
                 ModifiedDate = DateTime.UtcNow
             } );
@@ -321,12 +320,12 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             return await _mediator.Send(command);
         }
         [HttpPost]
-        public async Task<ApiResponse> DeleteMediaCategory([FromBody]int MediaCategoryId)
+        public async Task<ApiResponse> DeleteMediaCategory([FromBody]int model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return await _mediator.Send(new DeleteMediaCategoryCommand
             {
-                MediaCategoryId=MediaCategoryId,
+                MediaCategoryId= model,
                 ModifiedById = userId,
                 ModifiedDate = DateTime.UtcNow
             } );
@@ -348,12 +347,12 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             return await _mediator.Send(command);
         }
         [HttpPost]
-        public async Task<ApiResponse> DeleteClientDetails([FromBody]int ClientId)
+        public async Task<ApiResponse> DeleteClientDetails([FromBody]int model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return await _mediator.Send(new DeleteClientDetailsCommand
             {
-                ClientId = ClientId,
+                ClientId = model,
                 ModifiedById = userId,
                 ModifiedDate = DateTime.UtcNow
             });
@@ -369,12 +368,12 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             return await _mediator.Send(command);
         }
         [HttpPost]
-        public async Task<ApiResponse> DeleteUnitRate([FromBody]int UnitRateId)
+        public async Task<ApiResponse> DeleteUnitRate([FromBody]int model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return await _mediator.Send(new DeleteUnitRateCommand
             {
-                UnitRateId = UnitRateId,
+                UnitRateId = model,
                 ModifiedById = userId,
                 ModifiedDate = DateTime.UtcNow
             });
