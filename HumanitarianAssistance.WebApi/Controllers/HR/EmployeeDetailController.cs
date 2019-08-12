@@ -147,6 +147,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.HR
             return await _mediator.Send(model);
         }
         #endregion
+
         #region "Employee Info References"
         [HttpGet]
         public async Task<ApiResponse> GetAllEmployeeInfoReferences([FromQuery]int EmployeeId)
@@ -230,6 +231,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.HR
         }
 
         #endregion
+
         #region "Employee Salary Budgets"
         [HttpGet]
         public async Task<ApiResponse> GetAllEmployeeSalaryBudgets([FromQuery]int EmployeeId)
@@ -270,6 +272,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.HR
         }
 
         #endregion
+
         #region "Employee Educations"
         [HttpGet]
         public async Task<ApiResponse> GetAllEmployeeEducations([FromQuery]int EmployeeId)
@@ -314,7 +317,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.HR
         {
             return await _mediator.Send(new GetAllEmployeeEducationsQuery { EmployeeId = EmployeeId });
         }
-        
+
         [HttpPost]
         public async Task<ApiResponse> AddEmployeeSalaryAnalyticalInfo([FromBody]AddSalaryAnalyticalInfoCommand model)
         {
@@ -347,7 +350,95 @@ namespace HumanitarianAssistance.WebApi.Controllers.HR
         [HttpGet]
         public async Task<ApiResponse> GetAllEmployeeHealthInfo([FromQuery]int EmployeeId)
         {
-            return await _mediator.Send(new GetAllEmployeeEducationsQuery { EmployeeId = EmployeeId });
+            return await _mediator.Send(new GetEmployeeHealthInfoQuery { EmployeeId = EmployeeId });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEmployeeHealthInfo([FromBody]AddEmployeeHealthInfoCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+
+        [HttpPost]
+        public async Task<ApiResponse> EditEmployeeHealthInfo([FromBody] EditEmployeeHealthInfoCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+
+        [HttpGet]
+        public async Task<ApiResponse> GetEmployeeHealthQuestion([FromQuery]int EmployeeId)
+        {
+            return await _mediator.Send(new GetEmployeeHealthInfoQuery { EmployeeId = EmployeeId });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEmployeeHealthQuestion([FromBody]AddEmployeeHealthQuestionCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> EditEmployeeHealthQuestion([FromBody] EditEmployeeHealthInfoCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> DeleteEmployeeHealthQuestion([FromBody]DeleteHealthQuestionCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+        #endregion
+
+        #region "Employee Languages"
+        [HttpGet]
+        public async Task<ApiResponse> GetAllEmployeeLanguages([FromQuery]int EmployeeId)
+        {
+            return await _mediator.Send(new GetAllEmployeeLanguagesQuery { EmployeeId = EmployeeId });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddEmployeeLanguages([FromBody]AddEmployeeLanguagesCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> EditEmployeeLanguages([FromBody] EditEmployeeLanguagesCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> RemoveEmployeeLanguages([FromBody]RemoveEmployeeLanguagesCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
         }
         #endregion
     }

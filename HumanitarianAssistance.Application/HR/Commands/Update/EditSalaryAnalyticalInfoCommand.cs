@@ -14,7 +14,6 @@ namespace HumanitarianAssistance.Application.HR.Commands.Update
         public long BudgetLineId { get; set; }
         public double SalaryPercentage { get; set; }
         public int EmployeeID { get; set; }
-
         public string BudgetLineName { get; set; }
     }
 }

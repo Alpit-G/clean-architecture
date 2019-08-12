@@ -327,7 +327,7 @@ namespace HumanitarianAssistance.Application.Infrastructure
 
         public List<EmployeeSalaryAnalyticalInfoModel> EmployeeSalaryAnalyticalInfoList { get; set; }
         public EmployeeHealthInformationModel EmployeeHealthInfo { get; set; }
-
+        public List<EmployeeLanguages> EmployeeLanguagesList { get; set; }
 
 
         #endregion
