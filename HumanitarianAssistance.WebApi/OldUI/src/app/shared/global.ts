@@ -167,9 +167,9 @@ export class GLOBAL {
   public static API_Code_AddFinancialYearDetail = 'Code/AddFinancialYearDetail';
   public static API_Code_EditFinancialYearDetail = 'Code/EditFinancialYearDetail';
 
-  public static API_HR_GetAllJobHiringDetails = 'HREmployee/GetAllJobHiringDetails';
-  public static API_HR_AddJobHiringDetail = 'HREmployee/AddJobHiringDetail';
-  public static API_HR_EditJobHiringDetail = 'HREmployee/EditJobHiringDetail';
+  public static API_HR_GetAllJobHiringDetails = 'HRJobs/GetAllJobHiringDetails';
+  public static API_HR_AddJobHiringDetail = 'HRJobs/AddJobHiringDetail';
+  public static API_HR_EditJobHiringDetail = 'HRJobs/EditJobHiringDetail';
   public static API_EmployeeHR_GetJobCode = 'EmployeeHR/GetJobCode';
 
   // public static API_HR_EditPayrollMonthlyHourDetail = 'HREmployee/EditPayrollMonthlyHourDetail';
@@ -182,10 +182,10 @@ export class GLOBAL {
 
 
   public static API_Code_GetAllInterviewRoundList = 'Code/GetAllInterviewRoundList';
-  public static API_HR_AddInterviewScheduleDetails = 'HREmployee/AddInterviewScheduleDetails';
+  public static API_HR_AddInterviewScheduleDetails = 'Interview/AddInterviewScheduleDetails';
   public static API_HR_GetAllScheduledProspectiveEmployee = 'HREmployee/GetAllScheduledProspectiveEmployee';
 
-  public static API_HR_GetAllJobGrade = 'HREmployee/GetAllJobGrade';
+  public static API_HR_GetAllJobGrade = 'HRJobs/GetAllJobGrade';
   // tslint:disable-next-line:max-line-length
   public static API_HR_GetAllScheduledProspectiveEmployeeForGeneralAssembly = 'HREmployee/GetAllScheduledProspectiveEmployeeForGeneralAssembly';
   public static API_HR_GetAllScheduledProspectiveEmployeeForDirector = 'HREmployee/GetAllScheduledProspectiveEmployeeForDirector';
@@ -193,7 +193,7 @@ export class GLOBAL {
   public static API_HR_GetAllScheduledProspectiveEmployeeForFieldOffice = 'HREmployee/GetAllScheduledProspectiveEmployeeForFieldOffice';
 
   public static API_HR_GetAllScheduledEmployeeList = 'HREmployee/GetAllScheduledEmployeeList';
-  public static API_HR_InterviewApprovals = 'HREmployee/InterviewApprovals';
+  public static API_HR_InterviewApprovals = 'Interview/InterviewApprovals';
   public static API_HR_GetAllApprovedEmployeeList = 'HREmployee/GetAllApprovedEmployeeList';
 
   public static API_Account_AddNotesDetails = 'Account/AddNotesDetails';
@@ -248,11 +248,11 @@ export class GLOBAL {
   public static API_Hr_EditHolidayDetails = 'HREmployee/EditHolidayDetails';
 
 
-  public static API_Hr_AddJobGradeDetail = 'HREmployee/AddJobGradeDetail';
 
 
-  public static API_HR_AddJobGradeDetail = 'HREmployee/AddJobGradeDetail';
-  public static API_HR_EditJobGradeDetail = 'HREmployee/EditJobGradeDetail';
+
+  public static API_HR_AddJobGradeDetail = 'Code/AddJobGradeDetail';
+  public static API_HR_EditJobGradeDetail = 'Code/EditJobGradeDetail';
   public static API_HR_EditEmployeeAssignLeave = 'HREmployee/EditEmployeeAssignLeave';
   public static API_HR_DeleteHolidayDetails = 'HREmployee/DeleteHolidayDetails';
 
@@ -343,9 +343,9 @@ export class GLOBAL {
   public static API_Code_EditExitInterview = 'Code/EditExitInterview';
   public static API_Code_DeleteExitInterview = 'Code/DeleteExitInterview';
 
-  public static API_Hr_GetAllInterviewDetails = 'HREmployee/GetAllInterviewDetails';
-  public static API_Hr_AddInterviewDetails = 'HREmployee/AddInterviewDetails';
-  public static API_Hr_EditInterviewDetails = 'HREmployee/EditInterviewDetails';
+  public static API_Hr_GetAllInterviewDetails = 'Interview/GetAllInterviewDetails';
+  public static API_Hr_AddInterviewDetails = 'Interview/AddInterviewDetails';
+  public static API_Hr_EditInterviewDetails = 'Interview/EditInterviewDetails';
 
   public static API_Code_ApproveEmployeeAppraisalRequest = 'Code/ApproveEmployeeAppraisalRequest';
   public static API_Code_RejectEmployeeAppraisalRequest = 'Code/RejectEmployeeAppraisalRequest';

@@ -319,6 +319,16 @@ namespace HumanitarianAssistance.Application.Infrastructure
 
         //HR
         public List<EmployeeHistoryOutsideOrganizationModel> EmployeeHistoryOutsideOrganizationList { get; set; }
+
+        //HRJobs
+        public IList<JobHiringDetailsModel> JobHiringDetailsList { get; set; }
+        public IList<JobGradeModel> JobGradeList { get; set; }
+
+        //Interview
+        public List<InterviewDetailModel> InterviewDetailList { get; set; }
+
+        //holidays
+        public IList<HolidayDetails> HolidayDetailsList { get; set; }
     }
 
 
