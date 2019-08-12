@@ -44,7 +44,7 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                 {
                     if (unitRateDetails == null)
                     {
-                        UnitRate obj = _mapper.Map<UnitRate>(request);
+                        UnitRate obj = new UnitRate();                        
                         obj.CreatedById = request.CreatedById;
                         obj.CreatedDate = request.CreatedDate;
                         obj.IsDeleted = false;
@@ -56,6 +56,7 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                         obj.QualityId = request.QualityId;
                         obj.TimeCategoryId = request.TimeCategoryId;
                         obj.MediaCategoryId = request.MediaCategoryId;
+                        _mapper.Map(request,obj);
                         await _dbContext.UnitRates.AddAsync(obj);
                         await _dbContext.SaveChangesAsync();
                         request.ActivityName = activity;

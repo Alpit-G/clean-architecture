@@ -47,7 +47,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
         [HttpGet]
         public async Task<ApiResponse> GetContractsListByClient()
         {
-            return await _mediator.Send(new GetAllContractDetailsQuery());
+            return await _mediator.Send(new GetContractsListByClientQuery());
         }
         [HttpPost]
         public async Task<ApiResponse> GetContractsPaginatedList([FromBody]GetContractsPaginatedListQuery query)

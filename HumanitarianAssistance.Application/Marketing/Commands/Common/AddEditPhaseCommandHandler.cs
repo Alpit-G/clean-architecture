@@ -29,11 +29,12 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
             {
                 if (request.JobPhaseId == 0 || request.JobPhaseId == null)
                 {
-                    JobPhase obj = _mapper.Map<JobPhase>(request);
+                    JobPhase obj = new JobPhase();                    
                     obj.CreatedById = request.CreatedById;
                     obj.CreatedDate = request.CreatedDate;
                     obj.IsDeleted = false;
                     obj.Phase = request.Phase;
+                    _mapper.Map(request, obj);
                     await _dbContext.JobPhases.AddAsync(obj);
                     await _dbContext.SaveChangesAsync();
                     response.data.phaseById = obj;

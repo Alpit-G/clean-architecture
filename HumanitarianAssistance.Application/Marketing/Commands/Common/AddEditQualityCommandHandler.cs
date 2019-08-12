@@ -30,11 +30,11 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                 if (request.QualityId == 0 || request.QualityId == null)
                 {
                     Quality obj = new Quality();
-                    _mapper.Map(request,obj);
                     obj.CreatedById = request.CreatedById;
                     obj.CreatedDate = request.CreatedDate;
                     obj.IsDeleted = false;
                     obj.QualityName = request.QualityName;
+                    _mapper.Map(request, obj);
                     await _dbContext.Qualities.AddAsync(obj);
                     await _dbContext.SaveChangesAsync();
                     response.data.qualityById = obj;

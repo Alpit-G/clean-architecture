@@ -103,6 +103,7 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Create
                                                         {
                                                             ClientId = request.ClientId,
                                                             ClientName=request.ClientName,
+                                                            ClientCode=request.ClientCode,
                                                             type= "Edit"
                                                         }).FirstOrDefaultAsync();
                         response.data.clientDetailsById = data;

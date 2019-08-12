@@ -27,11 +27,12 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
             {
                 if (request.MediaCategoryId == 0 || request.MediaCategoryId == null)
                 {
-                    MediaCategory obj = _mapper.Map<MediaCategory>(request);
+                    MediaCategory obj = new MediaCategory();                    
                     obj.CreatedById = request.CreatedById;
                     obj.CreatedDate = request.CreatedDate;
                     obj.IsDeleted = false;
                     obj.CategoryName = request.CategoryName;
+                    _mapper.Map(request, obj);
                     await _dbContext.MediaCategories.AddAsync(obj);
                     await _dbContext.SaveChangesAsync();
                     response.StatusCode = StaticResource.successStatusCode;
