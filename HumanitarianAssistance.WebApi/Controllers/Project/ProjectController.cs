@@ -1075,7 +1075,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             return await _mediator.Send(command);
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<ApiResponse> GetIsApprovedCriteriaEvaluationStatus([FromBody] long ProjectId)
         {
             return await _mediator.Send(new GetIsApprovedCriteriaEvaluationStatusQuery { ProjectId = ProjectId });
