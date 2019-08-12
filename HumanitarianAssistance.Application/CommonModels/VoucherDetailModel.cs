@@ -1,8 +1,9 @@
 using System;
+using HumanitarianAssistance.Application.Infrastructure;
 
-namespace HumanitarianAssistance.Application.Accounting.Models
+namespace HumanitarianAssistance.Application.CommonModels
 {
-    public class VoucherDetailModel
+    public class VoucherDetailModel : BaseModel
     {
         public long VoucherNo { get; set; }
         public int CurrencyId { get; set; }

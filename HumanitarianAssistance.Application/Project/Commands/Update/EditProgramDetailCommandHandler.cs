@@ -10,14 +10,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Project.Commands.Update
 {
-    public class EditProgramDetailCommandHandler: IRequestHandler<EditProgramDetailCommand, ApiResponse>
+    public class EditProgramDetailCommandHandler : IRequestHandler<EditProgramDetailCommand, ApiResponse>
     {
 
         private readonly HumanitarianAssistanceDbContext _dbContext;
         private readonly IMapper _mapper;
         public EditProgramDetailCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
         {
-            _dbContext= dbContext;
+            _dbContext = dbContext;
+            _mapper = mapper;
         }
 
         public async Task<ApiResponse> Handle(EditProgramDetailCommand request, CancellationToken cancellationToken)
@@ -27,7 +28,7 @@ namespace HumanitarianAssistance.Application.Project.Commands.Update
             try
             {
                 var existRecord = await _dbContext.ProgramDetail.FirstOrDefaultAsync(x => x.IsDeleted == false && x.ProgramId == request.ProgramId);
-                
+
                 if (existRecord != null)
                 {
                     _mapper.Map(request, existRecord);
@@ -54,6 +55,6 @@ namespace HumanitarianAssistance.Application.Project.Commands.Update
             }
             return response;
         }
-        
+
     }
 }

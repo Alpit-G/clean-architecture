@@ -1,6 +1,6 @@
 using System;
 
-namespace HumanitarianAssistance.Application.Project.Models
+namespace HumanitarianAssistance.Application.CommonModels
 {
     public class ProjectBudgetLineDetailModel
     {
@@ -11,12 +11,12 @@ namespace HumanitarianAssistance.Application.Project.Models
         public long? ProjectId { get; set; }
         public long? ProjectJobId { get; set; }
         public string ProjectJobName { get; set; }
-        public  string ProjectJobCode { get; set; }
+        public string ProjectJobCode { get; set; }
         public int? CurrencyId { get; set; }
-        public string  CurrencyName { get; set; }
+        public string CurrencyName { get; set; }
         public string BudgetCodeName { get; set; }
         public double? DebitPercentage { get; set; }
-        public  DateTime? CreatedDate { get; set; }
-        public double? Expenditure { get; set; } 
+        public DateTime? CreatedDate { get; set; }
+        public double? Expenditure { get; set; }
     }
 }

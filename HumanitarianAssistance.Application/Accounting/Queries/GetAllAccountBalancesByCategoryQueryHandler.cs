@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using HumanitarianAssistance.Application.Accounting.Models;
-using HumanitarianAssistance.Application.CommonServices;
+using HumanitarianAssistance.Application.CommonServicesInterface;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Enums;
 using HumanitarianAssistance.Common.Helpers;
@@ -14,13 +14,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Accounting.Queries
 {
-    public class GetAllAccountBalancesByCategoryQueryHandler: IRequestHandler<GetAllAccountBalancesByCategoryQuery, ApiResponse>
+    public class GetAllAccountBalancesByCategoryQueryHandler : IRequestHandler<GetAllAccountBalancesByCategoryQuery, ApiResponse>
     {
-        private HumanitarianAssistanceDbContext _dbContext;
-        
-        public GetAllAccountBalancesByCategoryQueryHandler(HumanitarianAssistanceDbContext dbContext)
+        private readonly HumanitarianAssistanceDbContext _dbContext;
+        private readonly IAccountBalanceServices _iAccountBalanceServices;
+
+        public GetAllAccountBalancesByCategoryQueryHandler(HumanitarianAssistanceDbContext dbContext, IAccountBalanceServices iAccountBalanceServices)
         {
-            _dbContext= dbContext;
+            _dbContext = dbContext;
+            _iAccountBalanceServices = iAccountBalanceServices;
         }
 
         public async Task<ApiResponse> Handle(GetAllAccountBalancesByCategoryQuery request, CancellationToken cancellationToken)
@@ -37,9 +39,8 @@ namespace HumanitarianAssistance.Application.Accounting.Queries
                 if (inputLevelList.Any(x => x.AccountTypeId == null))
                     throw new Exception("Some accounts do not have notes assigned to them!");
 
-                AccountBalanceServices AccountBalanceServices= new AccountBalanceServices(_dbContext);
 
-                var accountBalances = await AccountBalanceServices.GetAccountBalances(inputLevelList, request.asOfDate, request.currency);
+                var accountBalances = await _iAccountBalanceServices.GetAccountBalances(inputLevelList, request.asOfDate, request.currency);
 
                 var notes = inputLevelList.Select(x => x.AccountType).Distinct().ToList();
                 List<NoteAccountBalancesModel> noteAccountBalances = new List<NoteAccountBalancesModel>();
@@ -48,7 +49,7 @@ namespace HumanitarianAssistance.Application.Accounting.Queries
                 {
                     var currNoteBalances = accountBalances.Where(x => x.Key.AccountTypeId == note.AccountTypeId).ToDictionary(x => x.Key, x => x.Value);
 
-                    var vmNoteBalances = AccountBalanceServices.GenerateBalanceViewModels(currNoteBalances);
+                    var vmNoteBalances = _iAccountBalanceServices.GenerateBalanceViewModels(currNoteBalances);
 
                     var currNoteAccountBalances = new NoteAccountBalancesModel();
 

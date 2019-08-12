@@ -6,6 +6,7 @@ using AutoMapper;
 using HumanitarianAssistance.Application.Accounting.Commands.Common;
 using HumanitarianAssistance.Application.Accounting.Commands.Create;
 using HumanitarianAssistance.Application.Accounting.Models;
+using HumanitarianAssistance.Application.CommonModels;
 using HumanitarianAssistance.Application.CommonServicesInterface;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
@@ -18,12 +19,11 @@ using Microsoft.EntityFrameworkCore.Storage;
 
 namespace HumanitarianAssistance.Application.CommonServices
 {
-    internal class AccountingServices: IAccountingServices
+    public class AccountingServices : IAccountingServices
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
         private readonly IMapper _mapper;
         private readonly RoleManager<IdentityRole> _roleManager;
-
 
         public AccountingServices(HumanitarianAssistanceDbContext dbContext)
         {

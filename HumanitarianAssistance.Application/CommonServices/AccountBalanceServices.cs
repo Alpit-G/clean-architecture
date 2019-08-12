@@ -6,14 +6,13 @@ using HumanitarianAssistance.Application.Accounting.Models;
 using HumanitarianAssistance.Application.CommonServicesInterface;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
-using HumanitarianAssistance.Domain.Entities;
 using HumanitarianAssistance.Domain.Entities.Accounting;
 using HumanitarianAssistance.Persistence;
 using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.CommonServices
 {
-    internal class AccountBalanceServices: IAccountBalanceServices
+    public class AccountBalanceServices : IAccountBalanceServices
     {
         public readonly HumanitarianAssistanceDbContext _dbContext;
 

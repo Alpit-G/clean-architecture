@@ -143,7 +143,7 @@ namespace HumanitarianAssistance.WebApi
                 routes.MapHub<NotifyHub>("/notifyhub");
             });
 
-           
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

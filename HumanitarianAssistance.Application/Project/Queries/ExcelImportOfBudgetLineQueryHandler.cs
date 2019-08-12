@@ -1,12 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using HumanitarianAssistance.Application.CommonServices;
+using HumanitarianAssistance.Application.CommonModels;
+using HumanitarianAssistance.Application.CommonServicesInterface;
 using HumanitarianAssistance.Application.Infrastructure;
-using HumanitarianAssistance.Application.Project.Models;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Domain.Entities.Project;
 using HumanitarianAssistance.Persistence;
@@ -16,14 +15,16 @@ using OfficeOpenXml;
 
 namespace HumanitarianAssistance.Application.Project.Queries
 {
-    public class ExcelImportOfBudgetLineQueryHandler: IRequestHandler<ExcelImportOfBudgetLineQuery, ApiResponse>
+    public class ExcelImportOfBudgetLineQueryHandler : IRequestHandler<ExcelImportOfBudgetLineQuery, ApiResponse>
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
-        IMapper _mapper;
-        public ExcelImportOfBudgetLineQueryHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        private readonly IMapper _mapper;
+        private readonly IProjectServices _iProjectServices;
+        public ExcelImportOfBudgetLineQueryHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper, IProjectServices iProjectServices)
         {
-            _dbContext= dbContext;
-            _mapper= mapper;
+            _dbContext = dbContext;
+            _mapper = mapper;
+            _iProjectServices = iProjectServices;
         }
 
         public async Task<ApiResponse> Handle(ExcelImportOfBudgetLineQuery request, CancellationToken cancellationToken)
@@ -34,8 +35,6 @@ namespace HumanitarianAssistance.Application.Project.Queries
             {
                 if (request.ProjectId != 0)
                 {
-                    ProjectServices ProjectServices= new ProjectServices(_dbContext);
-
                     using (ExcelPackage package = new ExcelPackage(request.File))
                     {
                         ExcelWorksheet workSheet = package.Workbook.Worksheets[1];
@@ -63,7 +62,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
                         }
 
                         //Note: GetBudgetLine List by project Id 
-                        List<ProjectBudgetLineDetailModel> projectListdata = ProjectServices.GetBudgetLineByProjectId(DataList, request.ProjectId);
+                        List<ProjectBudgetLineDetailModel> projectListdata = _iProjectServices.GetBudgetLineByProjectId(DataList, request.ProjectId);
 
                         if (projectListdata.Count > 0)
                         {
@@ -109,8 +108,8 @@ namespace HumanitarianAssistance.Application.Project.Queries
                                                 {
                                                     obj.BudgetCode = await GetProjectBudgetLineCode(obj);
 
-                                                     _dbContext.ProjectBudgetLineDetail.Update(obj);
-                                                     await _dbContext.SaveChangesAsync();
+                                                    _dbContext.ProjectBudgetLineDetail.Update(obj);
+                                                    await _dbContext.SaveChangesAsync();
                                                 }
                                             }
                                             // note : update  budgetline with new
@@ -276,7 +275,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
                                             {
                                                 //Note : if budgetLine exist already then update the newly created job with previous one
                                                 ifBudgetExist.ProjectJobId = projectJobObj.ProjectJobId;
-                                                 _dbContext.ProjectBudgetLineDetail.Update(ifBudgetExist);
+                                                _dbContext.ProjectBudgetLineDetail.Update(ifBudgetExist);
                                                 await _dbContext.SaveChangesAsync();
 
                                             }
@@ -321,7 +320,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
 
         }
 
-        public  async Task<ProjectBudgetLineDetail> IfexistBudgetLine(string item)
+        public async Task<ProjectBudgetLineDetail> IfexistBudgetLine(string item)
         {
             ProjectBudgetLineDetail ifExistbudgetDetail = await _dbContext.ProjectBudgetLineDetail
                                                                            .FirstOrDefaultAsync(x =>

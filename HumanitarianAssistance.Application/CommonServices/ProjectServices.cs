@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HumanitarianAssistance.Application.CommonModels;
 using HumanitarianAssistance.Application.CommonServicesInterface;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Application.Project.Models;
@@ -12,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.CommonServices
 {
-    internal class ProjectServices: IProjectServices
+    public class ProjectServices : IProjectServices
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
         public ProjectServices(HumanitarianAssistanceDbContext dbContext)
@@ -27,7 +28,7 @@ namespace HumanitarianAssistance.Application.CommonServices
             try
             {
                 var existRecord = await _dbContext.ProjectSector.FirstOrDefaultAsync(x => x.IsDeleted == false && x.ProjectId == model.ProjectId);
-                
+
                 if (existRecord == null)
                 {
                     ProjectSector obj = new ProjectSector();
@@ -134,7 +135,6 @@ namespace HumanitarianAssistance.Application.CommonServices
 
         }
 
-        
         public async Task<string> GetProjectBudgetLineCode(ProjectBudgetLineDetail model)
         {
             ProjectDetail projectDetail = await _dbContext.ProjectDetail
