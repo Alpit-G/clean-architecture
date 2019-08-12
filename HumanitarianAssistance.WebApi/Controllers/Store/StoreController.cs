@@ -11,14 +11,6 @@ using HumanitarianAssistance.Application.Store.Commands.Delete;
 using HumanitarianAssistance.Application.Store.Queries;
 using System.Collections.Generic;
 using HumanitarianAssistance.Application.Store.Models;
-using System.Threading.Tasks;
-using HumanitarianAssistance.Application.Infrastructure;
-using HumanitarianAssistance.Application.Store.Queries;
-using System.Security.Claims;
-using System;
-using HumanitarianAssistance.Application.Store.Commands.Create;
-using HumanitarianAssistance.Application.Store.Commands.Update;
-using HumanitarianAssistance.Application.Store.Commands.Delete;
 using HumanitarianAssistance.Application.Store.Commands.Common;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Store
