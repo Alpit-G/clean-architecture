@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using HumanitarianAssistance.Application.CommonModels;
 using HumanitarianAssistance.Application.CommonServices;
+using HumanitarianAssistance.Application.CommonServicesInterface;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Application.Store.Models;
 using HumanitarianAssistance.Common.Enums;
@@ -21,10 +22,13 @@ namespace HumanitarianAssistance.Application.Store.Commands.Common
     {
         private HumanitarianAssistanceDbContext _dbContext;
         private IMapper _mapper;
-        public VerifyPurchaseCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        private IStoreServices _iStoreServices;
+
+        public VerifyPurchaseCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper, IStoreServices iStoreServices)
         {
             _dbContext = dbContext;
             _mapper = mapper;
+            _iStoreServices = iStoreServices;
         }
         public async Task<ApiResponse> Handle(VerifyPurchaseCommand request, CancellationToken cancellationToken)
         {
@@ -102,8 +106,7 @@ namespace HumanitarianAssistance.Application.Store.Commands.Common
                                 TimezoneOffset = request.TimezoneOffset
                             };
 
-                            StoreServices storeObj = new StoreServices(_dbContext);
-                            var responseVoucher = await storeObj.AddVoucherNewDetail(voucherModel);
+                            var responseVoucher = await _iStoreServices.AddVoucherNewDetail(voucherModel);
                             #endregion
 
                             if (responseVoucher.StatusCode == 200)
@@ -142,7 +145,7 @@ namespace HumanitarianAssistance.Application.Store.Commands.Common
                                     VoucherNo = responseVoucher.data.VoucherDetailEntity.VoucherNo,
                                     VoucherTransactions = transactions
                                 };
-                                var responseTransaction = storeObj.AddEditTransactionList(transactionVoucherDetail, request.CreatedById);
+                                var responseTransaction = _iStoreServices.AddEditTransactionList(transactionVoucherDetail, request.CreatedById);
 
                                 if (responseTransaction.StatusCode == 200)
                                 {

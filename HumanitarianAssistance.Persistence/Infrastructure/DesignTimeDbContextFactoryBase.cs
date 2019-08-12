@@ -8,13 +8,13 @@ namespace HumanitarianAssistance.Persistence.Infrastructure
 {
     public abstract class DesignTimeDbContextFactoryBase<TContext> : IDesignTimeDbContextFactory<TContext> where TContext : DbContext
     {
-        private const string ConnectionStringName = "DefaultConnection";
-        private const string AspNetCoreEnvironment = "ASPNETCORE_ENVIRONMENT";
+        private readonly string connectionString = Environment.GetEnvironmentVariable("LINUX_DBCONNECTION_STRING");
+        private readonly string aspNetCoreEnvironment = "ASPNETCORE_ENVIRONMENT";
 
         public TContext CreateDbContext(string[] args)
         {
             var basePath = Directory.GetCurrentDirectory() + string.Format("{0}..{0}HumanitarianAssistance.WebApi", Path.DirectorySeparatorChar);
-            return Create(basePath, Environment.GetEnvironmentVariable(AspNetCoreEnvironment));
+            return Create(basePath, Environment.GetEnvironmentVariable(aspNetCoreEnvironment));
         }
 
         protected abstract TContext CreateNewInstance(DbContextOptions<TContext> options);
@@ -30,8 +30,6 @@ namespace HumanitarianAssistance.Persistence.Infrastructure
                 .AddEnvironmentVariables()
                 .Build();
 
-            var connectionString = configuration.GetConnectionString(ConnectionStringName);
-
             return Create(connectionString);
         }
 
@@ -39,7 +37,7 @@ namespace HumanitarianAssistance.Persistence.Infrastructure
         {
             if (string.IsNullOrEmpty(connectionString))
             {
-                throw new ArgumentException($"Connection string '{ConnectionStringName}' is null or empty.", nameof(connectionString));
+                throw new ArgumentException($"Connection string '{connectionString}' is null or empty.", nameof(connectionString));
             }
 
             Console.WriteLine($"DesignTimeDbContextFactoryBase.Create(string): Connection string: '{connectionString}'.");

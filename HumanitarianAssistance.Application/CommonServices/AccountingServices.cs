@@ -19,12 +19,11 @@ using Microsoft.EntityFrameworkCore.Storage;
 
 namespace HumanitarianAssistance.Application.CommonServices
 {
-    internal class AccountingServices : IAccountingServices
+    public class AccountingServices : IAccountingServices
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
         private readonly IMapper _mapper;
         private readonly RoleManager<IdentityRole> _roleManager;
-
 
         public AccountingServices(HumanitarianAssistanceDbContext dbContext)
         {

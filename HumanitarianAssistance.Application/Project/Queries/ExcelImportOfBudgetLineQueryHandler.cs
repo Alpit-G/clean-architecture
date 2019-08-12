@@ -4,7 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using HumanitarianAssistance.Application.CommonModels;
-using HumanitarianAssistance.Application.CommonServices;
+using HumanitarianAssistance.Application.CommonServicesInterface;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Domain.Entities.Project;
@@ -18,11 +18,13 @@ namespace HumanitarianAssistance.Application.Project.Queries
     public class ExcelImportOfBudgetLineQueryHandler : IRequestHandler<ExcelImportOfBudgetLineQuery, ApiResponse>
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
-        IMapper _mapper;
-        public ExcelImportOfBudgetLineQueryHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        private readonly IMapper _mapper;
+        private readonly IProjectServices _iProjectServices;
+        public ExcelImportOfBudgetLineQueryHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper, IProjectServices iProjectServices)
         {
             _dbContext = dbContext;
             _mapper = mapper;
+            _iProjectServices = iProjectServices;
         }
 
         public async Task<ApiResponse> Handle(ExcelImportOfBudgetLineQuery request, CancellationToken cancellationToken)
@@ -33,8 +35,6 @@ namespace HumanitarianAssistance.Application.Project.Queries
             {
                 if (request.ProjectId != 0)
                 {
-                    ProjectServices ProjectServices = new ProjectServices(_dbContext);
-
                     using (ExcelPackage package = new ExcelPackage(request.File))
                     {
                         ExcelWorksheet workSheet = package.Workbook.Worksheets[1];
@@ -62,7 +62,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
                         }
 
                         //Note: GetBudgetLine List by project Id 
-                        List<ProjectBudgetLineDetailModel> projectListdata = ProjectServices.GetBudgetLineByProjectId(DataList, request.ProjectId);
+                        List<ProjectBudgetLineDetailModel> projectListdata = _iProjectServices.GetBudgetLineByProjectId(DataList, request.ProjectId);
 
                         if (projectListdata.Count > 0)
                         {

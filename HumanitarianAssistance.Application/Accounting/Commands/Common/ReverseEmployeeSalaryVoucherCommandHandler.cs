@@ -1,9 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using HumanitarianAssistance.Application.CommonServices;
+using HumanitarianAssistance.Application.CommonServicesInterface;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Domain.Entities.Accounting;
@@ -15,10 +13,12 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Common
     public class ReverseEmployeeSalaryVoucherCommandHandler : IRequestHandler<ReverseEmployeeSalaryVoucherCommand, ApiResponse>
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
+        private readonly IAccountingServices _iAccountingServices;
 
-        public ReverseEmployeeSalaryVoucherCommandHandler(HumanitarianAssistanceDbContext dbContext)
+        public ReverseEmployeeSalaryVoucherCommandHandler(HumanitarianAssistanceDbContext dbContext, IAccountingServices iAccountingServices)
         {
             _dbContext = dbContext;
+            _iAccountingServices = iAccountingServices;
         }
 
         public async Task<ApiResponse> Handle(ReverseEmployeeSalaryVoucherCommand request, CancellationToken cancellationToken)
@@ -29,9 +29,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Common
 
             try
             {
-                AccountingServices accountingObj = new AccountingServices(_dbContext);
-
-                if (await accountingObj.ReverseEmployeeSalaryVoucher(request))
+                if (await _iAccountingServices.ReverseEmployeeSalaryVoucher(request))
                 {
                     response.StatusCode = StaticResource.successStatusCode;
                     response.Message = "Success";
@@ -40,9 +38,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Common
                 {
                     response.StatusCode = StaticResource.failStatusCode;
                     response.Message = StaticResource.SomethingWentWrong; ;
-
                 }
-
             }
             catch (Exception ex)
             {
