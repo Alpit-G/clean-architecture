@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using HumanitarianAssistance.Application.CommonServices;
+using HumanitarianAssistance.Application.CommonServicesInterface;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Domain.Entities.Project;
@@ -14,12 +15,14 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
 {
     public class AddEditProjectBudgetLineDetailCommandHandler : IRequestHandler<AddEditProjectBudgetLineDetailCommand, ApiResponse>
     {
-        private HumanitarianAssistanceDbContext _dbContext;
-        private IMapper _mapper;
-        public AddEditProjectBudgetLineDetailCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        private readonly HumanitarianAssistanceDbContext _dbContext;
+        private readonly IMapper _mapper;
+        private readonly IProjectServices _iProjectServices;
+        public AddEditProjectBudgetLineDetailCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper, IProjectServices iProjectServices)
         {
             _dbContext = dbContext;
             _mapper = mapper;
+            _iProjectServices = iProjectServices;
         }
         public async Task<ApiResponse> Handle(AddEditProjectBudgetLineDetailCommand request, CancellationToken cancellationToken)
         {
@@ -38,9 +41,8 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
 
                     if (obj.BudgetLineId != 0)
                     {
-                        ProjectServices ProjectServices = new ProjectServices(_dbContext);
 
-                        obj.BudgetCode = await ProjectServices.GetProjectBudgetLineCode(obj);
+                        obj.BudgetCode = await _iProjectServices.GetProjectBudgetLineCode(obj);
 
                         await _dbContext.SaveChangesAsync();
                     }
@@ -48,8 +50,9 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
                 }
                 else
                 {
-                    ProjectBudgetLineDetail projectBudgetLineDetail = _dbContext.ProjectBudgetLineDetail.FirstOrDefault(x => x.IsDeleted == false &&
-                                                                                                                                      x.BudgetLineId == request.BudgetLineId);
+                    ProjectBudgetLineDetail projectBudgetLineDetail = _dbContext.ProjectBudgetLineDetail
+                                                                                .FirstOrDefault(x => x.IsDeleted == false && x.BudgetLineId == request.BudgetLineId);
+                    
                     projectBudgetLineDetail.BudgetCode = obj.BudgetCode;
                     projectBudgetLineDetail.BudgetName = obj.BudgetName;
                     projectBudgetLineDetail.CurrencyId = obj.CurrencyId;
@@ -59,6 +62,7 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
                     obj.ModifiedById = request.ModifiedById;
                     obj.ModifiedDate = request.ModifiedDate;
                     obj.IsDeleted = false;
+
                     await _dbContext.SaveChangesAsync();
                 }
                 response.StatusCode = StaticResource.successStatusCode;

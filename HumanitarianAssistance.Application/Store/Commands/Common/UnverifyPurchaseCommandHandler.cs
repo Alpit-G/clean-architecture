@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using HumanitarianAssistance.Application.CommonModels;
 using HumanitarianAssistance.Application.CommonServices;
+using HumanitarianAssistance.Application.CommonServicesInterface;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Application.Store.Models;
 using HumanitarianAssistance.Common.Helpers;
@@ -19,12 +20,15 @@ namespace HumanitarianAssistance.Application.Store.Commands.Common
 {
     public class UnverifyPurchaseCommandHandler : IRequestHandler<UnverifyPurchaseCommand, ApiResponse>
     {
-        private HumanitarianAssistanceDbContext _dbContext;
-        private IMapper _mapper;
-        public UnverifyPurchaseCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        private readonly HumanitarianAssistanceDbContext _dbContext;
+        private readonly IMapper _mapper;
+        private readonly IStoreServices _iStoreServices;
+
+        public UnverifyPurchaseCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper, IStoreServices iStoreServices)
         {
             _dbContext = dbContext;
             _mapper = mapper;
+            _iStoreServices = iStoreServices;
         }
         public async Task<ApiResponse> Handle(UnverifyPurchaseCommand request, CancellationToken cancellationToken)
         {
@@ -118,8 +122,8 @@ namespace HumanitarianAssistance.Application.Store.Commands.Common
                                     VoucherNo = voucherDetail.VoucherNo,
                                     VoucherTransactions = transactions
                                 };
-                                StoreServices storeObj = new StoreServices(_dbContext);
-                                var responseTransaction = storeObj.AddEditTransactionList(transactionVoucherDetail, request.CreatedById);
+                                // StoreServices storeObj = new StoreServices(_dbContext);
+                                var responseTransaction = _iStoreServices.AddEditTransactionList(transactionVoucherDetail, request.CreatedById);
 
                                 if (responseTransaction.StatusCode == 200)
                                 {

@@ -7,7 +7,7 @@ using AutoMapper;
 using HumanitarianAssistance.Application.Accounting.Commands.Common;
 using HumanitarianAssistance.Application.Accounting.Models;
 using HumanitarianAssistance.Application.CommonModels;
-using HumanitarianAssistance.Application.CommonServices;
+using HumanitarianAssistance.Application.CommonServicesInterface;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Persistence;
@@ -17,13 +17,15 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
 {
     public class ExchangeGainLossVoucherDetailsCommandHandler : IRequestHandler<ExchangeGainLossVoucherDetailsCommand, ApiResponse>
     {
-        private HumanitarianAssistanceDbContext _dbContext;
-        private IMapper _mapper;
+        private readonly HumanitarianAssistanceDbContext _dbContext;
+        private readonly IMapper _mapper;
+        private readonly IAccountingServices _iAccountingServices;
 
-        public ExchangeGainLossVoucherDetailsCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        public ExchangeGainLossVoucherDetailsCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper, IAccountingServices iAccountingServices)
         {
             _dbContext = dbContext;
             _mapper = mapper;
+            _iAccountingServices = iAccountingServices;
         }
 
         public async Task<ApiResponse> Handle(ExchangeGainLossVoucherDetailsCommand model, CancellationToken cancellationToken)
@@ -45,8 +47,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                     IsExchangeGainLossVoucher = true
                 };
 
-                AccountingServices AccountingServices = new AccountingServices(_dbContext, _mapper);
-                var responseVoucher = await AccountingServices.AddVoucherDetail(voucherModel);
+                var responseVoucher = await _iAccountingServices.AddVoucherDetail(voucherModel);
 
                 #endregion
 
@@ -86,7 +87,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                         VoucherTransactions = transactions
                     };
 
-                    bool isTransactionSaved = AccountingServices.AddEditTransactionList(transactionVoucherDetail);
+                    bool isTransactionSaved = _iAccountingServices.AddEditTransactionList(transactionVoucherDetail);
 
                     if (isTransactionSaved)
                     {
