@@ -12,16 +12,16 @@ using System.Threading;
 using System.Threading.Tasks;
 namespace HumanitarianAssistance.Application.Configuration.Commands.Update
 {
-    public class EditFinancialYearDetailCommnadHandler : IRequestHandler<EditFinancialYearDetailCommnad, ApiResponse>
+    public class EditFinancialYearDetailCommandHandler : IRequestHandler<EditFinancialYearDetailCommand, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
         private IMapper _mapper;
-        public EditFinancialYearDetailCommnadHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        public EditFinancialYearDetailCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;
         }
-        public async Task<ApiResponse> Handle(EditFinancialYearDetailCommnad request, CancellationToken cancellationToken)
+        public async Task<ApiResponse> Handle(EditFinancialYearDetailCommand request, CancellationToken cancellationToken)
         {
             ApiResponse response = new ApiResponse();
             try

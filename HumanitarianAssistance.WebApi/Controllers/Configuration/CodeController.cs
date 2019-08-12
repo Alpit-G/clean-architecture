@@ -455,7 +455,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         }
 
         [HttpPost]
-        public async Task<ApiResponse> EditFinancialYearDetail([FromBody]EditFinancialYearDetailCommnad command)
+        public async Task<ApiResponse> EditFinancialYearDetail([FromBody]EditFinancialYearDetailCommand command)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             command.ModifiedById = userId;

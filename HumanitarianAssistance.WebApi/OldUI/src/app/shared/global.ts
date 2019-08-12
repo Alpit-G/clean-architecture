@@ -101,12 +101,10 @@ export class GLOBAL {
   public static API_Hr_EditEmployeeHistoryDetail = 'HREmployee/EditEmployeeHistoryDetail';
   public static API_Hr_GetAllEmployeeHistoryByEmployeeId = 'HREmployee/GetAllEmployeeHistoryByEmployeeId';
   public static API_Hr_DeleteEmployeeHistoryDetail = 'HREmployee/DeleteEmployeeHistoryDetail';
-  public static API_HR_GetAllPayrollMonthlyHourDetail = 'HREmployee/GetAllPayrollMonthlyHourDetail';
-  public static API_HR_GetAllPayrollMonthlyHourDetailFilter = 'EmployeeHR/GetAllPayrollMonthlyHourDetail'; // new EmployeeHR
-  public static API_EmployeeHR_AddPayrollMonthlyHourDetail = 'EmployeeHR/AddPayrollMonthlyHourDetail';
-  // public static API_HR_AddPayrollMonthlyHourDetail = 'HREmployee/AddPayrollMonthlyHourDetail';
-  public static API_HR_AssignLeaveToEmployeeDetail = 'HREmployee/AssignLeaveToEmployeeDetail';
-  public static API_HR_GetAllEmployeeAssignLeave = 'HREmployee/GetAllEmployeeAssignLeave';
+  public static API_HR_GetAllPayrollMonthlyHourDetailFilter = 'Attendance/GetAllPayrollMonthlyHourDetail'; // new EmployeeHR
+  public static API_EmployeeHR_AddPayrollMonthlyHourDetail = 'Attendance/AddPayrollMonthlyHourDetail';
+  public static API_HR_AssignLeaveToEmployeeDetail = 'Attendance/AssignLeaveToEmployeeDetail';
+  public static API_HR_GetAllEmployeeAssignLeave = 'Attendance/GetAllEmployeeAssignLeave';
   public static API_HR_GetEmployeeHealthDetail = 'HREmployee/GetAllEmployeeHealthDetailByEmployeeId';
   public static API_HR_AddEmployeeHealthDetail = 'HREmployee/AddEmployeeHealthDetail';
   public static API_HR_EditEmployeeHealthDetail = 'HREmployee/EditEmployeeHealthDetail';
@@ -161,8 +159,8 @@ export class GLOBAL {
   public static API_HR_ChangeEmployeeImage = 'HREmployee/ChangeEmployeeImage';
   // public static API_HR_GetAllActiveEmployeeForAttendance = 'HREmployee/GetAllActiveEmployeeForAttendance';
   // public static API_HR_AddEmployeeAttendanceDetails = 'HREmployee/AddEmployeeAttendanceDetails';
-  public static API_HR_AddEmployeeAttendanceDetails = 'EmployeeHR/AddEmployeeAttendanceDetails'; // new
-  public static API_HR_GetEmployeeAttendanceDetails = 'HREmployee/GetEmployeeAttendanceDetails';
+  public static API_HR_AddEmployeeAttendanceDetails = 'Attendance/AddEmployeeAttendanceDetails'; // new
+  public static API_HR_GetEmployeeAttendanceDetails = 'Attendance/GetEmployeeAttendanceDetails';
 
   public static API_Code_AddFinancialYearDetail = 'Code/AddFinancialYearDetail';
   public static API_Code_EditFinancialYearDetail = 'Code/EditFinancialYearDetail';
@@ -173,7 +171,7 @@ export class GLOBAL {
   public static API_EmployeeHR_GetJobCode = 'EmployeeHR/GetJobCode';
 
   // public static API_HR_EditPayrollMonthlyHourDetail = 'HREmployee/EditPayrollMonthlyHourDetail';
-  public static API_HR_EditPayrollMonthlyHourDetail = 'EmployeeHR/EditPayrollMonthlyHourDetail'; // new
+  public static API_HR_EditPayrollMonthlyHourDetail = 'Attendance/EditPayrollMonthlyHourDetail'; // new
 
   public static API_Account_GetAllNotesDetails = 'Account/GetAllNotesDetails';
   // public static API_HR_GetAllProspectiveEmployee = 'HREmployee/GetAllProspectiveEmployee';
@@ -216,12 +214,12 @@ export class GLOBAL {
   public static API_EmployeeHR_EditAccountEmployeeSalaryDetail = 'EmployeeHR/EditEmployeeAccountSalaryDetail';
   public static API_HR_GetEmployeePayrollDetails = 'HREmployee/GetEmployeeSalaryDetailsByEmployeeId';
 
-  public static API_HR_AddEmployeeApplyLeaveDetail = 'HREmployee/AddEmployeeApplyLeaveDetail';
-  public static API_HR_GetEmployeeApplyLeaveDetailById = 'HREmployee/GetEmployeeApplyLeaveDetailById';
-  public static API_HR_GetAllEmployeeApplyLeaveList = 'HREmployee/GetAllEmployeeApplyLeaveList';
-  public static API_HR_ApproveEmployeeLeave = 'HREmployee/ApproveEmployeeLeave';
-  public static API_HR_RejectEmployeeLeave = 'HREmployee/RejectEmployeeLeave';
-  public static API_HR_DeleteApplyEmployeeLeave = 'HREmployee/DeleteApplyEmployeeLeave';
+  public static API_HR_AddEmployeeApplyLeaveDetail = 'Attendance/AddEmployeeApplyLeaveDetail';
+  public static API_HR_GetEmployeeApplyLeaveDetailById = 'Attendance/GetEmployeeApplyLeaveDetailById';
+  public static API_HR_GetAllEmployeeApplyLeaveList = 'Attendance/GetAllEmployeeApplyLeaveList';
+  public static API_HR_ApproveEmployeeLeave = 'Attendance/ApproveEmployeeLeave';
+  public static API_HR_RejectEmployeeLeave = 'Attendance/RejectEmployeeLeave';
+  public static API_HR_DeleteApplyEmployeeLeave = 'Attendance/DeleteApplyEmployeeLeave';
 
   // public static API_HR_GetAllEmployeeMonthlyPayrollList = 'HREmployee/GetAllEmployeeMonthlyPayrollList';
   public static API_EmployeeHR_GetAllEmployeeMonthlyPayrollList = 'EmployeeHR/GetAllEmployeeMonthlyPayrollList';
@@ -239,8 +237,8 @@ export class GLOBAL {
 
 
 
-  public static API_Hr_GetAllEmployeesAttendanceByDate = 'HREmployee/GetAllEmployeesAttendanceByDate';
-  public static API_Hr_EditEmployeeAttendanceByDate = 'HREmployee/EditEmployeeAttendanceByDate';
+  public static API_Hr_GetAllEmployeesAttendanceByDate = 'Attendance/GetAllEmployeesAttendanceByDate';
+  public static API_Hr_EditEmployeeAttendanceByDate = 'Attendance/EditEmployeeAttendanceByDate';
 
 
   public static API_Hr_GetAllHolidayDetails = 'HREmployee/GetAllHolidayDetails';
@@ -253,14 +251,14 @@ export class GLOBAL {
 
   public static API_HR_AddJobGradeDetail = 'HREmployee/AddJobGradeDetail';
   public static API_HR_EditJobGradeDetail = 'HREmployee/EditJobGradeDetail';
-  public static API_HR_EditEmployeeAssignLeave = 'HREmployee/EditEmployeeAssignLeave';
+  public static API_HR_EditEmployeeAssignLeave = 'Attendance/EditEmployeeAssignLeave';
   public static API_HR_DeleteHolidayDetails = 'HREmployee/DeleteHolidayDetails';
 
 
   public static API_HR_GetAllDisableCalanderDate = 'HREmployee/GetAllDisableCalanderDate';
 
 
-  public static API_HR_MonthlyEmployeeAttendanceReport = 'HREmployee/MonthlyEmployeeAttendanceReport';
+  public static API_HR_MonthlyEmployeeAttendanceReport = 'Attendance/MonthlyEmployeeAttendanceReport';
 
 
   public static API_HR_GetAllDateforDisableCalenderDate = 'HREmployee/GetAllDateforDisableCalenderDate';
@@ -524,7 +522,7 @@ export class GLOBAL {
   public static API_EmployeeDetail_DeleteEmployeeHealthQuestion = 'EmployeeDetail/DeleteEmployeeHealthQuestion';
 
   public static API_Accounting_GetAllVoucherByJouranlId = 'Account/GetAllVoucherByJouranlId';
-  public static API_EmployeeHR_AddEmployeeLeaveDetails = 'EmployeeHR/AddEmployeeLeaveDetails';
+  public static API_EmployeeHR_AddEmployeeLeaveDetails = 'Attendance/AddEmployeeLeaveDetails';
   public static API_Code_GetApplicationPages = 'Code/GetApplicationPages';
 
   // Reports

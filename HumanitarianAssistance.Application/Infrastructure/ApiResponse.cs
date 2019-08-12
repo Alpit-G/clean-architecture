@@ -319,6 +319,19 @@ namespace HumanitarianAssistance.Application.Infrastructure
 
         //HR
         public List<EmployeeHistoryOutsideOrganizationModel> EmployeeHistoryOutsideOrganizationList { get; set; }
+        public IList<PayrollMonthlyHourDetailModel> PayrollMonthlyHourList { get; set; }
+        public IList<DisplayEmployeeAttendanceModel> DisEmployeeAttendanceList { get; set; }
+        public IList<EmployeeAttendanceModel> EmployeeAttendanceList { get; set; }
+        public bool AttendanceStatus { get; set; }
+        public IList<MonthlyEmployeeAttendanceModel> MonthlyEmployeeAttendanceList { get; set; }
+        public IList<AssignLeaveToEmployeeModel> AssignLeaveToEmployeeList { get; set; }
+        public IList<EmployeeApplyLeaveModel> EmployeeApplyLeaveList { get; set; }
+        public List<EmployeeMonthlyPayrollModel> EmployeeMonthlyPayrollApprovedList { get; set; }
+        public IList<EmployeeMonthlyPayrollModel> EmployeeMonthlyPayrolllist { get; set; }
+        public EmployeePensionModel EmployeePensionModel {get; set;}
+        public List<SalaryTaxReportModel> SalaryTaxReportModelList { get; set; }
+        public List<PensionPaymentModel> PensionPayment { get; set; }
+        public List<PensionPaymentHistoryModel> PensionPaymentHistory { get; set; }
     }
 
 

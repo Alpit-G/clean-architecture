@@ -10,16 +10,16 @@ using System.Threading.Tasks;
 
 namespace HumanitarianAssistance.Application.Configuration.Commands.Update
 {
-    public class EditQualifactionDetailsCommandHandler : IRequestHandler<EditQualifactionDetailsCommand, ApiResponse>
+    public class EditQualificationDetailsCommandHandler : IRequestHandler<EditQualificationDetailsCommand, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
         private IMapper _mapper;
-        public EditQualifactionDetailsCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        public EditQualificationDetailsCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
             _mapper = mapper;
         }
-        public async Task<ApiResponse> Handle(EditQualifactionDetailsCommand request, CancellationToken cancellationToken)
+        public async Task<ApiResponse> Handle(EditQualificationDetailsCommand request, CancellationToken cancellationToken)
         {
             ApiResponse response = new ApiResponse();
             try

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Application.Configuration.Commands.Update
 {
-  public  class EditQualifactionDetailsCommand : BaseModel, IRequest<ApiResponse>
+  public  class EditQualificationDetailsCommand : BaseModel, IRequest<ApiResponse>
     {
         public int QualificationId { get; set; }
         public string QualificationName { get; set; }

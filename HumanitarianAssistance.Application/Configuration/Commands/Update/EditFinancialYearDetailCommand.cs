@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Application.Configuration.Commands.Update
 {
-   public class EditFinancialYearDetailCommnad : BaseModel, IRequest<ApiResponse>
+   public class EditFinancialYearDetailCommand : BaseModel, IRequest<ApiResponse>
     {
         public int FinancialYearId { get; set; }
         public DateTime StartDate { get; set; }
