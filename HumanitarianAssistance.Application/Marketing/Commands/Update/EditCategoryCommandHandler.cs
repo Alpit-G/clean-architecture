@@ -30,12 +30,11 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Update
             {
                 var data = await _dbContext.Categories.Where(x => x.IsDeleted == false && x.CategoryId == request.CategoryId).SingleOrDefaultAsync();
                 if (data != null)
-                {
-                    _mapper.Map(request, data);
+                {                    
                     data.IsDeleted = request.IsDeleted;
                     data.ModifiedById = request.ModifiedById;
                     data.ModifiedDate = request.ModifiedDate;
-                    _dbContext.Categories.Update(data);
+                    _mapper.Map(request, data);
                     await _dbContext.SaveChangesAsync();
                     response.StatusCode = StaticResource.successStatusCode;
                     response.Message = "Success";
