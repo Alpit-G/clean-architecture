@@ -15,7 +15,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
 {
     [ApiController]
     [Produces("application/json")]
-    [Route("api/ClientController/[Action]")]
+    [Route("api/Client/[Action]")]
     [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Marketing))]
     public class ClientController : BaseController
     {

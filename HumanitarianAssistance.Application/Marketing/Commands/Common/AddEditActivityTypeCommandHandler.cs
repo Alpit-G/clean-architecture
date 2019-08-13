@@ -29,11 +29,12 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
             {
                 if (request.ActivityTypeId == 0 || request.ActivityTypeId == null)
                 {
-                    ActivityType obj = _mapper.Map<ActivityType>(request);
+                    ActivityType obj = new ActivityType();                    
                     obj.CreatedById = request.CreatedById;
                     obj.CreatedDate = request.CreatedDate;
                     obj.IsDeleted = false;
                     obj.ActivityName = request.ActivityName;
+                    _mapper.Map(request, obj);
                     await _dbContext.ActivityTypes.AddAsync(obj);
                     await _dbContext.SaveChangesAsync();
                     response.data.activityById = obj;

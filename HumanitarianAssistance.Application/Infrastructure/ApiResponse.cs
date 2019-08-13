@@ -40,6 +40,7 @@ namespace HumanitarianAssistance.Application.Infrastructure
         // login
         public string AspNetUserId { get; set; }
         public string Token { get; set; }
+        public string JobCode { get; set; }
         public IList<string> Roles { get; set; }
         public List<RolePermissionModel> RolePermissionModelList { get; set; }
         public IList<ApproveRejectPermissionModel> ApproveRejectPermissionsInRole { get; set; }
@@ -99,6 +100,7 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public IList<DesignationModel> DesignationList { get; set; }
         public EmployeeAppraisalDetailsModel EmployeeAppraisalDetailsModel { get; set; }
         public List<AppraisalGeneralQuestions> AppraisalList { get; set; }
+        public List<LanguageDetail> LanguageDetail { get; set; }
 
 
 
@@ -319,6 +321,29 @@ namespace HumanitarianAssistance.Application.Infrastructure
 
         //HR
         public List<EmployeeHistoryOutsideOrganizationModel> EmployeeHistoryOutsideOrganizationList { get; set; }
+        public IList<PayrollMonthlyHourDetailModel> PayrollMonthlyHourList { get; set; }
+        public IList<DisplayEmployeeAttendanceModel> DisEmployeeAttendanceList { get; set; }
+        public IList<EmployeeAttendanceModel> EmployeeAttendanceList { get; set; }
+        public bool AttendanceStatus { get; set; }
+        public IList<MonthlyEmployeeAttendanceModel> MonthlyEmployeeAttendanceList { get; set; }
+        public IList<AssignLeaveToEmployeeModel> AssignLeaveToEmployeeList { get; set; }
+        public IList<EmployeeApplyLeaveModel> EmployeeApplyLeaveList { get; set; }
+        public List<EmployeeMonthlyPayrollModel> EmployeeMonthlyPayrollApprovedList { get; set; }
+        public IList<EmployeeMonthlyPayrollModel> EmployeeMonthlyPayrolllist { get; set; }
+        public EmployeePensionModel EmployeePensionModel {get; set;}
+        public List<SalaryTaxReportModel> SalaryTaxReportModelList { get; set; }
+        public List<PensionPaymentModel> PensionPayment { get; set; }
+        public List<PensionPaymentHistoryModel> PensionPaymentHistory { get; set; }
+
+        //HRJobs
+        public IList<JobHiringDetailsModel> JobHiringDetailsList { get; set; }
+        public IList<JobGradeModel> JobGradeList { get; set; }
+
+        //Interview
+        public List<InterviewDetailModel> InterviewDetailList { get; set; }
+
+        //holidays
+        public IList<HolidayDetails> HolidayDetailsList { get; set; }
     }
 
 

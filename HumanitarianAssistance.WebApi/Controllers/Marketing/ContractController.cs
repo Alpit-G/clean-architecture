@@ -19,7 +19,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
 {
     [ApiController]
     [Produces("application/json")]
-    [Route("api/ContractController/[Action]")]
+    [Route("api/Contract/[Action]")]
     [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Marketing))]
     public class ContractController : BaseController
     {
@@ -47,7 +47,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
         [HttpGet]
         public async Task<ApiResponse> GetContractsListByClient()
         {
-            return await _mediator.Send(new GetAllContractDetailsQuery());
+            return await _mediator.Send(new GetContractsListByClientQuery());
         }
         [HttpPost]
         public async Task<ApiResponse> GetContractsPaginatedList([FromBody]GetContractsPaginatedListQuery query)

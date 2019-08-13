@@ -20,7 +20,7 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
         public AddEditProducerCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
-            _mapper=mapper;
+            _mapper = mapper;
         }
 
         public async Task<ApiResponse> Handle(AddEditProducerCommand request, CancellationToken cancellationToken)
@@ -30,11 +30,12 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
             {
                 if (request.ProducerId == 0 || request.ProducerId == null)
                 {
-                    Producer obj = _mapper.Map<AddEditProducerCommand, Producer>(request);
+                    Producer obj = new Producer();                    
                     obj.CreatedById = request.CreatedById;
                     obj.CreatedDate = DateTime.Now;
                     obj.IsDeleted = false;
                     obj.ProducerName = request.ProducerName;
+                    _mapper.Map(request, obj);
                     await _dbContext.Producers.AddAsync(obj);
                     await _dbContext.SaveChangesAsync();
                     response.data.producerById = obj;
