@@ -38,9 +38,9 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
                 {
                     if (request.ProjectId == 0)
                     {
-                        var ProjectDetail = await _dbContext.ProjectDetail
+                        var ProjectDetail =  _dbContext.ProjectDetail
                                                       .OrderByDescending(x => x.ProjectId)
-                                                      .FirstOrDefaultAsync(x => x.IsDeleted == false);
+                                                      .FirstOrDefault(x => x.IsDeleted == false);
                         if (ProjectDetail == null)
                         {
                             LatestprojectId = 1;
@@ -67,24 +67,24 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
                         obj.IsActive = true;
                         obj.CreatedById = request.CreatedById;
                         obj.CreatedDate = DateTime.UtcNow;
-                        await _dbContext.ProjectDetail.AddAsync(obj);
-                        await _dbContext.SaveChangesAsync();
+                         _dbContext.ProjectDetail.Add(obj);
+                         _dbContext.SaveChanges();
                         _ProjectPhase.ProjectId = LatestprojectId = obj.ProjectId;
                         _ProjectPhase.ProjectPhaseDetailsId = (int)ProjectPhaseType.Planning;
                         _ProjectPhase.PhaseStartData = DateTime.UtcNow;
                         _ProjectPhase.IsDeleted = false;
                         _ProjectPhase.CreatedById = request.CreatedById;
                         _ProjectPhase.CreatedDate = DateTime.UtcNow;
-                        await _dbContext.ProjectPhaseTime.AddAsync(_ProjectPhase);
-                        await _dbContext.SaveChangesAsync();
+                         _dbContext.ProjectPhaseTime.Add(_ProjectPhase);
+                         _dbContext.SaveChanges();
 
-                        response.data.ProjectDetail = obj; //dont remove this
+                        response.data.ProjectDetail = obj; //don't remove this
 
                     }
                     else
                     {
-                        var existProjectRecord = await _dbContext.ProjectDetail.FirstOrDefaultAsync(x => x.IsDeleted == false && x.ProjectId == request.ProjectId);
-                        var exstingProjectTimePhase = _dbContext.ProjectPhaseTime.FirstOrDefaultAsync(y => y.IsDeleted == false && y.ProjectId == request.ProjectId);
+                        ProjectDetail existProjectRecord =  _dbContext.ProjectDetail.FirstOrDefault(x => x.IsDeleted == false && x.ProjectId == request.ProjectId);
+                        ProjectPhaseTime exstingProjectTimePhase = _dbContext.ProjectPhaseTime.FirstOrDefault(y => y.IsDeleted == false && y.ProjectId == request.ProjectId);
                         if (existProjectRecord != null)
                         {
                             existProjectRecord.ProjectName = request.ProjectName;
@@ -96,7 +96,6 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
                             existProjectRecord.ModifiedById = request.ModifiedById;
                             existProjectRecord.ModifiedDate = DateTime.UtcNow;
                             _dbContext.SaveChanges();
-                            //    _uow.ProjectDetailNewRepository.UpdateAsyn(existProjectRecord);
                             if (exstingProjectTimePhase != null)
                             {
                                 _ProjectPhase.ProjectPhaseDetailsId = (int)ProjectPhaseType.Planning;
@@ -104,7 +103,6 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
                                 _ProjectPhase.IsDeleted = false;
                                 _ProjectPhase.ModifiedById = request.ModifiedById;
                                 _ProjectPhase.ModifiedDate = DateTime.UtcNow;
-                                // await _uow.ProjectPhaseTimeRepository.UpdateAsyn(_ProjectPhase);
                                 _dbContext.SaveChanges();
 
                             }

@@ -32,7 +32,7 @@ namespace HumanitarianAssistance.Application.Project.Commands.Create
                 obj.IsDeleted = false;
                 obj.CreatedById = request.CreatedById;
                 await _dbContext.ProjectActivityDetail.AddAsync(obj);
-
+                await _dbContext.SaveChangesAsync();
 
                 if (request.ProvinceId != null)
                 {

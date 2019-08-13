@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Project.Queries
 {
-    public class GetAllDistrictByProvinceIdQueryHandler: IRequest<ApiResponse>
+    public class GetAllDistrictByProvinceIdQueryHandler: IRequestHandler<GetAllDistrictByProvinceIdQuery, ApiResponse>
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
         
@@ -30,12 +30,12 @@ namespace HumanitarianAssistance.Application.Project.Queries
                 var Newlist = DistrictDetailList.Where(x => request.ProvinceId.Any(y => x.ProvinceID == y)).ToList();
                 response.data.Districtlist = Newlist;
                 response.StatusCode = StaticResource.successStatusCode;
-                response.Message = "Success";
+                response.Message = StaticResource.SuccessText;
             }
             catch (Exception ex)
             {
                 response.StatusCode = StaticResource.failStatusCode;
-                response.Message = StaticResource.SomethingWrong + ex.Message;
+                response.Message = ex.Message;
             }
             return response;
         }

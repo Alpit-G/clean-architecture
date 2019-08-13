@@ -34,6 +34,7 @@ namespace HumanitarianAssistance.Application.Project.Commands.Create
                 extensionObj.CreatedDate = request.CreatedDate;
 
                 await _dbContext.ProjectActivityExtensions.AddAsync(extensionObj);
+                await _dbContext.SaveChangesAsync();
 
                 response.StatusCode = StaticResource.successStatusCode;
                 response.Message = StaticResource.SuccessText;
