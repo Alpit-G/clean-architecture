@@ -41,7 +41,7 @@ namespace HumanitarianAssistance.Application.HR.Commands.Create
                 };
 
                 await _dbContext.EmployeeLanguages.AddAsync(employeeLanguages);
-
+                await _dbContext.SaveChangesAsync();
                 response.StatusCode = StaticResource.successStatusCode;
                 response.Message = "Success";
             }
