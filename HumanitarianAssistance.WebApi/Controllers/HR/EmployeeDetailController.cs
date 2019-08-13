@@ -354,7 +354,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.HR
         }
 
         [HttpPost]
-        public async Task<ApiResponse> AddEmployeeHealthInfo([FromBody]AddEmployeeHealthInfoCommand model)
+        public async Task<ApiResponse> AddEmployeeHealthInfo([FromBody] AddEmployeeHealthInfoCommand model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.CreatedById = userId;
@@ -415,7 +415,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.HR
         }
 
         [HttpPost]
-        public async Task<ApiResponse> AddEmployeeLanguages([FromBody]AddEmployeeLanguagesCommand model)
+        public async Task<ApiResponse> AddEmployeeLanguages([FromBody] AddEmployeeLanguagesCommand model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.CreatedById = userId;
@@ -438,6 +438,17 @@ namespace HumanitarianAssistance.WebApi.Controllers.HR
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.ModifiedById = userId;
             model.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(model);
+        }
+        #endregion
+
+        #region "new employee detail"
+        [HttpPost]
+        public async Task<ApiResponse> AddNewEmployee([FromBody]AddEmployeeLanguagesCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
             return await _mediator.Send(model);
         }
         #endregion
