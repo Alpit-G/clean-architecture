@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using HumanitarianAssistance.Application.Accounting.Models;
+using HumanitarianAssistance.Application.CommonModels;
+using HumanitarianAssistance.Domain.Entities.Accounting;
 
 namespace HumanitarianAssistance.WebApi.Infrastructure
 {
@@ -11,6 +10,8 @@ namespace HumanitarianAssistance.WebApi.Infrastructure
         public AccountingMapper()
         {
             // Mapping
+            CreateMap<VoucherDetail, VoucherDetailEntityModel>().ReverseMap();
+            CreateMap<VoucherDetail, VoucherDetailModel>().ReverseMap();
         }
     }
 }
