@@ -48,7 +48,7 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                             LatestPolicyId = Convert.ToInt32(policyDetail.PolicyId) + 1;
                             policyCode = LatestPolicyId.ToString().GetPolicyCode();
                         }
-                        PolicyDetail obj = _mapper.Map<AddEditPolicyCommand, PolicyDetail>(request);
+                        PolicyDetail obj = new PolicyDetail(); 
                         obj.CreatedById = request.CreatedById;
                         obj.MediumId = request.MediumId;
                         obj.ProducerId = request.ProducerId;
@@ -58,6 +58,7 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                         obj.IsDeleted = false;
                         obj.PolicyCode = policyCode;
                         obj.Description = request.Description;
+                        _mapper.Map(request, obj);
                         await _dbContext.PolicyDetails.AddAsync(obj);
                         await _dbContext.SaveChangesAsync();
                         int totalCount = await _dbContext.PolicyDetails
@@ -79,8 +80,7 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                 {
                     var existRecord = await _dbContext.PolicyDetails.FirstOrDefaultAsync(x => x.IsDeleted == false && x.PolicyId == request.PolicyId);
                     if (existRecord != null)
-                    {
-                        _mapper.Map(request, existRecord);
+                    { 
                         existRecord.IsDeleted = false;
                         existRecord.Description = request.Description;
                         existRecord.ModifiedById = request.ModifiedById;
@@ -89,7 +89,8 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                         existRecord.MediaCategoryId =request.MediaCategoryId;
                         existRecord.MediumId = request.MediumId;
                         existRecord.PolicyName = request.PolicyName;
-                        existRecord.ProducerId = request.ProducerId;                        
+                        existRecord.ProducerId = request.ProducerId;
+                        _mapper.Map(request, existRecord);
                         await _dbContext.SaveChangesAsync();
                         response.data.policyDetails = existRecord;
                         response.StatusCode = StaticResource.successStatusCode;

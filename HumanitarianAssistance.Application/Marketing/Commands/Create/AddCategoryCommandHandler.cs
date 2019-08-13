@@ -28,9 +28,10 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Create
             ApiResponse response = new ApiResponse();
             try
             {
-                Category obj = _mapper.Map<Category>(request);
+                Category obj = new Category();                
                 obj.CreatedById = request.CreatedById;
                 obj.CreatedDate = request.CreatedDate;
+                _mapper.Map(request, obj);
                 await _dbContext.Categories.AddAsync(obj);
                 await _dbContext.SaveChangesAsync();
                 response.StatusCode = StaticResource.successStatusCode;

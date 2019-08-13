@@ -45,7 +45,7 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                             LatestJobId = Convert.ToInt32(jobDetail.ContractId) + 1;
                             jobcode = ProjectUtility.GetJobCode(LatestJobId.ToString());
                         }
-                        JobDetails obj = _mapper.Map<JobDetails>(request);
+                        JobDetails obj = new JobDetails();                        
                         obj.ContractId = request.ContractId;
                         obj.Description = request.Description;
                         obj.EndDate = request.EndDate;
@@ -59,6 +59,7 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                         obj.JobName = request.JobName;
                         obj.JobCode = jobcode;
                         obj.IsDeleted = false;
+                        _mapper.Map(request,obj);
                         await _dbContext.JobDetails.AddAsync(obj);
                         await _dbContext.SaveChangesAsync();
 
@@ -73,7 +74,7 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                         obj1.Units = request.Units;
                         obj1.Minutes = request.Minutes;
 
-                        JobPriceDetails priceDetails = _mapper.Map<JobPriceDetailsModel, JobPriceDetails>(obj1);
+                        JobPriceDetails priceDetails = new JobPriceDetails();                        
                         priceDetails.JobId = obj1.JobId;
                         priceDetails.Minutes = obj1.Minutes;
                         priceDetails.Discount = obj1.Discount;
@@ -86,6 +87,7 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                         priceDetails.CreatedById = request.CreatedById;
                         priceDetails.CreatedDate = request.CreatedDate;
                         priceDetails.IsDeleted = false;
+                        _mapper.Map(obj1, priceDetails);
                         await _dbContext.JobPriceDetails.AddAsync(priceDetails);
                         await _dbContext.SaveChangesAsync();
 

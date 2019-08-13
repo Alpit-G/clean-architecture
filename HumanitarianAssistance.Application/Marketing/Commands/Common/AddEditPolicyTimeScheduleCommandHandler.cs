@@ -52,13 +52,14 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                             LatestId = Convert.ToInt32(detail.Id) + 1;
                             Code = LatestId.ToString().GetPolicyCode();
                         }
-                        PolicyTimeSchedule obj = _mapper.Map<AddEditPolicyTimeScheduleCommand, PolicyTimeSchedule>(request);
+                        PolicyTimeSchedule obj = new PolicyTimeSchedule();                        
                         obj.StartTime = TimeSpan.Parse(request.StartTime);
                         obj.EndTime = TimeSpan.Parse(request.EndTime);
                         obj.TimeScheduleCode = Code;
                         obj.PolicyId = request.PolicyId;
                         obj.CreatedDate = DateTime.Now;
                         obj.IsDeleted = false;
+                        _mapper.Map(request, obj);
                         await _dbContext.PolicyTimeSchedules.AddAsync(obj);
                         await _dbContext.SaveChangesAsync();
                         response.StatusCode = 200;

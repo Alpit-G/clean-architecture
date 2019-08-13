@@ -36,29 +36,20 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                     {
                         response.StatusCode = StaticResource.failStatusCode;
                         response.Message = "Order schedule could not be requested as the dates are already taken.";
-                        //foreach (var items in list)
-                        //{
-                        //    if (model.StartDate >= items.StartDate && model.StartDate <= items.EndDate && model.EndDate >= items.StartDate && model.EndDate <= items.EndDate)
-                        //    {
-                        //      flag=true;
-
-                        //    }
-
-                        //}
-
                     }
 
                     else
                     {
                         if (request.Id == 0)
                         {
-                            PolicyOrderSchedule obj = _mapper.Map<AddEditPolicyOrderScheduleCommand, PolicyOrderSchedule>(request);
+                            PolicyOrderSchedule obj = new PolicyOrderSchedule();                            
                             obj.PolicyId = request.PolicyId;
                             obj.CreatedDate = DateTime.UtcNow;
                             obj.StartDate = request.StartDate;
                             obj.EndDate = request.EndDate;
                             obj.IsDeleted = false;
                             obj.RequestSchedule = true;
+                            _mapper.Map(request,obj);
                             await _dbContext.PolicyOrderSchedules.AddAsync(obj);
                             await _dbContext.SaveChangesAsync();
                             response.StatusCode = 200;

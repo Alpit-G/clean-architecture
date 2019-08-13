@@ -28,7 +28,6 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                 bool IsExist = await _dbContext.PlayoutMinutes.AnyAsync(x => x.IsDeleted == false && x.ScheduleId == request.ScheduleId);
                 if (!IsExist)
                 {
-                    //PlayoutMinutes obj = _mapper.Map<PlayoutMinutesModel, PlayoutMinutes>(model);
                     PlayoutMinutes objPlayoutMinutes = new PlayoutMinutes
                     {
                         TotalMinutes = request.TotalMinutes,
@@ -45,7 +44,6 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                 }
                 else
                 {
-                    //_mapper.Map(model, existRecord);
                     var objPlayoutMinutes = await _dbContext.PlayoutMinutes.FirstOrDefaultAsync(x => x.IsDeleted == false && x.ScheduleId == request.ScheduleId);
                     objPlayoutMinutes.IsDeleted = false;
                     objPlayoutMinutes.ScheduleId = request.ScheduleId;
@@ -53,10 +51,6 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                     objPlayoutMinutes.ModifiedDate = DateTime.Now;
                     objPlayoutMinutes.TotalMinutes = request.TotalMinutes;
                     objPlayoutMinutes.DroppedMinutes = request.DroppedMinutes;
-                    //existRecord.ScheduleName = model.ScheduleName;
-                    //objPlayoutMinutes.CreatedDate = DateTime.Now;
-                    //existRecord.Description = model.Description;
-
                     await _dbContext.SaveChangesAsync();
                     response.data.playoutMinutesDetails = objPlayoutMinutes;
                     response.StatusCode = StaticResource.successStatusCode;
