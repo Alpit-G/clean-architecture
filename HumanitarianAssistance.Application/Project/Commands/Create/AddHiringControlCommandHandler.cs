@@ -38,7 +38,7 @@ namespace HumanitarianAssistance.Application.Project.Commands.Create
                 await ValidateHiringControl(request.ProjectId, request.UserId, request.RoleId);
 
                 await _dbContext.ProjectHiringControl.AddAsync(obj);
-
+                await _dbContext.SaveChangesAsync();
                 response.CommonId.LongId = obj.Id;
                 response.StatusCode = StaticResource.successStatusCode;
                 response.Message = StaticResource.SuccessText;

@@ -4,6 +4,7 @@ using System.Text;
 using HumanitarianAssistance.Application.Accounting.Models;
 using HumanitarianAssistance.Application.CommonModels;
 using HumanitarianAssistance.Application.Configuration.Models;
+using HumanitarianAssistance.Application.Hr.Models;
 using HumanitarianAssistance.Application.HR.Models;
 using HumanitarianAssistance.Application.Marketing.Models;
 using HumanitarianAssistance.Application.Project.Models;
@@ -318,7 +319,7 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public string InventoryItemCode { get; set; }
         public List<CodeType> SourceCodeTypelist { get; set; }
 
-
+        #region "HR"
         //HR
         public List<EmployeeHistoryOutsideOrganizationModel> EmployeeHistoryOutsideOrganizationList { get; set; }
         public IList<PayrollMonthlyHourDetailModel> PayrollMonthlyHourList { get; set; }
@@ -349,6 +350,17 @@ namespace HumanitarianAssistance.Application.Infrastructure
 
         //holidays
         public IList<HolidayDetails> HolidayDetailsList { get; set; }
+        public List<EmployeeRelativeInfoModel> EmployeeRelativeInfoList { get; set; }
+        public List<EmployeeOtherSkillsModel> EmployeeOtherSkillsList { get; set; }
+        public List<EmployeeSalaryBudgetModel> EmployeeSalaryBudgetList { get; set; }
+        public List<EmployeeEducationsModel> EmployeeEducationsList { get; set; }
+
+        public List<EmployeeSalaryAnalyticalInfoModel> EmployeeSalaryAnalyticalInfoList { get; set; }
+        public EmployeeHealthInformationModel EmployeeHealthInfo { get; set; }
+        public List<EmployeeLanguages> EmployeeLanguagesList { get; set; }
+
+
+        #endregion
     }
 
 

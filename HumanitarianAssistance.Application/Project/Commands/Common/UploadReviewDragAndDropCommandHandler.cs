@@ -70,19 +70,22 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
                         {
                             if (objRes == null)
                             {
-                                objRes = new ApproveProjectDetails();
-                                objRes.ProjectId = request.ProjectId;
-                                objRes.FileName = request.FileName;
-                                objRes.FilePath = obj;
-                                objRes.CommentText = request.CommentText;
-                                objRes.UploadedFile = null;
-                                objRes.IsDeleted = false;
-                                objRes.CreatedById = request.CreatedById;
-                                objRes.IsApproved = request.IsApproved;
-                                objRes.CreatedDate =request.CreatedDate;
-                                //Review completion date for proposal report when proposal is completed as isapproved is true
-                                objRes.ReviewCompletionDate = DateTime.UtcNow;
+                                objRes = new ApproveProjectDetails
+                                {
+                                    ProjectId = request.ProjectId,
+                                    FileName = request.FileName,
+                                    FilePath = obj,
+                                    CommentText = request.CommentText,
+                                    UploadedFile = null,
+                                    IsDeleted = false,
+                                    CreatedById = request.CreatedById,
+                                    IsApproved = request.IsApproved,
+                                    CreatedDate = request.CreatedDate,
+                                    //Review completion date for proposal report when proposal is completed as isapproved is true
+                                    ReviewCompletionDate = DateTime.UtcNow
+                                };
                                 await _dbContext.ApproveProjectDetails.AddAsync(objRes);
+                                await _dbContext.SaveChangesAsync();
                             }
                             else
                             {

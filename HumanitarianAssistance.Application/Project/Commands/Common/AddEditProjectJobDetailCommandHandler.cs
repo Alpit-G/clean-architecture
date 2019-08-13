@@ -40,12 +40,11 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
                         obj.CreatedById = request.CreatedById;
 
                         await _dbContext.ProjectJobDetail.AddAsync(obj);
-
+                        await _dbContext.SaveChangesAsync();
                         if (obj.ProjectJobId != 0)
                         {
                             // update project job code
                             obj.ProjectJobCode = await _iProjectServices.GetProjectJobCode(obj);
-
                             await _dbContext.SaveChangesAsync();
                         }
                     }
@@ -62,7 +61,6 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
                             obj.ModifiedById = request.ModifiedById;
                             obj.ModifiedDate = request.ModifiedDate;
                             obj.IsDeleted = false;
-
                             await _dbContext.SaveChangesAsync();
                         }
                     }
