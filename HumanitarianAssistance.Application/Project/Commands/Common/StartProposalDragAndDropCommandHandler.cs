@@ -79,6 +79,7 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
                                 proposaldata.CreatedDate = request.CreatedDate;
                                 proposaldata.ProposalStartDate = DateTime.UtcNow;
                                 await _dbContext.ProjectProposalDetail.AddAsync(proposaldata);
+                                await _dbContext.SaveChangesAsync();
                             }
                             else
                             {

@@ -64,6 +64,7 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
                             docObj.CreatedDate = request.CreatedDate;
 
                             await _dbContext.ActivityDocumentsDetail.AddAsync(docObj);
+                            await _dbContext.SaveChangesAsync();
                         }
 
                         ActivityDocumentDetailModel obj = new ActivityDocumentDetailModel

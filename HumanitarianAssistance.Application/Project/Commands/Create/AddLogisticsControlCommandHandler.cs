@@ -38,6 +38,7 @@ namespace HumanitarianAssistance.Application.Project.Commands.Create
                 await ValidateLogisticsControl(request.ProjectId, request.UserId, request.RoleId);
 
                 await _dbContext.ProjectLogisticsControl.AddAsync(obj);
+               await _dbContext.SaveChangesAsync();
 
                 response.CommonId.LongId = obj.Id;
                 response.StatusCode = StaticResource.successStatusCode;

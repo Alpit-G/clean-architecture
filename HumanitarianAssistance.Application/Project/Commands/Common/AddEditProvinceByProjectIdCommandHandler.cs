@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Project.Commands.Common
 {
-    public class AddEditProvinceByProjectIdCommandHandler: IRequestHandler<AddEditProvinceByProjectIdCommand, ApiResponse>
+    public class AddEditProvinceByProjectIdCommandHandler : IRequestHandler<AddEditProvinceByProjectIdCommand, ApiResponse>
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
         public AddEditProvinceByProjectIdCommandHandler(HumanitarianAssistanceDbContext dbContext)
@@ -35,14 +35,13 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
                     if (provinceExist.Any())
                     {
                         var districtExist = await _dbContext.DistrictMultiSelect.Where(x => noExistProvinceId.Contains(x.ProvinceId) && x.IsDeleted == false).ToListAsync();
-                    
-                    if (districtExist.Any())
+
+                        if (districtExist.Any())
                         {
                             _dbContext.DistrictMultiSelect.RemoveRange(districtExist);
                             await _dbContext.SaveChangesAsync();
 
                         }
-
                         _dbContext.ProvinceMultiSelect.RemoveRange(provinceExist);
                         _dbContext.SaveChanges();
                     }
@@ -70,6 +69,7 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
                     _data.CreatedDate = DateTime.UtcNow;
 
                     provinceList.Add(_data);
+                    await _dbContext.SaveChangesAsync();
                 }
                 //Add
                 _dbContext.ProvinceMultiSelect.AddRange(provinceList);
@@ -85,6 +85,6 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
 
             return response;
         }
-        
+
     }
 }
