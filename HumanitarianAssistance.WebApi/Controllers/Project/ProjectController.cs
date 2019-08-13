@@ -1682,7 +1682,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         [HttpPost]
         public async Task<ApiResponse> GetAllBudgetLineList([FromBody]GetAllBudgetFilterListQuery query, long projectId)
         {
-            query.ProjectId = projectId;
+            //query.ProjectId = projectId;
             return await _mediator.Send(query);
         }
         [HttpPost]
