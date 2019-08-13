@@ -1,4 +1,5 @@
 ﻿using HumanitarianAssistance.Application.HR.Commands.Create;
+using HumanitarianAssistance.Application.HR.Commands.Delete;
 using HumanitarianAssistance.Application.HR.Commands.Update;
 using HumanitarianAssistance.Application.HR.Models;
 using HumanitarianAssistance.Application.HR.Queries;
@@ -66,6 +67,71 @@ namespace HumanitarianAssistance.WebApi.Controllers.HR
         {
             return await _mediator.Send(new GetAllInterviewDetailsQuery()); 
         }
+
+        [HttpGet]
+        public async Task<ApiResponse> DeleteExitInterview([FromQuery] int existInterviewDetailsId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new DeleteExitInterviewCommand
+            {
+                existInterviewDetailsId = existInterviewDetailsId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            });
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllExitInterview()
+        {
+            return await _mediator.Send(new GetAllExitInterviewQuery());
+        }
+
+        #region "AddExitInterview"
+        [HttpPost]
+        public async Task<ApiResponse> AddExitInterview([FromBody]AddExitInterviewCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> RejectEmployeeInterviewRequest([FromQuery] int InterviewDetailsId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new RejectEmployeeInterviewRequestCommand
+            {
+                InterviewDetailsId = InterviewDetailsId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            });
+            
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> ApproveEmployeeInterviewRequest([FromQuery] int InterviewDetailsId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return await _mediator.Send(new ApproveEmployeeInterviewRequestCommand
+            {
+                InterviewDetailsId = InterviewDetailsId,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> EditExitInterview([FromBody]EditExitInterviewCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+
+
+        #endregion
 
         //[HttpPost]
         //public async Task<ApiResponse> AddTechnicalQuestions([FromBody]AddTechnicalQuestionsCommand command)

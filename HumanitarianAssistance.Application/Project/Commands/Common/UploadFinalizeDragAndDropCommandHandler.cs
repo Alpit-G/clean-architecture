@@ -77,6 +77,7 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
                                 objRes.IsWin = request.IsWin;
                                 objRes.CreatedDate = request.CreatedDate;
                                 await _dbContext.WinProjectDetails.AddAsync(objRes);
+                                await _dbContext.SaveChangesAsync();
                             }
                             else
                             {

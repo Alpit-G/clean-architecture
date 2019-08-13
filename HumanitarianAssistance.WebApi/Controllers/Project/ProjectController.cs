@@ -263,7 +263,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             model.ModifiedDate = DateTime.UtcNow;
             model.CreatedById = userId;
             model.CreatedDate = DateTime.UtcNow;
-            return await _mediator.Send(model);
+            return await  _mediator.Send(model);
         }
 
         [HttpPost]
@@ -284,7 +284,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         {
             return await _mediator.Send(model);
         }
-        [HttpPost]
+        [HttpGet]
         public async Task<ApiResponse> GetAllProjectList()
         {
             return await _mediator.Send(new GetAllProjectListQuery());
@@ -298,12 +298,12 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         [HttpPost]
         public async Task<ApiResponse> GetProjectOtherDetailById([FromBody]long Id)
         {
-            return await _mediator.Send(new GetProjectListByIdQuery{ Id= Id });
+            return await _mediator.Send(new GetProjectOtherDetailByIdQuery{ Id= Id });
         }
 
     #endregion
 
-        #region Add/Update Assign Employee to Project
+        #region Add/Update Assign Employee to Project 
 
         [HttpPost]
         public async Task<ApiResponse> AddEditProjectAssignToEmployee([FromBody]AddEditProjectAssignToEmployeeCommand model)
@@ -647,7 +647,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         #endregion
 
         #region "GetProjectproposalsById"
-        [HttpGet]
+        [HttpPost]
         public async Task<ApiResponse> GetProjectproposalsById([FromBody] long ProjectId)
         {
             return await _mediator.Send(new GetProjectproposalsByIdQuery { ProjectId = ProjectId });
@@ -660,7 +660,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         /// </summary>
         [HttpPost, DisableRequestSizeLimit]
 
-        public async Task<ApiResponse> UploadEDIProposalFile([FromForm] IFormFile filesData, string projectId, string data)
+        public async Task<ApiResponse> UploadEDIProposalFile([FromForm] IFormFile filesData,[FromForm] string projectId, [FromForm] string data)
         {
 
             ApiResponse apiRespone = new ApiResponse();
@@ -843,7 +843,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             return await _mediator.Send(new GetAllPriorityOtherDetailQuery());
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<ApiResponse> GetAllPriorityOtherDetailByProjectId([FromBody] long ProjectId)
         {
             return await _mediator.Send(new GetAllPriorityOtherDetailByProjectIdQuery { ProjectId = ProjectId });
@@ -874,7 +874,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         }
 
 
-        [HttpGet]
+        [HttpPost]
         public async Task<ApiResponse> GetAllExpertDetailByProjectId([FromBody] long projectId)
         {
             return await _mediator.Send(new GetAllExpertDetailByProjectIdQuery { ProjectId = projectId });
@@ -925,7 +925,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             return await _mediator.Send(new GetAllAgeGroupDetailQuery());
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<ApiResponse> GetAllAgeGroupByProjectId([FromBody] long projectId)
         {
             return await _mediator.Send(new GetAllAgeGroupByProjectIdQuery { ProjectId = projectId });
@@ -975,7 +975,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
             return await _mediator.Send(new GetAllAssumptionQuery());
         }
 
-        [HttpGet]
+        [HttpPost]
         public async Task<ApiResponse> GetAllAssumptionByProjectId([FromBody] long projectId)
         {
             return await _mediator.Send(new GetAllAssumptionByProjectIdQuery { ProjectId = projectId });
@@ -1084,7 +1084,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
         #region "GetAllCriteriaEvaluationDetail"
 
-        [HttpGet]
+        [HttpPost]
         public async Task<ApiResponse> GetAllCriteriaEvaluationDetail([FromBody] long ProjectId)
         {
             return await _mediator.Send(new GetAllCriteriaEvaluationDetailQuery { ProjectId = ProjectId });
@@ -1333,7 +1333,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         #region"UploadFinalizeFile"
 
         [HttpPost, DisableRequestSizeLimit]
-        public async Task<ApiResponse> UploadFinalizeFile([FromForm] IFormFile filesData, UploadFinalizeDragAndDropCommand command)
+        public async Task<ApiResponse> UploadFinalizeFile([FromForm] IFormFile filesData, [FromForm] UploadFinalizeDragAndDropCommand command)
         {
             ApiResponse apiRespone = new ApiResponse();
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -1374,7 +1374,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 
         #region"UploadReviewFile"
         [HttpPost, DisableRequestSizeLimit]
-        public async Task<ApiResponse> UploadReviewFile([FromForm] IFormFile filesData, ApproveProjectDetailModel model)
+        public async Task<ApiResponse> UploadReviewFile([FromForm] IFormFile filesData, [FromForm] ApproveProjectDetailModel model)
         {
             ApiResponse apiRespone = new ApiResponse();
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -1462,7 +1462,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
         #region "Start Proposal Drag and Drop PK 26/03/2019" 
 
         [HttpPost, DisableRequestSizeLimit]
-        public async Task<ApiResponse> StartProposalDragAndDropFile([FromForm] IFormFile filesData, string projectId, string data)
+        public async Task<ApiResponse> StartProposalDragAndDropFile([FromForm] IFormFile filesData,[FromForm] string projectId, [FromForm] string data)
         {
             ApiResponse apiRespone = new ApiResponse();
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;

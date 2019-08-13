@@ -24,7 +24,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.HR
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             command.CreatedById = userId;
             command.CreatedDate = DateTime.UtcNow;
-            return await _mediator.Send(command); 
+            return await _mediator.Send(command);
         }
 
         [HttpPost]
@@ -48,7 +48,13 @@ namespace HumanitarianAssistance.WebApi.Controllers.HR
         public async Task<ApiResponse> GetAllJobGrade()
         {
             return await _mediator.Send(new GetAllJobGradeQuery());
-        }      
-    }    
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetJobCode(int officeId)
+        {
+            return await _mediator.Send(new GetJobCodeQuery { OfficeId = officeId});
+        }
+    }
 }
 

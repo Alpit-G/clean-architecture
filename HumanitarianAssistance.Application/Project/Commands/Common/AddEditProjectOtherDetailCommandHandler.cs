@@ -28,7 +28,7 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
             {
                 try
                 {
-                    var Projectdetail = await _dbContext.ProjectOtherDetail.FirstOrDefaultAsync(x => x.IsDeleted == false && x.ProjectId == request.ProjectId);
+                    ProjectOtherDetail Projectdetail = await _dbContext.ProjectOtherDetail.FirstOrDefaultAsync(x => x.IsDeleted == false && x.ProjectId == request.ProjectId);
                     
                     if (Projectdetail == null)
                     {
@@ -74,45 +74,45 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
                     }
                     else
                     {
-                        var existProjectRecord = await _dbContext.ProjectOtherDetail.FirstOrDefaultAsync(x => x.IsDeleted == false && x.ProjectOtherDetailId == request.ProjectOtherDetailId && x.ProjectId == request.ProjectId);
+                        //var existProjectRecord = await _dbContext.ProjectOtherDetail.FirstOrDefaultAsync(x => x.IsDeleted == false && x.ProjectOtherDetailId == request.ProjectOtherDetailId && x.ProjectId == request.ProjectId);
                         
-                        if (existProjectRecord != null)
+                        if (Projectdetail != null)
                         {
-                            existProjectRecord.opportunityNo = request.opportunityNo;
-                            existProjectRecord.ProjectId = request.ProjectId;
-                            existProjectRecord.opportunity = request.opportunity;
-                            existProjectRecord.opportunitydescription = request.opportunitydescription;
-                            existProjectRecord.ProvinceId = request.ProvinceId;
-                            existProjectRecord.DistrictID = request.DistrictID;
-                            existProjectRecord.OfficeId = request.OfficeId;
-                            existProjectRecord.StartDate = request.StartDate;
-                            existProjectRecord.EndDate = request.EndDate;
-                            existProjectRecord.CurrencyId = request.CurrencyId;
-                            existProjectRecord.budget = request.budget;
-                            existProjectRecord.beneficiaryMale = request.beneficiaryMale;
-                            existProjectRecord.beneficiaryFemale = request.beneficiaryFemale;
-                            existProjectRecord.projectGoal = request.projectGoal;
-                            existProjectRecord.projectObjective = request.projectObjective;
-                            existProjectRecord.mainActivities = request.mainActivities;
-                            existProjectRecord.DonorId = request.DonorId;
-                            existProjectRecord.SubmissionDate = request.SubmissionDate;
-                            existProjectRecord.REOIReceiveDate = request.REOIReceiveDate;
-                            existProjectRecord.StrengthConsiderationId = request.StrengthConsiderationId;
-                            existProjectRecord.GenderConsiderationId = request.GenderConsiderationId;
-                            existProjectRecord.GenderRemarks = request.GenderRemarks;
-                            existProjectRecord.SecurityId = request.SecurityId;
-                            existProjectRecord.SecurityConsiderationId = request.SecurityConsiderationId;
-                            existProjectRecord.SecurityRemarks = request.SecurityRemarks;
-                            existProjectRecord.IsDeleted = false;
-                            existProjectRecord.ModifiedById = request.ModifiedById;
-                            existProjectRecord.ModifiedDate = DateTime.UtcNow;
-                            existProjectRecord.InDirectBeneficiaryFemale = request.InDirectBeneficiaryFemale;
-                            existProjectRecord.InDirectBeneficiaryMale = request.InDirectBeneficiaryMale;
-                            existProjectRecord.OpportunityType = request.OpportunityType;
+                            Projectdetail.opportunityNo = request.opportunityNo;
+                            Projectdetail.ProjectId = request.ProjectId;
+                            Projectdetail.opportunity = request.opportunity;
+                            Projectdetail.opportunitydescription = request.opportunitydescription;
+                            Projectdetail.ProvinceId = request.ProvinceId;
+                            Projectdetail.DistrictID = request.DistrictID;
+                            Projectdetail.OfficeId = request.OfficeId;
+                            Projectdetail.StartDate = request.StartDate;
+                            Projectdetail.EndDate = request.EndDate;
+                            Projectdetail.CurrencyId = request.CurrencyId;
+                            Projectdetail.budget = request.budget;
+                            Projectdetail.beneficiaryMale = request.beneficiaryMale;
+                            Projectdetail.beneficiaryFemale = request.beneficiaryFemale;
+                            Projectdetail.projectGoal = request.projectGoal;
+                            Projectdetail.projectObjective = request.projectObjective;
+                            Projectdetail.mainActivities = request.mainActivities;
+                            Projectdetail.DonorId = request.DonorId;
+                            Projectdetail.SubmissionDate = request.SubmissionDate;
+                            Projectdetail.REOIReceiveDate = request.REOIReceiveDate;
+                            Projectdetail.StrengthConsiderationId = request.StrengthConsiderationId;
+                            Projectdetail.GenderConsiderationId = request.GenderConsiderationId;
+                            Projectdetail.GenderRemarks = request.GenderRemarks;
+                            Projectdetail.SecurityId = request.SecurityId;
+                            Projectdetail.SecurityConsiderationId = request.SecurityConsiderationId;
+                            Projectdetail.SecurityRemarks = request.SecurityRemarks;
+                            Projectdetail.IsDeleted = false;
+                            Projectdetail.ModifiedById = request.ModifiedById;
+                            Projectdetail.ModifiedDate = DateTime.UtcNow;
+                            Projectdetail.InDirectBeneficiaryFemale = request.InDirectBeneficiaryFemale;
+                            Projectdetail.InDirectBeneficiaryMale = request.InDirectBeneficiaryMale;
+                            Projectdetail.OpportunityType = request.OpportunityType;
 
-                            _dbContext.ProjectOtherDetail.Update(existProjectRecord);
+                            _dbContext.ProjectOtherDetail.Update(Projectdetail);
                             await _dbContext.SaveChangesAsync();
-                            LatestProjectOtherDetailId = request.ProjectOtherDetailId;
+                            LatestProjectOtherDetailId = Projectdetail.ProjectOtherDetailId;
                         }
                     }
                     response.StatusCode = StaticResource.successStatusCode;

@@ -42,10 +42,11 @@ namespace HumanitarianAssistance.Application.Project.Commands.Create
                     obj.CreatedDate = request.ModifiedDate;
                     obj.ReviewCompletionDate = DateTime.UtcNow;
                     await _dbContext.ApproveProjectDetails.AddAsync(obj);
+                    await _dbContext.SaveChangesAsync();
 
                     if (request.IsApproved == false)
                     {
-                        var details = _dbContext.ProjectProposalDetail.Where(x => x.ProjectId == request.ProjectId && x.IsDeleted == false).FirstOrDefault();
+                        ProjectProposalDetail details = await _dbContext.ProjectProposalDetail.Where(x => x.ProjectId == request.ProjectId && x.IsDeleted == false).FirstOrDefaultAsync();
                         if (details != null)
                         {
                             details.IsProposalAccept = request.IsApproved;

@@ -283,7 +283,6 @@ export class CriteriaEvaluationComponent implements OnInit, AfterViewChecked, On
     this.getAssumptionByprojectId(this.ProjectId);
     this.GetAgegroupByProjectId(this.ProjectId);
     this.getFeasibilityExpertByProjectId(this.ProjectId);
-    this.GetOccupationByProjectId(this.ProjectId);
     this.GetDonorEligibilityCriteriaByProjectId(this.ProjectId);
   }
 
