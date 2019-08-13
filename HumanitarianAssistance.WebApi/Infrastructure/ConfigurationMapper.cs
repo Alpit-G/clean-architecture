@@ -16,6 +16,12 @@ namespace HumanitarianAssistance.WebApi.Infrastructure
             CreateMap<DesignationDetail, AddDesignationCommand>().ReverseMap();
             CreateMap<ProfessionDetails, AddProfessionCommand>().ReverseMap();
             CreateMap<LeaveReasonDetail, AddLeaveReasonDetailCommand>().ReverseMap();
+            CreateMap<Department, AddDepartmentCommand>().ReverseMap();
+            CreateMap<QualificationDetails, AddQualificationDetailsCommand>().ReverseMap();
+            CreateMap<AppraisalGeneralQuestions, AddAppraisalQuestionCommand>().ReverseMap();
+            CreateMap<EmailSettingDetail, EmailSettingDetail>().ReverseMap();
+            CreateMap<EmailSettingDetail, AddEmailSettingCommand>().ReverseMap();
+            
         }
     }
 }

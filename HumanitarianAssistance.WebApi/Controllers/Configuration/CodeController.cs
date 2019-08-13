@@ -241,7 +241,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         [HttpGet]
         public async Task<ApiResponse> GetAllDesignation()
         {
-            return await _mediator.Send(new GetAllAccountTypeByCategoryQuery());
+            return await _mediator.Send(new GetAllDesignationQuery());
         }
 
         #endregion
@@ -556,7 +556,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         public async Task<ApiResponse> DeleteQualifactionDetails([FromBody] int id)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return await _mediator.Send(new DeleteQualifactionDetailsCommand
+            return await _mediator.Send(new DeleteQualificationDetailsCommand
             {
                 QualificationId = id,
                 ModifiedById = userId,

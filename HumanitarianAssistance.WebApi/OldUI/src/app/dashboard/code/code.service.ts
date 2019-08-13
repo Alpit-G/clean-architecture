@@ -994,7 +994,7 @@ export class CodeService {
     };
 
     return this.http
-      .post(url, JSON.stringify(b), options)
+      .post(url, b, options)
       .map((response: Response) => {
         const journal = response.json();
         if (journal) {
