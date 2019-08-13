@@ -352,6 +352,7 @@ namespace HumanitarianAssistance.Common.Helpers
 
         //HR
         public const string PensionPaymentCreated = "Pension Payment Done On {0} for {1}";
+        public const string NoAttendanceToAdd ="No Attendance to Add";
         public const string PensionPayment = "Pension Payment";
         // Marketing
         public const string unitRateNotFound = "Unit Rate does not exists. Please try other combinations..";

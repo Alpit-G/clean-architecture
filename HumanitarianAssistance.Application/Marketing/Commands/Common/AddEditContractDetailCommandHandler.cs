@@ -48,7 +48,7 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                         LatestContractId = Convert.ToInt32(ContractDetail.ContractId) + 1;
                         contractcode = ProjectUtility.GetContractCode(LatestContractId.ToString());
                     }
-                    ContractDetails obj = _mapper.Map<ContractDetails>(request);
+                    ContractDetails obj = new ContractDetails();
                     obj.ContractId = request.ContractId;
                     obj.ActivityTypeId = request.ActivityTypeId;
                     obj.ClientName = request.ClientName;
@@ -68,7 +68,7 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                     obj.NatureId = request.NatureId;
                     obj.QualityId = request.QualityId;
                     obj.TimeCategoryId = request.TimeCategoryId;
-
+                    _mapper.Map(request, obj);
                     await _dbContext.ContractDetails.AddAsync(obj);
                     await _dbContext.SaveChangesAsync();
 
@@ -105,14 +105,13 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                     ContractDetails existRecord = await _dbContext.ContractDetails.FirstOrDefaultAsync(x => x.IsDeleted == false && x.ContractId == request.ContractId);
                     if (existRecord != null)
                     {
-                        _mapper.Map(request, existRecord);
                         existRecord.IsCompleted = true;
                         existRecord.IsDeleted = false;
                         existRecord.UnitRateId = request.UnitRateId == 0 ? null : request.UnitRateId;
                         existRecord.UnitRate = request.UnitRate;
                         existRecord.ModifiedById = request.ModifiedById;
                         existRecord.ModifiedDate = request.ModifiedDate;
-                        _dbContext.ContractDetails.Update(existRecord);
+                        _mapper.Map(request, existRecord);
                         await _dbContext.SaveChangesAsync();
                         response.data.contractDetailsModel = existRecord;
                         response.StatusCode = StaticResource.successStatusCode;

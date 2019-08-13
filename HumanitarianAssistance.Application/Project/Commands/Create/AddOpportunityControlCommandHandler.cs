@@ -37,11 +37,11 @@ namespace HumanitarianAssistance.Application.Project.Commands.Create
                     CreatedById = request.CreatedById,
                     IsDeleted = false
                 };
-
                 // validation
                 await ValidateOpportunityControl(null, request.ProjectId, request.UserId, request.RoleId);
-
                 await _dbContext.ProjectOpportunityControl.AddAsync(obj);
+                await _dbContext.SaveChangesAsync();
+
                 response.CommonId.LongId = obj.Id;
                 response.StatusCode = StaticResource.successStatusCode;
                 response.Message = StaticResource.SuccessText;

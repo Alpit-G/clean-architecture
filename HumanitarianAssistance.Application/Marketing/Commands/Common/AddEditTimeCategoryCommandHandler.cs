@@ -21,17 +21,19 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                 _mapper = mapper;
             }
             public async Task<ApiResponse> Handle(AddEditTimeCategoryCommand request, CancellationToken cancellationToken)
-            {
+
+        {
                 ApiResponse response = new ApiResponse(); 
                 try
             {
                 if (request.TimeCategoryId == 0 || request.TimeCategoryId == null)
                 {
-                    TimeCategory obj = _mapper.Map<TimeCategory>(request);
+                    TimeCategory obj = new TimeCategory();
                     obj.CreatedById = request.CreatedById;
                     obj.CreatedDate = request.CreatedDate;
                     obj.IsDeleted = false;
                     obj.TimeCategoryName = request.TimeCategoryName;
+                    _mapper.Map(request, obj);
                     await _dbContext.TimeCategories.AddAsync(obj);
                     await _dbContext.SaveChangesAsync();
                     response.data.timeCatergoryById = obj;

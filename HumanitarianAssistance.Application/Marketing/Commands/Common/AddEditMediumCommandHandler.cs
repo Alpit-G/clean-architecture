@@ -28,11 +28,12 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
             {
                 if (request.MediumId == 0 || request.MediumId == null)
                 {
-                    Medium obj = _mapper.Map<Medium>(request);
+                    Medium obj = new Medium();                    
                     obj.CreatedById = request.CreatedById;
                     obj.CreatedDate = request.CreatedDate;
                     obj.IsDeleted = false;
                     obj.MediumName = request.MediumName;
+                    _mapper.Map(request,obj);
                     await _dbContext.Mediums.AddAsync(obj);
                     await _dbContext.SaveChangesAsync();
                     response.data.mediumById = obj;

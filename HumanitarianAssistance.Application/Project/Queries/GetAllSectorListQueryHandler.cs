@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Project.Queries
 {
-    public class GetAllSectorListQueryHandler: IRequestHandler<GetallHiringRequestDetailQuery, ApiResponse>
+    public class GetAllSectorListQueryHandler: IRequestHandler<GetAllSectorListQuery, ApiResponse>
     {
 
         private HumanitarianAssistanceDbContext _dbContext;
@@ -20,7 +20,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
             _dbContext = dbContext;
         }
 
-         public async Task<ApiResponse> Handle(GetallHiringRequestDetailQuery request, CancellationToken cancellationToken)
+         public async Task<ApiResponse> Handle(GetAllSectorListQuery request, CancellationToken cancellationToken)
         {
             ApiResponse response = new ApiResponse();
 

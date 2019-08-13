@@ -31,7 +31,7 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                 if (request.Id == 0)
                 {
                     var detail = _dbContext.PolicyDaySchedules.OrderByDescending(x => x.Id).FirstOrDefault();
-                    PolicyDaySchedule obj = _mapper.Map<AddEditPolicyRepeatDaysCommand, PolicyDaySchedule>(request);
+                    PolicyDaySchedule obj = new PolicyDaySchedule();                    
                     if (request.RepeatDays != null && request.RepeatDays.Count > 0)
                     {
                         foreach (var items in request.RepeatDays)
@@ -69,6 +69,7 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                     obj.PolicyId = request.PolicyId;
                     obj.CreatedDate = DateTime.Now;
                     obj.IsDeleted = false;
+                    _mapper.Map(request,obj);
                     await _dbContext.PolicyDaySchedules.AddAsync(obj);
                     await _dbContext.SaveChangesAsync();
                     response.StatusCode = 200;

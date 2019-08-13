@@ -128,8 +128,8 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
                                                                                                                  x.IsDeleted == false);
 
                         // if exist then remove it
-                         _dbContext.FinancialProjectDetail.RemoveRange(projectExist);
-                      await  _dbContext.SaveChangesAsync();
+                        _dbContext.FinancialProjectDetail.RemoveRange(projectExist);
+                        await _dbContext.SaveChangesAsync();
                     }
 
                     List<FinancialProjectDetail> projectList = new List<FinancialProjectDetail>();
@@ -164,5 +164,5 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
 
             return response;
         }
-    } 
+    }
 }

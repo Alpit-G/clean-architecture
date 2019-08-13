@@ -12,17 +12,17 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
 {
     [ApiController]
     [Produces("application/json")]
-    [Route("api/PdfController/[Action]")]
+    [Route("api/Pdf/[Action]")]
     [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Marketing))]
     public class PdfController : BaseController
     {
         [HttpPost]
-        public async Task<ApiResponse> CreatePDF([FromBody]int jobId)
+        public async Task<ApiResponse> CreatePDF([FromBody]int JobId)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return await _mediator.Send(new CreatePDFCommand
             {
-                JobId = jobId, 
+                JobId = JobId, 
                 ModifiedById = userId,
                 ModifiedDate = DateTime.UtcNow
             });

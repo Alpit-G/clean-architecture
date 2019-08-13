@@ -61,7 +61,8 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                             LatestScheduleId = Convert.ToInt32(policyDetail.PolicyId) + 1;
                             scheduleCode = LatestScheduleId.ToString().GetPolicyCode();
                         }
-                        PolicySchedule obj = _mapper.Map<PolicyScheduleModel, PolicySchedule>(mdl);
+                        PolicySchedule obj = new PolicySchedule();
+                        _mapper.Map<PolicyScheduleModel, PolicySchedule>(mdl);
                         obj.CreatedById = request.CreatedById;
                         obj.ScheduleCode = scheduleCode;
                         obj.CreatedDate = DateTime.Now;
@@ -75,7 +76,6 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                         obj.EndTime = mdl.EndTime;
                         obj.Frequency = mdl.Frequency;
                         obj.PolicyId = mdl.PolicyId;
-                        //obj.RepeatDays = mdl.RepeatDays;
                         obj.StartDate = mdl.StartDate;
                         obj.StartTime = mdl.StartTime;
                         obj.Title = mdl.Title;

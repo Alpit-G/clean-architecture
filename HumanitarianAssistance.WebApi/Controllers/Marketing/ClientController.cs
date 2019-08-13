@@ -15,7 +15,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
 {
     [ApiController]
     [Produces("application/json")]
-    [Route("api/ClientController/[Action]")]
+    [Route("api/Client/[Action]")]
     [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Marketing))]
     public class ClientController : BaseController
     {
@@ -26,9 +26,9 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             return await _mediator.Send(query);
         }
         [HttpPost]
-        public async Task<ApiResponse> GetClientDetailsById([FromBody]int ClientId)
+        public async Task<ApiResponse> GetClientDetailsById([FromBody]String ClientId)
         {
-            return await _mediator.Send(new GetClientDetailsByIdQuery { ClientId = ClientId });
+            return await _mediator.Send(new GetClientDetailsByIdQuery { ClientId = Convert.ToInt32(ClientId) });
         }
         [HttpGet]
         public async Task<ApiResponse> GetAllClientList()
@@ -63,12 +63,12 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             return await _mediator.Send(command);
         }
         [HttpPost]
-        public async Task<ApiResponse> DeleteClient([FromBody]int ClientId)
+        public async Task<ApiResponse> DeleteClient([FromBody]int model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return await _mediator.Send(new DeleteClientDetailsCommand
             {
-                ClientId = ClientId,
+                ClientId = model,
                 ModifiedById = userId,
                 ModifiedDate = DateTime.UtcNow
             });

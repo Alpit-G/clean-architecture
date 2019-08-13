@@ -6,6 +6,8 @@ using HumanitarianAssistance.Application.Marketing.Commands.Update;
 using HumanitarianAssistance.Application.Marketing.Queries;
 using HumanitarianAssistance.Common.Enums;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -17,7 +19,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
 {
     [ApiController]
     [Produces("application/json")]
-    [Route("api/JobController/[Action]")]
+    [Route("api/Job/[Action]")]
     [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Marketing))]
     public class JobController : BaseController
     {
@@ -33,14 +35,15 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             return await _mediator.Send(query);
         }
         [HttpPost]
+
         public async Task<ApiResponse> FetchInvoice([FromBody]int jobId)
         {
             return await _mediator.Send(new FetchInvoiceQuery { jobId = jobId });
         }
         [HttpPost]
-        public async Task<ApiResponse> GetJobDetailsById([FromBody]int jobId)
+        public async Task<ApiResponse> GetJobDetailsById([FromBody]int model)
         {
-            return await _mediator.Send(new GetJobDetailsByIdQuery { jobId = jobId }); 
+            return await _mediator.Send(new GetJobDetailsByIdQuery { jobId = model }); 
         }
         [HttpPost]
         public async Task<ApiResponse> GetFilteredJoblist([FromBody]FilterJobListQuery query)
@@ -58,27 +61,33 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             return await _mediator.Send(new GetAllPhaseQuery());
         }
         [HttpPost]
-        public async Task<ApiResponse> GetPhaseById([FromBody]int JobPhaseId)
+        public async Task<ApiResponse> GetPhaseById([FromBody]int model)
         {
-            return await _mediator.Send(new GetPhaseByIdQuery { JobPhaseId = JobPhaseId });
+            return await _mediator.Send(new GetPhaseByIdQuery { JobPhaseId = model });
         }
         [HttpPost]
-        public async Task<ApiResponse> ApproveJob([FromBody]ApproveJobCommand command)
+        public async Task<ApiResponse> ApproveJob([FromBody]int model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            command.ModifiedById = userId; 
-            command.ModifiedDate = DateTime.UtcNow;
-            return await _mediator.Send(command);
+            return await _mediator.Send(new ApproveJobCommand()
+            {
+               ModifiedById = userId,
+               ModifiedDate = DateTime.UtcNow,
+               JobId=model
+            });
         }
         [HttpPost]
-        public async Task<ApiResponse> GenerateInvoice([FromBody]GenerateInvoiceCommand command)
+        public async Task<ApiResponse> GenerateInvoice([FromBody]int jobId)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            command.CreatedById = userId;
-            command.CreatedDate = DateTime.UtcNow;
-            command.ModifiedById = userId;
-            command.ModifiedDate = DateTime.UtcNow;
-            return await _mediator.Send(command);
+            return await _mediator.Send(new GenerateInvoiceCommand()
+            {
+                CreatedById = userId,
+                CreatedDate = DateTime.UtcNow,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow,
+                jobId=jobId
+        });
         }
         [HttpPost]
         public async Task<ApiResponse> ApproveInvoice([FromBody]int jobId)
@@ -104,24 +113,24 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             return await _mediator.Send(command);
         }
         [HttpPost]
-        public async Task<ApiResponse> DeleteJobDetail([FromBody]int JobId)
+        public async Task<ApiResponse> DeleteJobDetail([FromBody]int model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return await _mediator.Send(new DeleteJobDetailCommand
             {
-                JobId = JobId,
+                JobId = model,
                 ModifiedById = userId,
                 ModifiedDate = DateTime.UtcNow
             });
         }
 
         [HttpPost]
-        public async Task<ApiResponse> AcceptAgreement([FromBody]int jobId)
+        public async Task<ApiResponse> AcceptAgreement([FromBody]int model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return await _mediator.Send(new AcceptAgreementCommand
             {
-                JobId = jobId,
+                JobId = model,
                 ModifiedById = userId,
                 ModifiedDate = DateTime.UtcNow
             });
@@ -137,12 +146,12 @@ namespace HumanitarianAssistance.WebApi.Controllers.Marketing
             return await _mediator.Send(command);
         }
         [HttpPost]
-        public async Task<ApiResponse> DeletePhase([FromBody]int JobPhaseId)
+        public async Task<ApiResponse> DeletePhase([FromBody]int model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return await _mediator.Send(new DeletePhaseCommand
             {
-                JobPhaseId = JobPhaseId,
+                JobPhaseId = model,
                 ModifiedById = userId,
                 ModifiedDate = DateTime.UtcNow
             });
