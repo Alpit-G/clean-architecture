@@ -12,17 +12,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Configuration.Commands.Create
 {
-    public class AddPensionRateCommandHandler: IRequestHandler<AddPensionRateCommand, ApiResponse>
+    public class AddPensionRateCommandHandler : IRequestHandler<AddPensionRateCommand, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
-        private IMapper _mapper;
-        public AddPensionRateCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        public AddPensionRateCommandHandler(HumanitarianAssistanceDbContext dbContext)
         {
             _dbContext = dbContext;
-            _mapper = mapper;
         }
 
-         public async Task<ApiResponse> Handle(AddPensionRateCommand request, CancellationToken cancellationToken)
+        public async Task<ApiResponse> Handle(AddPensionRateCommand request, CancellationToken cancellationToken)
         {
             ApiResponse response = new ApiResponse();
 
@@ -30,37 +28,48 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Create
             {
                 if (request != null)
                 {
-                    var financialYearCheck = await _dbContext.EmployeePensionRate.Where(x => x.FinancialYearId == request.FinancialYearId).ToListAsync();
-
-                    if (!financialYearCheck.Any())
+                    // check for financial year is present or not
+                    if (!(await _dbContext.FinancialYearDetail.AnyAsync(x => x.FinancialYearId == request.FinancialYearId)))
                     {
-                        EmployeePensionRate obj = _mapper.Map<EmployeePensionRate>(request);
+                        throw new Exception (StaticResource.FinancialYearNotFound);
+                    }
 
+                    // check if pension rate is already assigned to fianacial year
+                    if (!(await _dbContext.EmployeePensionRate.AnyAsync(x => x.FinancialYearId == request.FinancialYearId)))
+                    {
+                        EmployeePensionRate obj = new EmployeePensionRate();
+
+                        // check if default pension rate is already saved or not
                         var lst = await _dbContext.EmployeePensionRate.FirstOrDefaultAsync(x => x.IsDefault == true);
-                        
+
                         if (request.IsDefault == true)
                         {
                             if (lst != null)
                             {
                                 lst.IsDefault = false;
+
                                 _dbContext.EmployeePensionRate.Update(lst);
                                 await _dbContext.SaveChangesAsync();
                             }
                         }
+
+                        obj.FinancialYearId = request.FinancialYearId;
+                        obj.PensionRate = request.PensionRate;
                         obj.IsDefault = (request.IsDefault == false && lst == null) ? true : request.IsDefault;
                         obj.CreatedById = request.CreatedById;
-                        obj.CreatedDate = DateTime.Now;
+                        obj.CreatedDate = DateTime.UtcNow;
                         obj.IsDeleted = false;
 
                         await _dbContext.EmployeePensionRate.AddAsync(obj);
                         await _dbContext.SaveChangesAsync();
+
                         response.StatusCode = StaticResource.successStatusCode;
                         response.Message = "Success";
                     }
                     else
                     {
                         response.StatusCode = 700;
-                        response.Message = "Financial Year Already exists!";
+                        response.Message = StaticResource.FinancialYearAlreadyExists;
                     }
                 }
             }
