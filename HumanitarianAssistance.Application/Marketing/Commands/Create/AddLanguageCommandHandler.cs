@@ -28,7 +28,8 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Create
                 ApiResponse response = new ApiResponse();
                 try
             {
-                LanguageDetail obj = _mapper.Map<LanguageDetail>(request);
+                LanguageDetail obj = new LanguageDetail();
+                _mapper.Map(request,obj);
                 obj.CreatedById = request.CreatedById;
                 obj.CreatedDate = request.CreatedDate;
                 obj.IsDeleted = false;

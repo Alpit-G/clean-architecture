@@ -348,7 +348,8 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                 LatestScheduleId = Convert.ToInt32(scheduleDetail.ScheduleId) + 1;
                 scheduleCode = LatestScheduleId.ToString().getScheduleCode();
             }
-            ScheduleDetails obj = _mapper.Map<AddEditScheduleCommand, ScheduleDetails>(model);
+            ScheduleDetails obj = new ScheduleDetails();
+            _mapper.Map(model, obj);
             obj.CreatedById = userId;
             if (model.ProjectId != null)
             {

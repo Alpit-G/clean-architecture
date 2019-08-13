@@ -932,5 +932,22 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         {
             return await _mediator.Send(new GetAttendanceGroupsQuery());
         }
+        [HttpPost]
+        public async Task<ApiResponse> AddJobGradeDetail([FromBody]AddJobGradeDetailCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.CreatedById = userId;
+            command.CreatedDate = DateTime.UtcNow;
+            return await _mediator.Send(command);
+        }
+        [HttpPost]
+        public async Task<ApiResponse> EditJobGradeDetail([FromBody]EditJobGradeDetailCommand command)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow; 
+            return await _mediator.Send(command);
+        }
+
     }
 }

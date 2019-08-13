@@ -333,6 +333,16 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public List<SalaryTaxReportModel> SalaryTaxReportModelList { get; set; }
         public List<PensionPaymentModel> PensionPayment { get; set; }
         public List<PensionPaymentHistoryModel> PensionPaymentHistory { get; set; }
+
+        //HRJobs
+        public IList<JobHiringDetailsModel> JobHiringDetailsList { get; set; }
+        public IList<JobGradeModel> JobGradeList { get; set; }
+
+        //Interview
+        public List<InterviewDetailModel> InterviewDetailList { get; set; }
+
+        //holidays
+        public IList<HolidayDetails> HolidayDetailsList { get; set; }
     }
 
 

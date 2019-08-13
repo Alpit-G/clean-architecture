@@ -4,6 +4,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using HumanitarianAssistance.Application.CommonServices;
+using HumanitarianAssistance.Application.CommonServicesInterface;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Application.Project.Models;
 using HumanitarianAssistance.Common.Helpers;
@@ -14,15 +15,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Project.Commands.Create
 {
-    public class AddProgramDetailCommandHandler: IRequestHandler<AddProgramDetailCommand, ApiResponse>
+    public class AddProgramDetailCommandHandler : IRequestHandler<AddProgramDetailCommand, ApiResponse>
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
         private IMapper _mapper;
-        
-        public AddProgramDetailCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        private readonly IProjectServices _iProjectServices;
+
+        public AddProgramDetailCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper, IProjectServices iProjectServices)
         {
             _dbContext = dbContext;
-            _mapper= mapper;
+            _mapper = mapper;
+            _iProjectServices = iProjectServices;
         }
 
         public async Task<ApiResponse> Handle(AddProgramDetailCommand request, CancellationToken cancellationToken)
@@ -72,9 +75,7 @@ namespace HumanitarianAssistance.Application.Project.Commands.Create
                                 ProjectProgramId = 0
                             };
 
-                            ProjectServices ProjectServices= new ProjectServices(_dbContext);
-
-                            var addEditProjectProgram = await ProjectServices.AddEditProjectProgram(projectProgramModel, request.CreatedById);
+                            var addEditProjectProgram = await _iProjectServices.AddEditProjectProgram(projectProgramModel, request.CreatedById);
 
                             if (addEditProjectProgram.StatusCode == 200)
                             {

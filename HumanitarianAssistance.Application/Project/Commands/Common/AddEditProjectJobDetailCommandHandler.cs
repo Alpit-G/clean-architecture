@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using HumanitarianAssistance.Application.CommonServices;
+using HumanitarianAssistance.Application.CommonServicesInterface;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Domain.Entities.Project;
@@ -14,12 +15,14 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
 {
     public class AddEditProjectJobDetailCommandHandler : IRequestHandler<AddEditProjectJobDetailCommand, ApiResponse>
     {
-        private HumanitarianAssistanceDbContext _dbContext;
-        private IMapper _mapper;
-        public AddEditProjectJobDetailCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        private readonly HumanitarianAssistanceDbContext _dbContext;
+        private readonly IMapper _mapper;
+        private readonly IProjectServices _iProjectServices;
+        public AddEditProjectJobDetailCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper, IProjectServices iProjectServices)
         {
             _dbContext = dbContext;
             _mapper = mapper;
+            _iProjectServices = iProjectServices;
         }
         public async Task<ApiResponse> Handle(AddEditProjectJobDetailCommand request, CancellationToken cancellationToken)
         {
@@ -41,8 +44,7 @@ namespace HumanitarianAssistance.Application.Project.Commands.Common
                         if (obj.ProjectJobId != 0)
                         {
                             // update project job code
-                            ProjectServices ProjectServices = new ProjectServices(_dbContext);
-                            obj.ProjectJobCode = await ProjectServices.GetProjectJobCode(obj);
+                            obj.ProjectJobCode = await _iProjectServices.GetProjectJobCode(obj);
 
                             await _dbContext.SaveChangesAsync();
                         }

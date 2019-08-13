@@ -1,6 +1,7 @@
 using AutoMapper;
 using HumanitarianAssistance.Application.Accounting.Models;
 using HumanitarianAssistance.Application.CommonModels;
+using HumanitarianAssistance.Application.CommonServicesInterface;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Application.Store.Models;
 using HumanitarianAssistance.Common.Helpers;
@@ -12,20 +13,15 @@ using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace HumanitarianAssistance.Application.CommonServices
 {
-    internal class StoreServices
+    public class StoreServices: IStoreServices
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
         private readonly IMapper _mapper;
 
-        public StoreServices(HumanitarianAssistanceDbContext dbContext)
-        {
-            _dbContext = dbContext;
-        }
         public StoreServices(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;

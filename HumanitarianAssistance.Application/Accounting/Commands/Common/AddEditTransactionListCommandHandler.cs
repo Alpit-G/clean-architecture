@@ -1,8 +1,7 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
-using HumanitarianAssistance.Application.CommonServices;
+using HumanitarianAssistance.Application.CommonServicesInterface;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Persistence;
@@ -14,10 +13,12 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Common
     public class AddEditTransactionListCommandHandler : IRequestHandler<AddEditTransactionListCommand, ApiResponse>
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
+        private readonly IAccountingServices _iAccountingServices;
 
-        public AddEditTransactionListCommandHandler(HumanitarianAssistanceDbContext dbContext)
+        public AddEditTransactionListCommandHandler(HumanitarianAssistanceDbContext dbContext, IAccountingServices iAccountingServices)
         {
             _dbContext = dbContext;
+            _iAccountingServices = iAccountingServices;
         }
 
         public async Task<ApiResponse> Handle(AddEditTransactionListCommand request, CancellationToken cancellationToken)
@@ -28,10 +29,8 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Common
             {
                 await Task.Run(() =>
                 {
-                    AccountingServices accountingObj = new AccountingServices(_dbContext);
-
                     // Common Function to Add/Update Transaction
-                    bool transactionAddedFlag = accountingObj.AddEditTransactionList(request);
+                    bool transactionAddedFlag = _iAccountingServices.AddEditTransactionList(request);
 
                     if (!transactionAddedFlag)
                     {

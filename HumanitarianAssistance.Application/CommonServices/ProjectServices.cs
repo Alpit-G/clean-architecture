@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.CommonServices
 {
-    internal class ProjectServices : IProjectServices
+    public class ProjectServices : IProjectServices
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
         public ProjectServices(HumanitarianAssistanceDbContext dbContext)
@@ -134,7 +134,6 @@ namespace HumanitarianAssistance.Application.CommonServices
             return selectedProjectData;
 
         }
-
 
         public async Task<string> GetProjectBudgetLineCode(ProjectBudgetLineDetail model)
         {

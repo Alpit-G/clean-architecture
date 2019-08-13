@@ -2,9 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
 using HumanitarianAssistance.Application.Accounting.Models;
-using HumanitarianAssistance.Application.CommonServices;
+using HumanitarianAssistance.Application.CommonServicesInterface;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Domain.Entities;
@@ -20,12 +19,13 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly IAccountingServices _iAccountingServices;
 
-
-        public AddRoleWithPagePermissionsCommandHandler(HumanitarianAssistanceDbContext dbContext, RoleManager<IdentityRole> roleManager)
+        public AddRoleWithPagePermissionsCommandHandler(HumanitarianAssistanceDbContext dbContext, RoleManager<IdentityRole> roleManager, IAccountingServices iAccountingServices)
         {
             _dbContext = dbContext;
             _roleManager = roleManager;
+            _iAccountingServices = iAccountingServices;
         }
 
         public async Task<ApiResponse> Handle(AddRoleWithPagePermissionsCommand request, CancellationToken cancellationToken)
@@ -35,10 +35,8 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
             {
                 if (request != null)
                 {
-                    AccountingServices accountingObj = new AccountingServices(_dbContext, _roleManager);
-
                     // Add Role
-                    if (await accountingObj.AddRole(request.RoleName))
+                    if (await _iAccountingServices.AddRole(request.RoleName))
                     {
                         var role = await _roleManager.Roles.FirstOrDefaultAsync(x => x.Name == request.RoleName);
 
@@ -105,7 +103,6 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                                     _dbContext.Entry<OrderSchedulePermission>(rolePermission).State = EntityState.Detached;
                                 }
                             }
-
                             response.StatusCode = StaticResource.successStatusCode;
                             response.Message = StaticResource.SuccessText;
                         }

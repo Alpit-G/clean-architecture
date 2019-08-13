@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HumanitarianAssistance.Common.Enums
+﻿namespace HumanitarianAssistance.Common.Enums
 {
     public enum SwaggerGrouping
     {
@@ -108,11 +104,6 @@ namespace HumanitarianAssistance.Common.Enums
         EmployeeUpdate = 5,
         EmployeeDeleted = 6
     }
-    public enum AssetType
-    {
-        Cash = 1,
-        InKind = 2
-    }
 
     public enum Currency
     {
@@ -191,16 +182,4 @@ namespace HumanitarianAssistance.Common.Enums
         public const string Sunday = "Sunday";
     }
 
-    public enum FileSourceEntityTypes
-    {
-        Voucher = 1,
-        Account = 2,
-        ProjectDetail = 3,
-        ProjectProposal = 4,
-        ProjectProposalSupportingDoc = 5,
-        ProjectActivityImplementation = 6,
-        ProjectActivityMonitoring = 7,
-        ProjectActivityPlanning = 8,
-        DonorDetail = 9,
-    }
 }

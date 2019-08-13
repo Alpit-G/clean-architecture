@@ -27,11 +27,12 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
             {
                 if (request.NatureId == 0 || request.NatureId == null)
                 {
-                    Nature obj = _mapper.Map<Nature>(request);
+                    Nature obj = new Nature();                    
                     obj.CreatedById = request.CreatedById;
                     obj.CreatedDate = request.CreatedDate;
                     obj.IsDeleted = false;
                     obj.NatureName = request.NatureName;
+                    _mapper.Map(request,obj);
                     await _dbContext.Natures.AddAsync(obj);
                     await _dbContext.SaveChangesAsync();
                     response.data.natureById = obj;

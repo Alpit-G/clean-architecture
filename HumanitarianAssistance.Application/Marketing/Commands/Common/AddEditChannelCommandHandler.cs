@@ -44,12 +44,13 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                         }
                         else
                         {
-                            Channel obj = _mapper.Map<AddEditChannelCommand, Channel>(request);
+                            Channel obj = new Channel();                            
                             obj.CreatedById = request.CreatedById;
                             obj.CreatedDate = DateTime.Now;
                             obj.IsDeleted = false;
                             obj.ChannelName = request.ChannelName;
                             obj.MediumId = request.MediumId;
+                            _mapper.Map(request, obj);
                             await _dbContext.Channel.AddAsync(obj);
                             await _dbContext.SaveChangesAsync();
                             response.data.channelById = obj;
