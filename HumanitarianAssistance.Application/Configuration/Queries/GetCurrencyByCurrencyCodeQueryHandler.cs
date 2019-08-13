@@ -33,7 +33,6 @@ namespace HumanitarianAssistance.Application.Configuration.Queries
                                         CurrencyId = c.CurrencyId,
                                         CurrencyCode = c.CurrencyCode,
                                         CurrencyName = c.CurrencyName,
-                                        CurrencyRate = c.CurrencyRate,
                                         CreatedById = c.CreatedById,
                                         CreatedDate = c.CreatedDate,
                                         ModifiedById = c.ModifiedById,

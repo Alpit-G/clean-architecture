@@ -138,7 +138,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         [HttpGet]
         public async Task<ApiResponse> GetAllJournalDetail()
         {
-            return await _mediator.Send(new GetAllCurrencyQuery());
+            return await _mediator.Send(new GetAllJournalQuery());
         }
 
         #endregion
@@ -148,7 +148,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         [HttpGet]
         public async Task<ApiResponse> GetAllEmailSettingDetail()
         {
-            return await _mediator.Send(new GetAllCurrencyQuery());
+            return await _mediator.Send(new GetAllEmailSettingQuery());
         }
 
         [HttpPost]
@@ -182,7 +182,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
 
         #endregion
 
-        #region "Account tyoe detail"
+        #region "Account type detail"
         [HttpPost]
 
         public async Task<ApiResponse> AddAccountType([FromBody]AddAccountTypeCommand model)

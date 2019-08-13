@@ -570,7 +570,6 @@ class CurrencyCode {
   CurrencyId: number;
   CurrencyCode: string;
   CurrencyName: string;
-  CurrencyRate: DoubleRange;
 }
 
 class EmployeeListModel {

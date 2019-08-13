@@ -413,6 +413,7 @@ namespace HumanitarianAssistance.Common.Helpers
 
         public const string sameRoleAlreadyExistForTheUser = "Same Role already exist for this user";
         public const string NoTransactionToUpDate = "No Transaction To UpDate";
+        public const string JournalNotFound = "Journal not found";
 
     }
 }

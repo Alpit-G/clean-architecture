@@ -9,30 +9,32 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Configuration.Commands.Update
 {
-    public class EditJournalDetailCommandHandler : IRequestHandler<EditJournalDetailCommand, ApiResponse>
+    public class EditCurrencyCommandHandler : IRequestHandler<EditCurrencyCommand, ApiResponse>
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
-        public EditJournalDetailCommandHandler(HumanitarianAssistanceDbContext dbContext)
+
+        public EditCurrencyCommandHandler(HumanitarianAssistanceDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task<ApiResponse> Handle(EditJournalDetailCommand request, CancellationToken cancellationToken)
+        public async Task<ApiResponse> Handle(EditCurrencyCommand request, CancellationToken cancellationToken)
         {
+
             ApiResponse response = new ApiResponse();
             try
             {
-                var journalInfo = await _dbContext.JournalDetail.FirstOrDefaultAsync(c => c.JournalCode == request.JournalCode);
+                var currencyInfo = await _dbContext.CurrencyDetails.FirstOrDefaultAsync(c => c.CurrencyId == request.CurrencyId);
 
-                if (journalInfo == null)
+                if (currencyInfo == null)
                 {
-                    throw new Exception(StaticResource.JournalNotFound);
+                    throw new Exception(StaticResource.CurrencyNotFound);
                 }
 
-                journalInfo.JournalName = request.JournalName;
-                journalInfo.JournalType = request.JournalType;
-                journalInfo.ModifiedById = request.ModifiedById;
-                journalInfo.ModifiedDate = request.ModifiedDate;
+                currencyInfo.CurrencyCode = request.CurrencyCode;
+                currencyInfo.CurrencyName = request.CurrencyName;
+                currencyInfo.ModifiedById = request.ModifiedById;
+                currencyInfo.ModifiedDate = request.ModifiedDate;
 
                 await _dbContext.SaveChangesAsync();
 
@@ -45,7 +47,7 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Update
                 response.Message = ex.Message;
             }
             return response;
-        }
 
+        }
     }
 }

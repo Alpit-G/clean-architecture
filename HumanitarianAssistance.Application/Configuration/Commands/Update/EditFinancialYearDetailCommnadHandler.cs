@@ -15,11 +15,9 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Update
     public class EditFinancialYearDetailCommnadHandler : IRequestHandler<EditFinancialYearDetailCommnad, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
-        private IMapper _mapper;
-        public EditFinancialYearDetailCommnadHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        public EditFinancialYearDetailCommnadHandler(HumanitarianAssistanceDbContext dbContext)
         {
             _dbContext = dbContext;
-            _mapper = mapper;
         }
         public async Task<ApiResponse> Handle(EditFinancialYearDetailCommnad request, CancellationToken cancellationToken)
         {
@@ -32,7 +30,7 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Update
                 {
                     if (request.IsDefault == true)
                     {
-                       List<FinancialYearDetail> yearlist = await _dbContext.FinancialYearDetail.Where(x=>x.IsDeleted==false).ToListAsync();
+                        List<FinancialYearDetail> yearlist = await _dbContext.FinancialYearDetail.Where(x => x.IsDeleted == false).ToListAsync();
                         foreach (var i in yearlist)
                         {
                             var existrecord1 = await _dbContext.FinancialYearDetail.FirstOrDefaultAsync(x => x.IsDeleted == false && x.FinancialYearId == i.FinancialYearId);
@@ -51,7 +49,9 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Update
                     existrecord.ModifiedById = request.ModifiedById;
                     existrecord.ModifiedDate = request.ModifiedDate;
                     existrecord.IsDeleted = request.IsDeleted;
+
                     await _dbContext.SaveChangesAsync();
+
                     response.StatusCode = StaticResource.successStatusCode;
                     response.Message = "Success";
                 }

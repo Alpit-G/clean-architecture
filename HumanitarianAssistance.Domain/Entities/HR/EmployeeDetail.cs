@@ -37,7 +37,6 @@ namespace HumanitarianAssistance.Domain.Entities.HR
         public string Province { get; set; }
         public string Qualification { get; set; }
         public string Profession { get; set; }
-        public string Grade { get; set; }
         public string Experience { get; set; }
         public string Nationality { get; set; }
         public string SpeakLanguageList { get; set; }
@@ -48,7 +47,6 @@ namespace HumanitarianAssistance.Domain.Entities.HR
         public string InternationalEmploymentList { get; set; }
         public string OtherSkillList { get; set; }
         public string MaritalStatus { get; set; }
-        public int? NoOfChildren { get; set; }
         public long? ProjectId { get; set; }
 
         //======

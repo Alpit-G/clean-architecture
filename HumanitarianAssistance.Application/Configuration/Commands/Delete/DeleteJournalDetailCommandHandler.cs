@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Configuration.Commands.Delete
 {
-    public class DeleteJournalDetailCommandHandler: IRequestHandler<DeleteJournalDetailCommand, ApiResponse>
+    public class DeleteJournalDetailCommandHandler : IRequestHandler<DeleteJournalDetailCommand, ApiResponse>
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
         public DeleteJournalDetailCommandHandler(HumanitarianAssistanceDbContext dbContext)
@@ -17,24 +17,32 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Delete
             _dbContext = dbContext;
         }
 
-         public async Task<ApiResponse> Handle(DeleteJournalDetailCommand request, CancellationToken cancellationToken)
+        public async Task<ApiResponse> Handle(DeleteJournalDetailCommand request, CancellationToken cancellationToken)
         {
             ApiResponse response = new ApiResponse();
 
             try
             {
                 var journalInfo = await _dbContext.JournalDetail.FirstOrDefaultAsync(c => c.JournalCode == request.JournalCode);
+
+                if (journalInfo == null)
+                {
+                    throw new Exception(StaticResource.JournalNotFound);
+                }
+
                 journalInfo.IsDeleted = true;
                 journalInfo.ModifiedById = request.ModifiedById;
                 journalInfo.ModifiedDate = request.ModifiedDate;
-                _dbContext.JournalDetail.Update(journalInfo);
+
+                await _dbContext.SaveChangesAsync();
+
                 response.StatusCode = StaticResource.successStatusCode;
-                response.Message = "Success";
+                response.Message = StaticResource.SuccessText;
             }
             catch (Exception ex)
             {
                 response.StatusCode = StaticResource.failStatusCode;
-                response.Message = StaticResource.SomethingWrong + ex.Message;
+                response.Message = ex.Message;
             }
             return response;
         }

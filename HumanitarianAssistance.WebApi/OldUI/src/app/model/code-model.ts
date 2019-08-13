@@ -2,8 +2,6 @@ export interface CurrencyCode {
     CurrencyId: any;
     CurrencyCode: string;
     CurrencyName: string;
-    CurrencyRate: DoubleRange;
-    Status: boolean;
 }
 
 export interface OfficeCode {

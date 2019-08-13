@@ -3,15 +3,17 @@ using System;
 using HumanitarianAssistance.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace HumanitarianAssistance.Persistence.Migrations
 {
     [DbContext(typeof(HumanitarianAssistanceDbContext))]
-    partial class HumanitarianAssistanceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190813060029_currencyDetailTblStatusFieldRemovedAndDateTimeNowRemoved")]
+    partial class currencyDetailTblStatusFieldRemovedAndDateTimeNowRemoved
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -3853,6 +3855,8 @@ namespace HumanitarianAssistance.Persistence.Migrations
 
                     b.Property<string>("Fax");
 
+                    b.Property<string>("Grade");
+
                     b.Property<int?>("GradeId");
 
                     b.Property<int?>("HigherQualificationId");
@@ -3880,6 +3884,8 @@ namespace HumanitarianAssistance.Persistence.Migrations
                     b.Property<string>("Nationality");
 
                     b.Property<int?>("NationalityId");
+
+                    b.Property<int?>("NoOfChildren");
 
                     b.Property<string>("OtherSkillList");
 

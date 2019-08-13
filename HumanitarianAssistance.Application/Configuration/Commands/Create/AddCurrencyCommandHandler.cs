@@ -11,14 +11,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Configuration.Commands.Create
 {
-    public class AddCurrencyCommandHandler: IRequestHandler<AddCurrencyCommand, ApiResponse>
+    public class AddCurrencyCommandHandler : IRequestHandler<AddCurrencyCommand, ApiResponse>
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
-        private readonly IMapper _mapper;
-        public AddCurrencyCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        public AddCurrencyCommandHandler(HumanitarianAssistanceDbContext dbContext)
         {
             _dbContext = dbContext;
-            _mapper= mapper;
         }
 
         public async Task<ApiResponse> Handle(AddCurrencyCommand request, CancellationToken cancellationToken)
@@ -27,31 +25,22 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Create
 
             try
             {
-                var existcurrency = await _dbContext.CurrencyDetails.FirstOrDefaultAsync(c => c.CurrencyCode == request.CurrencyCode);
-               
-                if (existcurrency == null)
+                if (!(await _dbContext.CurrencyDetails.AnyAsync(c => c.CurrencyCode == request.CurrencyCode)))
                 {
-                    if (request.Status == true)
+                    CurrencyDetails obj = new CurrencyDetails
                     {
-                        var currencylist = await _dbContext.CurrencyDetails.ToListAsync();
+                        CurrencyCode = request.CurrencyCode,
+                        CurrencyName = request.CurrencyName,
+                        CreatedById = request.CreatedById,
+                        CreatedDate = DateTime.UtcNow,
+                        IsDeleted = false
+                    };
 
-                        foreach (var i in currencylist)
-                        {
-                             var existrecord1 = await _dbContext.CurrencyDetails.FirstOrDefaultAsync(x => x.CurrencyId == i.CurrencyId);
-                             existrecord1.Status = false;
-                            _dbContext.CurrencyDetails.Update(existrecord1);
-                            await _dbContext.SaveChangesAsync();
-                        }
-                    }
-
-                    CurrencyDetails obj = _mapper.Map<CurrencyDetails>(request);
-                    obj.CreatedById = request.CreatedById;
-                    obj.CreatedDate = DateTime.UtcNow;
-                    obj.IsDeleted = false;
                     await _dbContext.CurrencyDetails.AddAsync(obj);
                     await _dbContext.SaveChangesAsync();
+
                     response.StatusCode = StaticResource.successStatusCode;
-                    response.Message = "Success";
+                    response.Message = StaticResource.SuccessText;
                 }
                 else
                 {
@@ -62,7 +51,7 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Create
             catch (Exception ex)
             {
                 response.StatusCode = StaticResource.failStatusCode;
-                response.Message = StaticResource.SomethingWrong + ex.Message;
+                response.Message = ex.Message;
             }
             return response;
         }
