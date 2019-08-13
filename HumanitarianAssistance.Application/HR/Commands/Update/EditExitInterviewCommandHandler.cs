@@ -9,7 +9,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HumanitarianAssistance.Application.Configuration.Commands.Create
+namespace HumanitarianAssistance.Application.HR.Commands.Update
 {
     public class EditExitInterviewCommandHandler : IRequestHandler<EditExitInterviewCommand, ApiResponse>
         {

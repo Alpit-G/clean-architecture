@@ -8,7 +8,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HumanitarianAssistance.Application.Configuration.Commands.Create
+namespace HumanitarianAssistance.Application.HR.Commands.Create
 {
     public class AddExitInterviewCommandHandler : IRequestHandler<AddExitInterviewCommand, ApiResponse>
         {

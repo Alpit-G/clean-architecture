@@ -652,30 +652,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
                 ModifiedDate = DateTime.UtcNow
             });
         }
-
-        [HttpGet]
-        public async Task<ApiResponse> ApproveEmployeeInterviewRequest([FromQuery] int InterviewDetailsId)
-        {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return await _mediator.Send(new ApproveEmployeeInterviewRequestCommand
-            {
-                InterviewDetailsId = InterviewDetailsId,
-                ModifiedById = userId,
-                ModifiedDate = DateTime.UtcNow
-            });
-        }
-
-        [HttpGet]
-        public async Task<ApiResponse> RejectEmployeeInterviewRequest([FromQuery] int InterviewDetailsId)
-        {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return await _mediator.Send(new RejectEmployeeInterviewRequestCommand
-            {
-                InterviewDetailsId = InterviewDetailsId,
-                ModifiedById = userId,
-                ModifiedDate = DateTime.UtcNow
-            });
-        }
+        
         #endregion
 
         #region "Employee Appraisal More Details"
@@ -742,46 +719,6 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         {
             return await _mediator.Send(new GetAllInterviewTechnicalQuestionsByOfficeIdQuery { OfficeId = OfficeId });
         }
-
-
-        #endregion
-
-        #region "AddExitInterview"
-        [HttpPost]
-        public async Task<ApiResponse> AddExitInterview([FromBody]AddExitInterviewCommand command)
-        {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            command.CreatedById = userId;
-            command.CreatedDate = DateTime.UtcNow;
-            return await _mediator.Send(command);
-        }
-
-        [HttpPost]
-        public async Task<ApiResponse> EditExitInterview([FromBody]EditExitInterviewCommand command)
-        {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            command.ModifiedById = userId;
-            command.ModifiedDate = DateTime.UtcNow;
-            return await _mediator.Send(command);
-        }
-        [HttpGet]
-        public async Task<ApiResponse> DeleteExitInterview([FromQuery] int existInterviewDetailsId)
-        {
-            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return await _mediator.Send(new DeleteExitInterviewCommand
-            {
-                existInterviewDetailsId = existInterviewDetailsId,
-                ModifiedById = userId,
-                ModifiedDate = DateTime.UtcNow
-            });
-        }
-
-        [HttpGet]
-        public async Task<ApiResponse> GetAllExitInterview()
-        {
-            return await _mediator.Send(new GetAllExitInterviewQuery());
-        }
-
         #endregion
 
         #region "Salary Tax Report Details"
@@ -805,11 +742,6 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
             command.ModifiedById = userId;
             command.ModifiedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
-        }
-        [HttpGet]
-        public async Task<ApiResponse> GetEmployeeAdvanceHistoryDetail(long AdvanceID)
-        {
-            return await _mediator.Send(new GetEmployeeAdvanceHistoryDetailQuery { AdvanceID = AdvanceID });
         }
 
         #endregion

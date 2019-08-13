@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace HumanitarianAssistance.Application.Configuration.Queries
+namespace HumanitarianAssistance.Application.HR.Queries
 {
     public class GetAllExitInterviewQueryHandler : IRequestHandler<GetAllExitInterviewQuery, ApiResponse>
     {

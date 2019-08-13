@@ -114,5 +114,11 @@ namespace HumanitarianAssistance.WebApi.Controllers.HR
             return await _mediator.Send(command);
         }
 
+        [HttpGet]
+        public async Task<ApiResponse> GetEmployeeAdvanceHistoryDetail(long AdvanceID)
+        {
+            return await _mediator.Send(new GetEmployeeAdvanceHistoryDetailQuery { AdvanceID = AdvanceID });
+        }
+
     }
 }

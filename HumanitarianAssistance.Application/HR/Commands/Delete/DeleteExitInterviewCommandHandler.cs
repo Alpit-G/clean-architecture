@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-namespace HumanitarianAssistance.Application.Configuration.Commands.Delete
+namespace HumanitarianAssistance.Application.HR.Commands.Delete
 {
     public class DeleteExitInterviewCommandHandler : IRequestHandler<DeleteExitInterviewCommand, ApiResponse>
     {

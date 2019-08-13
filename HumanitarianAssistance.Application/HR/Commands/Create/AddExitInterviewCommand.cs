@@ -1,7 +1,7 @@
 ﻿using HumanitarianAssistance.Application.Infrastructure;
 using MediatR;
 
-namespace HumanitarianAssistance.Application.Configuration.Commands.Create
+namespace HumanitarianAssistance.Application.HR.Commands.Create
 {
     public class AddExitInterviewCommand : BaseModel, IRequest<ApiResponse>
     {
