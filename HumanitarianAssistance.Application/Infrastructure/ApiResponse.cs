@@ -339,6 +339,10 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public bool isSalaryHeadSaved { get; set; }
         public bool isPayrollHeadSaved { get; set; }
         public IList<RepeatWeeklyDay> HolidayWeeklyDetailsList { get; set; }
+        public List<AdvanceModel> AdvanceList { get; set; }
+        public EmployeeTaxReportModel EmployeeTaxReport { get; set; }
+        public List<EmployeeContractModel> EmployeeContractDetails { get; set; }
+        public ContractTypeContent ContractTypeContentList { get; set; }
 
         //HRJobs
         public IList<JobHiringDetailsModel> JobHiringDetailsList { get; set; }
