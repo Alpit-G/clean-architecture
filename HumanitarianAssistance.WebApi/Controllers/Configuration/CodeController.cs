@@ -864,6 +864,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         {
             return await _mediator.Send(new GetAttendanceGroupsQuery());
         }
+
         [HttpPost]
         public async Task<ApiResponse> AddJobGradeDetail([FromBody]AddJobGradeDetailCommand command)
         {
@@ -872,6 +873,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
             command.CreatedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
         }
+        
         [HttpPost]
         public async Task<ApiResponse> EditJobGradeDetail([FromBody]EditJobGradeDetailCommand command)
         {
