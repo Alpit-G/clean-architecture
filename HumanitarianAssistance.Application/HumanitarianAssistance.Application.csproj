@@ -6,8 +6,10 @@
 
   <ItemGroup>
     <Folder Include="Accounting\Commands\" />
-    <Folder Include="Accounting\Models\" />
+    <Folder Include="Chat\Commands\Common\" />
     <Folder Include="Configuration\Commands\Common\" />
+    <Folder Include="FileManagement\Commands\Common\" />
+    <Folder Include="FileManagement\Commands\Update\" />
   </ItemGroup>
 
   <ItemGroup>

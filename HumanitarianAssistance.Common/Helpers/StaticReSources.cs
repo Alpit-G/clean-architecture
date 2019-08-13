@@ -418,5 +418,10 @@ namespace HumanitarianAssistance.Common.Helpers
         public const string NoTransactionToUpDate = "No Transaction To UpDate";
         public const string JournalNotFound = "Journal not found";
 
+        #region Chat
+        public const string ChatMessageEmpty = "Message cannot be empty";
+        public const string ChatNotFound = "Could not find chat to edit";
+        #endregion
+
     }
 }

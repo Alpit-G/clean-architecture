@@ -10,7 +10,7 @@ using MediatR;
 
 namespace HumanitarianAssistance.Application.HR.Commands.Create
 {
-    public class AddEmployeeHistoryOutsideOrganizationCommandHandler: IRequestHandler<AddEmployeeHistoryOutsideOrganizationCommand, ApiResponse>
+    public class AddEmployeeHistoryOutsideOrganizationCommandHandler : IRequestHandler<AddEmployeeHistoryOutsideOrganizationCommand, ApiResponse>
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
         private readonly IMapper _mapper;
@@ -18,10 +18,10 @@ namespace HumanitarianAssistance.Application.HR.Commands.Create
         public AddEmployeeHistoryOutsideOrganizationCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
-            _mapper= mapper;
+            _mapper = mapper;
         }
 
-         public async Task<ApiResponse> Handle(AddEmployeeHistoryOutsideOrganizationCommand request, CancellationToken cancellationToken)
+        public async Task<ApiResponse> Handle(AddEmployeeHistoryOutsideOrganizationCommand request, CancellationToken cancellationToken)
         {
             ApiResponse response = new ApiResponse();
 
@@ -43,6 +43,6 @@ namespace HumanitarianAssistance.Application.HR.Commands.Create
             }
             return response;
         }
-        
+
     }
 }

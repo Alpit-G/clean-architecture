@@ -27,79 +27,14 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
 
         public async Task<ApiResponse> Handle(AddEditScheduleCommand request, CancellationToken cancellationToken)
         {
-            // long LatestScheduleId = 0;
             var scheduleCode = string.Empty;
             request.ProjectId = request.ProjectId == 0 ? null : request.ProjectId;
             request.PolicyId = request.PolicyId == 0 ? null : request.PolicyId;
             request.JobId = request.JobId == 0 ? null : request.JobId;
-            //if (model.ProjectId == 0)
-            //{
-            //    model.ProjectId = null;
-            //}
-            //if (model.PolicyId == 0)
-            //{
-            //    model.PolicyId = null;
-            //}
-            //if (model.JobId == 0)
-            //{
-            //    model.JobId = null;
-            //}
             ApiResponse response = new ApiResponse();
             try
             {
-                if (request.ScheduleId == 0)
-                {
-                    var record = _dbContext.ScheduleDetails.AsQueryable().Where(x => x.IsDeleted == false && x.ChannelId == request.ChannelId && x.JobId == (request.JobId == 0 ? null : request.JobId) && x.PolicyId == (request.PolicyId == 0 ? null : request.PolicyId) && x.ProjectId == (request.ProjectId == 0 ? null : request.ProjectId) && x.StartTime.ToString(@"hh\:mm") == request.StartTime && x.EndTime.ToString(@"hh\:mm") == request.EndTime && DateTime.UtcNow.Date <= x.EndDate.Date);
-                    if (record.Count() > 0)
-                    {
-                        bool stat = CheckRepeatDays(record.FirstOrDefault(), request);
-                        if (stat == false)
-                        {
-                            response.StatusCode = StaticResource.failStatusCode;
-                            response.Message = "Schedule already exists for the time";
-                        }
-                        else
-                        {
-                            ApiResponse response2 = await SaveSchedule(request, request.CreatedById);
-                            if (response2.StatusCode == 200)
-                            {
-                                ApiResponse response1 = await GetScheduleDetailsById(Convert.ToInt32(response2.data.scheduleDetails.ScheduleId));
-                                response.data.scheduleDetailsModel = response1.data.scheduleDetailsModel;
-                                response.data.scheduleDetails = response1.data.scheduleDetails;
-                                response.data.SchedulerList = response1.data.SchedulerList;
-                                response.StatusCode = StaticResource.successStatusCode;
-                                response.Message = "Schedule created successfully";
-                            }
-                            else
-                            {
-                                response.StatusCode = response2.StatusCode;
-                                response.Message = response2.Message;
-                            }
-
-                        }
-
-                    }
-                    else
-                    {
-                        ApiResponse response1 = await SaveSchedule(request, request.CreatedById);
-                        if (response1.StatusCode == 200)
-                        {
-                            ApiResponse response2 = await GetScheduleDetailsById(Convert.ToInt32(response1.data.scheduleDetails.ScheduleId));
-                            response.data.scheduleDetailsModel = response2.data.scheduleDetailsModel;
-                            response.data.SchedulerList = response1.data.SchedulerList;
-                            response.StatusCode = StaticResource.successStatusCode;
-                            response.data.scheduleDetails = response1.data.scheduleDetails;
-                            response.Message = "Schedule created successfully";
-                        }
-                        else
-                        {
-                            response.StatusCode = response1.StatusCode;
-                            response.Message = response1.Message;
-                        }
-                    }
-                }
-
-                else
+                if (request.ScheduleId!=0)
                 {
                     var existRecord = await _dbContext.ScheduleDetails.FirstOrDefaultAsync(x => x.IsDeleted == false && x.ScheduleId == request.ScheduleId);
                     if (existRecord != null)
@@ -268,6 +203,57 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                     }
 
                 }
+                else
+                {
+                    var record = _dbContext.ScheduleDetails.AsQueryable().Where(x => x.IsDeleted == false && x.ChannelId == request.ChannelId && x.JobId == (request.JobId == 0 ? null : request.JobId) && x.PolicyId == (request.PolicyId == 0 ? null : request.PolicyId) && x.ProjectId == (request.ProjectId == 0 ? null : request.ProjectId) && x.StartTime.ToString(@"hh\:mm") == request.StartTime && x.EndTime.ToString(@"hh\:mm") == request.EndTime && DateTime.UtcNow.Date <= x.EndDate.Date);
+                    if (record.Count() > 0)
+                    {
+                        bool stat = CheckRepeatDays(record.FirstOrDefault(), request);
+                        if (stat == false)
+                        {
+                            response.StatusCode = StaticResource.failStatusCode;
+                            response.Message = "Schedule already exists for the time";
+                        }
+                        else
+                        {
+                            ApiResponse response2 = await SaveSchedule(request, request.CreatedById);
+                            if (response2.StatusCode == 200)
+                            {
+                                ApiResponse response1 = await GetScheduleDetailsById(Convert.ToInt32(response2.data.scheduleDetails.ScheduleId));
+                                response.data.scheduleDetailsModel = response1.data.scheduleDetailsModel;
+                                response.data.scheduleDetails = response1.data.scheduleDetails;
+                                response.data.SchedulerList = response1.data.SchedulerList;
+                                response.StatusCode = StaticResource.successStatusCode;
+                                response.Message = "Schedule created successfully";
+                            }
+                            else
+                            {
+                                response.StatusCode = response2.StatusCode;
+                                response.Message = response2.Message;
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        ApiResponse response1 = await SaveSchedule(request, request.CreatedById);
+                        if (response1.StatusCode == 200)
+                        {
+                            ApiResponse response2 = await GetScheduleDetailsById(Convert.ToInt32(response1.data.scheduleDetails.ScheduleId));
+                            response.data.scheduleDetailsModel = response2.data.scheduleDetailsModel;
+                            response.data.SchedulerList = response1.data.SchedulerList;
+                            response.StatusCode = StaticResource.successStatusCode;
+                            response.data.scheduleDetails = response1.data.scheduleDetails;
+                            response.Message = "Schedule created successfully";
+                        }
+                        else
+                        {
+                            response.StatusCode = response1.StatusCode;
+                            response.Message = response1.Message;
+                        }
+                    }
+                }                
             }
             catch (Exception ex)
             {
@@ -333,8 +319,7 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
         {
             long LatestScheduleId = 0;
             var scheduleCode = string.Empty;
-            ApiResponse response = new ApiResponse();
-            //var schedule = _uow.GetDbContext().ScheduleDetails.Where(x => x.ScheduleName == model.ScheduleName && x.IsDeleted == false).FirstOrDefault();
+            ApiResponse response = new ApiResponse();           
 
             var scheduleDetail = _dbContext.ScheduleDetails.OrderByDescending(x => x.ScheduleId)
                                                                            .FirstOrDefault();
@@ -348,8 +333,8 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                 LatestScheduleId = Convert.ToInt32(scheduleDetail.ScheduleId) + 1;
                 scheduleCode = LatestScheduleId.ToString().getScheduleCode();
             }
-            ScheduleDetails obj = new ScheduleDetails();
-            _mapper.Map(model, obj);
+            ScheduleDetails obj = _mapper.Map<AddEditScheduleCommand, ScheduleDetails>(model);
+          
             obj.CreatedById = userId;
             if (model.ProjectId != null)
             {
@@ -420,37 +405,10 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                                 obj.Sunday = items.status;
                                 break;
                         }
-                        //if (items.Value == "MON")
-                        //{
-                        //    obj.Monday = items.status;
-                        //}
-                        //if (items.Value == "TUE")
-                        //{
-                        //    obj.Tuesday = items.status;
-                        //}
-                        //if (items.Value == "WED")
-                        //{
-                        //    obj.Wednesday = items.status;
-                        //}
-                        //if (items.Value == "THU")
-                        //{
-                        //    obj.Thursday = items.status;
-                        //}
-                        //if (items.Value == "FRI")
-                        //{
-                        //    obj.Friday = items.status;
-                        //}
-                        //if (items.Value == "SAT")
-                        //{
-                        //    obj.Saturday = items.status;
-                        //}
-                        //if (items.Value == "SUN")
-                        //{
-                        //    obj.Sunday = items.status;
-                        //}
                     }
-                }
+                }            
                 await _dbContext.ScheduleDetails.AddAsync(obj);
+                await _dbContext.SaveChangesAsync();
                 FilterSchedulerModel data = new FilterSchedulerModel();
                 data.ChannelId = obj.ChannelId;
                 data.MediumId = obj.MediumId;

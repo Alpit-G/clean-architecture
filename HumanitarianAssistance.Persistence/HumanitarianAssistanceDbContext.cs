@@ -170,6 +170,8 @@ namespace HumanitarianAssistance.Persistence
         public DbSet<AttendanceGroupMaster> AttendanceGroupMaster { get; set; }
 
         //created by arjun singh
+        public DbSet<ChatDetail> ChatDetail { get; set; }
+        public DbSet<EntitySourceDocumentDetail> EntitySourceDocumentDetails { get; set; }
         public DbSet<InventoryItemType> InventoryItemType { get; set; }
 
 

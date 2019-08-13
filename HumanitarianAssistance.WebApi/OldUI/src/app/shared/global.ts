@@ -241,8 +241,8 @@ export class GLOBAL {
 
 
   public static API_Hr_GetAllHolidayDetails = 'HREmployee/GetAllHolidayDetails';
-  public static API_Hr_AddHolidayDetails = 'HREmployee/AddHolidayDetails';
-  public static API_Hr_EditHolidayDetails = 'HREmployee/EditHolidayDetails';
+  public static API_Hr_AddHolidayDetails = 'EmployeeHolidays/AddHolidayDetails';
+  public static API_Hr_EditHolidayDetails = 'EmployeeHolidays/EditHolidayDetails';
 
 
 
@@ -251,7 +251,7 @@ export class GLOBAL {
   public static API_HR_AddJobGradeDetail = 'Code/AddJobGradeDetail';
   public static API_HR_EditJobGradeDetail = 'Code/EditJobGradeDetail';
   public static API_HR_EditEmployeeAssignLeave = 'Attendance/EditEmployeeAssignLeave';
-  public static API_HR_DeleteHolidayDetails = 'HREmployee/DeleteHolidayDetails';
+  public static API_HR_DeleteHolidayDetails = 'EmployeeHolidays/DeleteHolidayDetails';
 
 
   public static API_HR_GetAllDisableCalanderDate = 'HREmployee/GetAllDisableCalanderDate';
@@ -263,7 +263,7 @@ export class GLOBAL {
   public static API_HR_GetAllDateforDisableCalenderDate = 'HREmployee/GetAllDateforDisableCalenderDate';
 
 
-  public static API_HR_GetAllHolidayWeeklyDetails = 'HREmployee/GetAllHolidayWeeklyDetails';
+  public static API_HR_GetAllHolidayWeeklyDetails = 'EmployeeHolidays/GetAllHolidayWeeklyDetails';
 
 
   public static API_Code_GetAllSalaryHead = 'Code/GetAllSalaryHead';

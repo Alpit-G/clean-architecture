@@ -9,7 +9,7 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
 {
     public class AddEditScheduleCommand:BaseModel,IRequest<ApiResponse>
     {
-        public long ScheduleId { get; set; }
+        public long? ScheduleId { get; set; }
         public string ScheduleType { get; set; }
         public string ScheduleCode { get; set; }
         public string ScheduleName { get; set; }
