@@ -99,6 +99,7 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public IList<DesignationModel> DesignationList { get; set; }
         public EmployeeAppraisalDetailsModel EmployeeAppraisalDetailsModel { get; set; }
         public List<AppraisalGeneralQuestions> AppraisalList { get; set; }
+        public List<LanguageDetail> LanguageDetail { get; set; }
 
 
 

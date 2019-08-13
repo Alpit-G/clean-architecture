@@ -37,11 +37,11 @@ namespace HumanitarianAssistance.Application.HR.Queries
                                                                         .Include(x => x.EmployeeDetail).ToListAsync();
 
 
-                List<EmployeeMonthlyPayrollApprovedModel> userList = new List<EmployeeMonthlyPayrollApprovedModel>();
+                List<EmployeeMonthlyPayrollModel> userList = new List<EmployeeMonthlyPayrollModel>();
 
                 foreach (EmployeePaymentTypes item in userdetail)
                 {
-                    EmployeeMonthlyPayrollApprovedModel obj = new EmployeeMonthlyPayrollApprovedModel()
+                    EmployeeMonthlyPayrollModel obj = new EmployeeMonthlyPayrollModel()
                     {
                         EmployeeId = Convert.ToInt32(item.EmployeeID),
                         EmployeeName = item.EmployeeDetail?.EmployeeName,
@@ -62,7 +62,7 @@ namespace HumanitarianAssistance.Application.HR.Queries
                         PensionAmount = Math.Round(Convert.ToDouble(item.PensionAmount), 2),
                         NetSalary = item.NetSalary,
                         AdvanceAmount = item.AdvanceAmount,
-                        IsAdvanceApproved = item.IsAdvanceApproved,
+                        IsAdvanceApproved = item.IsAdvanceApproved == null ? false : item.IsAdvanceApproved.Value,
                         AdvanceRecoveryAmount = item.AdvanceRecoveryAmount ?? 0,
                         IsAdvanceRecovery = item.IsAdvanceRecovery == true ? false : true,
                         CurrencyCode = item.CurrencyCode,

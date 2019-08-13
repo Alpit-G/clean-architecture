@@ -23,7 +23,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
     {
 
         #region "Office detail"
-        
+
         [HttpPost]
         public async Task<ApiResponse> AddOfficeDetail([FromBody]AddOfficeDetailCommand model)
         {
@@ -314,7 +314,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
             return await _mediator.Send(model);
         }
 
-       
+
 
 
         #endregion
@@ -495,7 +495,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
             return await _mediator.Send(new GetBudgetLineTypesQuery());
         }
         #endregion
-      
+
         #region "GetDepartmentsByOfficeId"
         [HttpGet]
         public async Task<ApiResponse> GetDepartmentsByOfficeId(int officeId)
@@ -543,7 +543,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
             return await _mediator.Send(command);
         }
         [HttpPost]
-        public async Task<ApiResponse> EditQualifactionDetails([FromBody]EditQualifactionDetailsCommand command)
+        public async Task<ApiResponse> EditQualifactionDetails([FromBody]EditQualificationDetailsCommand command)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             command.ModifiedById = userId;
@@ -564,7 +564,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
             });
         }
         #endregion
-        
+
         #region "AddSalary Head detail"
         [HttpPost]
         public async Task<ApiResponse> AddSalaryHead([FromBody]AddSalaryHeadCommand command)
@@ -590,7 +590,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return await _mediator.Send(model);
-            
+
         }
 
 
@@ -845,7 +845,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
             command.ModifiedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
         }
-     
+
 
         [HttpPost]
         public async Task<ApiResponse> GetAllDistrictDetailByProvinceId([FromBody] List<int?> ProvinceId)
@@ -882,7 +882,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         }
 
         #endregion
-      
+
         #region "Pension debit amount detail"
         [HttpPost]
         public async Task<ApiResponse> AddEditPensionDebitAccount([FromBody]long accountId)
@@ -927,5 +927,10 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
 
         #endregion
 
+        [HttpGet]
+        public async Task<ApiResponse> GetAllLanguages()
+        {
+            return await _mediator.Send(new GetAttendanceGroupsQuery());
+        }
     }
 }
