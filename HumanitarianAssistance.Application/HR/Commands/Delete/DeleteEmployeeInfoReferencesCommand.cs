@@ -8,6 +8,6 @@ namespace HumanitarianAssistance.Application.HR.Commands.Delete
 {
    public class DeleteEmployeeInfoReferencesCommand : BaseModel, IRequest<ApiResponse>
     {
-        public int EmployeeRelativeInfoId { get; set; }
+        public int EmployeeInfoReferencesId { get; set; }
     }
 }

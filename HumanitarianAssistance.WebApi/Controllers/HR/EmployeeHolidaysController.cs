@@ -1,4 +1,5 @@
 ﻿using HumanitarianAssistance.Application.HR.Commands.Create;
+using HumanitarianAssistance.Application.HR.Commands.Delete;
 using HumanitarianAssistance.Application.HR.Commands.Update;
 using HumanitarianAssistance.Application.HR.Queries;
 using HumanitarianAssistance.Application.Infrastructure;
@@ -23,6 +24,44 @@ namespace HumanitarianAssistance.WebApi.Controllers.HR
         public async Task<ApiResponse> GetAllHolidayDetails(int OfficeId)
         {
             return await _mediator.Send(new GetAllHolidayDetailsQuery { OfficeId = OfficeId });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddHolidayDetails([FromBody] AddHolidayDetailCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> EditHolidayDetails([FromBody] EditHolidayDetailCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(model);
+        }
+
+        [HttpDelete]
+        public async Task<ApiResponse> DeleteHolidayDetails(long holidayId)
+        {
+           var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            return await _mediator.Send(new DeleteHolidayDetailCommand {
+                ModifiedById= userId,
+                ModifiedDate= DateTime.UtcNow,
+                HolidayId= holidayId
+            });
+        }
+
+        [HttpGet]
+        public async Task<object> GetAllHolidayWeeklyDetails(int OfficeId)
+        {
+            return await _mediator.Send(new GetAllWeeklyHolidaysQuery{ OfficeId = OfficeId});
         }
     }   
 }
