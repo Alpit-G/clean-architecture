@@ -344,6 +344,11 @@ namespace HumanitarianAssistance.Application.Infrastructure
 
         //holidays
         public IList<HolidayDetails> HolidayDetailsList { get; set; }
+
+        //Accounting
+        public AccountOpendingAndClosingBL AccountOpendingAndClosingBL { get; set; }
+        public IList<LedgerModel> LedgerList { get; set; }
+        public IList<LedgerReportViewModel> ledgerReportFinal { get; set; }
     }
 
 
