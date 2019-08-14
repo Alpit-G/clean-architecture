@@ -130,5 +130,12 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
             return await _mediator.Send(model);
         }
 
+        [HttpPost]
+        //[ApiExplorerSettings(GroupName = "accounting")]
+        public async Task<ApiResponse> GetAllLedgerDetails([FromBody] GetAllLedgerDetailsQuery model)
+        {
+            return await _mediator.Send(model);
+        }
+
     }
 }

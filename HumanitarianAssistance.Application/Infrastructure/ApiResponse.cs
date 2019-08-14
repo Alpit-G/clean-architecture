@@ -365,6 +365,11 @@ namespace HumanitarianAssistance.Application.Infrastructure
         //File Managment
 
         public List<FileListModel> DocumentFileList { get; set; }
+
+        //Accounting
+        public AccountOpendingAndClosingBL AccountOpendingAndClosingBL { get; set; }
+        public IList<LedgerModel> LedgerList { get; set; }
+        public IList<LedgerReportViewModel> ledgerReportFinal { get; set; }
     }
 
 
