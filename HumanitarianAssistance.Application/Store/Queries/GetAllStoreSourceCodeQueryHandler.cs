@@ -27,6 +27,7 @@ namespace HumanitarianAssistance.Application.Store.Queries
         public async Task<ApiResponse> Handle(GetAllStoreSourceCodeQuery request, CancellationToken cancellationToken)
         {
             ApiResponse response = new ApiResponse();
+            List<StoreSourceCodeDetailModel> obj = new List<StoreSourceCodeDetailModel>();
             try
             {
                 List<StoreSourceCodeDetail> StoreSourceCodeDetailList = new List<StoreSourceCodeDetail>();
@@ -34,14 +35,36 @@ namespace HumanitarianAssistance.Application.Store.Queries
                 //Get Store Source Code Detail based on source code type selected
                 if (request.typeId != null)
                 {
-                    StoreSourceCodeDetailList = await _dbContext.StoreSourceCodeDetail.Where(x => x.IsDeleted == false && x.CodeTypeId == request.typeId).ToListAsync();
+                    obj= await _dbContext.StoreSourceCodeDetail.Where(x => x.IsDeleted == false && x.CodeTypeId == request.typeId).Select(y => new StoreSourceCodeDetailModel
+                    {
+                        Address = y.Address,
+                        EmailAddress = y.EmailAddress,
+                        SourceCodeId = y.SourceCodeId,
+                        CodeTypeId = y.CodeTypeId,
+                        Code = y.Code,
+                        Description = y.Description,
+                        Phone = y.Phone,
+                        Fax = y.Fax,
+                        Guarantor = y.Guarantor
+                    }).ToListAsync();
                 }
                 else //Source Code Type is empty so Get all Store Source Code Detail
                 {
-                    StoreSourceCodeDetailList = await _dbContext.StoreSourceCodeDetail.Where(x => x.IsDeleted == false).ToListAsync();
+                    obj = await _dbContext.StoreSourceCodeDetail.Where(x => x.IsDeleted == false).Select(y => new StoreSourceCodeDetailModel
+                    {
+                        Address = y.Address,
+                        EmailAddress = y.EmailAddress,
+                        SourceCodeId=y.SourceCodeId,
+                        CodeTypeId=y.CodeTypeId,
+                        Code=y.Code,
+                        Description=y.Description,
+                        Phone=y.Phone,
+                        Fax=y.Fax,
+                        Guarantor=y.Guarantor
+                    }).ToListAsync();
                 }
 
-                List<StoreSourceCodeDetailModel> obj = _mapper.Map<List<StoreSourceCodeDetailModel>>(StoreSourceCodeDetailList);
+                //List<StoreSourceCodeDetailModel> obj = _mapper.Map<List <StoreSourceCodeDetailModel>>(StoreSourceCodeDetailList);
                 response.data.SourceCodeDatalist = obj;
                 response.StatusCode = StaticResource.successStatusCode;
                 response.Message = "Success";

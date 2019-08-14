@@ -260,7 +260,7 @@ export class JournalComponent implements OnInit {
     this.accountservice
       .GetAllJournalDetails(
         this.setting.getBaseUrl() +
-        GLOBAL.API_AccountReports_GetJournalVoucherDetailsByCondition,
+          GLOBAL.API_AccountReports_GetJournalVoucherDetails,
         this.journalFilter
       )
       .subscribe(

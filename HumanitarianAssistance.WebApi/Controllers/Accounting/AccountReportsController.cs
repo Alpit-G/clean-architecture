@@ -142,5 +142,11 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
             return await _mediator.Send(model);
         }
 
+        [HttpPost]
+        public async Task<ApiResponse> GetJournalVoucherDetails([FromBody] GetJournalVoucherDetailsQuery model)
+        {
+            return await _mediator.Send(model);
+        }
+
     }
 }
