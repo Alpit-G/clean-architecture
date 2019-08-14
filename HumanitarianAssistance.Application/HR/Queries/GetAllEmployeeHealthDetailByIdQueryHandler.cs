@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace HumanitarianAssistance.Application.HR.Queries
 {
-  public  class GetAllEmployeeHealthDetailByIdQueryHandler : IRequestHandler<GetAllEmployeeHealthDetailByIdQuery, ApiResponse>
+    public class GetAllEmployeeHealthDetailByIdQueryHandler : IRequestHandler<GetAllEmployeeHealthDetailByIdQuery, ApiResponse>
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
 
@@ -26,10 +26,10 @@ namespace HumanitarianAssistance.Application.HR.Queries
             ApiResponse response = new ApiResponse();
             try
             {
-               
 
-                var emphealthList = await  _dbContext.EmployeeHealthInfo.Where(x => x.EmployeeId == request.EmployeeId).
-               
+
+                var emphealthList = await _dbContext.EmployeeHealthInfo.Where(x => x.EmployeeId == request.EmployeeId).
+
                 Select(x => new EmployeeHealthInformationModel
                 {
                     HealthInfoId = x.EmployeeHealthInfoId,
@@ -48,4 +48,5 @@ namespace HumanitarianAssistance.Application.HR.Queries
             }
             return response;
         }
+    }
 }
