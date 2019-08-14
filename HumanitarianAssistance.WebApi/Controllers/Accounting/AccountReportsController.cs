@@ -133,6 +133,9 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
         /// <summary>
         /// Get Ledger Report
         /// </summary>
+        /// <remarks> </remarks>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<ApiResponse> GetAllLedgerDetails([FromBody] GetAllLedgerDetailsQuery model)
         {

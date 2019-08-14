@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using HumanitarianAssistance.Application.Accounting.Commands.Common;
 using HumanitarianAssistance.Application.Accounting.Commands.Create;
 using HumanitarianAssistance.Application.Accounting.Commands.Update;
-using HumanitarianAssistance.Application.Accounting.Models;
 using HumanitarianAssistance.Application.Accounting.Queries;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Enums;
-using HumanitarianAssistance.Domain.Entities;
-using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Accounting

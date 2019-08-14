@@ -209,7 +209,9 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         [HttpPost]
         public async Task<ApiResponse> GetAllAccountTypeByCategory([FromBody]int id)
         {
-            return await _mediator.Send(new GetAllAccountTypeByCategoryQuery());
+            return await _mediator.Send(new GetAllAccountTypeByCategoryQuery {
+                Id = id
+            });
         }
 
 
