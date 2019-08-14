@@ -4,6 +4,7 @@ using System.Text;
 using HumanitarianAssistance.Application.Accounting.Models;
 using HumanitarianAssistance.Application.CommonModels;
 using HumanitarianAssistance.Application.Configuration.Models;
+using HumanitarianAssistance.Application.FileManagement.Models;
 using HumanitarianAssistance.Application.HR.Models;
 using HumanitarianAssistance.Application.Marketing.Models;
 using HumanitarianAssistance.Application.Project.Models;
@@ -318,7 +319,7 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public string InventoryItemCode { get; set; }
         public List<CodeType> SourceCodeTypelist { get; set; }
 
-
+        #region "HR"
         //HR
         public List<EmployeeHistoryOutsideOrganizationModel> EmployeeHistoryOutsideOrganizationList { get; set; }
         public IList<PayrollMonthlyHourDetailModel> PayrollMonthlyHourList { get; set; }
@@ -334,6 +335,11 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public List<SalaryTaxReportModel> SalaryTaxReportModelList { get; set; }
         public List<PensionPaymentModel> PensionPayment { get; set; }
         public List<PensionPaymentHistoryModel> PensionPaymentHistory { get; set; }
+        public IList<EmployeePayrollModel> EmployeePayrollList { get; set; }
+        public IList<EmployeePayrollAccountModel> EmployeePayrollAccountHeadList { get; set; }
+        public bool isSalaryHeadSaved { get; set; }
+        public bool isPayrollHeadSaved { get; set; }
+        public IList<RepeatWeeklyDay> HolidayWeeklyDetailsList { get; set; }
 
         //HRJobs
         public IList<JobHiringDetailsModel> JobHiringDetailsList { get; set; }
@@ -344,13 +350,21 @@ namespace HumanitarianAssistance.Application.Infrastructure
 
         //holidays
         public IList<HolidayDetails> HolidayDetailsList { get; set; }
+        public List<EmployeeRelativeInfoModel> EmployeeRelativeInfoList { get; set; }
+        public List<EmployeeOtherSkillsModel> EmployeeOtherSkillsList { get; set; }
+        public List<EmployeeSalaryBudgetModel> EmployeeSalaryBudgetList { get; set; }
+        public List<EmployeeEducationsModel> EmployeeEducationsList { get; set; }
 
-        //Accounting
-        public AccountOpendingAndClosingBL AccountOpendingAndClosingBL { get; set; }
-        public IList<LedgerModel> LedgerList { get; set; }
-        public IList<LedgerReportViewModel> ledgerReportFinal { get; set; }
-        public IList<JournalVoucherViewModel> JournalVoucherViewList { get; set; }
-        public IList<JournalReportViewModel> JournalReportList { get; set; }
+        public List<EmployeeSalaryAnalyticalInfoModel> EmployeeSalaryAnalyticalInfoList { get; set; }
+        public EmployeeHealthInformationModel EmployeeHealthInfo { get; set; }
+        public List<EmployeeLanguages> EmployeeLanguagesList { get; set; }
+
+
+        #endregion
+
+        //File Managment
+
+        public List<FileListModel> DocumentFileList { get; set; }
     }
 
 

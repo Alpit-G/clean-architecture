@@ -6,7 +6,7 @@ namespace HumanitarianAssistance.Application.Marketing.Models
 {
     public class SchedulerModel
     {
-        public long ScheduleId { get; set; }
+        public long? ScheduleId { get; set; }
         public string ScheduleType { get; set; }
         public string ScheduleCode { get; set; }
         public string ScheduleName { get; set; }

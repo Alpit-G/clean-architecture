@@ -120,5 +120,23 @@ namespace HumanitarianAssistance.WebApi.Controllers.HR
             return await _mediator.Send(new GetEmployeeAdvanceHistoryDetailQuery { AdvanceID = AdvanceID });
         }
 
+        [HttpPost]
+        public async Task<ApiResponse> EditEmployeeSalaryDetail([FromBody] List<EmployeePayrollModel> model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            EditEmployeeSalaryDetailCommand command = new EditEmployeeSalaryDetailCommand();
+            command.EmployeePayroll = model;
+            command.ModifiedById = userId;
+            command.ModifiedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(command);
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetEmployeeSalaryDetailsByEmployeeId(int employeeid)
+        {
+           return await _mediator.Send(new GetSalaryByEmployeeIdQuery { EmployeeId= employeeid});
+        }
     }
 }
