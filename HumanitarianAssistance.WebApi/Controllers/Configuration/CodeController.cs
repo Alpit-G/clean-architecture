@@ -905,10 +905,17 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         [HttpPost]
         public async Task<object> SaveContractContent([FromBody]AddContractContentCommand model)
         {
-           var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             model.CreatedById = userId;
             model.CreatedDate = DateTime.UtcNow;
             return await _mediator.Send(model);
         }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllEmployeeContractType()
+        {
+           return await _mediator.Send(new GetAllEmployeeContractTypeQuery());
+        }
+
     }
 }

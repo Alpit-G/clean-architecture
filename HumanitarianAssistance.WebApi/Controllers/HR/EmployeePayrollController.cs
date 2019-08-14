@@ -191,5 +191,11 @@ namespace HumanitarianAssistance.WebApi.Controllers.HR
 
             return await _mediator.Send(model);
         }
+
+        [HttpGet]
+        public async Task<ApiResponse> EmployeesSalarySummary([FromQuery] GetEmployeesSalarySummaryQuery model)
+        {
+            return await _mediator.Send(model);
+        }
     }
 }

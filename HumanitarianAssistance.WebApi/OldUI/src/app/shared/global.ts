@@ -241,7 +241,7 @@ export class GLOBAL {
   public static API_Hr_EditEmployeeAttendanceByDate = 'Attendance/EditEmployeeAttendanceByDate';
 
 
-  public static API_Hr_GetAllHolidayDetails = 'HREmployee/GetAllHolidayDetails';
+  public static API_Hr_GetAllHolidayDetails = 'EmployeeHolidays/GetAllHolidayDetails';
   public static API_Hr_AddHolidayDetails = 'EmployeeHolidays/AddHolidayDetails';
   public static API_Hr_EditHolidayDetails = 'EmployeeHolidays/EditHolidayDetails';
 
@@ -255,13 +255,13 @@ export class GLOBAL {
   public static API_HR_DeleteHolidayDetails = 'EmployeeHolidays/DeleteHolidayDetails';
 
 
-  public static API_HR_GetAllDisableCalanderDate = 'HREmployee/GetAllDisableCalanderDate';
+  public static API_HR_GetAllDisableCalanderDate = 'EmployeeHolidays/GetAllDisableCalanderDate';
 
 
   public static API_HR_MonthlyEmployeeAttendanceReport = 'Attendance/MonthlyEmployeeAttendanceReport';
 
 
-  public static API_HR_GetAllDateforDisableCalenderDate = 'HREmployee/GetAllDateforDisableCalenderDate';
+  public static API_HR_GetAllDateforDisableCalenderDate = 'EmployeeHolidays/GetAllDateforDisableCalenderDate';
 
 
   public static API_HR_GetAllHolidayWeeklyDetails = 'EmployeeHolidays/GetAllHolidayWeeklyDetails';
@@ -299,7 +299,7 @@ export class GLOBAL {
   public static API_Code_GetAllPensionRate = 'Code/GetAllPensionRate';
   public static API_Hr_GetExchangeRate = 'HREmployee/GetExchangeRate';
 
-  public static API_Hr_GetEmployeeContractType = 'HREmployee/GetAllEmployeeContractType';
+  public static API_Hr_GetEmployeeContractType = 'Code/GetAllEmployeeContractType';
   public static API_Code_SaveContractContent = 'Code/SaveContractContent';
   public static API_Code_GetAllContractTypeContent = 'Code/GetAllContractTypeContent';
   // public static API_Code_GetSelectedEmployeeContract = 'HREmployee/GetSelectedEmployeeContract';

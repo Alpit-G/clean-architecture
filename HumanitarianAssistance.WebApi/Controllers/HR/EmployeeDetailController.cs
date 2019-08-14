@@ -480,7 +480,5 @@ namespace HumanitarianAssistance.WebApi.Controllers.HR
                 EmployeeId= EmployeeId
             });
         }
-
-        
     }
 }

@@ -343,6 +343,14 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public EmployeeTaxReportModel EmployeeTaxReport { get; set; }
         public List<EmployeeContractModel> EmployeeContractDetails { get; set; }
         public ContractTypeContent ContractTypeContentList { get; set; }
+        public List<EmployeeContractType> EmployeeContractTypeList { get; set; }
+       public List<EmployeeSummaryDetailModel> EmployeeSummaryDetailsList { get; set; }
+       public IList<ApplyLeaveModel> ApplyLeaveList { get; set; }
+        public int? TotalEmployees { get; set; }
+        public double? TotalGrossSalary { get; set; }
+        public double? TotalDeductions { get; set; }
+        public double? TotalAllowances { get; set; }
+        
 
         //HRJobs
         public IList<JobHiringDetailsModel> JobHiringDetailsList { get; set; }
