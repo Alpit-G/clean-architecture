@@ -68,7 +68,7 @@ export class GLOBAL {
   public static API_Accounting_GetAllVoucherTransactionDetail = 'Account/GetAllVoucherTransactionDetailByVoucherNo';
   public static API_Accounting_AddVouchersTransaction = 'Account/AddVoucherTransactionDetail';
   public static API_Accounting_EditVouchersTransaction = 'Account/EditVoucherTransactionDetail';
-  public static API_Accounting_GetAllJournalDetails = 'Account/GetJouranlVoucherDetails';
+  //public static API_Accounting_GetAllJournalDetails = 'Account/GetJouranlVoucherDetails';
 
   public static API_Accounting_GetAllBudgetLineDetails = 'ProjectPipeLining/GetAllProjectBudgetLineByProjectId';
   public static API_BudgetLine_GetProjectBudgetTransactions = 'Account/GetAllVoucherTransactionDetailByBudgetLine';
@@ -528,7 +528,7 @@ export class GLOBAL {
   // Reports
   public static API_AccountReports_GetAllLedgerDetails = 'AccountReports/GetAllLedgerDetails';
   public static API_AccountReports_GetTrialBalanceReport = 'AccountReports/GetTrialBalanceReport';
-  public static API_AccountReports_GetJournalVoucherDetailsByCondition= 'AccountReports/GetJournalVoucherDetailsByCondition';
+  public static API_AccountReports_GetJournalVoucherDetails= 'AccountReports/GetJournalVoucherDetails';
 
 
 
