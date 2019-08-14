@@ -1,3 +1,4 @@
+using HumanitarianAssistance.Application.Chat.Models;
 using HumanitarianAssistance.Domain.Entities;
 using HumanitarianAssistance.WebApi.SignalRHub.Interface;
 using Microsoft.AspNetCore.Identity;
@@ -8,29 +9,20 @@ namespace HumanitarianAssistance.WebApi.SignalRHub
 {
     public class NotifyHub : Hub<INotifyHub>
     {
-        // private readonly IChat _IChatService;
-        // private readonly UserManager<AppUser> _userManager;
+        public async Task BroadcastMessage(ChatModel model)
+        {
+            await Clients.All.BroadcastMessage(model);
+        }
 
-        // public NotifyHub(IChat iChatService, UserManager<AppUser> userManager)
-        // {
-        //     _IChatService = iChatService;
-        //     _userManager = userManager;
-        // }
+        public async Task Send(string message)
+        {
+            await Clients.All.Send("Send", message);
+        }
 
-        // public async Task BroadcastMessage(ChatModel model)
-        // {
-        //     await Clients.All.BroadcastMessage(model);
-        // }
-
-        // public async Task Send(string message)
-        // {
-        //     await Clients.All.Send("Send", message);
-        // }
-
-        // public async Task ActivityPermissionChanged(string message)
-        // {
-        //     await Clients.All.ActivityPermissionChanged("activityPermissionChanged", message);
-        // }
+        public async Task ActivityPermissionChanged(string message)
+        {
+            await Clients.All.ActivityPermissionChanged("activityPermissionChanged", message);
+        }
 
     }
 }

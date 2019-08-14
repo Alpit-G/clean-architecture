@@ -1,7 +1,7 @@
 ﻿using HumanitarianAssistance.Application.Infrastructure;
 using MediatR;
 
-namespace HumanitarianAssistance.Application.HR.Commands.Create
+namespace HumanitarianAssistance.Application.Configuration.Commands.Create
 {
     public class AddTechnicalQuestionsCommand : BaseModel, IRequest<ApiResponse>
     {

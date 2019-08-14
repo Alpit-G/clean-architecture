@@ -23,7 +23,7 @@ export class GLOBAL {
   public static API_UserDetail_EditUser = 'Account/EditUser';
 
   public static API_CurrencyCodes_GetAllCurrency = 'Code/GetAllCurrency';
-  public static API_EmployeeHR_GetLanguageList = 'EmployeeHR/GetAllLanguages';
+  public static API_EmployeeHR_GetLanguageList = 'Code/GetAllLanguages';
   public static API_CurrencyCodes_AddCurrency = 'Code/AddCurrency';
   public static API_CurrencyCode_EditCurrency = 'Code/EditCurrency';
   public static API_OfficeCode_GetAllOfficeDetails = 'Code/GetAllOfficeDetails';
@@ -241,7 +241,7 @@ export class GLOBAL {
   public static API_Hr_EditEmployeeAttendanceByDate = 'Attendance/EditEmployeeAttendanceByDate';
 
 
-  public static API_Hr_GetAllHolidayDetails = 'HREmployee/GetAllHolidayDetails';
+  public static API_Hr_GetAllHolidayDetails = 'EmployeeHolidays/GetAllHolidayDetails';
   public static API_Hr_AddHolidayDetails = 'EmployeeHolidays/AddHolidayDetails';
   public static API_Hr_EditHolidayDetails = 'EmployeeHolidays/EditHolidayDetails';
 
@@ -255,13 +255,13 @@ export class GLOBAL {
   public static API_HR_DeleteHolidayDetails = 'EmployeeHolidays/DeleteHolidayDetails';
 
 
-  public static API_HR_GetAllDisableCalanderDate = 'HREmployee/GetAllDisableCalanderDate';
+  public static API_HR_GetAllDisableCalanderDate = 'EmployeeHolidays/GetAllDisableCalanderDate';
 
 
   public static API_HR_MonthlyEmployeeAttendanceReport = 'Attendance/MonthlyEmployeeAttendanceReport';
 
 
-  public static API_HR_GetAllDateforDisableCalenderDate = 'HREmployee/GetAllDateforDisableCalenderDate';
+  public static API_HR_GetAllDateforDisableCalenderDate = 'EmployeeHolidays/GetAllDateforDisableCalenderDate';
 
 
   public static API_HR_GetAllHolidayWeeklyDetails = 'EmployeeHolidays/GetAllHolidayWeeklyDetails';
@@ -299,13 +299,13 @@ export class GLOBAL {
   public static API_Code_GetAllPensionRate = 'Code/GetAllPensionRate';
   public static API_Hr_GetExchangeRate = 'HREmployee/GetExchangeRate';
 
-  public static API_Hr_GetEmployeeContractType = 'HREmployee/GetAllEmployeeContractType';
-  public static API_Code_SaveContractContent = 'HREmployee/SaveContractContent';
-  public static API_Code_GetAllContractTypeContent = 'HREmployee/GetAllContractTypeContent';
+  public static API_Hr_GetEmployeeContractType = 'Code/GetAllEmployeeContractType';
+  public static API_Code_SaveContractContent = 'Code/SaveContractContent';
+  public static API_Code_GetAllContractTypeContent = 'Code/GetAllContractTypeContent';
   // public static API_Code_GetSelectedEmployeeContract = 'HREmployee/GetSelectedEmployeeContract';
 
   public static API_Hr_GetEmployeeSalaryDetails = 'HREmployee/GetEmployeeSalaryDetails';
-  public static API_Hr_EmployeeTaxCalculation = 'HREmployee/EmployeeTaxCalculation';
+  public static API_Hr_EmployeeTaxCalculation = 'EmployeeDetail/EmployeeTaxCalculation';
 
 
   public static API_Code_GetAppraisalQuestions = 'Code/GetAppraisalQuestions';
@@ -332,9 +332,9 @@ export class GLOBAL {
   public static API_Hr_GetAllAdvancesByOfficeId = 'HREmployee/GetAllAdvancesByOfficeId';
   public static API_EmployeeHR_GetAllEmployeePension = 'EmployeePayroll/GetAllEmployeePension';
   public static API_Account_AddEmployeePensionPayment = 'Account/AddEmployeePensionPayment';
-  public static API_Hr_AddAdvances = 'HREmployee/AddAdvances';
+  public static API_Hr_AddAdvances = 'EmployeePayroll/AddAdvances';
   public static API_Hr_EditAdvances = 'HREmployee/EditAdvances';
-  public static API_Hr_ApproveAdvances = 'HREmployee/ApproveAdvances';
+  public static API_Hr_ApproveAdvances = 'EmployeeDetail/ApproveAdvances';
 
   public static API_Code_GetAllExitInterview = 'Code/GetAllExitInterview';
   public static API_Code_AddExitInterview = 'Code/AddExitInterview';
@@ -436,7 +436,7 @@ export class GLOBAL {
   public static API_Hr_EmployeeSalaryTaxDetails = 'EmployeePayroll/EmployeeSalaryTaxDetails';
   public static API_Hr_AddEmployeeContractDetails = 'HREmployee/AddEmployeeContractDetails';
   public static API_Hr_RemoveEmployeeContractDetails = 'HREmployee/RemoveEmployeeContractDetails';
-  public static API_Hr_GetSelectedEmployeeContractByEmployeeId = 'HREmployee/GetSelectedEmployeeContractByEmployeeId';
+  public static API_Hr_GetSelectedEmployeeContractByEmployeeId = 'EmployeeDetail/GetSelectedEmployeeContractByEmployeeId';
 
   public static API_Notification_SetNotificationIsReadFlag = 'Notification/SetNotificationIsReadFlag';
   public static API_Notification_GetNotificationIsReadCount = 'Notification/GetNotificationIsReadCount';

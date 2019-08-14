@@ -4,6 +4,7 @@ using System.Text;
 using HumanitarianAssistance.Application.Accounting.Models;
 using HumanitarianAssistance.Application.CommonModels;
 using HumanitarianAssistance.Application.Configuration.Models;
+using HumanitarianAssistance.Application.FileManagement.Models;
 using HumanitarianAssistance.Application.HR.Models;
 using HumanitarianAssistance.Application.Marketing.Models;
 using HumanitarianAssistance.Application.Project.Models;
@@ -339,6 +340,18 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public bool isSalaryHeadSaved { get; set; }
         public bool isPayrollHeadSaved { get; set; }
         public IList<RepeatWeeklyDay> HolidayWeeklyDetailsList { get; set; }
+        public List<AdvanceModel> AdvanceList { get; set; }
+        public EmployeeTaxReportModel EmployeeTaxReport { get; set; }
+        public List<EmployeeContractModel> EmployeeContractDetails { get; set; }
+        public ContractTypeContent ContractTypeContentList { get; set; }
+        public List<EmployeeContractType> EmployeeContractTypeList { get; set; }
+       public List<EmployeeSummaryDetailModel> EmployeeSummaryDetailsList { get; set; }
+       public IList<ApplyLeaveModel> ApplyLeaveList { get; set; }
+        public int? TotalEmployees { get; set; }
+        public double? TotalGrossSalary { get; set; }
+        public double? TotalDeductions { get; set; }
+        public double? TotalAllowances { get; set; }
+        
 
         //HRJobs
         public IList<JobHiringDetailsModel> JobHiringDetailsList { get; set; }
@@ -371,6 +384,10 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public IList<InterviewScheduleModel> InterviewScheduleFieldOfficelist { get; set; }
 
         #endregion
+
+        //File Managment
+
+        public List<FileListModel> DocumentFileList { get; set; }
     }
 
 
