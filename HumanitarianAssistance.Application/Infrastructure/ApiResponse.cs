@@ -358,6 +358,17 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public EmployeeHealthInformationModel EmployeeHealthInfo { get; set; }
         public List<EmployeeLanguages> EmployeeLanguagesList { get; set; }
 
+        public IList<EmployeeDetailModel> EmployeeDetailList { get; set; }
+        public IList<EmployeeDocumentDetailModel> EmployeeDocumentList { get; set; }
+        public IList<EmployeeHistoryDetailModel> EmployeeHistoryDetailList { get; set; }
+        public IList<EmployeeProfessionalDetailModel> EmployeeProfessionalList { get; set; }
+
+        public IList<EmployeeDetailsAllModel> EmployeeDetailsList { get; set; }
+        public IList<EmployeeHealthInformationModel> EmployeeHealthInfoList { get; set; }
+        public IList<InterviewScheduleModel> InterviewScheduleGeneralAssemblylist { get; set; }
+        public IList<InterviewScheduleModel> InterviewScheduleDirectorlist { get; set; }
+        public IList<InterviewScheduleModel> InterviewScheduleGeneralAdminlist { get; set; }
+        public IList<InterviewScheduleModel> InterviewScheduleFieldOfficelist { get; set; }
 
         #endregion
     }
