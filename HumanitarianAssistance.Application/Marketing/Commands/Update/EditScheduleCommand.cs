@@ -1,12 +1,14 @@
-﻿using System;
+﻿using HumanitarianAssistance.Application.Infrastructure;
+using HumanitarianAssistance.Application.Marketing.Models;
+using MediatR;
+using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace HumanitarianAssistance.Application.Marketing.Models
+namespace HumanitarianAssistance.Application.Marketing.Commands.Update
 {
-    public class SchedulerModel
+    public class EditScheduleCommand : BaseModel, IRequest<ApiResponse>
     {
-        public long? ScheduleId { get; set; }
+        public long ScheduleId { get; set; }
         public string ScheduleType { get; set; }
         public string ScheduleCode { get; set; }
         public string ScheduleName { get; set; }

@@ -8,6 +8,7 @@ using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+
 namespace HumanitarianAssistance.Application.HR.Queries
 {
     public class GetAllEmployeeEducationsQueryHandler : IRequestHandler<GetAllEmployeeEducationsQuery, ApiResponse>
