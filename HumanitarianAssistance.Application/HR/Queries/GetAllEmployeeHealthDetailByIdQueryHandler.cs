@@ -1,6 +1,5 @@
 ﻿using HumanitarianAssistance.Application.HR.Models;
 using HumanitarianAssistance.Application.Infrastructure;
-using HumanitarianAssistance.Common.Enums;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Persistence;
 using MediatR;

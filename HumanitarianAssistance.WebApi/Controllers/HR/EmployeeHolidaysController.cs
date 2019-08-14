@@ -59,19 +59,27 @@ namespace HumanitarianAssistance.WebApi.Controllers.HR
             });
         }
 
-         [HttpGet]
+        [HttpGet]
         public async Task<ApiResponse> GetAllDateforDisableCalenderDate(int officeid)
         {
-            return await _mediator.Send(new GetDisabledCalenderDatesQuery { OfficeId = officeid});
+            return await _mediator.Send(new GetDisabledCalenderDatesQuery { OfficeId = officeid });
         }
 
         [HttpGet]
         public async Task<object> GetAllDisableCalanderDate(int employeeid, int officeid)
         {
-            return await _mediator.Send(new GetAllDisableCalenderDateQuery 
-            { OfficeId = officeid,
-              EmployeeId= employeeid
+            return await _mediator.Send(new GetAllDisableCalenderDateQuery
+            {
+                OfficeId = officeid,
+                EmployeeId = employeeid
             });
+        }
+
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllHolidayWeeklyDetails(int officeid)
+        {
+            return await _mediator.Send(new GetAllHolidayWeeklyDetailsQuery { OfficeId = officeid });
         }
     }
 }

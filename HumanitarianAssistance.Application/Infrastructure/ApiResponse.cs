@@ -351,7 +351,8 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public double? TotalGrossSalary { get; set; }
         public double? TotalDeductions { get; set; }
         public double? TotalAllowances { get; set; }
-        
+
+        public IList<InterviewScheduleModel> InterviewApprovedEmployeeList { get; set; }
 
         //HRJobs
         public IList<JobHiringDetailsModel> JobHiringDetailsList { get; set; }
@@ -382,6 +383,8 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public IList<InterviewScheduleModel> InterviewScheduleDirectorlist { get; set; }
         public IList<InterviewScheduleModel> InterviewScheduleGeneralAdminlist { get; set; }
         public IList<InterviewScheduleModel> InterviewScheduleFieldOfficelist { get; set; }
+
+        public List<PayrollHeadModel> PayrollHeadModelList { get; set; }
 
         #endregion
 
