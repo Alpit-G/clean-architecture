@@ -10,6 +10,7 @@ namespace HumanitarianAssistance.Common.Helpers
         // appsetting json file 
         public const string appsettingJsonFile = "appsettings.json";
         public const string googleCredential = "GoogleCredentials/";
+        public const string googleCredentialNotFound = "Google Credentials not found";
 
         public const string EmailId = "hamza@edgsolutions.net";
         public const string ApplicationName = "OAuth client";
