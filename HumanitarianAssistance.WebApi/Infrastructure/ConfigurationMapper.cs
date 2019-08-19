@@ -21,7 +21,7 @@ namespace HumanitarianAssistance.WebApi.Infrastructure
             CreateMap<AppraisalGeneralQuestions, AddAppraisalQuestionCommand>().ReverseMap();
             CreateMap<EmailSettingDetail, EmailSettingDetail>().ReverseMap();
             CreateMap<EmailSettingDetail, AddEmailSettingCommand>().ReverseMap();
-            
+            CreateMap<ContractTypeContent, AddContractContentCommand>().ReverseMap();
         }
     }
 }

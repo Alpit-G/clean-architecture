@@ -4,9 +4,10 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using HumanitarianAssistance.Application.HR.Models;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
+using HumanitarianAssistance.Domain.Entities;
+using HumanitarianAssistance.Domain.Entities.HR;
 using HumanitarianAssistance.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
@@ -28,14 +29,14 @@ namespace HumanitarianAssistance.Application.HR.Queries
             ApiResponse response = new ApiResponse();
             try
             {
-                var financialyear = await _dbContext.FinancialYearDetail.FirstOrDefaultAsync(x => x.IsDefault == true);
+                FinancialYearDetail financialyear = await _dbContext.FinancialYearDetail.FirstOrDefaultAsync(x => x.IsDefault == true);
 
-                var queryResult = EF.CompileAsyncQuery(
-                    (HumanitarianAssistanceDbContext ctx) => ctx.HolidayDetails
-                    .Where(x => x.IsDeleted == false && x.OfficeId == request.OfficeId && x.FinancialYearId == financialyear.FinancialYearId));
-                var holidaylist = await Task.Run(() =>
-                    queryResult(_dbContext).ToListAsync().Result
-                );
+                IList<HolidayDetails> holidaylist =await  _dbContext.HolidayDetails
+                                                                    .Where(x => x.IsDeleted == false && 
+                                                                                x.OfficeId == request.OfficeId &&
+                                                                                x.FinancialYearId == financialyear.FinancialYearId)
+                                                                    .ToListAsync();
+               
 
                 response.data.HolidayDetailsList = holidaylist;
                 response.StatusCode = StaticResource.successStatusCode;

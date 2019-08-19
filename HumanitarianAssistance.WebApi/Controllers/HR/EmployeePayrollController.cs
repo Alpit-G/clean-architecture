@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using HumanitarianAssistance.Application.HR.Commands.Create;
 using HumanitarianAssistance.Application.HR.Commands.Update;
 using HumanitarianAssistance.Application.HR.Models;
 using HumanitarianAssistance.Application.HR.Queries;
@@ -137,6 +138,64 @@ namespace HumanitarianAssistance.WebApi.Controllers.HR
         public async Task<ApiResponse> GetEmployeeSalaryDetailsByEmployeeId(int employeeid)
         {
            return await _mediator.Send(new GetSalaryByEmployeeIdQuery { EmployeeId= employeeid});
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> RejectAdvances([FromBody]RejectAdvanceCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> ApproveAdvances([FromBody]ApproveAdvanceCommand model)
+        {
+           var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById = userId;
+            model.ModifiedDate = DateTime.UtcNow;
+
+            return await _mediator.Send(model);
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllAdvancesByOfficeId([FromQuery] int OfficeId, int month, int year)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            return await _mediator.Send(new GetAdvancesByOfficeIdQuery {
+                Month= month,
+                Year= year,
+                OfficeId= OfficeId
+            });
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> EditAdvances([FromBody] EditAdvanceCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.ModifiedById= userId;
+            model.ModifiedDate= DateTime.UtcNow;
+
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> AddAdvances([FromBody]AddAdvanceCommand model)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.CreatedById= userId;
+            model.CreatedDate= DateTime.UtcNow;
+
+            return await _mediator.Send(model);
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> EmployeesSalarySummary([FromQuery] GetEmployeesSalarySummaryQuery model)
+        {
+            return await _mediator.Send(model);
         }
     }
 }

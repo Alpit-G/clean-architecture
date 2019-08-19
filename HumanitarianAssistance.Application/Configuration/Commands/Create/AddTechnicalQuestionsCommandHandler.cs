@@ -8,7 +8,7 @@ using HumanitarianAssistance.Domain.Entities.HR;
 using HumanitarianAssistance.Persistence;
 using MediatR;
 
-namespace HumanitarianAssistance.Application.HR.Commands.Create
+namespace HumanitarianAssistance.Application.Configuration.Commands.Create
 {
     public class AddTechnicalQuestionsCommandHandler : IRequestHandler<AddTechnicalQuestionsCommand, ApiResponse>
     {

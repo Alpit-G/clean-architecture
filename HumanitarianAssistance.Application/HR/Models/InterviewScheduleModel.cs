@@ -5,7 +5,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Application.HR.Models
 {
-    public class InterviewScheduleModel: BaseModel
+    public class InterviewScheduleModel : BaseModel
     {
         public long ScheduleId { get; set; }
         public long JobId { get; set; }
