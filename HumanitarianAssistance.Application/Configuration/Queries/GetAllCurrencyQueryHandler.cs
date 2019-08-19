@@ -33,12 +33,10 @@ namespace HumanitarianAssistance.Application.Configuration.Queries
                                         CurrencyId = c.CurrencyId,
                                         CurrencyCode = c.CurrencyCode,
                                         CurrencyName = c.CurrencyName,
-                                        CurrencyRate = c.CurrencyRate,
                                         CreatedById = c.CreatedById,
                                         CreatedDate = c.CreatedDate,
                                         ModifiedById = c.ModifiedById,
                                         ModifiedDate = c.ModifiedDate,
-                                        Status = c.Status
                                     }).ToListAsync();
                                     
                 response.data.CurrencyList = currencylist;
@@ -48,7 +46,7 @@ namespace HumanitarianAssistance.Application.Configuration.Queries
             catch (Exception ex)
             {
                 response.StatusCode = StaticResource.failStatusCode;
-                response.Message = StaticResource.SomethingWrong + ex.Message;
+                response.Message = ex.Message;
             }
             return response;
         }

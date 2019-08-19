@@ -7,6 +7,10 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
 {
     public class AddExchangeRateCommand : BaseModel, IRequest<ApiResponse>
     {
+        public AddExchangeRateCommand()
+        {
+            GenerateExchangeRateModel = new List<GenerateExchangeRateModel>();
+        }
         public List<GenerateExchangeRateModel> GenerateExchangeRateModel { get; set; }
     }
 }

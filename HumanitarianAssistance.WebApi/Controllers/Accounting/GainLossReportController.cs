@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Security.Claims;
-using System.Threading.Tasks;   
+using System.Threading.Tasks;
 
 namespace HumanitarianAssistance.WebApi.Controllers.Accounting
 {
@@ -18,7 +18,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
     [Route("api/GainLossReport/[Action]/")]
     [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Accounting))]
     [Authorize]
-    public class GainLossReportController: BaseController
+    public class GainLossReportController : BaseController
     {
 
         [HttpGet]
@@ -33,7 +33,13 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
             return await _mediator.Send(new GetExchangeGainLossVoucherListQuery());
         }
 
-         [HttpPost]
+        // [HttpPost]
+        // public async Task<ApiResponse> GetExchangeGainLossReport([FromBody]ExchangeGainLossFilterQuery model)
+        // {
+        //     return await _mediator.Send(model);
+        // }
+
+        [HttpPost]
         public async Task<ApiResponse> AddExchangeGainLossVoucher([FromBody] ExchangeGainLossVoucherDetailsCommand model)
         {
             return await _mediator.Send(model);
@@ -42,7 +48,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
         [HttpPost]
         public async Task<ApiResponse> DeleteGainLossVoucherTransaction([FromBody]long id)
         {
-            return await _mediator.Send(new DeleteGainLossVoucherTransactionCommand {VoucherNo=id});
+            return await _mediator.Send(new DeleteGainLossVoucherTransactionCommand { VoucherNo = id });
         }
 
     }

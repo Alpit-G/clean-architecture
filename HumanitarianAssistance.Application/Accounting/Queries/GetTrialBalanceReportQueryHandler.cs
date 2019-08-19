@@ -101,8 +101,8 @@ namespace HumanitarianAssistance.Application.Accounting.Queries
                         var spTrialBalanceReport = await _dbContext.LoadStoredProc("get_trialbalance_report")
                                                                     .WithSqlParam("currency", model.CurrencyId)
                                                                     .WithSqlParam("recordtype", model.RecordType)
-                                                                    .WithSqlParam("fromdate", model.fromdate.ToString())
-                                                                    .WithSqlParam("todate", model.todate.ToString())
+                                                                    .WithSqlParam("fromdate", model.fromdate.ToString("MM/dd/yyyy"))
+                                                                    .WithSqlParam("todate", model.todate.ToString("MM/dd/yyyy"))
                                                                     .WithSqlParam("officelist", model.OfficesList)
                                                                     .WithSqlParam("accountslist", model.accountLists)
                                                                     .ExecuteStoredProc<SP_TrialBalanceModel>();
@@ -178,15 +178,14 @@ namespace HumanitarianAssistance.Application.Accounting.Queries
                     {
                         var accountFourthLevelNotNull = accountFourthLevel.ConvertAll(x => x);
 
-
                         List<LedgerModel> trialBalanceList = new List<LedgerModel>();
                         finalTrialBalanceList = new List<LedgerModel>();
 
                         var spTrialbalanceReport = await _dbContext.LoadStoredProc("get_trialbalance_report")
                                                                     .WithSqlParam("currency", model.CurrencyId)
                                                                     .WithSqlParam("recordtype", model.RecordType)
-                                                                    .WithSqlParam("fromdate", model.fromdate.ToString())
-                                                                    .WithSqlParam("todate", model.todate.ToString())
+                                                                    .WithSqlParam("fromdate", model.fromdate.ToString("MM/dd/yyyy"))
+                                                                    .WithSqlParam("todate", model.todate.ToString("MM/dd/yyyy"))
                                                                     .WithSqlParam("officelist", model.OfficesList)
                                                                     .WithSqlParam("accountslist", model.accountLists)
                                                                     .ExecuteStoredProc<SP_TrialBalanceModel>();
@@ -273,7 +272,7 @@ namespace HumanitarianAssistance.Application.Accounting.Queries
             catch (Exception ex)
             {
                 response.StatusCode = StaticResource.failStatusCode;
-                response.Message = StaticResource.SomethingWrong + ex.Message;
+                response.Message = ex.Message;
             }
             return response;
         } 

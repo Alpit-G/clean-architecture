@@ -16,11 +16,9 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Update
     public class EditLeaveReasonDetailCommandHandler : IRequestHandler<EditLeaveReasonDetailCommand, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
-        private IMapper _mapper;
-        public EditLeaveReasonDetailCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        public EditLeaveReasonDetailCommandHandler(HumanitarianAssistanceDbContext dbContext)
         {
             _dbContext = dbContext;
-            _mapper = mapper;
         }
         public async Task<ApiResponse> Handle(EditLeaveReasonDetailCommand request, CancellationToken cancellationToken)
         {
@@ -35,7 +33,9 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Update
                     leavereasoninfo.ModifiedById = request.ModifiedById;
                     leavereasoninfo.ModifiedDate = request.ModifiedDate;
                     leavereasoninfo.IsDeleted = request.IsDeleted;
+
                     await _dbContext.SaveChangesAsync();
+                    
                     response.StatusCode = StaticResource.successStatusCode;
                     response.Message = "Success";
                 }
