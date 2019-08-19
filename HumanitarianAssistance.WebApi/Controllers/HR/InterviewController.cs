@@ -133,13 +133,6 @@ namespace HumanitarianAssistance.WebApi.Controllers.HR
 
         #endregion
 
-        //[HttpPost]
-        //public async Task<ApiResponse> AddTechnicalQuestions([FromBody]AddTechnicalQuestionsCommand command)
-        //{
-        //    var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value; 
-        //    command.CreatedById = userId;
-        //    command.CreatedDate = DateTime.UtcNow;
-        //    return await _mediator.Send(command);
-        //}
+        
     }   
 }

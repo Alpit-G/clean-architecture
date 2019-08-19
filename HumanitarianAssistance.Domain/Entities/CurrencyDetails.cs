@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities
 {
@@ -16,8 +14,5 @@ namespace HumanitarianAssistance.Domain.Entities
         public string CurrencyCode { get; set; }
         [StringLength(50)]
         public string CurrencyName { get; set; }
-        public float? CurrencyRate { get; set; }
-        public bool? Status { get; set; }
-        public bool? SalaryTaxFlag { get; set; }
     }
 }

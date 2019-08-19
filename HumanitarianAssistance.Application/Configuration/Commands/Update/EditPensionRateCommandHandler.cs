@@ -14,11 +14,9 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Update
     public class EditPensionRateCommandHandler : IRequestHandler<EditPensionRateCommand, ApiResponse>
     {
         private readonly HumanitarianAssistanceDbContext _dbContext;
-        private readonly IMapper _mapper;
-        public EditPensionRateCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        public EditPensionRateCommandHandler(HumanitarianAssistanceDbContext dbContext)
         {
             _dbContext = dbContext;
-            _mapper= mapper;
         }
 
         public async Task<ApiResponse> Handle(EditPensionRateCommand request, CancellationToken cancellationToken)
@@ -50,10 +48,13 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Update
                 }
 
                 EmployeePensionRate obj = await _dbContext.EmployeePensionRate.FirstOrDefaultAsync(x => x.FinancialYearId == request.FinancialYearId);
+                
+                obj.FinancialYearId = request.FinancialYearId;
+                obj.PensionRate = request.PensionRate;
+                obj.IsDefault = (request.IsDefault == false && lst == null) ? true : request.IsDefault;
                 obj.IsDefault = true;
                 obj.ModifiedById = request.ModifiedById;
-                obj.ModifiedDate = DateTime.Now;
-                _mapper.Map(request, obj);
+                obj.ModifiedDate = DateTime.UtcNow;
                 await _dbContext.SaveChangesAsync();
 
                 response.StatusCode = StaticResource.successStatusCode;

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using HumanitarianAssistance.Application.Accounting.Command;
 using HumanitarianAssistance.Application.Accounting.Queries;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Enums;
@@ -130,5 +132,130 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
             return await _mediator.Send(model);
         }
 
+        /// <summary>
+        /// Get Ledger Report
+        /// </summary>
+        /// <remarks> </remarks>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<ApiResponse> GetAllLedgerDetails([FromBody] GetAllLedgerDetailsQuery model)
+        {
+            return await _mediator.Send(model);
+        }
+
+        [HttpPost]
+        public async Task<ApiResponse> GetJournalVoucherDetails([FromBody] GetJournalVoucherDetailsQuery model)
+        {
+            return await _mediator.Send(model);
+        }
+
+        /// <summary>
+        /// Get All Account Income-Expenses (Income Expense Report)
+        /// </summary>
+        /// <remarks>
+        /// Sample input:
+        ///
+        ///     POST /GetAllAccountIncomeExpensesByCategory
+        ///     {
+        ///         "id": 0,
+        ///         "asOfDate": "2019-07-02T07:12:45.401Z",
+        ///         "upToDate": "2019-07-02T07:12:45.401Z",
+        ///         "currency": 0
+        ///     }
+        /// 
+        /// Sample output:
+        ///
+        ///      {
+        ///          "StatusCode": 200,
+        ///          "Message": "Success",
+        ///         "data": {
+        ///               NoteAccountBalances: [
+        ///                     {
+        ///                          AccountBalances: [
+        ///                              {
+        ///                                  AccountId: 86, 
+        ///                                  AccountName: "Assets 110301", 
+        ///                                  Balance: 8096.8, 
+        ///                                  AccountCode: "110301"
+        ///                              }
+        ///                          ],
+        ///                          NoteHeadId: 1,
+        ///                          NoteId: 45,
+        ///                          NoteName: "Assets 8"
+        ///                     }
+        ///               ]
+        ///           }
+        ///     }
+        ///
+        /// </remarks>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        //[ApiExplorerSettings(GroupName = "accounting")]
+        public async Task<ApiResponse> GetAllAccountIncomeExpensesByCategory([FromBody]GetAllAccountIncomeExpensesByCategoryQuery model)
+        {
+            return await _mediator.Send(model);
+        }
+
+        /// <summary>
+        /// Save Gain-Loss AccountList
+        /// </summary>
+        /// <remarks>
+        /// Sample input:
+        ///
+        ///     POST /SaveGainLossAccountList
+        ///         [1, 10, 2]
+        ///
+        ///
+        /// </remarks>
+        /// <param name="accountIds"></param>
+        /// <returns></returns>
+        [HttpPost]
+        //[ApiExplorerSettings(GroupName = "accounting")]
+        public async Task<ApiResponse> SaveGainLossAccountList([FromBody] List<long> accountIds)
+        {
+            return await _mediator.Send(new SaveGainLossAccountListCommand { AccountIds= accountIds } );
+        }
+
+        /// <summary>
+        /// Get Detail Of Notes Report
+        /// </summary>
+        /// <remarks>
+        /// Sample input:
+        ///
+        ///     POST /GetDetailOfNotes
+        ///     {
+        ///           "CurrencyId": 0,
+        ///           "TillDate": "2019-07-02T06:41:52.174Z"
+        ///     }
+        ///
+        /// Sample output:
+        ///
+        ///      {
+        ///          "StatusCode": 200,
+        ///          "Message": "Success",
+        ///          "data": {
+        ///               DetailsOfNotesFinalList: [
+        ///                     {
+        ///                         Balance: 6040000
+        ///                         NoteName: "Expense 2"
+        ///                         TotalCredits: 0
+        ///                         TotalDebits: 6040000
+        ///                     }
+        ///               ]
+        ///           }
+        ///     }
+        ///
+        /// </remarks>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        //[ApiExplorerSettings(GroupName = "accounting")]
+        public async Task<ApiResponse> GetDetailOfNotes([FromBody] GetDetailOfNotesQuery model)
+        {
+            return await _mediator.Send(model);
+        }
+        
     }
 }

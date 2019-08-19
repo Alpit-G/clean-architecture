@@ -54,9 +54,7 @@ export class CurrencyCodeComponent implements OnInit {
     this.currencydata = {
       CurrencyCode: null,
       CurrencyId: null,
-      CurrencyName: null,
-      CurrencyRate: null,
-      Status: false
+      CurrencyName: null
     };
   }
 
@@ -83,9 +81,7 @@ export class CurrencyCodeComponent implements OnInit {
               this.currencycodedt.push({
                 CurrencyId: element.CurrencyId,
                 CurrencyCode: element.CurrencyCode,
-                CurrencyName: element.CurrencyName,
-                CurrencyRate: element.CurrencyRate,
-                Status: element.Status
+                CurrencyName: element.CurrencyName
               });
             });
           }
@@ -118,9 +114,7 @@ export class CurrencyCodeComponent implements OnInit {
     const addcurrencycode: CurrencyCode = {
       CurrencyId: 0,
       CurrencyCode: model.CurrencyCode,
-      CurrencyName: model.CurrencyName,
-      CurrencyRate: model.CurrencyRate,
-      Status: model.Status
+      CurrencyName: model.CurrencyName
     };
     this.codeservice
       .AddEditCurrencyCode(
@@ -153,9 +147,7 @@ export class CurrencyCodeComponent implements OnInit {
     const editcurrencycode: CurrencyCode = {
       CurrencyId: model.CurrencyId,
       CurrencyCode: model.CurrencyCode,
-      CurrencyName: model.CurrencyName,
-      CurrencyRate: model.CurrencyRate,
-      Status: model.Status
+      CurrencyName: model.CurrencyName
     };
 
     this.codeservice
@@ -188,8 +180,6 @@ export class CurrencyCodeComponent implements OnInit {
     this.currencydata.CurrencyId = data.data.CurrencyId;
     this.currencydata.CurrencyCode = data.data.CurrencyCode;
     this.currencydata.CurrencyName = data.data.CurrencyName;
-    this.currencydata.CurrencyRate = data.data.CurrencyRate;
-    this.currencydata.Status = data.data.Status;
     this.popupVisible = true;
   }
 }

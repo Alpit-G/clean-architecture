@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
+using HumanitarianAssistance.Application.HR.Commands.Create;
 using HumanitarianAssistance.Application.HR.Models;
 using HumanitarianAssistance.Domain.Entities.HR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HumanitarianAssistance.WebApi.Infrastructure
 {
@@ -13,6 +10,9 @@ namespace HumanitarianAssistance.WebApi.Infrastructure
         public HRMapper()
         {
             CreateMap<EmployeeHealthInfo,EmployeeHealthInformationModel>().ReverseMap();
+            CreateMap<AddEmployeeContractCommand,EmployeeContract>().ReverseMap();
+            CreateMap<AddAdvanceCommand,Advances>().ReverseMap();
+            CreateMap<AddNewEmployeeCommand,EmployeeDetail>().ReverseMap();
         }
     }
 }

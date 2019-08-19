@@ -1037,7 +1037,7 @@ export class StoreMainComponent implements OnInit, OnDestroy {
       )
       .subscribe(
         data => {
-          const AllOffices = localStorage.getItem('ALLOFFICES').split(',');
+          const AllOffices = localStorage.getItem('ALLOFFICES') != null ? localStorage.getItem('ALLOFFICES').split(',') : [];
           this.officecodelist = [];
           if (
             data.StatusCode === 200 &&

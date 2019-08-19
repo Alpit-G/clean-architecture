@@ -28,6 +28,7 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Update
                 if (existoffice == null)
                 {
                     var officeInfo = await _dbContext.OfficeDetail.FirstOrDefaultAsync(c => c.OfficeId == request.OfficeId);
+                    
                     officeInfo.OfficeCode = request.OfficeCode;
                     officeInfo.OfficeName = request.OfficeName;
                     officeInfo.SupervisorName = request.SupervisorName;

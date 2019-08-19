@@ -4,7 +4,7 @@ using MediatR;
 
 namespace HumanitarianAssistance.Application.Configuration.Commands.Create
 {
-    public class AddFinancialYearDetailCommand :BaseModel, IRequest<ApiResponse>
+    public class AddFinancialYearDetailCommand : BaseModel, IRequest<ApiResponse>
     {
         public int FinancialYearId { get; set; }
         public DateTime StartDate { get; set; }

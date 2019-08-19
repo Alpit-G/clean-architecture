@@ -17,7 +17,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Project
 {
     [ApiController]
     [Produces("application/json")]
-    [Route("api/ProjectPeopleController/[Action]")]
+    [Route("api/ProjectPeople/[Action]")]
     [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Project))]
     public class ProjectPeopleController : BaseController
     {

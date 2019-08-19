@@ -11,35 +11,36 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Configuration.Commands.Create
 {
-    public class AddJournalDetailCommandHandler: IRequestHandler<AddJournalDetailCommand, ApiResponse>
+    public class AddJournalDetailCommandHandler : IRequestHandler<AddJournalDetailCommand, ApiResponse>
     {
 
         private readonly HumanitarianAssistanceDbContext _dbContext;
-        private IMapper _mapper;
-        public AddJournalDetailCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        public AddJournalDetailCommandHandler(HumanitarianAssistanceDbContext dbContext)
         {
-            _dbContext= dbContext;
-            _mapper= mapper;
+            _dbContext = dbContext;
         }
 
-         public async Task<ApiResponse> Handle(AddJournalDetailCommand request, CancellationToken cancellationToken)
+        public async Task<ApiResponse> Handle(AddJournalDetailCommand request, CancellationToken cancellationToken)
         {
             ApiResponse response = new ApiResponse();
 
             try
             {
-                var existjournal = await _dbContext.JournalDetail.FirstOrDefaultAsync(o => o.JournalName == request.JournalName);
-                
-                if (existjournal == null)
+                if (!(await _dbContext.JournalDetail.AnyAsync(x => x.JournalName == request.JournalName)))
                 {
-                    JournalDetail obj = _mapper.Map<JournalDetail>(request);
-                    obj.CreatedById = request.CreatedById;
-                    obj.CreatedDate = DateTime.UtcNow;
-                    obj.IsDeleted = false;
+                    JournalDetail obj = new JournalDetail
+                    {
+                        JournalName = request.JournalName,
+                        CreatedById = request.CreatedById,
+                        CreatedDate = DateTime.UtcNow,
+                        IsDeleted = false
+                    };
+
                     await _dbContext.JournalDetail.AddAsync(obj);
                     await _dbContext.SaveChangesAsync();
+
                     response.StatusCode = StaticResource.successStatusCode;
-                    response.Message = "Success";
+                    response.Message = StaticResource.SuccessText;
                 }
                 else
                 {
@@ -50,10 +51,10 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Create
             catch (Exception ex)
             {
                 response.StatusCode = StaticResource.failStatusCode;
-                response.Message = StaticResource.SomethingWrong + ex.Message;
+                response.Message = ex.Message;
             }
             return response;
         }
-        
+
     }
 }
