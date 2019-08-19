@@ -13,7 +13,7 @@ namespace HumanitarianAssistance.Application.Accounting.Queries
 {
     public class GetExchangeGainLossVoucherListQueryHandler: IRequestHandler<GetExchangeGainLossVoucherListQuery, ApiResponse>
     {
-       private HumanitarianAssistanceDbContext _dbContext;
+       private readonly HumanitarianAssistanceDbContext _dbContext;
 
         public GetExchangeGainLossVoucherListQueryHandler(HumanitarianAssistanceDbContext dbContext)
         {

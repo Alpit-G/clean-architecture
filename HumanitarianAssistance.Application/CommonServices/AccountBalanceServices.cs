@@ -4,8 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using HumanitarianAssistance.Application.Accounting.Models;
 using HumanitarianAssistance.Application.CommonServicesInterface;
-using HumanitarianAssistance.Application.Infrastructure;
-using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Domain.Entities.Accounting;
 using HumanitarianAssistance.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -42,9 +40,9 @@ namespace HumanitarianAssistance.Application.CommonServices
             return vmBalances;
         }
 
-        public async Task<ApiResponse> GetAccountBalancesById(List<long> accountIds, int toCurrencyId, DateTime reportDate)
+        public async Task<List<AccountBalanceModel>> GetAccountBalancesById(List<long> accountIds, int toCurrencyId, DateTime reportDate)
         {
-            ApiResponse response = new ApiResponse();
+            List<AccountBalanceModel> vmNoteBalances = new List<AccountBalanceModel>();
 
             try
             {
@@ -56,25 +54,20 @@ namespace HumanitarianAssistance.Application.CommonServices
                     throw new Exception("Some accounts do not have notes assigned to them!");
 
                 var accountBalances = await GetAccountBalances(inputLevelList, reportDate, toCurrencyId);
-                var vmNoteBalances = GenerateBalanceViewModels(accountBalances);
-
-                response.data.AccountBalances = vmNoteBalances;
-                response.StatusCode = StaticResource.successStatusCode;
-                response.Message = "Success";
+                vmNoteBalances = GenerateBalanceViewModels(accountBalances);
             }
             catch (Exception ex)
             {
-                response.StatusCode = StaticResource.failStatusCode;
-                response.Message = ex.Message;
+                throw new Exception(ex.Message);
             }
 
-            return response;
+            return vmNoteBalances;
         }
 
-        public async Task<ApiResponse> GetAccountBalancesById(List<long> accountIds, DateTime transactionExchangeDate, int toCurrencyId,
+        public async Task<List<AccountBalanceModel>> GetAccountBalancesById(List<long> accountIds, DateTime transactionExchangeDate, int toCurrencyId,
             DateTime reportDate)
         {
-            ApiResponse response = new ApiResponse();
+            List<AccountBalanceModel> vmNoteBalances = new List<AccountBalanceModel>();
 
             try
             {
@@ -86,25 +79,21 @@ namespace HumanitarianAssistance.Application.CommonServices
                     throw new Exception("Some accounts do not have notes assigned to them!");
 
                 var accountBalances = await GetAccountBalances(inputLevelList, reportDate, transactionExchangeDate, toCurrencyId);
-                var vmNoteBalances = GenerateBalanceViewModels(accountBalances);
+                vmNoteBalances = GenerateBalanceViewModels(accountBalances);
 
-                response.data.AccountBalances = vmNoteBalances;
-                response.StatusCode = StaticResource.successStatusCode;
-                response.Message = "Success";
             }
             catch (Exception ex)
             {
-                response.StatusCode = StaticResource.failStatusCode;
-                response.Message = ex.Message;
+                throw new Exception(ex.Message);
             }
 
-            return response;
+            return vmNoteBalances;
         }
 
-        public async Task<ApiResponse> GetAccountBalancesById(List<long> accountIds, int toCurrencyId,
+        public async Task<List<AccountBalanceModel>> GetAccountBalancesById(List<long> accountIds, int toCurrencyId,
             DateTime reportStartDate, DateTime reportEndDate)
         {
-            ApiResponse response = new ApiResponse();
+            List<AccountBalanceModel> vmNoteBalances = new List<AccountBalanceModel>();
 
             try
             {
@@ -116,49 +105,40 @@ namespace HumanitarianAssistance.Application.CommonServices
                     throw new Exception("Some accounts do not have notes assigned to them!");
 
                 var accountBalances = await GetAccountBalances(inputLevelList, toCurrencyId, reportStartDate, reportEndDate);
-                var vmNoteBalances = GenerateBalanceViewModels(accountBalances);
+                vmNoteBalances = GenerateBalanceViewModels(accountBalances);
 
-                response.data.AccountBalances = vmNoteBalances;
-                response.StatusCode = StaticResource.successStatusCode;
-                response.Message = "Success";
             }
             catch (Exception ex)
             {
-                response.StatusCode = StaticResource.failStatusCode;
-                response.Message = ex.Message;
+                throw new Exception(ex.Message);
             }
 
-            return response;
+            return vmNoteBalances;
         }
 
-        public async Task<ApiResponse> GetAccountBalancesById(List<long> accountIds, DateTime transactionExchangeDate, int toCurrencyId,
+        public async Task<List<AccountBalanceModel>> GetAccountBalancesById(List<long> accountIds, DateTime transactionExchangeDate, int toCurrencyId,
             DateTime reportStartDate, DateTime reportEndDate)
         {
-            ApiResponse response = new ApiResponse();
+            List<AccountBalanceModel> vmNoteBalances = new List<AccountBalanceModel>();
 
             try
             {
                 var inputLevelList = await _dbContext.ChartOfAccountNew
                     .Where(x => accountIds.Contains(x.ChartOfAccountNewId)).ToListAsync();
 
-
                 if (inputLevelList.Any(x => x.AccountTypeId == null))
                     throw new Exception("Some accounts do not have notes assigned to them!");
 
                 var accountBalances = await GetAccountBalances(inputLevelList, toCurrencyId, reportStartDate, reportEndDate, transactionExchangeDate);
-                var vmNoteBalances = GenerateBalanceViewModels(accountBalances);
+                vmNoteBalances = GenerateBalanceViewModels(accountBalances);
 
-                response.data.AccountBalances = vmNoteBalances;
-                response.StatusCode = StaticResource.successStatusCode;
-                response.Message = "Success";
             }
             catch (Exception ex)
             {
-                response.StatusCode = StaticResource.failStatusCode;
-                response.Message = ex.Message;
+                throw new Exception(ex.Message);
             }
 
-            return response;
+            return vmNoteBalances;
         }
 
         public async Task<List<VoucherTransactions>> GetAccountTransactions(List<ChartOfAccountNew> inputLevelAccounts, DateTime endDate)
@@ -345,10 +325,10 @@ namespace HumanitarianAssistance.Application.CommonServices
             return CalculateAccountBalances(inputLevelAccounts, exchangeValuedTransactions);
         }
 
-        public async Task<ApiResponse> GetAccountBalancesById(List<long?> accountIds, int toCurrencyId,
+        public async Task<List<AccountBalanceModel>> GetAccountBalancesById(List<long?> accountIds, int toCurrencyId,
             DateTime reportStartDate, DateTime reportEndDate, List<int?> journalList, List<int?> officeList, List<long?> projectIdList)
         {
-            ApiResponse response = new ApiResponse();
+            List<AccountBalanceModel> vmNoteBalances = new List<AccountBalanceModel>();
 
             try
             {
@@ -360,49 +340,40 @@ namespace HumanitarianAssistance.Application.CommonServices
                     throw new Exception("Some accounts do not have notes assigned to them!");
 
                 var accountBalances = await GetAccountBalances(inputLevelList, toCurrencyId, reportStartDate, reportEndDate, journalList, officeList, projectIdList);
-                var vmNoteBalances = GenerateBalanceViewModels(accountBalances);
+                vmNoteBalances = GenerateBalanceViewModels(accountBalances);
 
-                response.data.AccountBalances = vmNoteBalances;
-                response.StatusCode = StaticResource.successStatusCode;
-                response.Message = "Success";
             }
             catch (Exception ex)
             {
-                response.StatusCode = StaticResource.failStatusCode;
-                response.Message = ex.Message;
+                throw new Exception(ex.Message);
             }
 
-            return response;
+            return vmNoteBalances;
         }
 
-        public async Task<ApiResponse> GetAccountBalancesById(List<long?> accountIds, DateTime transactionExchangeDate, int toCurrencyId,
+        public async Task<List<AccountBalanceModel>> GetAccountBalancesById(List<long?> accountIds, DateTime transactionExchangeDate, int toCurrencyId,
            DateTime reportStartDate, DateTime reportEndDate, List<int?> journalList, List<int?> officeList, List<long?> projectIdList)
         {
-            ApiResponse response = new ApiResponse();
+            List<AccountBalanceModel> vmNoteBalances = new List<AccountBalanceModel>();
 
             try
             {
                 var inputLevelList = await _dbContext.ChartOfAccountNew
-                    .Where(x => accountIds.Contains(x.ChartOfAccountNewId)).ToListAsync();
-
+                                                     .Where(x => accountIds.Contains(x.ChartOfAccountNewId))
+                                                     .ToListAsync();
 
                 if (inputLevelList.Any(x => x.AccountTypeId == null))
                     throw new Exception("Some accounts do not have notes assigned to them!");
 
                 var accountBalances = await GetAccountBalances(inputLevelList, toCurrencyId, reportStartDate, reportEndDate, transactionExchangeDate, journalList, officeList, projectIdList);
-                var vmNoteBalances = GenerateBalanceViewModels(accountBalances);
-
-                response.data.AccountBalances = vmNoteBalances;
-                response.StatusCode = StaticResource.successStatusCode;
-                response.Message = "Success";
+                vmNoteBalances = GenerateBalanceViewModels(accountBalances);
             }
             catch (Exception ex)
             {
-                response.StatusCode = StaticResource.failStatusCode;
-                response.Message = ex.Message;
+                throw new Exception(ex.Message);
             }
 
-            return response;
+            return vmNoteBalances;
         }
 
         public async Task<Dictionary<ChartOfAccountNew, double>> GetAccountBalances(List<ChartOfAccountNew> inputLevelAccounts,
