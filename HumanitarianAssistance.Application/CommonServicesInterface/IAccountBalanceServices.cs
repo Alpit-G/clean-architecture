@@ -28,5 +28,7 @@ namespace HumanitarianAssistance.Application.CommonServicesInterface
         Task<List<AccountBalanceModel>> GetAccountBalancesById(List<long?> accountIds, DateTime transactionExchangeDate, int toCurrencyId, DateTime reportStartDate, DateTime reportEndDate, List<int?> journalList, List<int?> officeList, List<long?> projectIdList);
         Task<Dictionary<ChartOfAccountNew, double>> GetAccountBalances(List<ChartOfAccountNew> inputLevelAccounts, int toCurrencyId, DateTime transactionsStartingFrom, DateTime transactionsUntil, DateTime transactionExchangeDate, List<int?> journalList, List<int?> officeList, List<long?> projectIdList);
         Task<List<VoucherTransactions>> GetTransactionValuesAfterExchange(List<VoucherTransactions> transactions, int toCurrencyId, DateTime onDate);
+        Task<Dictionary<ChartOfAccountNew, double>> GetAccountBalances(List<ChartOfAccountNew> inputLevelAccounts,
+            int toCurrencyId, DateTime transactionsStartingFrom, DateTime transactionsUntil);
     }
 }

@@ -399,6 +399,7 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public IList<LedgerReportViewModel> ledgerReportFinal { get; set; }
         public IList<JournalVoucherViewModel> JournalVoucherViewList { get; set; }
         public IList<JournalReportViewModel> JournalReportList { get; set; }
+        public List<DetailOfNotesSummaryModel> DetailsOfNotesFinalList { get; set; }
     }
 
 

@@ -40,7 +40,7 @@ namespace HumanitarianAssistance.Application.Accounting.Queries
                 if (inputLevelList.Any(x => x.AccountTypeId == null))
                     throw new Exception("Some accounts do not have notes assigned to them!");
 
-                var accountBalances = await _iAccountBalanceServices.GetAccountBalances(inputLevelList, request.currency, request.upToDate, request.upToDate);
+                var accountBalances = await _iAccountBalanceServices.GetAccountBalances(inputLevelList, request.currency, request.asOfDate, request.upToDate);
 
                 var notes = inputLevelList.Select(x => x.AccountType).Distinct().ToList();
                 List<NoteAccountBalancesModel> noteAccountBalances = new List<NoteAccountBalancesModel>();
