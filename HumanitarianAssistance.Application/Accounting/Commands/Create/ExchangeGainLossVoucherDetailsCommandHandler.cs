@@ -44,7 +44,8 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
                     OfficeId = model.OfficeId,
                     ProjectId = model.ProjectId,
                     BudgetLineId = model.BudgetLineId,
-                    IsExchangeGainLossVoucher = true
+                    IsExchangeGainLossVoucher = true,
+                    TimezoneOffset = model.TimezoneOffset,
                 };
 
                 var responseVoucher = await _iAccountingServices.AddVoucherDetail(voucherModel);
@@ -91,12 +92,12 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
 
                     if (isTransactionSaved)
                     {
-                        string voucherName = _dbContext.VoucherDetail.FirstOrDefault(x => x.JournalCode == responseVoucher.JournalCode)?.JournalDetails.JournalName;
+                        string journalName = _dbContext.VoucherDetail.FirstOrDefault(x => x.JournalCode == responseVoucher.JournalCode)?.JournalDetails.JournalName;
 
                         response.data.GainLossVoucherDetail = new GainLossVoucherListModel
                         {
                             VoucherId = responseVoucher.VoucherNo,
-                            JournalName = voucherName != null ? voucherName : "",
+                            JournalName = string.IsNullOrEmpty(journalName) ? journalName : "",
                             VoucherName = responseVoucher.ReferenceNo,
                             VoucherDate = responseVoucher.VoucherDate
                         };
@@ -120,7 +121,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
             catch (Exception ex)
             {
                 response.StatusCode = StaticResource.failStatusCode;
-                response.Message = StaticResource.SomethingWrong + ex.Message;
+                response.Message = ex.Message;
             }
             return response;
         }

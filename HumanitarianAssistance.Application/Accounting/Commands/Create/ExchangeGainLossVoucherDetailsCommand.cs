@@ -16,5 +16,6 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Create
         public long CreditAccount { get; set; }
         public long DebitAccount { get; set; }
         public double Amount { get; set; }
+        public int? TimezoneOffset { get; set; }
     }
 }
