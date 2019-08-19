@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text;
-using HumanitarianAssistance.Domain.Entities.Store;
 
-namespace HumanitarianAssistance.Domain.Entities
+namespace HumanitarianAssistance.Domain.Entities.Store
 {
-    public class ItemSpecificationMaster : BaseEntityWithoutId
+    public class ItemSpecificationMaster : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

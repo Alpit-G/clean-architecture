@@ -24,7 +24,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
 
             try
             {
-                var list = await _dbContext.SecurityConsiderationDetail.Where(x => !x.IsDeleted.Value).ToListAsync();
+                var list = await _dbContext.SecurityConsiderationDetail.Where(x => !x.IsDeleted).ToListAsync();
                 response.data.SecurityConsiderationDetail = list;
                 response.StatusCode = 200;
                 response.Message = "Success";

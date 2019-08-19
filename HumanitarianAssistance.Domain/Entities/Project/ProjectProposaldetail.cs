@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities.Project
 {
-    public class ProjectProposalDetail : BaseEntityWithoutId
+    public class ProjectProposalDetail : BaseEntity
     {
         public ProjectProposalDetail()
         {

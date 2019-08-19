@@ -7,7 +7,7 @@ using HumanitarianAssistance.Domain.Entities.HR;
 
 namespace HumanitarianAssistance.Domain.Entities.HR
 {
-    public class Advances : BaseEntityWithoutId
+    public class Advances : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

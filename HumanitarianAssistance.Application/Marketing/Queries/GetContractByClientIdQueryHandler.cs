@@ -27,7 +27,7 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
             {
                 var contracts = await (from j in _dbContext.ContractDetails.AsNoTracking().AsQueryable()
                                        join jp in _dbContext.ClientDetails on j.ClientId equals jp.ClientId
-                                       where !j.IsDeleted.Value && !jp.IsDeleted.Value && j.ClientId == request.ClientId
+                                       where !j.IsDeleted && !jp.IsDeleted && j.ClientId == request.ClientId
 
                                        select new ContractByClient
                                        {

@@ -48,7 +48,7 @@ namespace HumanitarianAssistance.Application.Accounting.Queries
                                                                    }).ToListAsync();
                     List<ApproveRejectPermissionModel> approveRejectPermissionList = (from ur in _dbContext.ApproveRejectPermission
                                                                                       join at in _dbContext.ApplicationPages on ur.PageId equals at.PageId
-                                                                                      where !ur.IsDeleted.Value && !at.IsDeleted.Value && ur.RoleId == request.RoleId
+                                                                                      where !ur.IsDeleted && !at.IsDeleted && ur.RoleId == request.RoleId
                                                                                       select (new ApproveRejectPermissionModel
                                                                                       {
                                                                                           Approve = ur.Approve,
@@ -60,7 +60,7 @@ namespace HumanitarianAssistance.Application.Accounting.Queries
                                                                                       })).ToList();
                     List<AgreeDisagreePermissionModel> agreeDisagreePermissionList = (from ur in _dbContext.AgreeDisagreePermission
                                                                                       join at in _dbContext.ApplicationPages on ur.PageId equals at.PageId
-                                                                                      where !ur.IsDeleted.Value && !at.IsDeleted.Value && ur.RoleId == request.RoleId
+                                                                                      where !ur.IsDeleted && !at.IsDeleted && ur.RoleId == request.RoleId
                                                                                       select (new AgreeDisagreePermissionModel
                                                                                       {
                                                                                           Agree = ur.Agree,
@@ -72,7 +72,7 @@ namespace HumanitarianAssistance.Application.Accounting.Queries
                                                                                       })).ToList();
                     List<OrderSchedulePermissionModel> orderSchedulePermissionList = (from ur in _dbContext.OrderSchedulePermission
                                                                                       join at in _dbContext.ApplicationPages on ur.PageId equals at.PageId
-                                                                                      where !ur.IsDeleted.Value && !at.IsDeleted.Value && ur.RoleId == request.RoleId
+                                                                                      where !ur.IsDeleted && !at.IsDeleted && ur.RoleId == request.RoleId
                                                                                       select (new OrderSchedulePermissionModel
                                                                                       {
                                                                                           OrderSchedule = ur.OrderSchedule,

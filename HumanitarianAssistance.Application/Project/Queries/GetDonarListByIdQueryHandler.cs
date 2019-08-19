@@ -25,7 +25,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
             try
             {
                 var DonarDetail = await _dbContext.DonorDetail
-                                                 .FirstOrDefaultAsync(x => !x.IsDeleted.Value &&
+                                                 .FirstOrDefaultAsync(x => !x.IsDeleted &&
                                                                             x.DonorId == request.DonorId);
                 response.data.DonorDetailById = DonarDetail;
                 response.StatusCode = 200;

@@ -7,7 +7,7 @@ using HumanitarianAssistance.Domain.Entities.HR;
 
 namespace HumanitarianAssistance.Domain.Entities
 {
-    public class RatingBasedCriteria : BaseEntityWithoutId
+    public class RatingBasedCriteria : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

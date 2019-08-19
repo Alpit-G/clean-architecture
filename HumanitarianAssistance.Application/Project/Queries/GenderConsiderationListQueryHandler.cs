@@ -26,7 +26,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
             
             try
             {
-                var list = await _dbContext.GenderConsiderationDetail.Where(x => !x.IsDeleted.Value).ToListAsync();
+                var list = await _dbContext.GenderConsiderationDetail.Where(x => !x.IsDeleted).ToListAsync();
                 response.data.GenderConsiderationDetail = list;
                 response.StatusCode = 200;
                 response.Message = "Success";

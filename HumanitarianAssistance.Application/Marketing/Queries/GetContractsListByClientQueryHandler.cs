@@ -30,7 +30,7 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
 
             try
             {
-                var list = await _dbContext.ContractDetails.AsNoTracking().AsQueryable().Where(x => !x.IsDeleted.Value && x.IsApproved == true).ToListAsync();
+                var list = await _dbContext.ContractDetails.AsNoTracking().AsQueryable().Where(x => !x.IsDeleted && x.IsApproved == true).ToListAsync();
                 foreach (var item in list)
                 {
                     ContractByClient model = new ContractByClient();

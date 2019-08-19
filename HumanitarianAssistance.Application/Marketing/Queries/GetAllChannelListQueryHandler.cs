@@ -27,7 +27,7 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
             {
                 var Channels = await(from j in _dbContext.Channel
                                      join jp in _dbContext.Mediums on j.MediumId equals jp.MediumId
-                                     where !j.IsDeleted.Value && !jp.IsDeleted.Value
+                                     where !j.IsDeleted && !jp.IsDeleted
                                      select (new ChannelModel
                                      {
                                          ChannelId = j.ChannelId,

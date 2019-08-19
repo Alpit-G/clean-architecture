@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HumanitarianAssistance.Domain.Entities.Store
 {
-    public class PurchaseGenerator : BaseEntityWithoutId
+    public class PurchaseGenerator : BaseEntity
     {
         [Key]
         public int GeneratorId { get; set; }

@@ -7,7 +7,7 @@ using HumanitarianAssistance.Domain.Entities.Accounting;
 
 namespace HumanitarianAssistance.Domain.Entities
 {
-    public class JournalDetail : BaseEntityWithoutId
+    public class JournalDetail : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

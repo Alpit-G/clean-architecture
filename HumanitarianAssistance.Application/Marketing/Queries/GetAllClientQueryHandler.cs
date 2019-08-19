@@ -22,7 +22,7 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
             ApiResponse response = new ApiResponse();
             try
             {
-                var list = await _dbContext.ClientDetails.Where(x => !x.IsDeleted.Value).ToListAsync();
+                var list = await _dbContext.ClientDetails.Where(x => !x.IsDeleted).ToListAsync();
                 //updated list order By AS 07/06/2019 
                 response.data.ClientDetails = list.OrderByDescending(x => x.ClientId).ToList();
                 response.StatusCode = 200;

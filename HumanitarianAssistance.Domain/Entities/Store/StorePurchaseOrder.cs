@@ -5,7 +5,7 @@ using HumanitarianAssistance.Domain.Entities.HR;
 
 namespace HumanitarianAssistance.Domain.Entities.Store
 {
-    public class StorePurchaseOrder : BaseEntityWithoutId
+    public class StorePurchaseOrder : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

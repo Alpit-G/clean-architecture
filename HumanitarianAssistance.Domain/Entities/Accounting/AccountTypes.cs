@@ -7,7 +7,7 @@ using System.Text;
 namespace HumanitarianAssistance.Domain.Entities.Accounting
 {
     // This class/model is for storing notes.
-    public class AccountType : BaseEntityWithoutId
+    public class AccountType : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

@@ -23,7 +23,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
             try
             {
                 var Projectprogram = await _dbContext.ProjectProgram
-                       .FirstOrDefaultAsync(x => !x.IsDeleted.Value && x.ProjectId == request.ProjectId);
+                       .FirstOrDefaultAsync(x => !x.IsDeleted && x.ProjectId == request.ProjectId);
                 response.data.projectProgram = Projectprogram;
                 response.StatusCode = 200;
                 response.Message = "Success";

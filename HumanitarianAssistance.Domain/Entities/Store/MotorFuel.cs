@@ -5,7 +5,7 @@ namespace HumanitarianAssistance.Domain.Entities.Store
 {
     // Fuel must be assigned to a vehicle OR generator when an order for it is generated.
     // A fuel entry should NEVER be assignable to both vehicle and generator.
-    public class MotorFuel : BaseEntityWithoutId
+    public class MotorFuel : BaseEntity
     {
         [Key]
         public string FuelId { get; set; }

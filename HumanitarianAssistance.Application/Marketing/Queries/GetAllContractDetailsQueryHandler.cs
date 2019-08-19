@@ -27,7 +27,7 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
             ApiResponse response = new ApiResponse();
             try
             {
-                var list = await _dbContext.ContractDetails.AsNoTracking().AsQueryable().Where(x => !x.IsDeleted.Value).ToListAsync();
+                var list = await _dbContext.ContractDetails.AsNoTracking().AsQueryable().Where(x => !x.IsDeleted).ToListAsync();
                 response.data.ContractDetails = list;
                 response.data.jobListTotalCount = _dbContext.ContractDetails.Count(x => x.IsDeleted == false);
                 response.StatusCode = 200;

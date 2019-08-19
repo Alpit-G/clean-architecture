@@ -8,7 +8,7 @@ using HumanitarianAssistance.Domain.Entities.HR;
 
 namespace HumanitarianAssistance.Domain.Entities
 {
-    public class PensionPaymentHistory : BaseEntityWithoutId
+    public class PensionPaymentHistory : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

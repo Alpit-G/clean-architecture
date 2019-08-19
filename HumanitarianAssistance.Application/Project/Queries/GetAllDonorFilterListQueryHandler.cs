@@ -27,7 +27,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
 
                 int totalCount = await _dbContext.DonorDetail.Where(x => x.IsDeleted == false).AsNoTracking().CountAsync();
 
-                var list = await _dbContext.DonorDetail.Where(x => !x.IsDeleted.Value)
+                var list = await _dbContext.DonorDetail.Where(x => !x.IsDeleted)
                     .OrderByDescending(x => x.DonorId)
                     .Skip(request.pageSize.Value * request.pageIndex.Value)
                     .Take(request.pageSize.Value)

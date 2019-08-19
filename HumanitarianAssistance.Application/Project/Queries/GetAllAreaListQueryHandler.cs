@@ -25,7 +25,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
             ApiResponse response = new ApiResponse();
             try
             {
-                var list = await _dbContext.AreaDetail.Where(x => !x.IsDeleted.Value).ToListAsync();
+                var list = await _dbContext.AreaDetail.Where(x => !x.IsDeleted).ToListAsync();
                 response.data.AreaDetail = list;
                 response.StatusCode = 200;
                 response.Message = "Success";

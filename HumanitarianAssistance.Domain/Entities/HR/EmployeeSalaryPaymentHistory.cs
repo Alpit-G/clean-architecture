@@ -7,7 +7,7 @@ using HumanitarianAssistance.Domain.Entities.Accounting;
 
 namespace HumanitarianAssistance.Domain.Entities.HR
 {
-    public class EmployeeSalaryPaymentHistory : BaseEntityWithoutId
+    public class EmployeeSalaryPaymentHistory : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

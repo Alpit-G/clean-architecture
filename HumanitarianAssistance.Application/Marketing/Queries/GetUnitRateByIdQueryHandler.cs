@@ -28,7 +28,7 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
             {
                 var unitRateDetails = await (from ur in _dbContext.UnitRates.AsNoTracking().AsQueryable()
                                              join at in _dbContext.ActivityTypes on ur.ActivityTypeId equals at.ActivityTypeId
-                                             where !ur.IsDeleted.Value && !at.IsDeleted.Value && ur.UnitRateId == Convert.ToInt32(request.UnitRateId)
+                                             where !ur.IsDeleted && !at.IsDeleted && ur.UnitRateId == Convert.ToInt32(request.UnitRateId)
                                              select (new UnitRateDetailsModel
                                              {
                                                  UnitRateId = ur.UnitRateId,

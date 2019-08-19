@@ -22,7 +22,6 @@ namespace HumanitarianAssistance.Persistence
         public DbSet<DistrictDetail> DistrictDetail { get; set; }
         public DbSet<EmailType> EmailType { get; set; }
         public DbSet<EmailSettingDetail> EmailSettingDetail { get; set; }
-        public DbSet<EmployeeAnalyticalDetail> EmployeeAnalyticalDetail { get; set; }
         public DbSet<EmployeeDetail> EmployeeDetail { get; set; }
         public DbSet<EmployeeDocumentDetail> EmployeeDocumentDetail { get; set; }
         public DbSet<EmployeePaymentTypes> EmployeePaymentTypes { get; set; }
@@ -41,44 +40,28 @@ namespace HumanitarianAssistance.Persistence
 
         public DbSet<VoucherDetail> VoucherDetail { get; set; }
 
-        public DbSet<VoucherDocumentDetail> VoucherDocumentDetail { get; set; }
-
         public DbSet<Department> Department { get; set; }
         public DbSet<PermissionsInRoles> PermissionsInRoles { get; set; }
         public DbSet<CurrencyDetails> CurrencyDetails { get; set; }
         public DbSet<AccountType> AccountType { get; set; }
         public DbSet<VoucherType> VoucherType { get; set; }
         public DbSet<VoucherTransactions> VoucherTransactions { get; set; }
-        public DbSet<AnalyticalDetail> AnalyticalDetail { get; set; }
-        public DbSet<ExchangeRate> ExchangeRates { get; set; }
-        public DbSet<ProjectDetails> ProjectDetails { get; set; }
-        public DbSet<ProjectBudgetLine> ProjectBudgetLine { get; set; }
-        public DbSet<BudgetReceivable> BudgetReceivable { get; set; }
-        public DbSet<BudgetReceivedAmount> BudgetReceivedAmount { get; set; }
         public DbSet<CodeType> CodeType { get; set; }
         public DbSet<ProvinceDetails> ProvinceDetails { get; set; }
         public DbSet<CountryDetails> CountryDetails { get; set; }
-        public DbSet<NationalityDetails> NationalityDetails { get; set; }
         public DbSet<QualificationDetails> QualificationDetails { get; set; }
         public DbSet<ProfessionDetails> ProfessionDetails { get; set; }
         public DbSet<JobHiringDetails> JobHiringDetails { get; set; }
         public DbSet<InterviewScheduleDetails> InterviewScheduleDetails { get; set; }
-        public DbSet<EmployeeSalaryDetails> EmployeeSalaryDetails { get; set; }
         public DbSet<LeaveReasonDetail> LeaveReasonDetail { get; set; }
         public DbSet<AssignLeaveToEmployee> AssignLeaveToEmployee { get; set; }
         public DbSet<FinancialYearDetail> FinancialYearDetail { get; set; }
-        public DbSet<TaskMaster> TaskMaster { get; set; }
-        public DbSet<ActivityMaster> ActivityMaster { get; set; }
         public DbSet<BudgetLineType> BudgetLineType { get; set; }
         public DbSet<EmployeeType> EmployeeType { get; set; }
         public DbSet<EmployeeContractType> EmployeeContractType { get; set; }
-        public DbSet<AssignActivity> AssignActivity { get; set; }
-        public DbSet<AssignActivityApproveBy> AssignActivityApproveBy { get; set; }
-        public DbSet<AssignActivityFeedback> AssignActivityFeedback { get; set; }
         public DbSet<EmployeeProfessionalDetail> EmployeeProfessionalDetail { get; set; }
         public DbSet<EmployeeAttendance> EmployeeAttendance { get; set; }
         public DbSet<EmployeeApplyLeave> EmployeeApplyLeave { get; set; }
-        public DbSet<NotesMaster> NotesMaster { get; set; }
         public DbSet<JobGrade> JobGrade { get; set; }
         public DbSet<HolidayDetails> HolidayDetails { get; set; }
         public DbSet<HolidayWeeklyDetails> HolidayWeeklyDetails { get; set; }
@@ -114,16 +97,8 @@ namespace HumanitarianAssistance.Persistence
         public DbSet<StoreInventoryItem> InventoryItems { get; set; }
         public DbSet<StoreItemPurchase> StoreItemPurchases { get; set; }
         public DbSet<StorePurchaseOrder> StorePurchaseOrders { get; set; }
-        public DbSet<ItemPurchaseDocument> ItemPurchaseDocuments { get; set; }
-        public DbSet<PurchaseVehicle> PurchaseVehicles { get; set; }
-        public DbSet<MotorFuel> VehicleFuel { get; set; }
-        public DbSet<PurchaseGenerator> PurchaseGenerators { get; set; }
-        public DbSet<MotorMaintenance> MotorMaintenances { get; set; }
-        public DbSet<MotorSparePart> MotorSpareParts { get; set; }
         public DbSet<StoreItemGroup> StoreItemGroups { get; set; }
-        //
 
-        public DbSet<EmployeePayrollForMonth> EmployeePayrollForMonth { get; set; }
         public DbSet<EmployeePayrollMonth> EmployeePayrollMonth { get; set; }
         public DbSet<EmployeeContract> EmployeeContract { get; set; }
         public DbSet<SalaryTaxReportContent> SalaryTaxReportContent { get; set; }
@@ -147,7 +122,6 @@ namespace HumanitarianAssistance.Persistence
         public DbSet<PayrollAccountHead> PayrollAccountHead { get; set; }
         public DbSet<EmployeePayrollAccountHead> EmployeePayrollAccountHead { get; set; }
         public DbSet<EmployeeSalaryPaymentHistory> EmployeeSalaryPaymentHistory { get; set; }
-        public DbSet<AccountLevel> AccountLevel { get; set; }
         public DbSet<EmployeeLanguages> EmployeeLanguages { get; set; }
         public DbSet<AccountHeadType> AccountHeadType { get; set; }
         public DbSet<PaymentTypes> PaymentTypes { get; set; }
@@ -156,7 +130,6 @@ namespace HumanitarianAssistance.Persistence
         public DbSet<RolePermissions> RolePermissions { get; set; }
         public DbSet<CEFeasibilityExpertOtherDetail> CEFeasibilityExpertOtherDetail { get; set; }
         public DbSet<CEAgeGroupDetail> CEAgeGroupDetail { get; set; }
-        public DbSet<CEOccupationDetail> CEOccupationDetail { get; set; }
 
         public DbSet<CEAssumptionDetail> CEAssumptionDetail { get; set; }
         public DbSet<DonorEligibilityCriteria> DonorEligibilityCriteria { get; set; }
@@ -165,7 +138,6 @@ namespace HumanitarianAssistance.Persistence
         public DbSet<OrderSchedulePermission> OrderSchedulePermission { get; set; }
         public DbSet<HRJobInterviewers> HRJobInterviewers { get; set; }
         public DbSet<ExchangeRateVerification> ExchangeRateVerifications { get; set; }
-        public DbSet<Errorlog> Errorlog { get; set; }
         public DbSet<DocumentFileDetail> DocumentFileDetail { get; set; }
         public DbSet<AttendanceGroupMaster> AttendanceGroupMaster { get; set; }
 
@@ -195,7 +167,6 @@ namespace HumanitarianAssistance.Persistence
         public DbSet<ClientDetails> ClientDetails { get; set; }
 
         public DbSet<ProjectPhaseTime> ProjectPhaseTime { get; set; }
-        public DbSet<ProjectCommunication> ProjectCommunication { get; set; }
         public DbSet<ProjectCommunicationAttachment> ProjectCommunicationAttachment { get; set; }
         public DbSet<StoreSourceCodeDetail> StoreSourceCodeDetail { get; set; }
         public DbSet<ExchangeRateDetail> ExchangeRateDetail { get; set; }
@@ -260,7 +231,6 @@ namespace HumanitarianAssistance.Persistence
         public DbSet<JobDetails> JobDetails { get; set; }
         public DbSet<JobPhase> JobPhases { get; set; }
         public DbSet<JobPriceDetails> JobPriceDetails { get; set; }
-        public DbSet<Language> Languages { get; set; }
         public DbSet<MediaCategory> MediaCategories { get; set; }
         public DbSet<Medium> Mediums { get; set; }
         public DbSet<Channel> Channel { get; set; }
@@ -342,10 +312,10 @@ namespace HumanitarianAssistance.Persistence
             );
 
             modelBuilder.Entity<CurrencyDetails>().HasData(
-                new CurrencyDetails { CurrencyId = 1, CurrencyName = "Afghanistan", CurrencyCode = "AFG", IsDeleted = false},
-                new CurrencyDetails { CurrencyId = 2, CurrencyName = "European Curency", CurrencyCode = "EUR", IsDeleted = false},
-                new CurrencyDetails { CurrencyId = 3, CurrencyName = "Pakistani Rupees", CurrencyCode = "PKR", IsDeleted = false}, //base currency :  Status = true
-                new CurrencyDetails { CurrencyId = 4, CurrencyName = "US Dollars", CurrencyCode = "USD", IsDeleted = false}
+                new CurrencyDetails { CurrencyId = 1, CurrencyName = "Afghanistan", CurrencyCode = "AFG", IsDeleted = false },
+                new CurrencyDetails { CurrencyId = 2, CurrencyName = "European Curency", CurrencyCode = "EUR", IsDeleted = false },
+                new CurrencyDetails { CurrencyId = 3, CurrencyName = "Pakistani Rupees", CurrencyCode = "PKR", IsDeleted = false }, //base currency :  Status = true
+                new CurrencyDetails { CurrencyId = 4, CurrencyName = "US Dollars", CurrencyCode = "USD", IsDeleted = false }
             );
 
             modelBuilder.Entity<ReceiptType>().HasData(

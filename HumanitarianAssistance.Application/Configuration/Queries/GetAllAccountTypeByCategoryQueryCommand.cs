@@ -27,7 +27,7 @@ namespace HumanitarianAssistance.Application.Configuration.Queries
             try
             {
                 List<AccountType> accounttypelist = await _dbContext.AccountType
-                                                              .Where(x => !x.IsDeleted.Value && x.AccountCategory == request.Id)
+                                                              .Where(x => !x.IsDeleted && x.AccountCategory == request.Id)
                                                               .OrderBy(x => x.CreatedDate)
                                                               .ToListAsync();
                                                               

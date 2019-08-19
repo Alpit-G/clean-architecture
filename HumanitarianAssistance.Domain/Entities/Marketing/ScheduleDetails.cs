@@ -7,7 +7,7 @@ using HumanitarianAssistance.Domain.Entities.Project;
 
 namespace HumanitarianAssistance.Domain.Entities.Marketing
 {
-    public class ScheduleDetails : BaseEntityWithoutId
+    public class ScheduleDetails : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

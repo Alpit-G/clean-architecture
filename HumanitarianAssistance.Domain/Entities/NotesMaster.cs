@@ -7,7 +7,7 @@ using HumanitarianAssistance.Domain.Entities.Accounting;
 
 namespace HumanitarianAssistance.Domain.Entities
 {
-    public class NotesMaster : BaseEntityWithoutId
+    public class NotesMaster : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

@@ -7,7 +7,7 @@ using HumanitarianAssistance.Domain.Entities.HR;
 
 namespace HumanitarianAssistance.Domain.Entities.Project
 {
-    public class ProjectAssignTo : BaseEntityWithoutId
+    public class ProjectAssignTo : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

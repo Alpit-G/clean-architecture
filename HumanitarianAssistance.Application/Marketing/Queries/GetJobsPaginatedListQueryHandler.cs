@@ -30,7 +30,7 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
 
                 var JobList = (from j in _dbContext.JobDetails.AsNoTracking().AsQueryable()
                                join jp in _dbContext.JobPriceDetails on j.JobId equals jp.JobId
-                               where !j.IsDeleted.Value && !jp.IsDeleted.Value
+                               where !j.IsDeleted && !jp.IsDeleted
                                select (new JobDetailsModel
                                {
                                    JobId = j.JobId,

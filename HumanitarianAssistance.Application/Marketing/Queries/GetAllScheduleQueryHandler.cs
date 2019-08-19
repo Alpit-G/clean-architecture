@@ -30,9 +30,9 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
                                                     //join jp in _uow.GetDbContext().LanguageDetail on j.LanguageId equals jp.LanguageId
                                                     //join me in _uow.GetDbContext().Mediums on j.MediumId equals me.MediumId
                                                     //join mc in _uow.GetDbContext().MediaCategories on j.MediaCategoryId equals mc.MediaCategoryId
-                                                where !j.IsDeleted.Value
-                                                //&& !jp.IsDeleted.Value && !me.IsDeleted.Value
-                                                //&& !mc.IsDeleted.Value
+                                                where !j.IsDeleted
+                                                //&& !jp.IsDeleted && !me.IsDeleted
+                                                //&& !mc.IsDeleted
                                                 select (new PolicyScheduleModel
                                                 {
                                                     PolicyId = j.PolicyId,

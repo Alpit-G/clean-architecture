@@ -47,7 +47,7 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
         {
             var JobList = await (from j in _dbContext.JobDetails
                                  join jp in _dbContext.JobPriceDetails on j.JobId equals jp.JobId
-                                 where !j.IsDeleted.Value && !jp.IsDeleted.Value && j.IsApproved
+                                 where !j.IsDeleted && !jp.IsDeleted && j.IsApproved
                                  select (new JobDetailsModel
                                  {
                                      JobId = j.JobId,
@@ -76,11 +76,11 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
                                             join mc in _dbContext.PolicyDetails on j.PolicyId equals mc.PolicyId
                                             join pd in _dbContext.PolicyDaySchedules on j.PolicyId equals pd.PolicyId
                                             join po in _dbContext.PolicyOrderSchedules on j.PolicyId equals po.PolicyId
-                                            where !j.IsDeleted.Value && !mc.IsDeleted.Value
-                                            && !pd.IsDeleted.Value && !po.IsDeleted.Value
+                                            where !j.IsDeleted && !mc.IsDeleted
+                                            && !pd.IsDeleted && !po.IsDeleted
                                              && po.StartDate <= DateTime.UtcNow.Date && DateTime.UtcNow.Date <= po.EndDate
-                                            //&& !jp.IsDeleted.Value && !me.IsDeleted.Value
-                                            //&& !mc.IsDeleted.Value
+                                            //&& !jp.IsDeleted && !me.IsDeleted
+                                            //&& !mc.IsDeleted
                                             select (new ScheduleDetailModel
                                             {
                                                 PolicyId = mc.PolicyId,
@@ -109,8 +109,8 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
                                       join jp in _dbContext.LanguageDetail on j.LanguageId equals jp.LanguageId
                                       join me in _dbContext.Mediums on j.MediumId equals me.MediumId
                                       join mc in _dbContext.MediaCategories on j.MediaCategoryId equals mc.MediaCategoryId
-                                      where !j.IsDeleted.Value && !jp.IsDeleted.Value && !me.IsDeleted.Value
-                                      && !mc.IsDeleted.Value
+                                      where !j.IsDeleted && !jp.IsDeleted && !me.IsDeleted
+                                      && !mc.IsDeleted
                                       select (new PolicyModel
                                       {
                                           PolicyId = j.PolicyId,

@@ -7,7 +7,7 @@ using HumanitarianAssistance.Domain.Entities.Accounting;
 
 namespace HumanitarianAssistance.Domain.Entities.Project
 {
-    public class ProjectBudgetLineDetail : BaseEntityWithoutId
+    public class ProjectBudgetLineDetail : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

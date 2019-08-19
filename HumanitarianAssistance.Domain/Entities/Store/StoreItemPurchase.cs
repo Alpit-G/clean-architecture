@@ -8,7 +8,7 @@ using HumanitarianAssistance.Domain.Entities.Project;
 
 namespace HumanitarianAssistance.Domain.Entities.Store
 {
-    public class StoreItemPurchase : BaseEntityWithoutId
+    public class StoreItemPurchase : BaseEntity
     {
         [Key]
         public string PurchaseId { get; set; }
@@ -74,7 +74,7 @@ namespace HumanitarianAssistance.Domain.Entities.Store
         public ReceiptType ReceiptType { get; set; }
 
         [ForeignKey("ProjectId")]
-        public ProjectDetails ProjectDetails { get; set; }
+        public ProjectDetail ProjectDetail { get; set; }
 
 
         public List<StorePurchaseOrder> PurchaseOrders { get; set; }

@@ -32,7 +32,7 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
                                           into jou
                                           from dev_skill in jou.DefaultIfEmpty()
                                           from a in _dbContext.ClientDetails
-                                          where !ur.IsDeleted.Value && !a.IsDeleted.Value && ur.ClientId == request.ClientId
+                                          where !ur.IsDeleted && !a.IsDeleted && ur.ClientId == request.ClientId
                                           select (new ClientDetailModel
                                           {
                                               CategoryId = ur.CategoryId,

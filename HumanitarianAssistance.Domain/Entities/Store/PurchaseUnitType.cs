@@ -2,7 +2,7 @@
 
 namespace HumanitarianAssistance.Domain.Entities.Store
 {
-    public class PurchaseUnitType : BaseEntityWithoutId
+    public class PurchaseUnitType : BaseEntity
     {
         [Key]
         public int UnitTypeId { get; set; }
