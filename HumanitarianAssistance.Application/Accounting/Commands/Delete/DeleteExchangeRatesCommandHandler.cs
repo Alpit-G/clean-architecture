@@ -29,7 +29,13 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Delete
 
             try
             {
-                ExchangeRateVerification exchangeRateVerification = await _dbContext.ExchangeRateVerifications.FirstOrDefaultAsync(x => x.IsDeleted == false && x.Date.Date == command.ExchangeRateDate);
+                if (command.ExchangeRateDate == null) {
+                    throw new Exception("Exchange Rate Date can't be null");
+                }
+
+                var exchangeRateVerification = await _dbContext.ExchangeRateVerifications
+                                                               .FirstOrDefaultAsync(x => x.IsDeleted == false && 
+                                                                                         x.Date.Date == command.ExchangeRateDate.Date);
 
                 if (exchangeRateVerification != null)
                 {
@@ -55,7 +61,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Delete
                 }
 
                 response.StatusCode = StaticResource.successStatusCode;
-                response.Message = "Exchange rates deleted successfully!!!";
+                response.Message = "Exchange rates deleted successfully";
             }
             catch (Exception ex)
             {
