@@ -205,13 +205,13 @@ export class GLOBAL {
   public static API_ExchangeRates_DeleteExchangeRates = 'ExchangeRates/DeleteExchangeRates';
 
   // Gain Loss Report
+  public static API_GainLossReport_GetExchangeGainLossReport = 'GainLossReport/GetExchangeGainLossReport';
   public static API_GainLossReport_GetExchangeGainLossFilterAccountList = 'GainLossReport/GetExchangeGainLossFilterAccountList';
   public static API_GainLossReport_GetExchangeGainLossVoucherList = 'GainLossReport/GetExchangeGainLossVoucherList';
   public static API_GainLossReport_AddExchangeGainLossVoucher = 'GainLossReport/AddExchangeGainLossVoucher';
   public static API_GainLossReport_DeleteGainLossVoucherTransaction = 'GainLossReport/DeleteGainLossVoucherTransaction';
 
   // Financial Report
-  public static API_FinancialReport_GetExchangeGainLossReport = 'FinancialReport/GetExchangeGainLossReport';
   public static API_FinancialReport_SaveGainLossAccountList = 'FinancialReport/SaveGainLossAccountList';
   public static API_FinancialReport_GetDetailOfNotes = 'FinancialReport/GetDetailOfNotes';
 
