@@ -18,7 +18,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.HR
     [Route("api/EmployeeHolidays/[Action]")]
     [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Hr))]
     [Authorize]
-    public class EmployeeHolidaysController : BaseController 
+    public class EmployeeHolidaysController : BaseController
     {
         [HttpGet]
         public async Task<ApiResponse> GetAllHolidayDetails(int OfficeId)
@@ -49,19 +49,37 @@ namespace HumanitarianAssistance.WebApi.Controllers.HR
         [HttpDelete]
         public async Task<ApiResponse> DeleteHolidayDetails(long holidayId)
         {
-           var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
 
-            return await _mediator.Send(new DeleteHolidayDetailCommand {
-                ModifiedById= userId,
-                ModifiedDate= DateTime.UtcNow,
-                HolidayId= holidayId
+            return await _mediator.Send(new DeleteHolidayDetailCommand
+            {
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow,
+                HolidayId = holidayId
             });
         }
 
         [HttpGet]
-        public async Task<object> GetAllHolidayWeeklyDetails(int OfficeId)
+        public async Task<ApiResponse> GetAllDateforDisableCalenderDate(int officeid)
         {
-            return await _mediator.Send(new GetAllWeeklyHolidaysQuery{ OfficeId = OfficeId});
+            return await _mediator.Send(new GetDisabledCalenderDatesQuery { OfficeId = officeid });
         }
-    }   
+
+        [HttpGet]
+        public async Task<object> GetAllDisableCalanderDate(int employeeid, int officeid)
+        {
+            return await _mediator.Send(new GetAllDisableCalenderDateQuery
+            {
+                OfficeId = officeid,
+                EmployeeId = employeeid
+            });
+        }
+
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllHolidayWeeklyDetails(int officeid)
+        {
+            return await _mediator.Send(new GetAllHolidayWeeklyDetailsQuery { OfficeId = officeid });
+        }
+    }
 }

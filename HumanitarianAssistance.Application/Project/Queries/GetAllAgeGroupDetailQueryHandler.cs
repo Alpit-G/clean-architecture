@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using HumanitarianAssistance.Application.Infrastructure;
+﻿using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Persistence;
 using MediatR;
 using System;
