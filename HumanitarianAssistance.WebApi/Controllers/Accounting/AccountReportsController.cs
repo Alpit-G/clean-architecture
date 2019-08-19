@@ -148,5 +148,52 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
             return await _mediator.Send(model);
         }
 
+        /// <summary>
+        /// Get All Account Income-Expenses (Income Expense Report)
+        /// </summary>
+        /// <remarks>
+        /// Sample input:
+        ///
+        ///     POST /GetAllAccountIncomeExpensesByCategory
+        ///     {
+        ///         "id": 0,
+        ///         "asOfDate": "2019-07-02T07:12:45.401Z",
+        ///         "upToDate": "2019-07-02T07:12:45.401Z",
+        ///         "currency": 0
+        ///     }
+        /// 
+        /// Sample output:
+        ///
+        ///      {
+        ///          "StatusCode": 200,
+        ///          "Message": "Success",
+        ///         "data": {
+        ///               NoteAccountBalances: [
+        ///                     {
+        ///                          AccountBalances: [
+        ///                              {
+        ///                                  AccountId: 86, 
+        ///                                  AccountName: "Assets 110301", 
+        ///                                  Balance: 8096.8, 
+        ///                                  AccountCode: "110301"
+        ///                              }
+        ///                          ],
+        ///                          NoteHeadId: 1,
+        ///                          NoteId: 45,
+        ///                          NoteName: "Assets 8"
+        ///                     }
+        ///               ]
+        ///           }
+        ///     }
+        ///
+        /// </remarks>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        //[ApiExplorerSettings(GroupName = "accounting")]
+        public async Task<ApiResponse> GetAllAccountIncomeExpensesByCategory([FromBody]BalanceRequestModel model)
+        {
+            return await _mediator.Send(model);
+        }
     }
 }

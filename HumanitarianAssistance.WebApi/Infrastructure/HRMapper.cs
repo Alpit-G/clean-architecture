@@ -12,6 +12,7 @@ namespace HumanitarianAssistance.WebApi.Infrastructure
             CreateMap<EmployeeHealthInfo,EmployeeHealthInformationModel>().ReverseMap();
             CreateMap<AddEmployeeContractCommand,EmployeeContract>().ReverseMap();
             CreateMap<AddAdvanceCommand,Advances>().ReverseMap();
+            CreateMap<AddNewEmployeeCommand,EmployeeDetail>().ReverseMap();
         }
     }
 }
