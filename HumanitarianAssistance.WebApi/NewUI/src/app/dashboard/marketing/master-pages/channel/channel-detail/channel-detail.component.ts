@@ -16,7 +16,6 @@ import { IResponseData } from 'src/app/dashboard/accounting/vouchers/models/stat
   styleUrls: ['./channel-detail.component.scss']
 })
 export class ChannelDetailComponent implements OnInit {
-
   channelDetailsForm;
   @Input() channelId: number;
   @Output() hideDetailPanel = new EventEmitter<any>();
@@ -28,7 +27,12 @@ export class ChannelDetailComponent implements OnInit {
   channelDetailsLoaderFlag = false;
   mediumList: MediumModel[];
   // tslint:disable-next-line:max-line-length
-  constructor(public dialog: MatDialog, public toastr: ToastrService, private channelService: MasterPageServiceService, private appurl: AppUrlService) { }
+  constructor(
+    public dialog: MatDialog,
+    public toastr: ToastrService,
+    private channelService: MasterPageServiceService,
+    private appurl: AppUrlService
+  ) {}
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnChanges(): void {
@@ -61,97 +65,112 @@ export class ChannelDetailComponent implements OnInit {
 
   getMediums() {
     this.mediumList = [];
-    this.channelService.GetMediumList().subscribe((data:IResponseData) => {
-      if (data.statusCode === 200) {
-        this.mediumList =  data.data;
-      } else {
-      }
-    },
-    error => {
-    });
+    this.channelService.GetMediumList().subscribe(
+      (data: IResponseData) => {
+        if (data.statusCode === 200) {
+          this.mediumList = data.data;
+          console.log(this.mediumList);
+        } else {
+        }
+      },
+      error => {}
+    );
   }
 
   selectionChanged(val, ev) {
+    console.log(this.mediumList);
     if (val === 'medium') {
       this.channelDetail.MediumId = ev.value;
-    } if (val === 'channel') {
+
+    }
+    if (val === 'channel') {
       this.channelDetail.ChannelName = ev;
     }
 
-    if (this.channelId === 0 || this.channelId === undefined || this.channelId === null) {
-          this.CreateChannel();
-      }
-      else {
-          this.EditChannel();
-      }
+    if (
+      this.channelId === 0 ||
+      this.channelId === undefined ||
+      this.channelId === null
+    ) {
+      this.CreateChannel();
+    } else {
+      this.EditChannel();
+    }
   }
 
   GetChannelById(id) {
     this.channelDetailsLoaderFlag = true;
     // tslint:disable-next-line:max-line-length
-    this.channelService.GetChannelById(id).subscribe((result:IResponseData) => {
-      if (result.statusCode === 200) {
-        this.channelDetail = result.data;
-        this.channelDetailsForm.controls['channelName'].setValue(
-          this.channelDetail.ChannelName
-        );
-        this.channelDetailsForm.controls['mediumId'].setValue(
-          this.channelDetail.MediumId
-        );
-      } else {
-        this.toastr.error('Some error occured.Please try again later.');
+    this.channelService.GetChannelById(id).subscribe(
+      (result: IResponseData) => {
+        if (result.statusCode === 200) {
+          this.channelDetail = result.data;
+          this.channelDetailsForm.controls['channelName'].setValue(
+            this.channelDetail.ChannelName
+          );
+          this.channelDetailsForm.controls['mediumId'].setValue(
+            this.channelDetail.MediumId
+          );
+        } else {
+          this.toastr.error('Some error occured.Please try again later.');
+        }
+        this.channelDetailsLoaderFlag = false;
+      },
+      error => {
+        this.channelDetailsLoaderFlag = false;
+        this.toastr.error('Some error occured. Please try again later');
       }
-      this.channelDetailsLoaderFlag = false;
-    },
-    error => {
-      this.channelDetailsLoaderFlag = false;
-      this.toastr.error('Some error occured. Please try again later');
-    });
+    );
   }
 
-  onChange(value) {
-
-  }
+  onChange(value) {}
 
   CreateChannel() {
     this.channelDetailsForm.disable();
     // tslint:disable-next-line:max-line-length
-    this.channelService.AddChannel(this.channelDetail).subscribe((result:IResponseData) => {
-      if (result.statusCode === 200) {
-        this.toastr.success(result.message);
-        this.channelDetail = result.data;
-        this.channelId =  result.data.ChannelId;
-        this.addChannel.emit(this.channelDetail);
-        this.archiveButton = true;
-      } else {
-        this.toastr.error(result.message);
+    this.channelService.AddChannel(this.channelDetail).subscribe(
+      (result: IResponseData) => {
+        if (result.statusCode === 200) {
+          this.toastr.success(result.message);
+          this.channelDetail = result.data;
+          this.channelId = result.data.ChannelId;
+          this.addChannel.emit(this.channelDetail);
+          this.archiveButton = true;
+        } else {
+          this.toastr.error(result.message);
+        }
+        this.channelDetailsForm.enable();
+      },
+      error => {
+        this.channelDetailsForm.enable();
+        this.toastr.error('Some error occured. Please try again later');
       }
-      this.channelDetailsForm.enable();
-    },
-    error => {
-      this.channelDetailsForm.enable();
-      this.toastr.error('Some error occured. Please try again later');
-    });
+    );
   }
 
   EditChannel() {
     this.channelDetailsForm.disable();
     // tslint:disable-next-line:max-line-length
-    this.channelService.AddChannel(this.channelDetail).subscribe((result:IResponseData) => {
-      if (result.statusCode === 200) {
-        this.toastr.success(result.message);
+    this.channelService.AddChannel(this.channelDetail).subscribe(
+      (result: IResponseData) => {
+        if (result.statusCode === 200) {
+          this.toastr.success(result.message);
+          this.channelDetailsForm.enable();
+          this.channelDetail = result.data;
+          this.channelDetail.MediumName = this.mediumList.find(
+            s => s.MediumId === result.data.MediumId
+          ).MediumName;
+          this.updateChannel.emit(this.channelDetail);
+        } else {
+          this.channelDetailsForm.enable();
+          this.toastr.error(result.message);
+        }
+      },
+      error => {
         this.channelDetailsForm.enable();
-        this.channelDetail = result.data;
-        this.updateChannel.emit(this.channelDetail);
-      }  else {
-        this.channelDetailsForm.enable();
-        this.toastr.error(result.message);
+        this.toastr.error('Some error occured. Please try again later');
       }
-    },
-    error => {
-      this.channelDetailsForm.enable();
-      this.toastr.error('Some error occured. Please try again later');
-    });
+    );
   }
 
   DeleteChannel(id) {
@@ -165,37 +184,36 @@ export class ChannelDetailComponent implements OnInit {
     dialogRef.componentInstance.confirmMessage =
       Delete_Confirmation_Texts.deleteText1;
 
-    dialogRef.componentInstance.confirmText =
-      Delete_Confirmation_Texts.yesText;
+    dialogRef.componentInstance.confirmText = Delete_Confirmation_Texts.yesText;
 
-    dialogRef.componentInstance.cancelText =
-      Delete_Confirmation_Texts.noText;
+    dialogRef.componentInstance.cancelText = Delete_Confirmation_Texts.noText;
 
-    dialogRef.afterClosed().subscribe(result => {
-    });
+    dialogRef.afterClosed().subscribe(result => {});
 
     dialogRef.componentInstance.confirmDelete.subscribe(res => {
       dialogRef.componentInstance.isLoading = true;
       this.channelDetailsForm.disable();
       // tslint:disable-next-line:max-line-length
-      this.channelService.DeleteChannel(id).subscribe((result:IResponseData) => {
-        if (result.statusCode === 200) {
-          this.toastr.success(result.message);
-          dialogRef.componentInstance.onCancelPopup();
-          this.deleteChannel.emit({ id: id });
-          this.channelDetail = {};
-          this.channelId = 0;
-        } else {
-          this.toastr.error(result.message);
+      this.channelService.DeleteChannel(id).subscribe(
+        (result: IResponseData) => {
+          if (result.statusCode === 200) {
+            this.toastr.success(result.message);
+            dialogRef.componentInstance.onCancelPopup();
+            this.deleteChannel.emit({ id: id });
+            this.channelDetail = {};
+            this.channelId = 0;
+          } else {
+            this.toastr.error(result.message);
+          }
+          this.channelDetailsForm.enable();
+          dialogRef.componentInstance.isLoading = false;
+        },
+        error => {
+          this.channelDetailsForm.enable();
+          dialogRef.componentInstance.isLoading = false;
+          this.toastr.error('Some error occured. Please try again later');
         }
-        this.channelDetailsForm.enable();
-        dialogRef.componentInstance.isLoading = false;
-      },
-      error => {
-        this.channelDetailsForm.enable();
-        dialogRef.componentInstance.isLoading = false;
-        this.toastr.error('Some error occured. Please try again later');
-      });
+      );
     });
   }
 

@@ -40,7 +40,7 @@ export class ChannelComponent implements OnInit {
   getChannels() {
     this.channelList = [];
     this.channelListLoaderFlag = true;
-    this.masterService.GetChannelList().subscribe((data:IResponseData) => {
+    this.masterService.GetChannelList().subscribe((data: IResponseData) => {
       if (data.statusCode === 200) {
         this.channelListLoaderFlag = false;
         this.channelList =  data.data;
@@ -94,7 +94,9 @@ export class ChannelComponent implements OnInit {
     this.channelList.push(e);
   }
 
-  updateChannelList(e) {
+  updateChannelList(e: ChannelModel) {
+
+
     const index = this.channelList.findIndex(r => r.ChannelId === e.ChannelId);
     if (index !== -1) {
       this.channelList[index] = e;

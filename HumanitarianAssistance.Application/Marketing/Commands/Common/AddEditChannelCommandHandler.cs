@@ -49,7 +49,7 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                             obj.CreatedDate = DateTime.Now;
                             obj.IsDeleted = false;
                             obj.ChannelName = request.ChannelName;
-                            obj.MediumId = request.MediumId;
+                            obj.MediumId = request.MediumId;                              
                             _mapper.Map(request, obj);
                             await _dbContext.Channel.AddAsync(obj);
                             await _dbContext.SaveChangesAsync();

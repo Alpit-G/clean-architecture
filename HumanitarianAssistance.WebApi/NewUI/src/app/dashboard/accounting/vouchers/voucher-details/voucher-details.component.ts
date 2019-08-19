@@ -100,6 +100,7 @@ export class VoucherDetailsComponent implements OnInit, OnChanges, OnDestroy {
 
   //#region "ngOnChanges"
   ngOnChanges() {
+    console.log("Changes");
     this.transactionListTEMP = [];
 
     if (

@@ -27,7 +27,6 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
         public async Task<ApiResponse> Handle(AddEditPolicyCommand request, CancellationToken cancellationToken)
         {
             long LatestPolicyId = 0;
-            var policyCode = string.Empty;
             ApiResponse response = new ApiResponse();
             try
             {
@@ -41,12 +40,12 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                         if (policyDetail == null)
                         {
                             LatestPolicyId = 1;
-                            policyCode = LatestPolicyId.ToString().GetPolicyCode();
+                            request.PolicyCode = LatestPolicyId.ToString().GetPolicyCode();
                         }
                         else
                         {
                             LatestPolicyId = Convert.ToInt32(policyDetail.PolicyId) + 1;
-                            policyCode = LatestPolicyId.ToString().GetPolicyCode();
+                            request.PolicyCode = LatestPolicyId.ToString().GetPolicyCode();
                         }
                         PolicyDetail obj = new PolicyDetail(); 
                         obj.CreatedById = request.CreatedById;
@@ -56,7 +55,7 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                         obj.PolicyName = request.PolicyName;
                         obj.CreatedDate = DateTime.Now;
                         obj.IsDeleted = false;
-                        obj.PolicyCode = policyCode;
+                        obj.PolicyCode = request.PolicyCode;
                         obj.Description = request.Description;
                         _mapper.Map(request, obj);
                         await _dbContext.PolicyDetails.AddAsync(obj);

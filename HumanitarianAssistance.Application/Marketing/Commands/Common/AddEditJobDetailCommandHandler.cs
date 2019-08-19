@@ -26,7 +26,6 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
         {
             ApiResponse response = new ApiResponse();
             long LatestJobId = 0;
-            var jobcode = string.Empty;
             try
             {
                 if (request.JobId == 0)
@@ -38,27 +37,27 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                         if (jobDetail == null)
                         {
                             LatestJobId = 1;
-                            jobcode = ProjectUtility.GetJobCode(LatestJobId.ToString());
+                            request.JobCode = ProjectUtility.GetJobCode(LatestJobId.ToString());
                         }
                         else
                         {
                             LatestJobId = Convert.ToInt32(jobDetail.ContractId) + 1;
-                            jobcode = ProjectUtility.GetJobCode(LatestJobId.ToString());
+                            request.JobCode = ProjectUtility.GetJobCode(LatestJobId.ToString());
                         }
-                        JobDetails obj = new JobDetails();                        
-                        obj.ContractId = request.ContractId;
-                        obj.Description = request.Description;
-                        obj.EndDate = request.EndDate;
-                        obj.IsActive = true;
-                        obj.IsApproved = request.IsApproved;
-                        obj.JobCode = request.JobCode;
-                        obj.IsDeleted = false;
-                        obj.CreatedById = request.CreatedById;
-                        obj.CreatedDate = request.CreatedDate;
-                        obj.JobPhaseId = request.JobPhaseId;
-                        obj.JobName = request.JobName;
-                        obj.JobCode = jobcode;
-                        obj.IsDeleted = false;
+                        JobDetails obj = new JobDetails
+                        {
+                            ContractId = request.ContractId,
+                            Description = request.Description,
+                            EndDate = request.EndDate,
+                            IsActive = true,
+                            IsApproved = request.IsApproved,
+                            JobCode = request.JobCode,
+                            IsDeleted = false,
+                            CreatedById = request.CreatedById,
+                            CreatedDate = request.CreatedDate,
+                            JobPhaseId = request.JobPhaseId,
+                            JobName = request.JobName
+                        };                        
                         _mapper.Map(request,obj);
                         await _dbContext.JobDetails.AddAsync(obj);
                         await _dbContext.SaveChangesAsync();

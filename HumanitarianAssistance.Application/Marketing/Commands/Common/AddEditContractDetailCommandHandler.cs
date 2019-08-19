@@ -27,7 +27,6 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
             ApiResponse response = new ApiResponse();
             ContractDetails contractDetails = new ContractDetails();
             long LatestContractId = 0;
-            var contractcode = string.Empty;
             ClientDetails client = await _dbContext.ClientDetails.FirstOrDefaultAsync(x => x.ClientId == request.ClientId && x.IsDeleted == false);
             request.ClientName = client.ClientName;
             ContractDetailsModel conDetails = new ContractDetailsModel();
@@ -41,18 +40,17 @@ namespace HumanitarianAssistance.Application.Marketing.Commands.Common
                     if (ContractDetail == null)
                     {
                         LatestContractId = 1;
-                        contractcode = ProjectUtility.GetContractCode(LatestContractId.ToString());
+                        request.ContractCode = ProjectUtility.GetContractCode(LatestContractId.ToString());
                     }
                     else
                     {
                         LatestContractId = Convert.ToInt32(ContractDetail.ContractId) + 1;
-                        contractcode = ProjectUtility.GetContractCode(LatestContractId.ToString());
+                        request.ContractCode = ProjectUtility.GetContractCode(LatestContractId.ToString());
                     }
                     ContractDetails obj = new ContractDetails();
-                    obj.ContractId = request.ContractId;
                     obj.ActivityTypeId = request.ActivityTypeId;
                     obj.ClientName = request.ClientName;
-                    obj.ContractCode = contractcode;
+                    obj.ContractCode = request.ContractCode;
                     obj.IsDeleted = false;
                     obj.CreatedById = request.CreatedById;
                     obj.UnitRateId = request.UnitRateId == 0 ? null : request.UnitRateId;
