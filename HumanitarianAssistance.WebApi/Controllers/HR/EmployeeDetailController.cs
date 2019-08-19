@@ -516,7 +516,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.HR
             return await _mediator.Send(model);
         }
 
-        [HttpPost]
+        [HttpDelete]
         public async Task<ApiResponse> DeleteEmployeeHistoryDetail([FromBody] int HistoryId)
         {
             DeleteEmployeeHistoryCommand model = new DeleteEmployeeHistoryCommand();
@@ -620,6 +620,18 @@ namespace HumanitarianAssistance.WebApi.Controllers.HR
             return await _mediator.Send(new GetContractByEmployeeIdQuery {
                 EmployeeId= EmployeeId
             });
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetAllApprovedEmployeeList()
+        {
+            return await _mediator.Send(new GetAllApprovedEmployeeQuery());
+        }
+
+        [HttpGet]
+        public async Task<ApiResponse> GetPrimarySalaryHeads(int EmployeeId)
+        {
+            return await _mediator.Send(new GetPrimarySalaryHeadsQuery { EmployeeId = EmployeeId });
         }
     }
 }
