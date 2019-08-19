@@ -3,15 +3,17 @@ using System;
 using HumanitarianAssistance.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace HumanitarianAssistance.Persistence.Migrations
 {
     [DbContext(typeof(HumanitarianAssistanceDbContext))]
-    partial class HumanitarianAssistanceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190813060029_currencyDetailTblStatusFieldRemovedAndDateTimeNowRemoved")]
+    partial class currencyDetailTblStatusFieldRemovedAndDateTimeNowRemoved
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1736,40 +1738,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                     b.ToTable("BudgetReceivedAmount");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.Domain.Entities.ChatDetail", b =>
-                {
-                    b.Property<long>("ChatId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("ChatSourceEntityId");
-
-                    b.Property<string>("CreatedById");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<int>("EntityId");
-
-                    b.Property<long?>("EntitySourceDocumentId");
-
-                    b.Property<bool?>("IsDeleted");
-
-                    b.Property<string>("Message");
-
-                    b.Property<string>("ModifiedById");
-
-                    b.Property<DateTime?>("ModifiedDate");
-
-                    b.HasKey("ChatId");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("EntitySourceDocumentId");
-
-                    b.HasIndex("ModifiedById");
-
-                    b.ToTable("ChatDetail");
-                });
-
             modelBuilder.Entity("HumanitarianAssistance.Domain.Entities.CodeType", b =>
                 {
                     b.Property<int>("CodeTypeId")
@@ -3081,36 +3049,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         });
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.Domain.Entities.EntitySourceDocumentDetail", b =>
-                {
-                    b.Property<long>("EntitySourceDocumentId")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("CreatedById");
-
-                    b.Property<DateTime?>("CreatedDate");
-
-                    b.Property<long>("DocumentFileId");
-
-                    b.Property<long>("EntityId");
-
-                    b.Property<bool?>("IsDeleted");
-
-                    b.Property<string>("ModifiedById");
-
-                    b.Property<DateTime?>("ModifiedDate");
-
-                    b.HasKey("EntitySourceDocumentId");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("DocumentFileId");
-
-                    b.HasIndex("ModifiedById");
-
-                    b.ToTable("EntitySourceDocumentDetails");
-                });
-
             modelBuilder.Entity("HumanitarianAssistance.Domain.Entities.ErrorLog.Errorlog", b =>
                 {
                     b.Property<long>("ExceptionId")
@@ -3917,6 +3855,8 @@ namespace HumanitarianAssistance.Persistence.Migrations
 
                     b.Property<string>("Fax");
 
+                    b.Property<string>("Grade");
+
                     b.Property<int?>("GradeId");
 
                     b.Property<int?>("HigherQualificationId");
@@ -3944,6 +3884,8 @@ namespace HumanitarianAssistance.Persistence.Migrations
                     b.Property<string>("Nationality");
 
                     b.Property<int?>("NationalityId");
+
+                    b.Property<int?>("NoOfChildren");
 
                     b.Property<string>("OtherSkillList");
 
@@ -12519,21 +12461,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         .HasForeignKey("ModifiedById");
                 });
 
-            modelBuilder.Entity("HumanitarianAssistance.Domain.Entities.ChatDetail", b =>
-                {
-                    b.HasOne("HumanitarianAssistance.Domain.Entities.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
-
-                    b.HasOne("HumanitarianAssistance.Domain.Entities.EntitySourceDocumentDetail", "EntitySourceDocumentDetail")
-                        .WithMany()
-                        .HasForeignKey("EntitySourceDocumentId");
-
-                    b.HasOne("HumanitarianAssistance.Domain.Entities.AppUser", "ModifiedBy")
-                        .WithMany()
-                        .HasForeignKey("ModifiedById");
-                });
-
             modelBuilder.Entity("HumanitarianAssistance.Domain.Entities.CodeType", b =>
                 {
                     b.HasOne("HumanitarianAssistance.Domain.Entities.AppUser", "CreatedBy")
@@ -12662,22 +12589,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                     b.HasOne("HumanitarianAssistance.Domain.Entities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
-
-                    b.HasOne("HumanitarianAssistance.Domain.Entities.AppUser", "ModifiedBy")
-                        .WithMany()
-                        .HasForeignKey("ModifiedById");
-                });
-
-            modelBuilder.Entity("HumanitarianAssistance.Domain.Entities.EntitySourceDocumentDetail", b =>
-                {
-                    b.HasOne("HumanitarianAssistance.Domain.Entities.AppUser", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
-
-                    b.HasOne("HumanitarianAssistance.Domain.Entities.DocumentFileDetail", "DocumentFileDetail")
-                        .WithMany()
-                        .HasForeignKey("DocumentFileId")
-                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("HumanitarianAssistance.Domain.Entities.AppUser", "ModifiedBy")
                         .WithMany()

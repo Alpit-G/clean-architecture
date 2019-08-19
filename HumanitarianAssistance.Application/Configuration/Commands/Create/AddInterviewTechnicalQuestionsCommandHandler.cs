@@ -13,11 +13,10 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Create
     public class AddInterviewTechnicalQuestionsCommandHandler : IRequestHandler<AddInterviewTechnicalQuestionsCommand, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
-        private IMapper _mapper;
-        public AddInterviewTechnicalQuestionsCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        
+        public AddInterviewTechnicalQuestionsCommandHandler(HumanitarianAssistanceDbContext dbContext)
         {
             _dbContext = dbContext;
-            _mapper = mapper;
         }
         public async Task<ApiResponse> Handle(AddInterviewTechnicalQuestionsCommand request, CancellationToken cancellationToken)
         {
@@ -26,10 +25,14 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Create
             {
                 if (request != null)
                 {
-                    InterviewTechnicalQuestions obj = new InterviewTechnicalQuestions();
-                    obj.CreatedById = request.CreatedById;
-                    obj.CreatedDate = request.CreatedDate;
-                    obj.IsDeleted = false;
+                    InterviewTechnicalQuestions obj = new InterviewTechnicalQuestions {
+                        Question = request.Question,
+                        OfficeId = request.OfficeId,
+                        CreatedById = request.CreatedById,
+                        CreatedDate = request.CreatedDate,
+                        IsDeleted = false
+                    };
+
                     await _dbContext.InterviewTechnicalQuestions.AddAsync(obj);
                     await _dbContext.SaveChangesAsync();
                 }

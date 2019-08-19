@@ -62,7 +62,6 @@ export class GLOBAL {
   public static API_Accounting_AddVouchersDocument = 'Account/AddVoucherDocumentDetail';
   public static API_Accounting_GetAccountDetails = 'Account/GetAllAccountCode';
   public static API_Accounting_GetExchangeGainLossVoucherList = 'Account/GetExchangeGainLossVoucherList';
-  public static API_Accounting_GetLevelFourAccountDetails = 'Account/GetLevelFourAccountCode';
   public static API_Accounting_GetAllControlLevelAccountCode = 'Account/GetAllControlLevelAccountCode';
   public static API_Accounting_GetAllInputLevelAccountCode = 'Account/GetAllInputLevelAccountCode';
   public static API_Accounting_GetAllVoucherTransactionDetail = 'Account/GetAllVoucherTransactionDetailByVoucherNo';

@@ -28,11 +28,15 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Create
                 {
                     SalaryTaxReportContent obj = new SalaryTaxReportContent()
                     {
-                        CreatedDate = request.CreatedDate,
+                        EmployerAuthorizedOfficerName = request.EmployerAuthorizedOfficerName,
+                        PositionAuthorizedOfficer = request.PositionAuthorizedOfficer,
+                        OfficeId = request.OfficeId,
                         CreatedById = request.CreatedById,
+                        CreatedDate = request.CreatedDate,
                         IsDeleted = false
                     };
                     await _dbContext.SalaryTaxReportContent.AddAsync(obj);
+                    await _dbContext.SaveChangesAsync();
 
                     response.StatusCode = StaticResource.successStatusCode;
                     response.Message = "Success";

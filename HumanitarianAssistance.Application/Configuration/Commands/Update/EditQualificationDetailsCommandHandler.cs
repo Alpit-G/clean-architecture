@@ -12,12 +12,10 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Update
 {
     public class EditQualificationDetailsCommandHandler : IRequestHandler<EditQualificationDetailsCommand, ApiResponse>
     {
-        private HumanitarianAssistanceDbContext _dbContext;
-        private IMapper _mapper;
-        public EditQualificationDetailsCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        private readonly HumanitarianAssistanceDbContext _dbContext;
+        public EditQualificationDetailsCommandHandler(HumanitarianAssistanceDbContext dbContext)
         {
             _dbContext = dbContext;
-            _mapper = mapper;
         }
         public async Task<ApiResponse> Handle(EditQualificationDetailsCommand request, CancellationToken cancellationToken)
         {
@@ -27,7 +25,8 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Update
                 var existrecord = await _dbContext.QualificationDetails.FirstOrDefaultAsync(x => x.QualificationId == request.QualificationId);
                 if (existrecord != null)
                 {
-                    existrecord.IsDeleted = true;
+                    existrecord.QualificationName = request.QualificationName;
+                    existrecord.IsDeleted = false;
 
                     await _dbContext.SaveChangesAsync();
 

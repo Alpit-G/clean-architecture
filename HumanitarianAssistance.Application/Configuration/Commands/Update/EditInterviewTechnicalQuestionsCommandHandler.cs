@@ -13,11 +13,9 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Update
     public class EditInterviewTechnicalQuestionsCommandHandler : IRequestHandler<EditInterviewTechnicalQuestionsCommand, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
-        private IMapper _mapper;
-        public EditInterviewTechnicalQuestionsCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        public EditInterviewTechnicalQuestionsCommandHandler(HumanitarianAssistanceDbContext dbContext)
         {
             _dbContext = dbContext;
-            _mapper = mapper;
         }
         public async Task<ApiResponse> Handle(EditInterviewTechnicalQuestionsCommand request, CancellationToken cancellationToken)
         {
@@ -27,10 +25,12 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Update
                 if (request != null)
                 {
                     var obj = await _dbContext.InterviewTechnicalQuestions.FirstOrDefaultAsync(x => x.OfficeId == request.OfficeId && x.InterviewTechnicalQuestionsId == request.InterviewTechnicalQuestionsId);
+                    
                     obj.Question = request.Question;
                     obj.ModifiedById = request.ModifiedById;
                     obj.ModifiedDate = request.ModifiedDate;
                     obj.IsDeleted = false;
+
                     await _dbContext.SaveChangesAsync();
                 }
                 response.StatusCode = StaticResource.successStatusCode;

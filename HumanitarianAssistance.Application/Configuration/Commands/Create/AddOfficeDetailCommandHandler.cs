@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanitarianAssistance.Application.Configuration.Commands.Create
 {
-    public class AddOfficeDetailCommandHandler: IRequestHandler<AddOfficeDetailCommand, ApiResponse>
+    public class AddOfficeDetailCommandHandler : IRequestHandler<AddOfficeDetailCommand, ApiResponse>
     {
 
         private readonly HumanitarianAssistanceDbContext _dbContext;
@@ -20,7 +20,7 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Create
         public AddOfficeDetailCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
-            _mapper= mapper;
+            _mapper = mapper;
         }
 
         public async Task<ApiResponse> Handle(AddOfficeDetailCommand request, CancellationToken cancellationToken)
@@ -33,10 +33,22 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Create
 
                 if (existoffice == null)
                 {
-                    OfficeDetail obj = _mapper.Map<OfficeDetail>(request);
-                    obj.IsDeleted = false;
+                    OfficeDetail obj = new OfficeDetail
+                    {
+                        OfficeCode = request.OfficeCode,
+                        OfficeName = request.OfficeName,
+                        SupervisorName = request.SupervisorName,
+                        PhoneNo = request.PhoneNo,
+                        FaxNo = request.FaxNo,
+                        OfficeKey = request.OfficeKey,
+                        IsDeleted = false,
+                        CreatedById = request.CreatedById,
+                        CreatedDate = DateTime.UtcNow
+                    };
+
                     await _dbContext.OfficeDetail.AddAsync(obj);
                     await _dbContext.SaveChangesAsync();
+
                     response.StatusCode = StaticResource.successStatusCode;
                     response.Message = "Success";
                 }
@@ -49,10 +61,10 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Create
             catch (Exception ex)
             {
                 response.StatusCode = StaticResource.failStatusCode;
-                response.Message = StaticResource.SomethingWrong + ex.Message;
+                response.Message = ex.Message;
             }
             return response;
         }
-        
+
     }
 }

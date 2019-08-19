@@ -66,7 +66,7 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Update
             catch (Exception ex)
             {
                 response.StatusCode = StaticResource.failStatusCode;
-                response.Message = StaticResource.SomethingWrong + ex.Message;
+                response.Message = ex.Message;
             }
             return response;
         }
@@ -75,9 +75,11 @@ namespace HumanitarianAssistance.Application.Accounting.Commands.Update
         {
             var accounts = await _dbContext.ChartOfAccountNew.Where(x => x.ParentID == subLvlAccount.ChartOfAccountNewId).ToListAsync();
             var accType = await _dbContext.AccountType.FirstOrDefaultAsync(x => x.AccountTypeId == subLvlAccount.AccountTypeId);
-            var accHeadType = await _dbContext.AccountHeadType.FirstOrDefaultAsync(x => x.AccountHeadTypeId == accType.AccountHeadTypeId);
+            if (accType != null) {
+                var accHeadType = await _dbContext.AccountHeadType.FirstOrDefaultAsync(x => x.AccountHeadTypeId == accType.AccountHeadTypeId);
 
-            subLvlAccount.IsCreditBalancetype = accHeadType.IsCreditBalancetype;
+                subLvlAccount.IsCreditBalancetype = accHeadType.IsCreditBalancetype;
+            }
 
             _dbContext.ChartOfAccountNew.Update(subLvlAccount);
             await _dbContext.SaveChangesAsync();

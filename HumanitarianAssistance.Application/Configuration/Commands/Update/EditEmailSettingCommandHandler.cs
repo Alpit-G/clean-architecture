@@ -15,11 +15,9 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Update
     {
 
         private readonly HumanitarianAssistanceDbContext _dbContext;
-        private IMapper _mapper;
-        public EditEmailSettingCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        public EditEmailSettingCommandHandler(HumanitarianAssistanceDbContext dbContext)
         {
             _dbContext = dbContext;
-            _mapper = mapper;
         }
 
         public async Task<ApiResponse> Handle(EditEmailSettingCommand request, CancellationToken cancellationToken)
@@ -32,7 +30,6 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Update
                 
                 if (emailsettingInfo != null)
                 {
-
                     emailsettingInfo.SenderEmail = request.SenderEmail;
                     emailsettingInfo.EmailTypeId = request.EmailTypeId;
                     emailsettingInfo.SenderPassword = request.SenderPassword;
@@ -52,7 +49,7 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Update
             catch (Exception ex)
             {
                 response.StatusCode = StaticResource.failStatusCode;
-                response.Message = StaticResource.SomethingWrong + ex.Message;
+                response.Message = ex.Message;
             }
             return response;
         }

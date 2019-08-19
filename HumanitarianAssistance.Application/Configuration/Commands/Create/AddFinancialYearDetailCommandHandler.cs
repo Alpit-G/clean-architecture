@@ -15,11 +15,9 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Create
     public class AddFinancialYearDetailCommandHandler : IRequestHandler<AddFinancialYearDetailCommand, ApiResponse>
     {
         private HumanitarianAssistanceDbContext _dbContext;
-        private IMapper _mapper;
         public AddFinancialYearDetailCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;
-            _mapper = mapper;
         }
         public async Task<ApiResponse> Handle(AddFinancialYearDetailCommand request, CancellationToken cancellationToken)
         {
@@ -33,15 +31,23 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Create
                     {
                         foreach (var i in yearlist)
                         {
-                            FinancialYearDetail existrecord1 = await _dbContext.FinancialYearDetail.FirstOrDefaultAsync(x => x.IsDeleted == false && x.FinancialYearId == i.FinancialYearId);
-                            existrecord1.IsDefault = false;
-                            existrecord1.ModifiedById = request.ModifiedById;
-                            existrecord1.ModifiedDate = request.ModifiedDate;
+                            FinancialYearDetail existrecord = await _dbContext.FinancialYearDetail.FirstOrDefaultAsync(x => x.IsDeleted == false && x.FinancialYearId == i.FinancialYearId);
+                            existrecord.IsDefault = false;
+                            existrecord.ModifiedById = request.ModifiedById;
+                            existrecord.ModifiedDate = request.ModifiedDate;
                             await _dbContext.SaveChangesAsync();
                         }
                     }
-                    FinancialYearDetail obj = _mapper.Map<FinancialYearDetail>(request);
-                    obj.IsDefault = true;
+                    FinancialYearDetail obj = new FinancialYearDetail
+                    {
+                        StartDate = request.StartDate,
+                        EndDate = request.EndDate,
+                        FinancialYearName = request.FinancialYearName,
+                        Description = request.Description,
+                        IsDefault = request.IsDefault,
+                        CreatedById = request.CreatedById,
+                        CreatedDate = DateTime.UtcNow,
+                    };
                     await _dbContext.FinancialYearDetail.AddAsync(obj);
                     await _dbContext.SaveChangesAsync();
                 }
@@ -52,7 +58,7 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Create
             catch (Exception ex)
             {
                 response.StatusCode = StaticResource.failStatusCode;
-                response.Message = StaticResource.SomethingWrong + ex.Message;
+                response.Message = ex.Message;
             }
             return response;
         }
