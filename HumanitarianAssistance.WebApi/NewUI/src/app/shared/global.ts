@@ -185,7 +185,7 @@ export class GLOBAL {
 
   // Financial Report
   public static API_FinancialReport_GetAllAccountBalancesByCategory = 'FinancialReport/GetAllAccountBalancesByCategory';
-  public static API_FinancialReport_GetAllAccountIncomeExpensesByCategory = 'FinancialReport/GetAllAccountIncomeExpensesByCategory';
+  public static API_FinancialReport_GetAllAccountIncomeExpensesByCategory = 'AccountReports/GetAllAccountIncomeExpensesByCategory';
 
   // Voucher Transaction
   public static API_VoucherTransaction_GetAllVoucherList = 'VoucherTransaction/GetAllVoucherList';
@@ -212,8 +212,8 @@ export class GLOBAL {
   public static API_GainLossReport_DeleteGainLossVoucherTransaction = 'GainLossReport/DeleteGainLossVoucherTransaction';
 
   // Financial Report
-  public static API_FinancialReport_SaveGainLossAccountList = 'FinancialReport/SaveGainLossAccountList';
-  public static API_FinancialReport_GetDetailOfNotes = 'FinancialReport/GetDetailOfNotes';
+  public static API_FinancialReport_SaveGainLossAccountList = 'AccountReports/SaveGainLossAccountList';
+  public static API_FinancialReport_GetDetailOfNotes = 'AccountReports/GetDetailOfNotes';
 
   // Voucher Summary Report
   public static API_AccountReports_GetVoucherSummaryReportList = 'AccountReports/GetVoucherSummaryReportList';
