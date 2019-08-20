@@ -1,4 +1,4 @@
-export class GLOBAL {
+GetAllEmployeeContractTypeexport class GLOBAL {
   public static API_Login_Auth_Url = 'Account/Login';
   public static API_Project_AddEditProjectDetail = 'Project/AddEditProjectDetail';
   public static API_Job_GetJobsList = 'Job/GetJobsList';
@@ -393,7 +393,7 @@ export class GLOBAL {
 
 
   //#region "Hiring request"
-  public static API_HREmployee_GetAllJobGrade = 'HREmployee/GetAllJobGrade';
+  public static API_HREmployee_GetAllJobGrade = 'HRJobs/GetAllJobGrade';
   public static API_HiringRequest_AddHiringRequestDetail = 'HiringRequest/AddHiringRequestDetail';
   public static API_HiringRequest_GetProjectHiringRequestDetail = 'HiringRequest/GetProjectHiringRequestDetail';
   public static API_HiringRequest_EditHiringRequestDetail = 'HiringRequest/EditHiringRequestDetail';
@@ -405,8 +405,8 @@ export class GLOBAL {
   public static API_HiringRequest_HiringRequestSelectCandidate = 'HiringRequest/HiringRequestSelectCandidate';
   public static API_HiringRequest_CompleteHiringRequest = 'HiringRequest/CompleteHiringRequest';
   public static API_Code_GetAttendanceGroupst = 'Code/GetAttendanceGroups';
-  public static API_HREmployee_GetAllEmployeeContractType = 'HREmployee/GetAllEmployeeContractType';
-  public static API_HREmployee_EditEmployeeProfessionalDetail = 'HREmployee/EditEmployeeProfessionalDetail';
+  public static API_HREmployee_GetAllEmployeeContractType = 'Code/GetAllEmployeeContractType';
+  public static API_HREmployee_EditEmployeeProfessionalDetail = 'EmployeeDetail/EditEmployeeProfessionalDetail';
   public static API_HiringRequest_DeleteCandidatDetail = 'HiringRequest/DeleteCandidatDetail';
   public static API_Chat_AddMessage = 'Chat/AddMessage';
 
