@@ -30,7 +30,6 @@ namespace HumanitarianAssistance.Application.Store.Queries
                                                                             .Include(x => x.StoreInventoryItem)
                                                                             .Where(x => x.InventoryItem == request.itemId && x.IsDeleted == false).ToListAsync();
 
-                var officeDetails = await _dbContext.OfficeDetail.ToListAsync();
 
                 var purchasesModel = purchases.Select(v => new StoreItemPurchaseViewModel
                 {
