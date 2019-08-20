@@ -1,4 +1,4 @@
-GetAllEmployeeContractTypeexport class GLOBAL {
+export class GLOBAL {
   public static API_Login_Auth_Url = 'Account/Login';
   public static API_Project_AddEditProjectDetail = 'Project/AddEditProjectDetail';
   public static API_Job_GetJobsList = 'Job/GetJobsList';
