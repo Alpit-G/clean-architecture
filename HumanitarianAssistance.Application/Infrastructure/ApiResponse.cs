@@ -385,12 +385,21 @@ namespace HumanitarianAssistance.Application.Infrastructure
         public IList<InterviewScheduleModel> InterviewScheduleFieldOfficelist { get; set; }
 
         public List<PayrollHeadModel> PayrollHeadModelList { get; set; }
+        public List<ExchangeGainLossReportViewModel> ExchangeGainLossReportList { get; set; }
 
         #endregion
 
         //File Managment
 
         public List<FileListModel> DocumentFileList { get; set; }
+
+        //Accounting
+        public AccountOpendingAndClosingBL AccountOpendingAndClosingBL { get; set; }
+        public IList<LedgerModel> LedgerList { get; set; }
+        public IList<LedgerReportViewModel> ledgerReportFinal { get; set; }
+        public IList<JournalVoucherViewModel> JournalVoucherViewList { get; set; }
+        public IList<JournalReportViewModel> JournalReportList { get; set; }
+        public List<DetailOfNotesSummaryModel> DetailsOfNotesFinalList { get; set; }
     }
 
 

@@ -520,7 +520,7 @@ export class PayrollComponent implements OnInit {
     this.accountservice
       .GetAccountDetails(
         this.setting.getBaseUrl() +
-          GLOBAL.API_Accounting_GetLevelFourAccountDetails
+          GLOBAL.API_Accounting_GetAllInputLevelAccountCode
       )
       .subscribe(
         data => {

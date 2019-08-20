@@ -4,7 +4,7 @@ using MediatR;
 
 namespace HumanitarianAssistance.Application.Accounting.Queries
 {
-    public class GetSavedExchangeRatesQuery: IRequest<ApiResponse>
+    public class GetSavedExchangeRatesQuery : IRequest<ApiResponse>
     {
         public DateTime? FromDate { get; set; }
         public DateTime? ToDate { get; set; }

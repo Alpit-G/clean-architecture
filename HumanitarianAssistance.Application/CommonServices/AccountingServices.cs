@@ -25,20 +25,10 @@ namespace HumanitarianAssistance.Application.CommonServices
         private readonly IMapper _mapper;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public AccountingServices(HumanitarianAssistanceDbContext dbContext)
-        {
-            _dbContext = dbContext;
-        }
-
-        public AccountingServices(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        public AccountingServices(HumanitarianAssistanceDbContext dbContext, IMapper mapper, RoleManager<IdentityRole> roleManager)
         {
             _dbContext = dbContext;
             _mapper = mapper;
-        }
-
-        public AccountingServices(HumanitarianAssistanceDbContext dbContext, RoleManager<IdentityRole> roleManager)
-        {
-            _dbContext = dbContext;
             _roleManager = roleManager;
         }
 
@@ -83,16 +73,16 @@ namespace HumanitarianAssistance.Application.CommonServices
                     throw new Exception(StaticResource.officeCodeNotFound);
                 }
 
-                Task<FinancialYearDetail> fincancialYearTask = _dbContext.FinancialYearDetail.FirstOrDefaultAsync(o => o.IsDefault);
+                Task<FinancialYearDetail> financialYearTask = _dbContext.FinancialYearDetail.FirstOrDefaultAsync(o => o.IsDefault);
                 Task<CurrencyDetails> currencyDetailTask = _dbContext.CurrencyDetails.FirstOrDefaultAsync(o => o.CurrencyId == request.CurrencyId);
 
                 // NOTE: Dont remove this as we will need journal details in response
                 Task<JournalDetail> journaldetailTask = _dbContext.JournalDetail.FirstOrDefaultAsync(o => o.JournalCode == request.JournalCode);
                 int voucherCount = await _dbContext.VoucherDetail.Where(x => x.VoucherDate.Month == request.VoucherDate.Month && x.VoucherDate.Year == filterVoucherDate.Year && x.OfficeId == request.OfficeId && x.CurrencyId == request.CurrencyId).CountAsync();
 
-                FinancialYearDetail fincancialYear = await fincancialYearTask;
+                FinancialYearDetail financialYear = await financialYearTask;
 
-                if (fincancialYear == null)
+                if (financialYear == null)
                 {
                     throw new Exception(StaticResource.defaultFinancialYearIsNotSet);
                 }
@@ -108,7 +98,7 @@ namespace HumanitarianAssistance.Application.CommonServices
 
                 VoucherDetail obj = _mapper.Map<VoucherDetail>(request);
                 obj.JournalCode = journaldetail != null ? journaldetail.JournalCode : request.JournalCode;
-                obj.FinancialYearId = fincancialYear.FinancialYearId;
+                obj.FinancialYearId = financialYear.FinancialYearId;
                 obj.CreatedById = request.CreatedById;
                 obj.VoucherDate = request.VoucherDate;
                 obj.CreatedDate = DateTime.UtcNow;

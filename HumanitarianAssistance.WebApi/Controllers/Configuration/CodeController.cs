@@ -138,7 +138,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         [HttpGet]
         public async Task<ApiResponse> GetAllJournalDetail()
         {
-            return await _mediator.Send(new GetAllCurrencyQuery());
+            return await _mediator.Send(new GetAllJournalQuery());
         }
 
         #endregion
@@ -148,7 +148,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         [HttpGet]
         public async Task<ApiResponse> GetAllEmailSettingDetail()
         {
-            return await _mediator.Send(new GetAllCurrencyQuery());
+            return await _mediator.Send(new GetAllEmailSettingQuery());
         }
 
         [HttpPost]
@@ -182,7 +182,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
 
         #endregion
 
-        #region "Account tyoe detail"
+        #region "Account type detail"
         [HttpPost]
 
         public async Task<ApiResponse> AddAccountType([FromBody]AddAccountTypeCommand model)
@@ -209,7 +209,9 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         [HttpPost]
         public async Task<ApiResponse> GetAllAccountTypeByCategory([FromBody]int id)
         {
-            return await _mediator.Send(new GetAllAccountTypeByCategoryQuery());
+            return await _mediator.Send(new GetAllAccountTypeByCategoryQuery {
+                Id = id
+            });
         }
 
 
@@ -241,7 +243,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         [HttpGet]
         public async Task<ApiResponse> GetAllDesignation()
         {
-            return await _mediator.Send(new GetAllAccountTypeByCategoryQuery());
+            return await _mediator.Send(new GetAllDesignationQuery());
         }
 
         #endregion
@@ -556,7 +558,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         public async Task<ApiResponse> DeleteQualifactionDetails([FromBody] int id)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return await _mediator.Send(new DeleteQualifactionDetailsCommand
+            return await _mediator.Send(new DeleteQualificationDetailsCommand
             {
                 QualificationId = id,
                 ModifiedById = userId,

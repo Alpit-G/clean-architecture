@@ -49,14 +49,12 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             AccountFilterTypeId = 1,
                             AccountFilterTypeName = "Inventory Account",
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(3852),
                             IsDeleted = false
                         },
                         new
                         {
                             AccountFilterTypeId = 2,
                             AccountFilterTypeName = "Salary Account",
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(4583),
                             IsDeleted = false
                         });
                 });
@@ -93,7 +91,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             AccountHeadTypeId = 1,
                             AccountHeadTypeName = "Assets",
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(4520),
                             IsCreditBalancetype = false,
                             IsDeleted = false
                         },
@@ -101,7 +98,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             AccountHeadTypeId = 2,
                             AccountHeadTypeName = "Liabilities",
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(5277),
                             IsCreditBalancetype = true,
                             IsDeleted = false
                         },
@@ -109,7 +105,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             AccountHeadTypeId = 3,
                             AccountHeadTypeName = "Donors Equity",
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(5298),
                             IsCreditBalancetype = true,
                             IsDeleted = false
                         },
@@ -117,7 +112,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             AccountHeadTypeId = 4,
                             AccountHeadTypeName = "Income",
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(5299),
                             IsCreditBalancetype = true,
                             IsDeleted = false
                         },
@@ -125,7 +119,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             AccountHeadTypeId = 5,
                             AccountHeadTypeName = "Expense",
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(5300),
                             IsCreditBalancetype = false,
                             IsDeleted = false
                         });
@@ -778,7 +771,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(9279),
                             IsDeleted = false,
                             ModuleId = 1,
                             ModuleName = "Users",
@@ -787,7 +779,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(455),
                             IsDeleted = false,
                             ModuleId = 2,
                             ModuleName = "Code",
@@ -796,7 +787,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 3,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(473),
                             IsDeleted = false,
                             ModuleId = 2,
                             ModuleName = "Code",
@@ -805,7 +795,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 4,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(475),
                             IsDeleted = false,
                             ModuleId = 2,
                             ModuleName = "Code",
@@ -814,7 +803,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 5,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(476),
                             IsDeleted = false,
                             ModuleId = 2,
                             ModuleName = "Code",
@@ -823,7 +811,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 6,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(477),
                             IsDeleted = false,
                             ModuleId = 2,
                             ModuleName = "Code",
@@ -832,7 +819,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 7,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(478),
                             IsDeleted = false,
                             ModuleId = 2,
                             ModuleName = "Code",
@@ -841,7 +827,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 8,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(480),
                             IsDeleted = false,
                             ModuleId = 2,
                             ModuleName = "Code",
@@ -850,7 +835,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 9,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(480),
                             IsDeleted = false,
                             ModuleId = 2,
                             ModuleName = "Code",
@@ -859,7 +843,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 10,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(482),
                             IsDeleted = false,
                             ModuleId = 2,
                             ModuleName = "Code",
@@ -868,7 +851,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 11,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(483),
                             IsDeleted = false,
                             ModuleId = 2,
                             ModuleName = "Code",
@@ -877,7 +859,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 12,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(484),
                             IsDeleted = false,
                             ModuleId = 2,
                             ModuleName = "Code",
@@ -886,7 +867,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 13,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(486),
                             IsDeleted = false,
                             ModuleId = 2,
                             ModuleName = "Code",
@@ -895,7 +875,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 14,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(487),
                             IsDeleted = false,
                             ModuleId = 2,
                             ModuleName = "Code",
@@ -904,7 +883,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 15,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(488),
                             IsDeleted = false,
                             ModuleId = 2,
                             ModuleName = "Code",
@@ -913,7 +891,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 16,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(488),
                             IsDeleted = false,
                             ModuleId = 2,
                             ModuleName = "Code",
@@ -922,7 +899,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 17,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(490),
                             IsDeleted = false,
                             ModuleId = 2,
                             ModuleName = "Code",
@@ -931,7 +907,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 18,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(491),
                             IsDeleted = false,
                             ModuleId = 2,
                             ModuleName = "Code",
@@ -940,7 +915,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 19,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(492),
                             IsDeleted = false,
                             ModuleId = 2,
                             ModuleName = "Code",
@@ -949,7 +923,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 20,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(493),
                             IsDeleted = false,
                             ModuleId = 2,
                             ModuleName = "Code",
@@ -958,7 +931,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 21,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(494),
                             IsDeleted = false,
                             ModuleId = 2,
                             ModuleName = "Code",
@@ -967,7 +939,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 22,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(495),
                             IsDeleted = true,
                             ModuleId = 3,
                             ModuleName = "Accounting",
@@ -976,7 +947,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 23,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(496),
                             IsDeleted = false,
                             ModuleId = 3,
                             ModuleName = "Accounting",
@@ -985,7 +955,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 24,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(497),
                             IsDeleted = false,
                             ModuleId = 3,
                             ModuleName = "Accounting",
@@ -994,7 +963,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 25,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(498),
                             IsDeleted = false,
                             ModuleId = 3,
                             ModuleName = "Accounting",
@@ -1003,7 +971,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 26,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(500),
                             IsDeleted = false,
                             ModuleId = 3,
                             ModuleName = "Accounting",
@@ -1012,7 +979,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 27,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(500),
                             IsDeleted = false,
                             ModuleId = 3,
                             ModuleName = "Accounting",
@@ -1021,7 +987,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 28,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(501),
                             IsDeleted = true,
                             ModuleId = 3,
                             ModuleName = "Accounting",
@@ -1030,7 +995,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 29,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(502),
                             IsDeleted = false,
                             ModuleId = 3,
                             ModuleName = "Accounting",
@@ -1039,7 +1003,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 30,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(503),
                             IsDeleted = false,
                             ModuleId = 3,
                             ModuleName = "Accounting",
@@ -1048,7 +1011,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 31,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(504),
                             IsDeleted = false,
                             ModuleId = 3,
                             ModuleName = "Accounting",
@@ -1057,7 +1019,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 32,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(505),
                             IsDeleted = false,
                             ModuleId = 4,
                             ModuleName = "HR",
@@ -1066,7 +1027,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 33,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(507),
                             IsDeleted = false,
                             ModuleId = 4,
                             ModuleName = "HR",
@@ -1075,7 +1035,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 34,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(508),
                             IsDeleted = false,
                             ModuleId = 4,
                             ModuleName = "HR",
@@ -1084,7 +1043,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 35,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(509),
                             IsDeleted = false,
                             ModuleId = 4,
                             ModuleName = "HR",
@@ -1093,7 +1051,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 36,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(510),
                             IsDeleted = false,
                             ModuleId = 4,
                             ModuleName = "HR",
@@ -1102,7 +1059,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 37,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(511),
                             IsDeleted = false,
                             ModuleId = 4,
                             ModuleName = "HR",
@@ -1111,7 +1067,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 38,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(512),
                             IsDeleted = false,
                             ModuleId = 4,
                             ModuleName = "HR",
@@ -1120,7 +1075,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 39,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(513),
                             IsDeleted = false,
                             ModuleId = 4,
                             ModuleName = "HR",
@@ -1129,7 +1083,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 40,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(514),
                             IsDeleted = false,
                             ModuleId = 4,
                             ModuleName = "HR",
@@ -1138,7 +1091,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 41,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(515),
                             IsDeleted = false,
                             ModuleId = 4,
                             ModuleName = "HR",
@@ -1147,7 +1099,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 42,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(516),
                             IsDeleted = false,
                             ModuleId = 4,
                             ModuleName = "HR",
@@ -1156,7 +1107,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 43,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(535),
                             IsDeleted = false,
                             ModuleId = 5,
                             ModuleName = "Store",
@@ -1165,7 +1115,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 44,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(536),
                             IsDeleted = false,
                             ModuleId = 5,
                             ModuleName = "Store",
@@ -1174,7 +1123,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 45,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(537),
                             IsDeleted = false,
                             ModuleId = 5,
                             ModuleName = "Store",
@@ -1183,7 +1131,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 46,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(539),
                             IsDeleted = false,
                             ModuleId = 5,
                             ModuleName = "Store",
@@ -1192,7 +1139,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 47,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(540),
                             IsDeleted = false,
                             ModuleId = 5,
                             ModuleName = "Store",
@@ -1201,7 +1147,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 48,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(541),
                             IsDeleted = false,
                             ModuleId = 5,
                             ModuleName = "Store",
@@ -1210,7 +1155,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 49,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(542),
                             IsDeleted = false,
                             ModuleId = 6,
                             ModuleName = "Marketing",
@@ -1219,7 +1163,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 50,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(543),
                             IsDeleted = false,
                             ModuleId = 6,
                             ModuleName = "Marketing",
@@ -1228,7 +1171,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 51,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(544),
                             IsDeleted = false,
                             ModuleId = 6,
                             ModuleName = "Marketing",
@@ -1237,7 +1179,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 52,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(546),
                             IsDeleted = false,
                             ModuleId = 6,
                             ModuleName = "Marketing",
@@ -1246,7 +1187,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 53,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(547),
                             IsDeleted = false,
                             ModuleId = 6,
                             ModuleName = "Marketing",
@@ -1255,7 +1195,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 54,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(548),
                             IsDeleted = false,
                             ModuleId = 6,
                             ModuleName = "Marketing",
@@ -1264,7 +1203,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 55,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(549),
                             IsDeleted = false,
                             ModuleId = 6,
                             ModuleName = "Marketing",
@@ -1273,7 +1211,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 56,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(550),
                             IsDeleted = false,
                             ModuleId = 7,
                             ModuleName = "AccountingNew",
@@ -1282,7 +1219,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 57,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(551),
                             IsDeleted = false,
                             ModuleId = 7,
                             ModuleName = "AccountingNew",
@@ -1291,7 +1227,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 58,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(552),
                             IsDeleted = false,
                             ModuleId = 7,
                             ModuleName = "AccountingNew",
@@ -1300,7 +1235,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 59,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(553),
                             IsDeleted = false,
                             ModuleId = 7,
                             ModuleName = "AccountingNew",
@@ -1309,7 +1243,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 60,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(554),
                             IsDeleted = false,
                             ModuleId = 7,
                             ModuleName = "AccountingNew",
@@ -1318,7 +1251,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 61,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(555),
                             IsDeleted = false,
                             ModuleId = 7,
                             ModuleName = "AccountingNew",
@@ -1327,7 +1259,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 62,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(556),
                             IsDeleted = false,
                             ModuleId = 7,
                             ModuleName = "AccountingNew",
@@ -1336,7 +1267,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 63,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(557),
                             IsDeleted = false,
                             ModuleId = 6,
                             ModuleName = "Marketing",
@@ -1345,7 +1275,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 64,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(558),
                             IsDeleted = false,
                             ModuleId = 6,
                             ModuleName = "Marketing",
@@ -1354,7 +1283,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 65,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(559),
                             IsDeleted = false,
                             ModuleId = 6,
                             ModuleName = "Marketing",
@@ -1363,7 +1291,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 66,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(560),
                             IsDeleted = false,
                             ModuleId = 6,
                             ModuleName = "Marketing",
@@ -1372,7 +1299,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 67,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(561),
                             IsDeleted = false,
                             ModuleId = 8,
                             ModuleName = "Projects",
@@ -1381,7 +1307,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 68,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(562),
                             IsDeleted = false,
                             ModuleId = 8,
                             ModuleName = "Projects",
@@ -1390,7 +1315,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 69,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(563),
                             IsDeleted = false,
                             ModuleId = 8,
                             ModuleName = "Projects",
@@ -1399,7 +1323,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 70,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(564),
                             IsDeleted = false,
                             ModuleId = 8,
                             ModuleName = "Projects",
@@ -1408,7 +1331,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 71,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(565),
                             IsDeleted = false,
                             ModuleId = 8,
                             ModuleName = "Projects",
@@ -1417,7 +1339,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 72,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(566),
                             IsDeleted = false,
                             ModuleId = 6,
                             ModuleName = "Marketing",
@@ -1426,7 +1347,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 73,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(567),
                             IsDeleted = false,
                             ModuleId = 6,
                             ModuleName = "Marketing",
@@ -1435,7 +1355,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 74,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(568),
                             IsDeleted = false,
                             ModuleId = 8,
                             ModuleName = "Projects",
@@ -1444,7 +1363,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 75,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(569),
                             IsDeleted = false,
                             ModuleId = 8,
                             ModuleName = "Projects",
@@ -1453,7 +1371,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 76,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(571),
                             IsDeleted = false,
                             ModuleId = 6,
                             ModuleName = "Marketing",
@@ -1462,7 +1379,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 77,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(572),
                             IsDeleted = false,
                             ModuleId = 6,
                             ModuleName = "Marketing",
@@ -1471,7 +1387,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 78,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(573),
                             IsDeleted = false,
                             ModuleId = 8,
                             ModuleName = "Projects",
@@ -1480,7 +1395,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 79,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(575),
                             IsDeleted = false,
                             ModuleId = 8,
                             ModuleName = "Projects",
@@ -1489,7 +1403,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 80,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(576),
                             IsDeleted = false,
                             ModuleId = 8,
                             ModuleName = "Projects",
@@ -1498,7 +1411,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 81,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(576),
                             IsDeleted = false,
                             ModuleId = 8,
                             ModuleName = "Projects",
@@ -1507,7 +1419,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 82,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(577),
                             IsDeleted = false,
                             ModuleId = 8,
                             ModuleName = "Projects",
@@ -1516,7 +1427,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 83,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(578),
                             IsDeleted = false,
                             ModuleId = 8,
                             ModuleName = "Projects",
@@ -1525,7 +1435,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 84,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(579),
                             IsDeleted = false,
                             ModuleId = 8,
                             ModuleName = "Projects",
@@ -1534,7 +1443,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 85,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(580),
                             IsDeleted = false,
                             ModuleId = 7,
                             ModuleName = "AccountingNew",
@@ -1543,7 +1451,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 86,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(581),
                             IsDeleted = false,
                             ModuleId = 8,
                             ModuleName = "Projects",
@@ -1552,7 +1459,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 87,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(582),
                             IsDeleted = false,
                             ModuleId = 2,
                             ModuleName = "Code",
@@ -1561,7 +1467,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PageId = 88,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(583),
                             IsDeleted = false,
                             ModuleId = 2,
                             ModuleName = "Code",
@@ -1831,6 +1736,40 @@ namespace HumanitarianAssistance.Persistence.Migrations
                     b.ToTable("BudgetReceivedAmount");
                 });
 
+            modelBuilder.Entity("HumanitarianAssistance.Domain.Entities.ChatDetail", b =>
+                {
+                    b.Property<long>("ChatId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("ChatSourceEntityId");
+
+                    b.Property<string>("CreatedById");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<int>("EntityId");
+
+                    b.Property<long?>("EntitySourceDocumentId");
+
+                    b.Property<bool?>("IsDeleted");
+
+                    b.Property<string>("Message");
+
+                    b.Property<string>("ModifiedById");
+
+                    b.Property<DateTime?>("ModifiedDate");
+
+                    b.HasKey("ChatId");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("EntitySourceDocumentId");
+
+                    b.HasIndex("ModifiedById");
+
+                    b.ToTable("ChatDetail");
+                });
+
             modelBuilder.Entity("HumanitarianAssistance.Domain.Entities.CodeType", b =>
                 {
                     b.Property<int>("CodeTypeId")
@@ -1954,14 +1893,12 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             CountryId = 1,
                             CountryName = "Afghanistan",
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(9141),
                             IsDeleted = false
                         },
                         new
                         {
                             CountryId = 2,
                             CountryName = "United States",
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(9805),
                             IsDeleted = false
                         });
                 });
@@ -1981,17 +1918,11 @@ namespace HumanitarianAssistance.Persistence.Migrations
                     b.Property<string>("CurrencyName")
                         .HasMaxLength(50);
 
-                    b.Property<float?>("CurrencyRate");
-
                     b.Property<bool?>("IsDeleted");
 
                     b.Property<string>("ModifiedById");
 
                     b.Property<DateTime?>("ModifiedDate");
-
-                    b.Property<bool?>("SalaryTaxFlag");
-
-                    b.Property<bool?>("Status");
 
                     b.HasKey("CurrencyId");
 
@@ -2005,42 +1936,30 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             CurrencyId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(1488),
                             CurrencyCode = "AFG",
                             CurrencyName = "Afghanistan",
-                            IsDeleted = false,
-                            SalaryTaxFlag = true,
-                            Status = false
+                            IsDeleted = false
                         },
                         new
                         {
                             CurrencyId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(2400),
                             CurrencyCode = "EUR",
                             CurrencyName = "European Curency",
-                            IsDeleted = false,
-                            SalaryTaxFlag = false,
-                            Status = false
+                            IsDeleted = false
                         },
                         new
                         {
                             CurrencyId = 3,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(2416),
                             CurrencyCode = "PKR",
                             CurrencyName = "Pakistani Rupees",
-                            IsDeleted = false,
-                            SalaryTaxFlag = false,
-                            Status = true
+                            IsDeleted = false
                         },
                         new
                         {
                             CurrencyId = 4,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(2417),
                             CurrencyCode = "USD",
                             CurrencyName = "US Dollars",
-                            IsDeleted = false,
-                            SalaryTaxFlag = false,
-                            Status = false
+                            IsDeleted = false
                         });
                 });
 
@@ -2079,7 +1998,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DepartmentId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(6344),
                             DepartmentName = "Administration",
                             IsDeleted = false,
                             OfficeId = 1
@@ -2147,7 +2065,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 1L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(1464),
                             District = "Jawand",
                             IsDeleted = false,
                             ProvinceID = 1
@@ -2155,7 +2072,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 2L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2225),
                             District = "Muqur",
                             IsDeleted = false,
                             ProvinceID = 1
@@ -2163,7 +2079,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 3L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2241),
                             District = "Qadis",
                             IsDeleted = false,
                             ProvinceID = 1
@@ -2171,7 +2086,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 4L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2242),
                             District = "Baghlani Jadid",
                             IsDeleted = false,
                             ProvinceID = 2
@@ -2179,7 +2093,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 5L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2244),
                             District = "Dahana i Ghuri",
                             IsDeleted = false,
                             ProvinceID = 2
@@ -2187,7 +2100,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 6L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2245),
                             District = "Chahar Bolak",
                             IsDeleted = false,
                             ProvinceID = 3
@@ -2195,7 +2107,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 7L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2246),
                             District = "Chahar Kint",
                             IsDeleted = false,
                             ProvinceID = 3
@@ -2203,7 +2114,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 8L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2247),
                             District = "Panjab",
                             IsDeleted = false,
                             ProvinceID = 4
@@ -2211,7 +2121,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 9L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2248),
                             District = "Shibar",
                             IsDeleted = false,
                             ProvinceID = 4
@@ -2219,7 +2128,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 10L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2249),
                             District = "Bamyan",
                             IsDeleted = false,
                             ProvinceID = 4
@@ -2227,7 +2135,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 11L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2251),
                             District = "Gizab",
                             IsDeleted = false,
                             ProvinceID = 5
@@ -2235,7 +2142,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 12L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2252),
                             District = "Bala Buluk",
                             IsDeleted = false,
                             ProvinceID = 6
@@ -2243,7 +2149,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 13L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2253),
                             District = "Bakwa",
                             IsDeleted = false,
                             ProvinceID = 6
@@ -2251,7 +2156,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 14L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2256),
                             District = "Andkhoy",
                             IsDeleted = false,
                             ProvinceID = 7
@@ -2259,7 +2163,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 15L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2257),
                             District = "Almar",
                             IsDeleted = false,
                             ProvinceID = 7
@@ -2267,7 +2170,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 16L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2258),
                             District = "Bilchiragh",
                             IsDeleted = false,
                             ProvinceID = 7
@@ -2275,7 +2177,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 17L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2259),
                             District = "Ajristan",
                             IsDeleted = false,
                             ProvinceID = 8
@@ -2283,7 +2184,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 18L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2260),
                             District = "Andar",
                             IsDeleted = false,
                             ProvinceID = 8
@@ -2291,7 +2191,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 19L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2261),
                             District = "Shahrak",
                             IsDeleted = false,
                             ProvinceID = 9
@@ -2299,7 +2198,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 20L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2262),
                             District = "Tulak",
                             IsDeleted = false,
                             ProvinceID = 9
@@ -2307,7 +2205,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 21L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2263),
                             District = "Baghran",
                             IsDeleted = false,
                             ProvinceID = 10
@@ -2315,7 +2212,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 22L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2264),
                             District = "Garmsir",
                             IsDeleted = false,
                             ProvinceID = 10
@@ -2323,7 +2219,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 23L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2265),
                             District = "Chishti Sharif",
                             IsDeleted = false,
                             ProvinceID = 11
@@ -2331,7 +2226,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 24L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2266),
                             District = "Aqcha",
                             IsDeleted = false,
                             ProvinceID = 12
@@ -2339,7 +2233,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 25L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2267),
                             District = "Fayzabad",
                             IsDeleted = false,
                             ProvinceID = 12
@@ -2347,7 +2240,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 26L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2268),
                             District = "GuzDarzabara",
                             IsDeleted = false,
                             ProvinceID = 12
@@ -2355,7 +2247,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 27L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2269),
                             District = "Chahar Asyab",
                             IsDeleted = false,
                             ProvinceID = 13
@@ -2363,7 +2254,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 28L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2271),
                             District = "Deh Sabz",
                             IsDeleted = false,
                             ProvinceID = 13
@@ -2371,7 +2261,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 29L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2272),
                             District = "Bagrami",
                             IsDeleted = false,
                             ProvinceID = 13
@@ -2379,7 +2268,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 30L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2273),
                             District = "Daman",
                             IsDeleted = false,
                             ProvinceID = 14
@@ -2387,7 +2275,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 31L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2274),
                             District = "Ghorak",
                             IsDeleted = false,
                             ProvinceID = 14
@@ -2395,7 +2282,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 32L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2275),
                             District = "Alasay",
                             IsDeleted = false,
                             ProvinceID = 15
@@ -2403,7 +2289,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 33L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2276),
                             District = "Bak",
                             IsDeleted = false,
                             ProvinceID = 16
@@ -2411,7 +2296,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 34L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2278),
                             District = "Gurbuz",
                             IsDeleted = false,
                             ProvinceID = 16
@@ -2419,7 +2303,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 35L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2279),
                             District = "Asadabad",
                             IsDeleted = false,
                             ProvinceID = 17
@@ -2427,7 +2310,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 36L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2282),
                             District = "Bar Kunar",
                             IsDeleted = false,
                             ProvinceID = 17
@@ -2435,7 +2317,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 37L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2283),
                             District = "Ali Abad",
                             IsDeleted = false,
                             ProvinceID = 18
@@ -2443,7 +2324,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 38L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2284),
                             District = "Archi",
                             IsDeleted = false,
                             ProvinceID = 18
@@ -2451,7 +2331,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 39L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2285),
                             District = "Alingar",
                             IsDeleted = false,
                             ProvinceID = 19
@@ -2459,7 +2338,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 40L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2286),
                             District = "Alishing",
                             IsDeleted = false,
                             ProvinceID = 19
@@ -2467,7 +2345,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 41L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2287),
                             District = "Baraki Barak",
                             IsDeleted = false,
                             ProvinceID = 20
@@ -2475,7 +2352,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 42L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2288),
                             District = "Charkh",
                             IsDeleted = false,
                             ProvinceID = 20
@@ -2483,7 +2359,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 43L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2289),
                             District = "Maidan Wardak",
                             IsDeleted = false,
                             ProvinceID = 21
@@ -2491,7 +2366,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 44L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2291),
                             District = "Achin",
                             IsDeleted = false,
                             ProvinceID = 22
@@ -2499,7 +2373,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 45L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2292),
                             District = "Bati Kot",
                             IsDeleted = false,
                             ProvinceID = 22
@@ -2507,7 +2380,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 46L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2293),
                             District = "Kang",
                             IsDeleted = false,
                             ProvinceID = 23
@@ -2515,7 +2387,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 47L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2294),
                             District = "Chakhansur",
                             IsDeleted = false,
                             ProvinceID = 23
@@ -2523,7 +2394,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 48L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2432),
                             District = "Kamdesh",
                             IsDeleted = false,
                             ProvinceID = 24
@@ -2531,7 +2401,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 49L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2434),
                             District = "Mandol",
                             IsDeleted = false,
                             ProvinceID = 24
@@ -2539,7 +2408,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 50L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2434),
                             District = "Gardez",
                             IsDeleted = false,
                             ProvinceID = 25
@@ -2547,7 +2415,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 51L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2435),
                             District = "Jaji",
                             IsDeleted = false,
                             ProvinceID = 25
@@ -2555,7 +2422,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 52L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2436),
                             District = "Zurmat",
                             IsDeleted = false,
                             ProvinceID = 25
@@ -2563,7 +2429,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 53L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2438),
                             District = "Wuza Zadran",
                             IsDeleted = false,
                             ProvinceID = 25
@@ -2571,7 +2436,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 54L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2438),
                             District = "Dila",
                             IsDeleted = false,
                             ProvinceID = 26
@@ -2579,7 +2443,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 55L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2439),
                             District = "Barmal",
                             IsDeleted = false,
                             ProvinceID = 26
@@ -2587,7 +2450,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 56L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2440),
                             District = "Kal",
                             IsDeleted = false,
                             ProvinceID = 26
@@ -2595,7 +2457,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 57L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2441),
                             District = "Chang",
                             IsDeleted = false,
                             ProvinceID = 26
@@ -2603,7 +2464,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 58L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2441),
                             District = "Anaba",
                             IsDeleted = false,
                             ProvinceID = 27
@@ -2611,7 +2471,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 59L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2442),
                             District = "Bagram",
                             IsDeleted = false,
                             ProvinceID = 28
@@ -2619,7 +2478,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 60L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2443),
                             District = "Chaharikar",
                             IsDeleted = false,
                             ProvinceID = 28
@@ -2627,7 +2485,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 61L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2443),
                             District = "Jabal Saraj",
                             IsDeleted = false,
                             ProvinceID = 28
@@ -2635,7 +2492,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 62L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2444),
                             District = "Kohi Safi",
                             IsDeleted = false,
                             ProvinceID = 28
@@ -2643,7 +2499,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 63L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2445),
                             District = "Salang",
                             IsDeleted = false,
                             ProvinceID = 28
@@ -2651,7 +2506,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 64L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2446),
                             District = "Aybak",
                             IsDeleted = false,
                             ProvinceID = 29
@@ -2659,7 +2513,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 65L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2446),
                             District = "Balkhab",
                             IsDeleted = false,
                             ProvinceID = 30
@@ -2667,7 +2520,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 66L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2448),
                             District = "Bangi",
                             IsDeleted = false,
                             ProvinceID = 31
@@ -2675,7 +2527,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 67L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2448),
                             District = "Uakhar",
                             IsDeleted = false,
                             ProvinceID = 32
@@ -2683,7 +2534,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 68L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2449),
                             District = "Argahandab",
                             IsDeleted = false,
                             ProvinceID = 33
@@ -2691,7 +2541,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 69L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2450),
                             District = "Atghar",
                             IsDeleted = false,
                             ProvinceID = 33
@@ -2699,7 +2548,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 70L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2451),
                             District = "Alabama",
                             IsDeleted = false,
                             ProvinceID = 34
@@ -2707,7 +2555,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 71L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2452),
                             District = "Arizona",
                             IsDeleted = false,
                             ProvinceID = 35
@@ -2715,7 +2562,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 72L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2452),
                             District = "Jurors",
                             IsDeleted = false,
                             ProvinceID = 35
@@ -2723,7 +2569,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 73L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2453),
                             District = "Arona",
                             IsDeleted = false,
                             ProvinceID = 35
@@ -2731,7 +2576,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 74L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2454),
                             District = "Arkansas",
                             IsDeleted = false,
                             ProvinceID = 36
@@ -2739,7 +2583,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 75L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2455),
                             District = "California",
                             IsDeleted = false,
                             ProvinceID = 37
@@ -2747,7 +2590,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 76L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2455),
                             District = "Califor",
                             IsDeleted = false,
                             ProvinceID = 37
@@ -2755,7 +2597,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 77L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2456),
                             District = "Colorado",
                             IsDeleted = false,
                             ProvinceID = 38
@@ -2763,7 +2604,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 78L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2457),
                             District = "Connecticut",
                             IsDeleted = false,
                             ProvinceID = 39
@@ -2771,7 +2611,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 79L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2458),
                             District = "Aelaware",
                             IsDeleted = false,
                             ProvinceID = 40
@@ -2779,7 +2618,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 80L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2459),
                             District = "Florida",
                             IsDeleted = false,
                             ProvinceID = 41
@@ -2787,7 +2625,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 81L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2460),
                             District = "Georia",
                             IsDeleted = false,
                             ProvinceID = 42
@@ -2795,7 +2632,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 82L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2460),
                             District = "Hawaii",
                             IsDeleted = false,
                             ProvinceID = 43
@@ -2803,7 +2639,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 83L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2461),
                             District = "Idaho",
                             IsDeleted = false,
                             ProvinceID = 44
@@ -2811,7 +2646,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 84L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2462),
                             District = "Illinois",
                             IsDeleted = false,
                             ProvinceID = 45
@@ -2819,7 +2653,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 85L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2463),
                             District = "Indiana",
                             IsDeleted = false,
                             ProvinceID = 46
@@ -2827,7 +2660,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 86L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2463),
                             District = "Undia",
                             IsDeleted = false,
                             ProvinceID = 46
@@ -2835,7 +2667,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 87L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2464),
                             District = "Iowa",
                             IsDeleted = false,
                             ProvinceID = 47
@@ -2843,7 +2674,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 88L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2465),
                             District = "Lansa",
                             IsDeleted = false,
                             ProvinceID = 48
@@ -2851,7 +2681,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 89L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2466),
                             District = "Kentucky",
                             IsDeleted = false,
                             ProvinceID = 49
@@ -2859,7 +2688,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 90L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2466),
                             District = "Louisiana",
                             IsDeleted = false,
                             ProvinceID = 50
@@ -2867,7 +2695,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 91L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2467),
                             District = "Maine",
                             IsDeleted = false,
                             ProvinceID = 51
@@ -2875,7 +2702,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 92L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2468),
                             District = "Maryland",
                             IsDeleted = false,
                             ProvinceID = 52
@@ -2883,7 +2709,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 93L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2469),
                             District = "Massachusetts",
                             IsDeleted = false,
                             ProvinceID = 53
@@ -2891,7 +2716,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 94L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2470),
                             District = "Michigan",
                             IsDeleted = false,
                             ProvinceID = 54
@@ -2899,7 +2723,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 95L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2471),
                             District = "Minnesota",
                             IsDeleted = false,
                             ProvinceID = 55
@@ -2907,7 +2730,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 96L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2472),
                             District = "Mississippi",
                             IsDeleted = false,
                             ProvinceID = 56
@@ -2915,7 +2737,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 97L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2472),
                             District = "Missouri",
                             IsDeleted = false,
                             ProvinceID = 57
@@ -2923,7 +2744,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 98L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2473),
                             District = "Montana",
                             IsDeleted = false,
                             ProvinceID = 58
@@ -2931,7 +2751,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 99L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2474),
                             District = "Nebraska",
                             IsDeleted = false,
                             ProvinceID = 59
@@ -2939,7 +2758,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 100L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2474),
                             District = "Yevada",
                             IsDeleted = false,
                             ProvinceID = 60
@@ -2947,7 +2765,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 101L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2475),
                             District = "New Hampshire",
                             IsDeleted = false,
                             ProvinceID = 61
@@ -2955,7 +2772,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 102L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2476),
                             District = "New Jersey",
                             IsDeleted = false,
                             ProvinceID = 62
@@ -2963,7 +2779,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 103L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2477),
                             District = "New Mexico",
                             IsDeleted = false,
                             ProvinceID = 63
@@ -2971,7 +2786,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 104L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2477),
                             District = "New York",
                             IsDeleted = false,
                             ProvinceID = 64
@@ -2979,7 +2793,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 105L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2479),
                             District = "North Carolina",
                             IsDeleted = false,
                             ProvinceID = 65
@@ -2987,7 +2800,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 106L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2480),
                             District = "North Dakota",
                             IsDeleted = false,
                             ProvinceID = 66
@@ -2995,7 +2807,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 107L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2481),
                             District = "Ohio",
                             IsDeleted = false,
                             ProvinceID = 67
@@ -3003,7 +2814,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 108L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2481),
                             District = "Oklahoma",
                             IsDeleted = false,
                             ProvinceID = 68
@@ -3011,7 +2821,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 109L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2483),
                             District = "Tregon",
                             IsDeleted = false,
                             ProvinceID = 69
@@ -3019,7 +2828,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 110L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2484),
                             District = "Pennsylvania",
                             IsDeleted = false,
                             ProvinceID = 70
@@ -3027,7 +2835,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 111L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2485),
                             District = "Rhode Island",
                             IsDeleted = false,
                             ProvinceID = 71
@@ -3035,7 +2842,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 112L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2485),
                             District = "South Carolina",
                             IsDeleted = false,
                             ProvinceID = 72
@@ -3043,7 +2849,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 113L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2486),
                             District = "South Dakota",
                             IsDeleted = false,
                             ProvinceID = 73
@@ -3051,7 +2856,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 114L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2487),
                             District = "Tennessee",
                             IsDeleted = false,
                             ProvinceID = 74
@@ -3059,7 +2863,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 115L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2487),
                             District = "Texas",
                             IsDeleted = false,
                             ProvinceID = 75
@@ -3067,7 +2870,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 116L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2488),
                             District = "Wtaha",
                             IsDeleted = false,
                             ProvinceID = 76
@@ -3075,7 +2877,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 117L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2489),
                             District = "Oermont",
                             IsDeleted = false,
                             ProvinceID = 77
@@ -3083,7 +2884,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 118L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2490),
                             District = "Virginia",
                             IsDeleted = false,
                             ProvinceID = 78
@@ -3091,7 +2891,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 119L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2490),
                             District = "Washinn",
                             IsDeleted = false,
                             ProvinceID = 79
@@ -3099,7 +2898,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 120L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2491),
                             District = "West Virginia",
                             IsDeleted = false,
                             ProvinceID = 80
@@ -3107,7 +2905,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 121L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2524),
                             District = "Nouit Vinia",
                             IsDeleted = false,
                             ProvinceID = 80
@@ -3115,7 +2912,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 122L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2525),
                             District = "Wisconsin",
                             IsDeleted = false,
                             ProvinceID = 81
@@ -3123,7 +2919,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             DistrictID = 123L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 958, DateTimeKind.Utc).AddTicks(2526),
                             District = "Wyoming",
                             IsDeleted = false,
                             ProvinceID = 82
@@ -3275,17 +3070,45 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             EmailTypeId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(7578),
                             EmailTypeName = "General",
                             IsDeleted = false
                         },
                         new
                         {
                             EmailTypeId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(8335),
                             EmailTypeName = "Bidding Panel",
                             IsDeleted = false
                         });
+                });
+
+            modelBuilder.Entity("HumanitarianAssistance.Domain.Entities.EntitySourceDocumentDetail", b =>
+                {
+                    b.Property<long>("EntitySourceDocumentId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CreatedById");
+
+                    b.Property<DateTime?>("CreatedDate");
+
+                    b.Property<long>("DocumentFileId");
+
+                    b.Property<long>("EntityId");
+
+                    b.Property<bool?>("IsDeleted");
+
+                    b.Property<string>("ModifiedById");
+
+                    b.Property<DateTime?>("ModifiedDate");
+
+                    b.HasKey("EntitySourceDocumentId");
+
+                    b.HasIndex("CreatedById");
+
+                    b.HasIndex("DocumentFileId");
+
+                    b.HasIndex("ModifiedById");
+
+                    b.ToTable("EntitySourceDocumentDetails");
                 });
 
             modelBuilder.Entity("HumanitarianAssistance.Domain.Entities.ErrorLog.Errorlog", b =>
@@ -3366,7 +3189,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             FinancialYearId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 957, DateTimeKind.Utc).AddTicks(1270),
                             EndDate = new DateTime(2019, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             FinancialYearName = "2019 Financial Year",
                             IsDefault = true,
@@ -4095,8 +3917,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
 
                     b.Property<string>("Fax");
 
-                    b.Property<string>("Grade");
-
                     b.Property<int?>("GradeId");
 
                     b.Property<int?>("HigherQualificationId");
@@ -4124,8 +3944,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                     b.Property<string>("Nationality");
 
                     b.Property<int?>("NationalityId");
-
-                    b.Property<int?>("NoOfChildren");
 
                     b.Property<string>("OtherSkillList");
 
@@ -5479,21 +5297,18 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             EmployeeTypeId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(4451),
                             EmployeeTypeName = "Prospective",
                             IsDeleted = false
                         },
                         new
                         {
                             EmployeeTypeId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(4823),
                             EmployeeTypeName = "Active",
                             IsDeleted = false
                         },
                         new
                         {
                             EmployeeTypeId = 3,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(4831),
                             EmployeeTypeName = "Terminated",
                             IsDeleted = false
                         });
@@ -6051,7 +5866,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PayrollHeadId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 953, DateTimeKind.Utc).AddTicks(8963),
                             IsDeleted = false,
                             PayrollHeadName = "Net Salary",
                             PayrollHeadTypeId = 3,
@@ -6060,7 +5874,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PayrollHeadId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(627),
                             IsDeleted = false,
                             PayrollHeadName = "Advance Deduction",
                             PayrollHeadTypeId = 2,
@@ -6069,7 +5882,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PayrollHeadId = 3,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(649),
                             IsDeleted = false,
                             PayrollHeadName = "Salary Tax",
                             PayrollHeadTypeId = 2,
@@ -6078,7 +5890,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PayrollHeadId = 4,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(650),
                             IsDeleted = true,
                             PayrollHeadName = "Gross Salary",
                             PayrollHeadTypeId = 3,
@@ -6087,7 +5898,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             PayrollHeadId = 5,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(651),
                             IsDeleted = false,
                             PayrollHeadName = "Pension",
                             PayrollHeadTypeId = 2,
@@ -6179,7 +5989,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             SalaryHeadId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(187),
                             Description = "Tr Allowance",
                             HeadName = "Tr Allowance",
                             HeadTypeId = 1,
@@ -6189,7 +5998,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             SalaryHeadId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(1035),
                             Description = "Food Allowance",
                             HeadName = "Food Allowance",
                             HeadTypeId = 1,
@@ -6199,7 +6007,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             SalaryHeadId = 3,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(1049),
                             Description = "Fine Deduction",
                             HeadName = "Fine Deduction",
                             HeadTypeId = 2,
@@ -6209,7 +6016,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             SalaryHeadId = 4,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(1050),
                             Description = "Capacity Building Deduction",
                             HeadName = "Capacity Building Deduction",
                             HeadTypeId = 2,
@@ -6219,7 +6025,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             SalaryHeadId = 5,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(1051),
                             Description = "Security Deduction",
                             HeadName = "Security Deduction",
                             HeadTypeId = 2,
@@ -6229,7 +6034,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             SalaryHeadId = 6,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(1052),
                             Description = "Other Allowance",
                             HeadName = "Other Allowance",
                             HeadTypeId = 1,
@@ -6239,7 +6043,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             SalaryHeadId = 7,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(1053),
                             Description = "Other Deduction",
                             HeadName = "Other Deduction",
                             HeadTypeId = 2,
@@ -6249,7 +6052,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             SalaryHeadId = 8,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(1054),
                             Description = "Medical Allowance",
                             HeadName = "Medical Allowance",
                             HeadTypeId = 1,
@@ -6259,7 +6061,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             SalaryHeadId = 9,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(1056),
                             Description = "Other1Allowance",
                             HeadName = "Other1Allowance",
                             HeadTypeId = 1,
@@ -6269,7 +6070,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             SalaryHeadId = 10,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(1057),
                             Description = "Other2Allowance",
                             HeadName = "Other2Allowance",
                             HeadTypeId = 1,
@@ -6279,7 +6079,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             SalaryHeadId = 11,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(1058),
                             Description = "Basic Pay (In hours)",
                             HeadName = "Basic Pay (In hours)",
                             HeadTypeId = 3,
@@ -6542,77 +6341,66 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             LanguageId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(2465),
                             IsDeleted = false,
                             LanguageName = "Arabic"
                         },
                         new
                         {
                             LanguageId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(3046),
                             IsDeleted = false,
                             LanguageName = "Dari"
                         },
                         new
                         {
                             LanguageId = 3,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(3059),
                             IsDeleted = false,
                             LanguageName = "English"
                         },
                         new
                         {
                             LanguageId = 4,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(3061),
                             IsDeleted = false,
                             LanguageName = "French"
                         },
                         new
                         {
                             LanguageId = 5,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(3062),
                             IsDeleted = false,
                             LanguageName = "German"
                         },
                         new
                         {
                             LanguageId = 6,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(3065),
                             IsDeleted = false,
                             LanguageName = "Pashto"
                         },
                         new
                         {
                             LanguageId = 7,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(3066),
                             IsDeleted = false,
                             LanguageName = "Russian"
                         },
                         new
                         {
                             LanguageId = 8,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(3068),
                             IsDeleted = false,
                             LanguageName = "Turkish"
                         },
                         new
                         {
                             LanguageId = 9,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(3069),
                             IsDeleted = false,
                             LanguageName = "Turkmani"
                         },
                         new
                         {
                             LanguageId = 10,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(3086),
                             IsDeleted = false,
                             LanguageName = "Urdu"
                         },
                         new
                         {
                             LanguageId = 11,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(3088),
                             IsDeleted = false,
                             LanguageName = "Uzbek"
                         });
@@ -6650,7 +6438,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             LeaveReasonId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(5208),
                             IsDeleted = false,
                             ReasonName = "Casual Leave",
                             Unit = 12
@@ -6658,7 +6445,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             LeaveReasonId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(6042),
                             IsDeleted = false,
                             ReasonName = "Emergency Leave",
                             Unit = 6
@@ -6666,7 +6452,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             LeaveReasonId = 3,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(6055),
                             IsDeleted = false,
                             ReasonName = "Maternity Leave",
                             Unit = 90
@@ -6735,14 +6520,12 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ActivityTypeId = 1L,
                             ActivityName = "Broadcasting",
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(8066),
                             IsDeleted = false
                         },
                         new
                         {
                             ActivityTypeId = 2L,
                             ActivityName = "Production",
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(8616),
                             IsDeleted = false
                         });
                 });
@@ -7806,7 +7589,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             OfficeId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(5295),
                             IsDeleted = false,
                             OfficeCode = "A0001",
                             OfficeKey = "AF",
@@ -8643,56 +8425,48 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             GenderConsiderationId = 1L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(8088),
                             GenderConsiderationName = "50 % F - 50 % M Excellent",
                             IsDeleted = false
                         },
                         new
                         {
                             GenderConsiderationId = 2L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(8421),
                             GenderConsiderationName = "40 % F - 60 % M Very Good",
                             IsDeleted = false
                         },
                         new
                         {
                             GenderConsiderationId = 3L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(8427),
                             GenderConsiderationName = "30 % F - 70 % M Good",
                             IsDeleted = false
                         },
                         new
                         {
                             GenderConsiderationId = 4L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(8428),
                             GenderConsiderationName = "25 % F - 75 % M Poor",
                             IsDeleted = false
                         },
                         new
                         {
                             GenderConsiderationId = 5L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(8429),
                             GenderConsiderationName = "20 % F - 80 % M Poor",
                             IsDeleted = false
                         },
                         new
                         {
                             GenderConsiderationId = 6L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(8430),
                             GenderConsiderationName = "10 % F - 90 % M Poor",
                             IsDeleted = false
                         },
                         new
                         {
                             GenderConsiderationId = 7L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(8431),
                             GenderConsiderationName = "5 % F - 95 % M Poor",
                             IsDeleted = false
                         },
                         new
                         {
                             GenderConsiderationId = 8L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(8432),
                             GenderConsiderationName = "0 % F - 100 % M Poor",
                             IsDeleted = false
                         });
@@ -9805,7 +9579,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             ProjectPhaseDetailsId = 1L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 956, DateTimeKind.Utc).AddTicks(6750),
                             IsDeleted = false,
                             ProjectPhase = "Data Entry"
                         });
@@ -10316,77 +10089,66 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             SecurityConsiderationId = 1L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(9467),
                             IsDeleted = false,
                             SecurityConsiderationName = "Project Staff Cannot Visit Project Site"
                         },
                         new
                         {
                             SecurityConsiderationId = 2L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(9795),
                             IsDeleted = false,
                             SecurityConsiderationName = "Beneficiaries cannot be reached"
                         },
                         new
                         {
                             SecurityConsiderationId = 3L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(9801),
                             IsDeleted = false,
                             SecurityConsiderationName = "Resources cannot be deployed"
                         },
                         new
                         {
                             SecurityConsiderationId = 4L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(9802),
                             IsDeleted = false,
                             SecurityConsiderationName = "Threat exit for future (Highly)"
                         },
                         new
                         {
                             SecurityConsiderationId = 5L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(9803),
                             IsDeleted = false,
                             SecurityConsiderationName = "Project staff access the are partially"
                         },
                         new
                         {
                             SecurityConsiderationId = 6L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(9804),
                             IsDeleted = false,
                             SecurityConsiderationName = "Bonfires can be reached partially"
                         },
                         new
                         {
                             SecurityConsiderationId = 7L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(9804),
                             IsDeleted = false,
                             SecurityConsiderationName = "Resources can be deployed partially"
                         },
                         new
                         {
                             SecurityConsiderationId = 8L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(9806),
                             IsDeleted = false,
                             SecurityConsiderationName = "Future Threats exits"
                         },
                         new
                         {
                             SecurityConsiderationId = 9L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(9807),
                             IsDeleted = false,
                             SecurityConsiderationName = "No barrier for staff to access the area"
                         },
                         new
                         {
                             SecurityConsiderationId = 10L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(9811),
                             IsDeleted = false,
                             SecurityConsiderationName = "No obstacle for deploying Resources & office"
                         },
                         new
                         {
                             SecurityConsiderationId = 11L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(9812),
                             IsDeleted = false,
                             SecurityConsiderationName = "Future Threats expected"
                         });
@@ -10455,21 +10217,18 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             SecurityId = 1L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(8787),
                             IsDeleted = false,
                             SecurityName = "Insecure"
                         },
                         new
                         {
                             SecurityId = 2L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(9116),
                             IsDeleted = false,
                             SecurityName = "Partially Insecure"
                         },
                         new
                         {
                             SecurityId = 3L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(9122),
                             IsDeleted = false,
                             SecurityName = "Secure (Green Area)"
                         });
@@ -10504,21 +10263,18 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             StrengthConsiderationId = 1L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(7347),
                             IsDeleted = false,
                             StrengthConsiderationName = "Gender Friendly"
                         },
                         new
                         {
                             StrengthConsiderationId = 2L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(7687),
                             IsDeleted = false,
                             StrengthConsiderationName = "Not Gender Friendly"
                         },
                         new
                         {
                             StrengthConsiderationId = 3L,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(7694),
                             IsDeleted = false,
                             StrengthConsiderationName = "Not Applicable"
                         });
@@ -10627,7 +10383,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 1,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(886),
                             IsDeleted = false,
                             ProvinceName = "Badghis"
                         },
@@ -10635,7 +10390,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 2,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1939),
                             IsDeleted = false,
                             ProvinceName = "Baghlan"
                         },
@@ -10643,7 +10397,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 3,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1958),
                             IsDeleted = false,
                             ProvinceName = "Balkh"
                         },
@@ -10651,7 +10404,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 4,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1960),
                             IsDeleted = false,
                             ProvinceName = "Bamyan"
                         },
@@ -10659,7 +10411,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 5,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1961),
                             IsDeleted = false,
                             ProvinceName = "Daykundi"
                         },
@@ -10667,7 +10418,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 6,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1963),
                             IsDeleted = false,
                             ProvinceName = "Farah"
                         },
@@ -10675,7 +10425,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 7,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1964),
                             IsDeleted = false,
                             ProvinceName = "Faryab"
                         },
@@ -10683,7 +10432,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 8,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1965),
                             IsDeleted = false,
                             ProvinceName = "Ghazni"
                         },
@@ -10691,7 +10439,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 9,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1966),
                             IsDeleted = false,
                             ProvinceName = "Ghor"
                         },
@@ -10699,7 +10446,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 10,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1967),
                             IsDeleted = false,
                             ProvinceName = "Helmand"
                         },
@@ -10707,7 +10453,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 11,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1968),
                             IsDeleted = false,
                             ProvinceName = "Herat"
                         },
@@ -10715,7 +10460,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 12,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1969),
                             IsDeleted = false,
                             ProvinceName = "Jowzjan"
                         },
@@ -10723,7 +10467,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 13,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1971),
                             IsDeleted = false,
                             ProvinceName = "Kabul"
                         },
@@ -10731,7 +10474,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 14,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1972),
                             IsDeleted = false,
                             ProvinceName = "Kandahar"
                         },
@@ -10739,7 +10481,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 15,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1975),
                             IsDeleted = false,
                             ProvinceName = "Kapisa"
                         },
@@ -10747,7 +10488,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 16,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1977),
                             IsDeleted = false,
                             ProvinceName = "Khost"
                         },
@@ -10755,7 +10495,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 17,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1979),
                             IsDeleted = false,
                             ProvinceName = "Kunar"
                         },
@@ -10763,7 +10502,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 18,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1979),
                             IsDeleted = false,
                             ProvinceName = "Kunduz"
                         },
@@ -10771,7 +10509,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 19,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1982),
                             IsDeleted = false,
                             ProvinceName = "Laghman"
                         },
@@ -10779,7 +10516,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 20,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1983),
                             IsDeleted = false,
                             ProvinceName = "Logar"
                         },
@@ -10787,7 +10523,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 21,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1987),
                             IsDeleted = false,
                             ProvinceName = "Maidan Wardak"
                         },
@@ -10795,7 +10530,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 22,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1987),
                             IsDeleted = false,
                             ProvinceName = "Nangarhar"
                         },
@@ -10803,7 +10537,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 23,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1989),
                             IsDeleted = false,
                             ProvinceName = "Nimruz"
                         },
@@ -10811,7 +10544,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 24,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1991),
                             IsDeleted = false,
                             ProvinceName = "Nuristan"
                         },
@@ -10819,7 +10551,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 25,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1991),
                             IsDeleted = false,
                             ProvinceName = "Paktia"
                         },
@@ -10827,7 +10558,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 26,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1993),
                             IsDeleted = false,
                             ProvinceName = "Paktika"
                         },
@@ -10835,7 +10565,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 27,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1994),
                             IsDeleted = false,
                             ProvinceName = "Panjshir"
                         },
@@ -10843,7 +10572,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 28,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1995),
                             IsDeleted = false,
                             ProvinceName = "Parwan"
                         },
@@ -10851,7 +10579,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 29,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1997),
                             IsDeleted = false,
                             ProvinceName = "Samangan"
                         },
@@ -10859,7 +10586,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 30,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1998),
                             IsDeleted = false,
                             ProvinceName = "Sar-e Pol"
                         },
@@ -10867,7 +10593,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 31,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(1999),
                             IsDeleted = false,
                             ProvinceName = "Takhar"
                         },
@@ -10875,7 +10600,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 32,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2000),
                             IsDeleted = false,
                             ProvinceName = "Urozgan"
                         },
@@ -10883,7 +10607,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 33,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2001),
                             IsDeleted = false,
                             ProvinceName = "Zabul"
                         },
@@ -10891,7 +10614,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 34,
                             CountryId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2002),
                             IsDeleted = false,
                             ProvinceName = "Alabama"
                         },
@@ -10899,7 +10621,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 35,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2003),
                             IsDeleted = false,
                             ProvinceName = "Alaska"
                         },
@@ -10907,7 +10628,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 36,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2004),
                             IsDeleted = false,
                             ProvinceName = "Arizona"
                         },
@@ -10915,7 +10635,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 37,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2005),
                             IsDeleted = false,
                             ProvinceName = "Arkansas"
                         },
@@ -10923,7 +10642,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 38,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2006),
                             IsDeleted = false,
                             ProvinceName = "California"
                         },
@@ -10931,7 +10649,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 39,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2009),
                             IsDeleted = false,
                             ProvinceName = "Colorado"
                         },
@@ -10939,7 +10656,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 40,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2011),
                             IsDeleted = false,
                             ProvinceName = "Connecticut"
                         },
@@ -10947,7 +10663,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 41,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2012),
                             IsDeleted = false,
                             ProvinceName = "Delaware"
                         },
@@ -10955,7 +10670,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 42,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2013),
                             IsDeleted = false,
                             ProvinceName = "Florida"
                         },
@@ -10963,7 +10677,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 43,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2015),
                             IsDeleted = false,
                             ProvinceName = "Georgia"
                         },
@@ -10971,7 +10684,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 44,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2017),
                             IsDeleted = false,
                             ProvinceName = "Hawaii"
                         },
@@ -10979,7 +10691,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 45,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2018),
                             IsDeleted = false,
                             ProvinceName = "Idaho"
                         },
@@ -10987,7 +10698,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 46,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2019),
                             IsDeleted = false,
                             ProvinceName = "Illinois"
                         },
@@ -10995,7 +10705,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 47,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2020),
                             IsDeleted = false,
                             ProvinceName = "Indiana"
                         },
@@ -11003,7 +10712,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 48,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2021),
                             IsDeleted = false,
                             ProvinceName = "Iowa"
                         },
@@ -11011,7 +10719,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 49,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2022),
                             IsDeleted = false,
                             ProvinceName = "Kansas"
                         },
@@ -11019,7 +10726,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 50,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2040),
                             IsDeleted = false,
                             ProvinceName = "Kentucky"
                         },
@@ -11027,7 +10733,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 51,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2041),
                             IsDeleted = false,
                             ProvinceName = "Louisiana"
                         },
@@ -11035,7 +10740,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 52,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2042),
                             IsDeleted = false,
                             ProvinceName = "Maine"
                         },
@@ -11043,7 +10747,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 53,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2043),
                             IsDeleted = false,
                             ProvinceName = "Maryland"
                         },
@@ -11051,7 +10754,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 54,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2044),
                             IsDeleted = false,
                             ProvinceName = "Massachusetts"
                         },
@@ -11059,7 +10761,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 55,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2045),
                             IsDeleted = false,
                             ProvinceName = "Michigan"
                         },
@@ -11067,7 +10768,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 56,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2046),
                             IsDeleted = false,
                             ProvinceName = "Minnesota"
                         },
@@ -11075,7 +10775,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 57,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2046),
                             IsDeleted = false,
                             ProvinceName = "Mississippi"
                         },
@@ -11083,7 +10782,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 58,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2048),
                             IsDeleted = false,
                             ProvinceName = "Missouri"
                         },
@@ -11091,7 +10789,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 59,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2049),
                             IsDeleted = false,
                             ProvinceName = "Montana"
                         },
@@ -11099,7 +10796,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 60,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2050),
                             IsDeleted = false,
                             ProvinceName = "Nebraska"
                         },
@@ -11107,7 +10803,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 61,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2051),
                             IsDeleted = false,
                             ProvinceName = "Nevada"
                         },
@@ -11115,7 +10810,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 62,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2053),
                             IsDeleted = false,
                             ProvinceName = "New Hampshire"
                         },
@@ -11123,7 +10817,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 63,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2054),
                             IsDeleted = false,
                             ProvinceName = "New Jersey"
                         },
@@ -11131,7 +10824,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 64,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2054),
                             IsDeleted = false,
                             ProvinceName = "New Mexico"
                         },
@@ -11139,7 +10831,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 65,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2059),
                             IsDeleted = false,
                             ProvinceName = "New York"
                         },
@@ -11147,7 +10838,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 66,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2061),
                             IsDeleted = false,
                             ProvinceName = "North Carolina"
                         },
@@ -11155,7 +10845,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 67,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2063),
                             IsDeleted = false,
                             ProvinceName = "North Dakota"
                         },
@@ -11163,7 +10852,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 68,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2064),
                             IsDeleted = false,
                             ProvinceName = "Ohio"
                         },
@@ -11171,7 +10859,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 69,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2065),
                             IsDeleted = false,
                             ProvinceName = "Oklahoma"
                         },
@@ -11179,7 +10866,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 70,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2066),
                             IsDeleted = false,
                             ProvinceName = "Oregon"
                         },
@@ -11187,7 +10873,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 71,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2066),
                             IsDeleted = false,
                             ProvinceName = "Pennsylvania"
                         },
@@ -11195,7 +10880,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 72,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2069),
                             IsDeleted = false,
                             ProvinceName = "Rhode Island"
                         },
@@ -11203,7 +10887,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 73,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2070),
                             IsDeleted = false,
                             ProvinceName = "South Carolina"
                         },
@@ -11211,7 +10894,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 74,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2072),
                             IsDeleted = false,
                             ProvinceName = "South Dakota"
                         },
@@ -11219,7 +10901,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 75,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2074),
                             IsDeleted = false,
                             ProvinceName = "Tennessee"
                         },
@@ -11227,7 +10908,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 76,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2076),
                             IsDeleted = false,
                             ProvinceName = "Texas"
                         },
@@ -11235,7 +10915,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 77,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2077),
                             IsDeleted = false,
                             ProvinceName = "Utah"
                         },
@@ -11243,7 +10922,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 78,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2079),
                             IsDeleted = false,
                             ProvinceName = "Vermont"
                         },
@@ -11251,7 +10929,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 79,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2081),
                             IsDeleted = false,
                             ProvinceName = "Virginia"
                         },
@@ -11259,7 +10936,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 80,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2083),
                             IsDeleted = false,
                             ProvinceName = "Washington"
                         },
@@ -11267,7 +10943,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 81,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2085),
                             IsDeleted = false,
                             ProvinceName = "West Virginia"
                         },
@@ -11275,7 +10950,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 82,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2087),
                             IsDeleted = false,
                             ProvinceName = "Wisconsin"
                         },
@@ -11283,7 +10957,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         {
                             ProvinceId = 83,
                             CountryId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 955, DateTimeKind.Utc).AddTicks(2089),
                             IsDeleted = false,
                             ProvinceName = "Wyoming"
                         });
@@ -11739,49 +11412,42 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         new
                         {
                             ReceiptTypeId = 1,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(2952),
                             IsDeleted = false,
                             ReceiptTypeName = "Purchased"
                         },
                         new
                         {
                             ReceiptTypeId = 2,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(3302),
                             IsDeleted = false,
                             ReceiptTypeName = "Transfers"
                         },
                         new
                         {
                             ReceiptTypeId = 3,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(3308),
                             IsDeleted = false,
                             ReceiptTypeName = "Donation"
                         },
                         new
                         {
                             ReceiptTypeId = 4,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(3310),
                             IsDeleted = false,
                             ReceiptTypeName = "Take Over"
                         },
                         new
                         {
                             ReceiptTypeId = 5,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(3310),
                             IsDeleted = false,
                             ReceiptTypeName = "Loan"
                         },
                         new
                         {
                             ReceiptTypeId = 6,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(3311),
                             IsDeleted = false,
                             ReceiptTypeName = "Return"
                         },
                         new
                         {
                             ReceiptTypeId = 7,
-                            CreatedDate = new DateTime(2019, 8, 9, 13, 14, 11, 954, DateTimeKind.Utc).AddTicks(3312),
                             IsDeleted = false,
                             ReceiptTypeName = "Other"
                         });
@@ -12853,6 +12519,21 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         .HasForeignKey("ModifiedById");
                 });
 
+            modelBuilder.Entity("HumanitarianAssistance.Domain.Entities.ChatDetail", b =>
+                {
+                    b.HasOne("HumanitarianAssistance.Domain.Entities.AppUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById");
+
+                    b.HasOne("HumanitarianAssistance.Domain.Entities.EntitySourceDocumentDetail", "EntitySourceDocumentDetail")
+                        .WithMany()
+                        .HasForeignKey("EntitySourceDocumentId");
+
+                    b.HasOne("HumanitarianAssistance.Domain.Entities.AppUser", "ModifiedBy")
+                        .WithMany()
+                        .HasForeignKey("ModifiedById");
+                });
+
             modelBuilder.Entity("HumanitarianAssistance.Domain.Entities.CodeType", b =>
                 {
                     b.HasOne("HumanitarianAssistance.Domain.Entities.AppUser", "CreatedBy")
@@ -12981,6 +12662,22 @@ namespace HumanitarianAssistance.Persistence.Migrations
                     b.HasOne("HumanitarianAssistance.Domain.Entities.AppUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById");
+
+                    b.HasOne("HumanitarianAssistance.Domain.Entities.AppUser", "ModifiedBy")
+                        .WithMany()
+                        .HasForeignKey("ModifiedById");
+                });
+
+            modelBuilder.Entity("HumanitarianAssistance.Domain.Entities.EntitySourceDocumentDetail", b =>
+                {
+                    b.HasOne("HumanitarianAssistance.Domain.Entities.AppUser", "CreatedBy")
+                        .WithMany()
+                        .HasForeignKey("CreatedById");
+
+                    b.HasOne("HumanitarianAssistance.Domain.Entities.DocumentFileDetail", "DocumentFileDetail")
+                        .WithMany()
+                        .HasForeignKey("DocumentFileId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("HumanitarianAssistance.Domain.Entities.AppUser", "ModifiedBy")
                         .WithMany()

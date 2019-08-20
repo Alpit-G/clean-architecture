@@ -8,7 +8,6 @@ using HumanitarianAssistance.Application.Accounting.Models;
 using HumanitarianAssistance.Application.Accounting.Queries;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Enums;
-using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,21 +17,22 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
     [Route("api/ExchangeRates/[Action]/")]
     [ApiExplorerSettings(GroupName = nameof(SwaggerGrouping.Accounting))]
     [Authorize]
-    public class ExchangeRatesController: BaseController
+    public class ExchangeRatesController : BaseController
     {
 
         [HttpPost]
-        public async Task<ApiResponse> GetSavedExchangeRatesAsync([FromBody] GetSavedExchangeRatesQuery filter)
+        public async Task<ApiResponse> GetSavedExchangeRates([FromBody] GetSavedExchangeRatesQuery filter)
         {
-             return await _mediator.Send(filter);
+            return await _mediator.Send(filter);
         }
 
         [HttpPost]
         public async Task<ApiResponse> SaveSystemGeneratedExchangeRates([FromBody] List<GenerateExchangeRateModel> model)
         {
-            AddExchangeRateCommand command= new AddExchangeRateCommand();
-            command.GenerateExchangeRateModel.AddRange(model);
-            return await _mediator.Send(command);
+            return await _mediator.Send(new AddExchangeRateCommand
+            {
+                GenerateExchangeRateModel = model
+            });
         }
 
         [HttpPost]
@@ -50,13 +50,13 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
         [HttpPost]
         public async Task<ApiResponse> VerifyExchangeRates([FromBody] DateTime model)
         {
-            return await _mediator.Send(new VerifyExchangeRatesCommand { ExchangeRateDate= model} );
+            return await _mediator.Send(new VerifyExchangeRatesCommand { ExchangeRateDate = model });
         }
 
         [HttpPost]
         public async Task<ApiResponse> DeleteExchangeRates([FromBody] DateTime model)
         {
-            return await _mediator.Send(new DeleteExchangeRatesCommand { ExchangeRateDate= model} );
+            return await _mediator.Send(new DeleteExchangeRatesCommand { ExchangeRateDate = model });
         }
     }
 }

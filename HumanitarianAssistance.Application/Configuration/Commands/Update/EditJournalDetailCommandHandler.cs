@@ -1,7 +1,6 @@
 using System;
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
 using HumanitarianAssistance.Persistence;
@@ -12,13 +11,10 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Update
 {
     public class EditJournalDetailCommandHandler : IRequestHandler<EditJournalDetailCommand, ApiResponse>
     {
-
         private readonly HumanitarianAssistanceDbContext _dbContext;
-        private IMapper _mapper;
-        public EditJournalDetailCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
+        public EditJournalDetailCommandHandler(HumanitarianAssistanceDbContext dbContext)
         {
             _dbContext = dbContext;
-            _mapper = mapper;
         }
 
         public async Task<ApiResponse> Handle(EditJournalDetailCommand request, CancellationToken cancellationToken)
@@ -27,20 +23,26 @@ namespace HumanitarianAssistance.Application.Configuration.Commands.Update
             try
             {
                 var journalInfo = await _dbContext.JournalDetail.FirstOrDefaultAsync(c => c.JournalCode == request.JournalCode);
+
+                if (journalInfo == null)
+                {
+                    throw new Exception(StaticResource.JournalNotFound);
+                }
+
                 journalInfo.JournalName = request.JournalName;
                 journalInfo.JournalType = request.JournalType;
                 journalInfo.ModifiedById = request.ModifiedById;
                 journalInfo.ModifiedDate = request.ModifiedDate;
 
-                _dbContext.JournalDetail.Update(journalInfo);
                 await _dbContext.SaveChangesAsync();
+
                 response.StatusCode = StaticResource.successStatusCode;
-                response.Message = "Success";
+                response.Message = StaticResource.SuccessText;
             }
             catch (Exception ex)
             {
                 response.StatusCode = StaticResource.failStatusCode;
-                response.Message = StaticResource.SomethingWrong + ex.Message;
+                response.Message = ex.Message;
             }
             return response;
         }

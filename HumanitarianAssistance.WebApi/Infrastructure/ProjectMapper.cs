@@ -16,6 +16,7 @@ namespace HumanitarianAssistance.WebApi.Infrastructure
     {
         public ProjectMapper()
         {
+            CreateMap<ProgramDetail, EditProgramDetailCommand>().ReverseMap();
             CreateMap<AddEditProjectDetailCommand, ProjectDetail>().ReverseMap();
             CreateMap<AddEditDonorDetailsCommand, DonorDetail>().ReverseMap();
             CreateMap<AddEditProjectAssignToEmployeeCommand, ProjectAssignTo>().ReverseMap();
@@ -26,7 +27,6 @@ namespace HumanitarianAssistance.WebApi.Infrastructure
             CreateMap<AddProjectActivityDetailCommand, ProjectActivityDetail>().ReverseMap();
             CreateMap<AddProjectSubActivityDetailCommand, ProjectActivityDetail>().ReverseMap();
             CreateMap<EditAreaDetailCommand, AreaDetail>().ReverseMap();
-            CreateMap<EditProgramDetailCommand, ProgramDetail>().ReverseMap();
             CreateMap<EditProjectActivityDetailCommand, ProjectActivityDetail>().ReverseMap();
             CreateMap<EditSectorDetailCommand, SectorDetails>().ReverseMap();
             CreateMap<ProjectBudgetLineDetailModel, ProjectBudgetLineDetail>().ReverseMap();
