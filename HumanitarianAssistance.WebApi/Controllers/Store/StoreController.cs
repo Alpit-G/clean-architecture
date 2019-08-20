@@ -425,7 +425,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Store
             return await _mediator.Send(command);
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<ApiResponse> DeleteStoreSourceCode([FromQuery]int Id)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -460,7 +460,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Store
             command.ModifiedDate = DateTime.UtcNow;
             return await _mediator.Send(command);
         }
-        [HttpPost]
+        [HttpDelete]
         public async Task<ApiResponse> DeletePaymentTypes([FromQuery] int PaymentId)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -516,7 +516,7 @@ namespace HumanitarianAssistance.WebApi.Controllers.Store
             return await _mediator.Send(command);
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<ApiResponse> GetAllStoreItemGroups([FromQuery]string Id)
         {
             return await _mediator.Send(new GetAllStoreItemGroupsQuery { inventoryId = Id });

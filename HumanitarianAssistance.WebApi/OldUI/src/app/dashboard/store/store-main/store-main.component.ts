@@ -433,7 +433,7 @@ export class StoreMainComponent implements OnInit, OnDestroy {
           this.setting.getBaseUrl() +
             GLOBAL.API_Store_GetItemSpecificationsMaster,
           officeId,
-          itemDetails.itemType
+          itemDetails.ItemType
         )
         .subscribe(
           data => {
