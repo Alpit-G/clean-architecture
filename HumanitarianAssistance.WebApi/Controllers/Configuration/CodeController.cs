@@ -70,10 +70,9 @@ namespace HumanitarianAssistance.WebApi.Controllers.Configuration
         public async Task<ApiResponse> AddCurrency([FromBody] AddCurrencyCommand model)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            model.ModifiedById = userId;
-            model.ModifiedDate = DateTime.UtcNow;
             model.CreatedById = userId;
             model.CreatedDate = DateTime.UtcNow;
+            
             return await _mediator.Send(model);
         }
 

@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace HumanitarianAssistance.Persistence.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class InitialMigration19082019 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -97,42 +97,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ActivityTypes", x => x.ActivityTypeId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AnalyticalDetail",
-                columns: table => new
-                {
-                    AnalyticalId = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    MemoCode = table.Column<string>(maxLength: 10, nullable: true),
-                    MemoType = table.Column<byte>(nullable: false),
-                    Program = table.Column<string>(maxLength: 10, nullable: true),
-                    Project = table.Column<string>(maxLength: 10, nullable: true),
-                    Job = table.Column<string>(maxLength: 10, nullable: true),
-                    Sector = table.Column<string>(maxLength: 10, nullable: true),
-                    Area = table.Column<string>(maxLength: 10, nullable: true),
-                    MDCode = table.Column<string>(maxLength: 10, nullable: true),
-                    MemoName = table.Column<string>(maxLength: 200, nullable: true),
-                    BLAmount = table.Column<float>(nullable: true),
-                    BLCurrCode = table.Column<string>(maxLength: 5, nullable: true),
-                    CostBook = table.Column<string>(maxLength: 10, nullable: true),
-                    Status = table.Column<byte>(nullable: false),
-                    DonorCode = table.Column<string>(maxLength: 50, nullable: true),
-                    BLType = table.Column<byte>(nullable: false),
-                    StartDate = table.Column<DateTime>(nullable: false),
-                    EndDate = table.Column<DateTime>(nullable: false),
-                    ReceivedAmount = table.Column<float>(nullable: true),
-                    Attachment = table.Column<string>(maxLength: 100, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AnalyticalDetail", x => x.AnalyticalId);
                 });
 
             migrationBuilder.CreateTable(
@@ -451,33 +415,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EmployeeAnalyticalDetail",
-                columns: table => new
-                {
-                    AnalyticalID = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    EmployeeID = table.Column<int>(nullable: false),
-                    Donor = table.Column<string>(maxLength: 10, nullable: true),
-                    AccountCode = table.Column<string>(maxLength: 10, nullable: true),
-                    Area = table.Column<string>(maxLength: 10, nullable: true),
-                    Sector = table.Column<string>(maxLength: 10, nullable: true),
-                    Program = table.Column<string>(maxLength: 10, nullable: true),
-                    Project = table.Column<string>(maxLength: 10, nullable: true),
-                    Job = table.Column<string>(maxLength: 10, nullable: true),
-                    CostBook = table.Column<string>(maxLength: 10, nullable: true),
-                    SalaryPercentage = table.Column<float>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EmployeeAnalyticalDetail", x => x.AnalyticalID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "EmployeeAppraisalTeamMember",
                 columns: table => new
                 {
@@ -599,31 +536,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_EmployeeType", x => x.EmployeeTypeId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Errorlog",
-                columns: table => new
-                {
-                    ExceptionId = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    Status = table.Column<int>(nullable: true),
-                    stackTrace = table.Column<string>(nullable: true),
-                    UserName = table.Column<string>(nullable: true),
-                    Section = table.Column<int>(nullable: true),
-                    ModuleName = table.Column<string>(nullable: true),
-                    IsActive = table.Column<bool>(nullable: true),
-                    FileName = table.Column<string>(nullable: true),
-                    DataXml = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Errorlog", x => x.ExceptionId);
                 });
 
             migrationBuilder.CreateTable(
@@ -818,24 +730,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Languages",
-                columns: table => new
-                {
-                    LanguageId = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    LanguageName = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Languages", x => x.LanguageId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "LeaveReasonDetail",
                 columns: table => new
                 {
@@ -1012,6 +906,24 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Permissions",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    CreatedDate = table.Column<DateTime>(nullable: true),
+                    ModifiedDate = table.Column<DateTime>(nullable: true),
+                    CreatedById = table.Column<string>(nullable: true),
+                    ModifiedById = table.Column<string>(nullable: true),
+                    IsDeleted = table.Column<bool>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Permissions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "PermissionsInRoles",
                 columns: table => new
                 {
@@ -1092,33 +1004,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ProgramDetail", x => x.ProgramId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProjectDetails",
-                columns: table => new
-                {
-                    ProjectId = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    ProjectName = table.Column<string>(maxLength: 50, nullable: false),
-                    Description = table.Column<string>(nullable: true),
-                    StartDate = table.Column<DateTime>(nullable: false),
-                    EndDate = table.Column<DateTime>(nullable: false),
-                    CurrencyId = table.Column<int>(nullable: true),
-                    Budget = table.Column<double>(nullable: true),
-                    ReceivableAmount = table.Column<double>(nullable: true),
-                    PayableAmount = table.Column<double>(nullable: true),
-                    CurrentBalance = table.Column<double>(nullable: true),
-                    Status = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProjectDetails", x => x.ProjectId);
                 });
 
             migrationBuilder.CreateTable(
@@ -1800,36 +1685,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Permissions",
-                columns: table => new
-                {
-                    Id = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    CreatedDate = table.Column<DateTime>(nullable: false),
-                    ModifiedDate = table.Column<DateTime>(nullable: false),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Permissions", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Permissions_AspNetUsers_CreatedById",
-                        column: x => x.CreatedById,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Permissions_AspNetUsers_ModifiedById",
-                        column: x => x.ModifiedById,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ClientDetails",
                 columns: table => new
                 {
@@ -2106,7 +1961,7 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ExchangeRates",
+                name: "ExchangeRate",
                 columns: table => new
                 {
                     ExchangeRateId = table.Column<long>(nullable: false)
@@ -2126,21 +1981,21 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ExchangeRates", x => x.ExchangeRateId);
+                    table.PrimaryKey("PK_ExchangeRate", x => x.ExchangeRateId);
                     table.ForeignKey(
-                        name: "FK_ExchangeRates_CurrencyDetails_FromCurrency",
+                        name: "FK_ExchangeRate_CurrencyDetails_FromCurrency",
                         column: x => x.FromCurrency,
                         principalTable: "CurrencyDetails",
                         principalColumn: "CurrencyId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ExchangeRates_OfficeDetail_OfficeId",
+                        name: "FK_ExchangeRate_OfficeDetail_OfficeId",
                         column: x => x.OfficeId,
                         principalTable: "OfficeDetail",
                         principalColumn: "OfficeId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ExchangeRates_CurrencyDetails_ToCurrency",
+                        name: "FK_ExchangeRate_CurrencyDetails_ToCurrency",
                         column: x => x.ToCurrency,
                         principalTable: "CurrencyDetails",
                         principalColumn: "CurrencyId",
@@ -2334,70 +2189,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         column: x => x.ProducerId,
                         principalTable: "Producers",
                         principalColumn: "ProducerId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProjectBudgetLine",
-                columns: table => new
-                {
-                    BudgetLineId = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
-                    ProjectId = table.Column<long>(nullable: false),
-                    StartDate = table.Column<DateTime>(nullable: false),
-                    EndDate = table.Column<DateTime>(nullable: false),
-                    AmountReceivable = table.Column<double>(nullable: false),
-                    AmountPayable = table.Column<double>(nullable: false),
-                    BudgetLineTypeId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProjectBudgetLine", x => x.BudgetLineId);
-                    table.ForeignKey(
-                        name: "FK_ProjectBudgetLine_BudgetLineType_BudgetLineTypeId",
-                        column: x => x.BudgetLineTypeId,
-                        principalTable: "BudgetLineType",
-                        principalColumn: "BudgetLineTypeId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_ProjectBudgetLine_ProjectDetails_ProjectId",
-                        column: x => x.ProjectId,
-                        principalTable: "ProjectDetails",
-                        principalColumn: "ProjectId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "TaskMaster",
-                columns: table => new
-                {
-                    TaskId = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    TaskName = table.Column<string>(nullable: true),
-                    Priority = table.Column<string>(maxLength: 20, nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    ProjectId = table.Column<long>(nullable: true),
-                    Status = table.Column<string>(maxLength: 50, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TaskMaster", x => x.TaskId);
-                    table.ForeignKey(
-                        name: "FK_TaskMaster_ProjectDetails_ProjectId",
-                        column: x => x.ProjectId,
-                        principalTable: "ProjectDetails",
-                        principalColumn: "ProjectId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -2883,67 +2674,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BudgetReceivable",
-                columns: table => new
-                {
-                    BudgetReceivalbeId = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    ProjectId = table.Column<long>(nullable: true),
-                    BudgetLineId = table.Column<long>(nullable: false),
-                    Amount = table.Column<double>(nullable: false),
-                    ExpectedDate = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BudgetReceivable", x => x.BudgetReceivalbeId);
-                    table.ForeignKey(
-                        name: "FK_BudgetReceivable_ProjectBudgetLine_BudgetLineId",
-                        column: x => x.BudgetLineId,
-                        principalTable: "ProjectBudgetLine",
-                        principalColumn: "BudgetLineId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_BudgetReceivable_ProjectDetails_ProjectId",
-                        column: x => x.ProjectId,
-                        principalTable: "ProjectDetails",
-                        principalColumn: "ProjectId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ActivityMaster",
-                columns: table => new
-                {
-                    ActivityId = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    TaskId = table.Column<int>(nullable: false),
-                    ActivityName = table.Column<string>(nullable: true),
-                    Priority = table.Column<string>(maxLength: 20, nullable: true),
-                    Description = table.Column<string>(nullable: true),
-                    Status = table.Column<string>(maxLength: 50, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ActivityMaster", x => x.ActivityId);
-                    table.ForeignKey(
-                        name: "FK_ActivityMaster_TaskMaster_TaskId",
-                        column: x => x.TaskId,
-                        principalTable: "TaskMaster",
-                        principalColumn: "TaskId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ProjectMonitoringIndicatorQuestions",
                 columns: table => new
                 {
@@ -3076,31 +2806,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                     table.PrimaryKey("PK_CEFeasibilityExpertOtherDetail", x => x.ExpertOtherDetailId);
                     table.ForeignKey(
                         name: "FK_CEFeasibilityExpertOtherDetail_ProjectDetail_ProjectId",
-                        column: x => x.ProjectId,
-                        principalTable: "ProjectDetail",
-                        principalColumn: "ProjectId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "CEOccupationDetail",
-                columns: table => new
-                {
-                    OccupationOtherDetailId = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    ProjectId = table.Column<long>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CEOccupationDetail", x => x.OccupationOtherDetailId);
-                    table.ForeignKey(
-                        name: "FK_CEOccupationDetail_ProjectDetail_ProjectId",
                         column: x => x.ProjectId,
                         principalTable: "ProjectDetail",
                         principalColumn: "ProjectId",
@@ -4167,41 +3872,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "NotesMaster",
-                columns: table => new
-                {
-                    NoteId = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    ChartOfAccountNewId = table.Column<long>(nullable: false),
-                    Narration = table.Column<string>(nullable: true),
-                    Notes = table.Column<int>(nullable: false),
-                    BlanceType = table.Column<int>(nullable: false),
-                    FinancialReportTypeId = table.Column<int>(nullable: false),
-                    AccountTypeId = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_NotesMaster", x => x.NoteId);
-                    table.ForeignKey(
-                        name: "FK_NotesMaster_AccountType_AccountTypeId",
-                        column: x => x.AccountTypeId,
-                        principalTable: "AccountType",
-                        principalColumn: "AccountTypeId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_NotesMaster_ChartOfAccountNew_ChartOfAccountNewId",
-                        column: x => x.ChartOfAccountNewId,
-                        principalTable: "ChartOfAccountNew",
-                        principalColumn: "ChartOfAccountNewId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "PensionDebitAccountMaster",
                 columns: table => new
                 {
@@ -4910,55 +4580,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EmployeePayrollForMonth",
-                columns: table => new
-                {
-                    EmployeePaymentTypesId = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    OfficeId = table.Column<int>(nullable: false),
-                    CurrencyId = table.Column<int>(nullable: false),
-                    FinancialYearDate = table.Column<DateTime>(nullable: false),
-                    EmployeeID = table.Column<int>(nullable: false),
-                    EmployeeName = table.Column<string>(nullable: true),
-                    PaymentType = table.Column<int>(nullable: false),
-                    WorkingDays = table.Column<int>(nullable: false),
-                    PresentDays = table.Column<int>(nullable: false),
-                    AbsentDays = table.Column<int>(nullable: false),
-                    LeaveDays = table.Column<int>(nullable: false),
-                    TotalWorkHours = table.Column<int>(nullable: false),
-                    HourlyRate = table.Column<double>(nullable: true),
-                    TotalGeneralAmount = table.Column<double>(nullable: true),
-                    TotalAllowance = table.Column<double>(nullable: true),
-                    TotalDeduction = table.Column<double>(nullable: true),
-                    GrossSalary = table.Column<double>(nullable: true),
-                    OverTimeHours = table.Column<double>(nullable: true),
-                    IsApproved = table.Column<bool>(nullable: false),
-                    PensionRate = table.Column<double>(nullable: true),
-                    PensionAmount = table.Column<double>(nullable: true),
-                    SalaryTax = table.Column<double>(nullable: true),
-                    NetSalary = table.Column<double>(nullable: true),
-                    AdvanceAmount = table.Column<double>(nullable: false),
-                    IsAdvanceApproved = table.Column<bool>(nullable: false),
-                    IsAdvanceRecovery = table.Column<bool>(nullable: false),
-                    AdvanceRecoveryAmount = table.Column<double>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EmployeePayrollForMonth", x => x.EmployeePaymentTypesId);
-                    table.ForeignKey(
-                        name: "FK_EmployeePayrollForMonth_EmployeeDetail_EmployeeID",
-                        column: x => x.EmployeeID,
-                        principalTable: "EmployeeDetail",
-                        principalColumn: "EmployeeID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "EmployeePayrollMonth",
                 columns: table => new
                 {
@@ -5346,85 +4967,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         principalTable: "ProjectDetail",
                         principalColumn: "ProjectId",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "BudgetReceivedAmount",
-                columns: table => new
-                {
-                    BudgetReceivedAmountId = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    BudgetReceivalbeId = table.Column<long>(nullable: false),
-                    ReceiptId = table.Column<long>(nullable: false),
-                    ReceivedDate = table.Column<DateTime>(nullable: false),
-                    Amount = table.Column<double>(nullable: false),
-                    Remark = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_BudgetReceivedAmount", x => x.BudgetReceivedAmountId);
-                    table.ForeignKey(
-                        name: "FK_BudgetReceivedAmount_BudgetReceivable_BudgetReceivalbeId",
-                        column: x => x.BudgetReceivalbeId,
-                        principalTable: "BudgetReceivable",
-                        principalColumn: "BudgetReceivalbeId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AssignActivity",
-                columns: table => new
-                {
-                    AssignActivityId = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    ProjectId = table.Column<long>(nullable: false),
-                    TaskId = table.Column<int>(nullable: false),
-                    ActivityId = table.Column<int>(nullable: false),
-                    UserId = table.Column<string>(nullable: true),
-                    PlannedStartDate = table.Column<DateTime>(nullable: true),
-                    PlannedEndDate = table.Column<DateTime>(nullable: true),
-                    ActualStartDate = table.Column<DateTime>(nullable: true),
-                    ActualEndDate = table.Column<DateTime>(nullable: true),
-                    Status = table.Column<string>(maxLength: 20, nullable: true),
-                    ApprovedStatus = table.Column<string>(maxLength: 30, nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AssignActivity", x => x.AssignActivityId);
-                    table.ForeignKey(
-                        name: "FK_AssignActivity_ActivityMaster_ActivityId",
-                        column: x => x.ActivityId,
-                        principalTable: "ActivityMaster",
-                        principalColumn: "ActivityId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AssignActivity_ProjectDetails_ProjectId",
-                        column: x => x.ProjectId,
-                        principalTable: "ProjectDetails",
-                        principalColumn: "ProjectId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AssignActivity_TaskMaster_TaskId",
-                        column: x => x.TaskId,
-                        principalTable: "TaskMaster",
-                        principalColumn: "TaskId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AssignActivity_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -5871,73 +5413,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         principalTable: "InterviewDetails",
                         principalColumn: "InterviewDetailsId",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AssignActivityApproveBy",
-                columns: table => new
-                {
-                    AssignActivityApprovedById = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    AssignActivityId = table.Column<long>(nullable: false),
-                    ApprovedById = table.Column<string>(nullable: true),
-                    Status = table.Column<string>(maxLength: 20, nullable: true),
-                    Date = table.Column<DateTime>(nullable: true),
-                    Description = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AssignActivityApproveBy", x => x.AssignActivityApprovedById);
-                    table.ForeignKey(
-                        name: "FK_AssignActivityApproveBy_AspNetUsers_ApprovedById",
-                        column: x => x.ApprovedById,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_AssignActivityApproveBy_AssignActivity_AssignActivityId",
-                        column: x => x.AssignActivityId,
-                        principalTable: "AssignActivity",
-                        principalColumn: "AssignActivityId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "AssignActivityFeedback",
-                columns: table => new
-                {
-                    FeedbackId = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    AssignActivityId = table.Column<long>(nullable: false),
-                    UserId = table.Column<string>(nullable: true),
-                    Feedback = table.Column<string>(nullable: true),
-                    Date = table.Column<DateTime>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_AssignActivityFeedback", x => x.FeedbackId);
-                    table.ForeignKey(
-                        name: "FK_AssignActivityFeedback_AssignActivity_AssignActivityId",
-                        column: x => x.AssignActivityId,
-                        principalTable: "AssignActivity",
-                        principalColumn: "AssignActivityId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_AssignActivityFeedback_AspNetUsers_UserId",
-                        column: x => x.UserId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateTable(
@@ -6641,37 +6116,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "VoucherDocumentDetail",
-                columns: table => new
-                {
-                    VoucherDocumentId = table.Column<long>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    VoucherNo = table.Column<long>(nullable: false),
-                    DocumentFileId = table.Column<long>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_VoucherDocumentDetail", x => x.VoucherDocumentId);
-                    table.ForeignKey(
-                        name: "FK_VoucherDocumentDetail_DocumentFileDetail_DocumentFileId",
-                        column: x => x.DocumentFileId,
-                        principalTable: "DocumentFileDetail",
-                        principalColumn: "DocumentFileId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_VoucherDocumentDetail_VoucherDetail_VoucherNo",
-                        column: x => x.VoucherNo,
-                        principalTable: "VoucherDetail",
-                        principalColumn: "VoucherNo",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "VoucherTransactions",
                 columns: table => new
                 {
@@ -6839,9 +6283,9 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         principalColumn: "ItemId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_StoreItemPurchases_ProjectDetails_ProjectId",
+                        name: "FK_StoreItemPurchases_ProjectDetail_ProjectId",
                         column: x => x.ProjectId,
-                        principalTable: "ProjectDetails",
+                        principalTable: "ProjectDetail",
                         principalColumn: "ProjectId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -6921,96 +6365,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ItemPurchaseDocuments",
-                columns: table => new
-                {
-                    DocumentId = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    DocumentName = table.Column<string>(nullable: true),
-                    File = table.Column<byte[]>(nullable: true),
-                    FileType = table.Column<string>(nullable: true),
-                    FileName = table.Column<string>(nullable: true),
-                    DocumentGuid = table.Column<string>(nullable: true),
-                    Purchase = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ItemPurchaseDocuments", x => x.DocumentId);
-                    table.ForeignKey(
-                        name: "FK_ItemPurchaseDocuments_StoreItemPurchases_Purchase",
-                        column: x => x.Purchase,
-                        principalTable: "StoreItemPurchases",
-                        principalColumn: "PurchaseId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PurchaseGenerators",
-                columns: table => new
-                {
-                    GeneratorId = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    Purchase = table.Column<string>(nullable: false),
-                    GeneratorBrand = table.Column<string>(nullable: true),
-                    GeneratorModel = table.Column<string>(nullable: true),
-                    MakeYear = table.Column<string>(nullable: true),
-                    SerialBarCode = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PurchaseGenerators", x => x.GeneratorId);
-                    table.ForeignKey(
-                        name: "FK_PurchaseGenerators_StoreItemPurchases_Purchase",
-                        column: x => x.Purchase,
-                        principalTable: "StoreItemPurchases",
-                        principalColumn: "PurchaseId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "PurchaseVehicles",
-                columns: table => new
-                {
-                    VehicleId = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    Purchase = table.Column<string>(nullable: true),
-                    VehicleDescription = table.Column<string>(nullable: true),
-                    VehicleBrand = table.Column<string>(nullable: true),
-                    VehicleModel = table.Column<string>(nullable: true),
-                    VehicleMakeYear = table.Column<string>(nullable: true),
-                    VehiclePlate = table.Column<string>(nullable: true),
-                    VehicleSerialNo = table.Column<string>(nullable: true),
-                    VehicleImageName = table.Column<string>(nullable: true),
-                    VehicleImageFileName = table.Column<string>(nullable: true),
-                    VehicleImageFileType = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_PurchaseVehicles", x => x.VehicleId);
-                    table.ForeignKey(
-                        name: "FK_PurchaseVehicles_StoreItemPurchases_Purchase",
-                        column: x => x.Purchase,
-                        principalTable: "StoreItemPurchases",
-                        principalColumn: "PurchaseId",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "StorePurchaseOrders",
                 columns: table => new
                 {
@@ -7057,170 +6411,12 @@ namespace HumanitarianAssistance.Persistence.Migrations
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "MotorMaintenances",
-                columns: table => new
-                {
-                    MaintenanceId = table.Column<string>(nullable: false),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    Order = table.Column<string>(nullable: true),
-                    Generator = table.Column<int>(nullable: false),
-                    Vehicle = table.Column<int>(nullable: false),
-                    Description = table.Column<string>(nullable: true),
-                    StoreName = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MotorMaintenances", x => x.MaintenanceId);
-                    table.ForeignKey(
-                        name: "FK_MotorMaintenances_PurchaseGenerators_Generator",
-                        column: x => x.Generator,
-                        principalTable: "PurchaseGenerators",
-                        principalColumn: "GeneratorId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_MotorMaintenances_StorePurchaseOrders_Order",
-                        column: x => x.Order,
-                        principalTable: "StorePurchaseOrders",
-                        principalColumn: "OrderId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_MotorMaintenances_PurchaseVehicles_Vehicle",
-                        column: x => x.Vehicle,
-                        principalTable: "PurchaseVehicles",
-                        principalColumn: "VehicleId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "MotorSpareParts",
-                columns: table => new
-                {
-                    PartId = table.Column<string>(nullable: false),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    Order = table.Column<string>(nullable: true),
-                    Generator = table.Column<int>(nullable: false),
-                    Vehicle = table.Column<int>(nullable: false),
-                    PartName = table.Column<string>(nullable: true),
-                    PartDescription = table.Column<string>(nullable: true),
-                    PartUsed = table.Column<bool>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_MotorSpareParts", x => x.PartId);
-                    table.ForeignKey(
-                        name: "FK_MotorSpareParts_PurchaseGenerators_Generator",
-                        column: x => x.Generator,
-                        principalTable: "PurchaseGenerators",
-                        principalColumn: "GeneratorId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_MotorSpareParts_StorePurchaseOrders_Order",
-                        column: x => x.Order,
-                        principalTable: "StorePurchaseOrders",
-                        principalColumn: "OrderId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_MotorSpareParts_PurchaseVehicles_Vehicle",
-                        column: x => x.Vehicle,
-                        principalTable: "PurchaseVehicles",
-                        principalColumn: "VehicleId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "VehicleFuel",
-                columns: table => new
-                {
-                    FuelId = table.Column<string>(nullable: false),
-                    CreatedDate = table.Column<DateTime>(nullable: true),
-                    ModifiedDate = table.Column<DateTime>(nullable: true),
-                    CreatedById = table.Column<string>(nullable: true),
-                    ModifiedById = table.Column<string>(nullable: true),
-                    IsDeleted = table.Column<bool>(nullable: false),
-                    Order = table.Column<string>(nullable: true),
-                    Vehicle = table.Column<int>(nullable: false),
-                    Generator = table.Column<int>(nullable: false),
-                    FuelQuantity = table.Column<long>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_VehicleFuel", x => x.FuelId);
-                    table.ForeignKey(
-                        name: "FK_VehicleFuel_PurchaseGenerators_Generator",
-                        column: x => x.Generator,
-                        principalTable: "PurchaseGenerators",
-                        principalColumn: "GeneratorId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_VehicleFuel_StorePurchaseOrders_Order",
-                        column: x => x.Order,
-                        principalTable: "StorePurchaseOrders",
-                        principalColumn: "OrderId",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_VehicleFuel_PurchaseVehicles_Vehicle",
-                        column: x => x.Vehicle,
-                        principalTable: "PurchaseVehicles",
-                        principalColumn: "VehicleId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.InsertData(
-                table: "AccountFilterType",
-                columns: new[] { "AccountFilterTypeId", "AccountFilterTypeName", "CreatedById", "CreatedDate", "IsDeleted", "ModifiedById", "ModifiedDate" },
-                values: new object[,]
-                {
-                    { 1, "Inventory Account", null, null, false, null, null },
-                    { 2, "Salary Account", null, null, false, null, null }
-                });
-
-            migrationBuilder.InsertData(
-                table: "AccountHeadType",
-                columns: new[] { "AccountHeadTypeId", "AccountHeadTypeName", "CreatedById", "CreatedDate", "IsCreditBalancetype", "IsDeleted", "ModifiedById", "ModifiedDate" },
-                values: new object[,]
-                {
-                    { 1, "Assets", null, null, false, false, null, null },
-                    { 2, "Liabilities", null, null, true, false, null, null },
-                    { 3, "Donors Equity", null, null, true, false, null, null },
-                    { 4, "Income", null, null, true, false, null, null },
-                    { 5, "Expense", null, null, false, false, null, null }
-                });
-
-            migrationBuilder.InsertData(
-                table: "AccountLevel",
-                columns: new[] { "AccountLevelId", "AccountLevelName", "CreatedById", "CreatedDate", "IsDeleted", "ModifiedById", "ModifiedDate" },
-                values: new object[,]
-                {
-                    { 3, "Sub Level Accounts", null, null, false, null, null },
-                    { 4, "Input Level Accounts", null, null, false, null, null },
-                    { 1, "Main Level Accounts", null, null, false, null, null },
-                    { 2, "Control Level Accounts", null, null, false, null, null }
-                });
-
-            migrationBuilder.InsertData(
-                table: "ActivityTypes",
-                columns: new[] { "ActivityTypeId", "ActivityName", "CreatedById", "CreatedDate", "IsDeleted", "ModifiedById", "ModifiedDate" },
-                values: new object[,]
-                {
-                    { 2L, "Production", null, null, false, null, null },
-                    { 1L, "Broadcasting", null, null, false, null, null }
-                });
-
             migrationBuilder.InsertData(
                 table: "ApplicationPages",
                 columns: new[] { "PageId", "CreatedById", "CreatedDate", "IsDeleted", "ModifiedById", "ModifiedDate", "ModuleId", "ModuleName", "PageName" },
                 values: new object[,]
                 {
-                    { 57, null, null, false, null, null, 7, "AccountingNew", "Liabilities" },
+                    { 1, null, null, false, null, null, 1, "Users", "Users" },
                     { 64, null, null, false, null, null, 6, "Marketing", "UnitRates" },
                     { 63, null, null, false, null, null, 6, "Marketing", "Clients" },
                     { 62, null, null, false, null, null, 7, "AccountingNew", "Vouchers" },
@@ -7228,22 +6424,21 @@ namespace HumanitarianAssistance.Persistence.Migrations
                     { 60, null, null, false, null, null, 7, "AccountingNew", "BalanceSheet" },
                     { 59, null, null, false, null, null, 7, "AccountingNew", "Expense" },
                     { 58, null, null, false, null, null, 7, "AccountingNew", "Income" },
+                    { 57, null, null, false, null, null, 7, "AccountingNew", "Liabilities" },
+                    { 65, null, null, false, null, null, 6, "Marketing", "Jobs" },
                     { 56, null, null, false, null, null, 7, "AccountingNew", "Assets" },
-                    { 50, null, null, false, null, null, 6, "Marketing", "Quality" },
                     { 54, null, null, false, null, null, 6, "Marketing", "MediaCategory" },
                     { 53, null, null, false, null, null, 6, "Marketing", "Medium" },
                     { 52, null, null, false, null, null, 6, "Marketing", "Nature" },
                     { 51, null, null, false, null, null, 6, "Marketing", "Phase" },
-                    { 65, null, null, false, null, null, 6, "Marketing", "Jobs" },
+                    { 50, null, null, false, null, null, 6, "Marketing", "Quality" },
                     { 49, null, null, false, null, null, 6, "Marketing", "TimeCategory" },
                     { 48, null, null, false, null, null, 5, "Store", "DepreciationReport" },
                     { 47, null, null, false, null, null, 5, "Store", "ProcurementSummary" },
                     { 55, null, null, false, null, null, 6, "Marketing", "ActivityType" },
+                    { 46, null, null, false, null, null, 5, "Store", "Store" },
                     { 66, null, null, false, null, null, 6, "Marketing", "Contracts" },
-                    { 73, null, null, false, null, null, 6, "Marketing", "Policy" },
                     { 68, null, null, false, null, null, 8, "Projects", "Donors" },
-                    { 88, null, null, false, null, null, 2, "Code", "AttendanceGroupMaster" },
-                    { 87, null, null, false, null, null, 2, "Code", "PensionDebitAccount" },
                     { 86, null, null, false, null, null, 8, "Projects", "HiringRequests" },
                     { 85, null, null, false, null, null, 7, "AccountingNew", "VoucherSummaryReport" },
                     { 84, null, null, false, null, null, 8, "Projects", "ProjectPeople" },
@@ -7252,18 +6447,19 @@ namespace HumanitarianAssistance.Persistence.Migrations
                     { 81, null, null, false, null, null, 8, "Projects", "BroadCastPolicy" },
                     { 80, null, null, false, null, null, 8, "Projects", "ProjectBudgetLine" },
                     { 79, null, null, false, null, null, 8, "Projects", "ProjectCashFlow" },
+                    { 67, null, null, false, null, null, 8, "Projects", "MyProjects" },
                     { 78, null, null, false, null, null, 8, "Projects", "ProjectDashboard" },
-                    { 77, null, null, false, null, null, 6, "Marketing", "Scheduler" },
                     { 76, null, null, false, null, null, 6, "Marketing", "Channel" },
                     { 75, null, null, false, null, null, 8, "Projects", "ProjectActivities" },
-                    { 46, null, null, false, null, null, 5, "Store", "Store" },
+                    { 74, null, null, false, null, null, 8, "Projects", "ProjectJobs" },
+                    { 73, null, null, false, null, null, 6, "Marketing", "Policy" },
                     { 72, null, null, false, null, null, 6, "Marketing", "Producer" },
                     { 71, null, null, false, null, null, 8, "Projects", "CriteriaEvaluation" },
                     { 70, null, null, false, null, null, 8, "Projects", "Proposal" },
                     { 69, null, null, false, null, null, 8, "Projects", "ProjectDetails" },
-                    { 67, null, null, false, null, null, 8, "Projects", "MyProjects" },
+                    { 77, null, null, false, null, null, 6, "Marketing", "Scheduler" },
                     { 45, null, null, false, null, null, 5, "Store", "PaymentTypes" },
-                    { 74, null, null, false, null, null, 8, "Projects", "ProjectJobs" },
+                    { 44, null, null, false, null, null, 5, "Store", "StoreSourceCodes" },
                     { 43, null, null, false, null, null, 5, "Store", "Categories" },
                     { 19, null, null, false, null, null, 2, "Code", "SalaryHead" },
                     { 18, null, null, false, null, null, 2, "Code", "JobGrade" },
@@ -7273,492 +6469,41 @@ namespace HumanitarianAssistance.Persistence.Migrations
                     { 14, null, null, false, null, null, 2, "Code", "Profession" },
                     { 13, null, null, false, null, null, 2, "Code", "LeaveReason" },
                     { 12, null, null, false, null, null, 2, "Code", "ExchangeRate" },
+                    { 20, null, null, false, null, null, 2, "Code", "SalaryTaxReportContent" },
                     { 11, null, null, false, null, null, 2, "Code", "EmailSettings" },
-                    { 10, null, null, false, null, null, 2, "Code", "TechnicalQuestions" },
                     { 9, null, null, false, null, null, 2, "Code", "AppraisalQuestions" },
                     { 8, null, null, false, null, null, 2, "Code", "EmployeeContract" },
                     { 7, null, null, false, null, null, 2, "Code", "PensionRate" },
                     { 6, null, null, false, null, null, 2, "Code", "FinancialYear" },
                     { 5, null, null, false, null, null, 2, "Code", "OfficeCodes" },
                     { 4, null, null, false, null, null, 2, "Code", "CurrencyCodes" },
-                    { 2, null, null, false, null, null, 2, "Code", "ChartOfAccount" },
-                    { 1, null, null, false, null, null, 1, "Users", "Users" },
-                    { 44, null, null, false, null, null, 5, "Store", "StoreSourceCodes" },
-                    { 20, null, null, false, null, null, 2, "Code", "SalaryTaxReportContent" },
-                    { 21, null, null, false, null, null, 2, "Code", "SetPayrollAccount" },
                     { 3, null, null, false, null, null, 2, "Code", "JournalCodes" },
+                    { 2, null, null, false, null, null, 2, "Code", "ChartOfAccount" },
+                    { 10, null, null, false, null, null, 2, "Code", "TechnicalQuestions" },
+                    { 21, null, null, false, null, null, 2, "Code", "SetPayrollAccount" },
+                    { 22, null, null, true, null, null, 3, "Accounting", "Vouchers" },
                     { 23, null, null, false, null, null, 3, "Accounting", "Journal" },
+                    { 42, null, null, false, null, null, 4, "HR", "Summary" },
                     { 41, null, null, false, null, null, 4, "HR", "Advances" },
                     { 40, null, null, false, null, null, 4, "HR", "EmployeeAppraisal" },
                     { 39, null, null, false, null, null, 4, "HR", "Interview" },
                     { 38, null, null, false, null, null, 4, "HR", "Jobs" },
                     { 37, null, null, false, null, null, 4, "HR", "MonthlyPayrollRegister" },
+                    { 36, null, null, false, null, null, 4, "HR", "ApproveLeave" },
                     { 35, null, null, false, null, null, 4, "HR", "Attendance" },
                     { 34, null, null, false, null, null, 4, "HR", "Holidays" },
                     { 33, null, null, false, null, null, 4, "HR", "PayrollDailyHours" },
                     { 32, null, null, false, null, null, 4, "HR", "Employees" },
-                    { 36, null, null, false, null, null, 4, "HR", "ApproveLeave" },
-                    { 30, null, null, false, null, null, 3, "Accounting", "GainLossTransaction" },
-                    { 24, null, null, false, null, null, 3, "Accounting", "LedgerStatement" },
                     { 31, null, null, false, null, null, 3, "Accounting", "PensionPayments" },
-                    { 26, null, null, false, null, null, 3, "Accounting", "TrialBalance" },
-                    { 27, null, null, false, null, null, 3, "Accounting", "FinancialReport" },
-                    { 25, null, null, false, null, null, 3, "Accounting", "BudgetBalance" },
-                    { 42, null, null, false, null, null, 4, "HR", "Summary" },
+                    { 30, null, null, false, null, null, 3, "Accounting", "GainLossTransaction" },
                     { 29, null, null, false, null, null, 3, "Accounting", "ExchangeGainLoss" },
                     { 28, null, null, true, null, null, 3, "Accounting", "CategoryPopulator" },
-                    { 22, null, null, true, null, null, 3, "Accounting", "Vouchers" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "CodeType",
-                columns: new[] { "CodeTypeId", "CodeTypeName", "CreatedById", "CreatedDate", "IsDeleted", "ModifiedById", "ModifiedDate" },
-                values: new object[,]
-                {
-                    { 1, "Organizations", null, null, false, null, null },
-                    { 2, "Suppliers", null, null, false, null, null },
-                    { 3, "Repair Shops", null, null, false, null, null },
-                    { 4, "Individual/Others", null, null, false, null, null },
-                    { 5, "Locations/Stores", null, null, false, null, null }
-                });
-
-            migrationBuilder.InsertData(
-                table: "CountryDetails",
-                columns: new[] { "CountryId", "CountryName", "CreatedById", "CreatedDate", "IsDeleted", "ModifiedById", "ModifiedDate" },
-                values: new object[,]
-                {
-                    { 2, "United States", null, null, false, null, null },
-                    { 1, "Afghanistan", null, null, false, null, null }
-                });
-
-            migrationBuilder.InsertData(
-                table: "CurrencyDetails",
-                columns: new[] { "CurrencyId", "CreatedById", "CreatedDate", "CurrencyCode", "CurrencyName", "IsDeleted", "ModifiedById", "ModifiedDate" },
-                values: new object[,]
-                {
-                    { 4, null, null, "USD", "US Dollars", false, null, null },
-                    { 3, null, null, "PKR", "Pakistani Rupees", false, null, null },
-                    { 1, null, null, "AFG", "Afghanistan", false, null, null },
-                    { 2, null, null, "EUR", "European Curency", false, null, null }
-                });
-
-            migrationBuilder.InsertData(
-                table: "DistrictDetail",
-                columns: new[] { "DistrictID", "CreatedById", "CreatedDate", "District", "IsDeleted", "ModifiedById", "ModifiedDate", "ProvinceID" },
-                values: new object[,]
-                {
-                    { 91L, null, null, "Maine", false, null, null, 51 },
-                    { 90L, null, null, "Louisiana", false, null, null, 50 },
-                    { 89L, null, null, "Kentucky", false, null, null, 49 },
-                    { 88L, null, null, "Lansa", false, null, null, 48 },
-                    { 87L, null, null, "Iowa", false, null, null, 47 },
-                    { 86L, null, null, "Undia", false, null, null, 46 },
-                    { 85L, null, null, "Indiana", false, null, null, 46 },
-                    { 84L, null, null, "Illinois", false, null, null, 45 },
-                    { 83L, null, null, "Idaho", false, null, null, 44 },
-                    { 82L, null, null, "Hawaii", false, null, null, 43 },
-                    { 81L, null, null, "Georia", false, null, null, 42 },
-                    { 80L, null, null, "Florida", false, null, null, 41 },
-                    { 79L, null, null, "Aelaware", false, null, null, 40 },
-                    { 78L, null, null, "Connecticut", false, null, null, 39 },
-                    { 76L, null, null, "Califor", false, null, null, 37 },
-                    { 75L, null, null, "California", false, null, null, 37 },
-                    { 74L, null, null, "Arkansas", false, null, null, 36 },
-                    { 73L, null, null, "Arona", false, null, null, 35 },
-                    { 72L, null, null, "Jurors", false, null, null, 35 },
-                    { 71L, null, null, "Arizona", false, null, null, 35 },
-                    { 70L, null, null, "Alabama", false, null, null, 34 },
-                    { 69L, null, null, "Atghar", false, null, null, 33 },
-                    { 68L, null, null, "Argahandab", false, null, null, 33 },
-                    { 65L, null, null, "Balkhab", false, null, null, 30 },
-                    { 67L, null, null, "Uakhar", false, null, null, 32 },
-                    { 66L, null, null, "Bangi", false, null, null, 31 },
-                    { 92L, null, null, "Maryland", false, null, null, 52 },
-                    { 77L, null, null, "Colorado", false, null, null, 38 },
-                    { 93L, null, null, "Massachusetts", false, null, null, 53 },
-                    { 121L, null, null, "Nouit Vinia", false, null, null, 80 },
-                    { 95L, null, null, "Minnesota", false, null, null, 55 },
-                    { 64L, null, null, "Aybak", false, null, null, 29 },
-                    { 123L, null, null, "Wyoming", false, null, null, 82 },
-                    { 122L, null, null, "Wisconsin", false, null, null, 81 },
-                    { 120L, null, null, "West Virginia", false, null, null, 80 },
-                    { 119L, null, null, "Washinn", false, null, null, 79 },
-                    { 118L, null, null, "Virginia", false, null, null, 78 },
-                    { 117L, null, null, "Oermont", false, null, null, 77 },
-                    { 116L, null, null, "Wtaha", false, null, null, 76 },
-                    { 115L, null, null, "Texas", false, null, null, 75 },
-                    { 114L, null, null, "Tennessee", false, null, null, 74 },
-                    { 113L, null, null, "South Dakota", false, null, null, 73 },
-                    { 112L, null, null, "South Carolina", false, null, null, 72 },
-                    { 111L, null, null, "Rhode Island", false, null, null, 71 },
-                    { 94L, null, null, "Michigan", false, null, null, 54 },
-                    { 110L, null, null, "Pennsylvania", false, null, null, 70 },
-                    { 108L, null, null, "Oklahoma", false, null, null, 68 },
-                    { 107L, null, null, "Ohio", false, null, null, 67 },
-                    { 106L, null, null, "North Dakota", false, null, null, 66 },
-                    { 105L, null, null, "North Carolina", false, null, null, 65 },
-                    { 104L, null, null, "New York", false, null, null, 64 },
-                    { 103L, null, null, "New Mexico", false, null, null, 63 },
-                    { 102L, null, null, "New Jersey", false, null, null, 62 },
-                    { 101L, null, null, "New Hampshire", false, null, null, 61 },
-                    { 100L, null, null, "Yevada", false, null, null, 60 },
-                    { 99L, null, null, "Nebraska", false, null, null, 59 },
-                    { 98L, null, null, "Montana", false, null, null, 58 },
-                    { 97L, null, null, "Missouri", false, null, null, 57 },
-                    { 96L, null, null, "Mississippi", false, null, null, 56 },
-                    { 109L, null, null, "Tregon", false, null, null, 69 },
-                    { 63L, null, null, "Salang", false, null, null, 28 },
-                    { 48L, null, null, "Kamdesh", false, null, null, 24 },
-                    { 61L, null, null, "Jabal Saraj", false, null, null, 28 },
-                    { 28L, null, null, "Deh Sabz", false, null, null, 13 },
-                    { 27L, null, null, "Chahar Asyab", false, null, null, 13 },
-                    { 26L, null, null, "GuzDarzabara", false, null, null, 12 },
-                    { 25L, null, null, "Fayzabad", false, null, null, 12 },
-                    { 24L, null, null, "Aqcha", false, null, null, 12 },
-                    { 23L, null, null, "Chishti Sharif", false, null, null, 11 },
-                    { 22L, null, null, "Garmsir", false, null, null, 10 },
-                    { 21L, null, null, "Baghran", false, null, null, 10 },
-                    { 20L, null, null, "Tulak", false, null, null, 9 },
-                    { 19L, null, null, "Shahrak", false, null, null, 9 },
-                    { 18L, null, null, "Andar", false, null, null, 8 },
-                    { 17L, null, null, "Ajristan", false, null, null, 8 },
-                    { 16L, null, null, "Bilchiragh", false, null, null, 7 },
-                    { 29L, null, null, "Bagrami", false, null, null, 13 },
-                    { 14L, null, null, "Andkhoy", false, null, null, 7 },
-                    { 12L, null, null, "Bala Buluk", false, null, null, 6 },
-                    { 11L, null, null, "Gizab", false, null, null, 5 },
-                    { 10L, null, null, "Bamyan", false, null, null, 4 },
-                    { 9L, null, null, "Shibar", false, null, null, 4 },
-                    { 8L, null, null, "Panjab", false, null, null, 4 },
-                    { 7L, null, null, "Chahar Kint", false, null, null, 3 },
-                    { 6L, null, null, "Chahar Bolak", false, null, null, 3 },
-                    { 5L, null, null, "Dahana i Ghuri", false, null, null, 2 },
-                    { 4L, null, null, "Baghlani Jadid", false, null, null, 2 },
-                    { 3L, null, null, "Qadis", false, null, null, 1 },
-                    { 2L, null, null, "Muqur", false, null, null, 1 },
-                    { 1L, null, null, "Jawand", false, null, null, 1 },
-                    { 62L, null, null, "Kohi Safi", false, null, null, 28 },
-                    { 13L, null, null, "Bakwa", false, null, null, 6 },
-                    { 30L, null, null, "Daman", false, null, null, 14 },
-                    { 15L, null, null, "Almar", false, null, null, 7 },
-                    { 32L, null, null, "Alasay", false, null, null, 15 },
-                    { 57L, null, null, "Chang", false, null, null, 26 },
-                    { 56L, null, null, "Kal", false, null, null, 26 },
-                    { 55L, null, null, "Barmal", false, null, null, 26 },
-                    { 54L, null, null, "Dila", false, null, null, 26 },
-                    { 53L, null, null, "Wuza Zadran", false, null, null, 25 },
-                    { 52L, null, null, "Zurmat", false, null, null, 25 },
-                    { 51L, null, null, "Jaji", false, null, null, 25 },
-                    { 50L, null, null, "Gardez", false, null, null, 25 },
-                    { 49L, null, null, "Mandol", false, null, null, 24 },
-                    { 31L, null, null, "Ghorak", false, null, null, 14 },
-                    { 47L, null, null, "Chakhansur", false, null, null, 23 },
-                    { 46L, null, null, "Kang", false, null, null, 23 },
-                    { 58L, null, null, "Anaba", false, null, null, 27 },
-                    { 60L, null, null, "Chaharikar", false, null, null, 28 },
-                    { 44L, null, null, "Achin", false, null, null, 22 },
-                    { 43L, null, null, "Maidan Wardak", false, null, null, 21 },
-                    { 42L, null, null, "Charkh", false, null, null, 20 },
-                    { 41L, null, null, "Baraki Barak", false, null, null, 20 },
-                    { 40L, null, null, "Alishing", false, null, null, 19 },
-                    { 39L, null, null, "Alingar", false, null, null, 19 },
-                    { 38L, null, null, "Archi", false, null, null, 18 },
-                    { 37L, null, null, "Ali Abad", false, null, null, 18 },
-                    { 36L, null, null, "Bar Kunar", false, null, null, 17 },
-                    { 35L, null, null, "Asadabad", false, null, null, 17 },
-                    { 34L, null, null, "Gurbuz", false, null, null, 16 },
-                    { 33L, null, null, "Bak", false, null, null, 16 },
-                    { 45L, null, null, "Bati Kot", false, null, null, 22 },
-                    { 59L, null, null, "Bagram", false, null, null, 28 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "EmailType",
-                columns: new[] { "EmailTypeId", "CreatedById", "CreatedDate", "EmailTypeName", "IsDeleted", "ModifiedById", "ModifiedDate" },
-                values: new object[,]
-                {
-                    { 2, null, null, "Bidding Panel", false, null, null },
-                    { 1, null, null, "General", false, null, null }
-                });
-
-            migrationBuilder.InsertData(
-                table: "EmployeeContractType",
-                columns: new[] { "EmployeeContractTypeId", "EmployeeContractTypeName" },
-                values: new object[,]
-                {
-                    { 1, "Probationary" },
-                    { 2, "PartTime" },
-                    { 3, "Permanent" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "EmployeeType",
-                columns: new[] { "EmployeeTypeId", "CreatedById", "CreatedDate", "EmployeeTypeName", "IsDeleted", "ModifiedById", "ModifiedDate" },
-                values: new object[,]
-                {
-                    { 1, null, null, "Prospective", false, null, null },
-                    { 2, null, null, "Active", false, null, null },
-                    { 3, null, null, "Terminated", false, null, null }
-                });
-
-            migrationBuilder.InsertData(
-                table: "FinancialYearDetail",
-                columns: new[] { "FinancialYearId", "CreatedById", "CreatedDate", "Description", "EndDate", "FinancialYearName", "IsDefault", "IsDeleted", "ModifiedById", "ModifiedDate", "StartDate" },
-                values: new object[] { 1, null, null, null, new DateTime(2019, 12, 31, 0, 0, 0, 0, DateTimeKind.Unspecified), "2019 Financial Year", true, false, null, null, new DateTime(2019, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified) });
-
-            migrationBuilder.InsertData(
-                table: "GenderConsiderationDetail",
-                columns: new[] { "GenderConsiderationId", "CreatedById", "CreatedDate", "GenderConsiderationName", "IsDeleted", "ModifiedById", "ModifiedDate" },
-                values: new object[,]
-                {
-                    { 8L, null, null, "0 % F - 100 % M Poor", false, null, null },
-                    { 2L, null, null, "40 % F - 60 % M Very Good", false, null, null },
-                    { 3L, null, null, "30 % F - 70 % M Good", false, null, null },
-                    { 4L, null, null, "25 % F - 75 % M Poor", false, null, null },
-                    { 1L, null, null, "50 % F - 50 % M Excellent", false, null, null },
-                    { 6L, null, null, "10 % F - 90 % M Poor", false, null, null },
-                    { 7L, null, null, "5 % F - 95 % M Poor", false, null, null },
-                    { 5L, null, null, "20 % F - 80 % M Poor", false, null, null }
-                });
-
-            migrationBuilder.InsertData(
-                table: "LanguageDetail",
-                columns: new[] { "LanguageId", "CreatedById", "CreatedDate", "IsDeleted", "LanguageName", "ModifiedById", "ModifiedDate" },
-                values: new object[,]
-                {
-                    { 6, null, null, false, "Pashto", null, null },
-                    { 5, null, null, false, "German", null, null },
-                    { 4, null, null, false, "French", null, null },
-                    { 3, null, null, false, "English", null, null },
-                    { 2, null, null, false, "Dari", null, null },
-                    { 1, null, null, false, "Arabic", null, null },
-                    { 8, null, null, false, "Turkish", null, null },
-                    { 10, null, null, false, "Urdu", null, null },
-                    { 11, null, null, false, "Uzbek", null, null },
-                    { 9, null, null, false, "Turkmani", null, null },
-                    { 7, null, null, false, "Russian", null, null }
-                });
-
-            migrationBuilder.InsertData(
-                table: "LeaveReasonDetail",
-                columns: new[] { "LeaveReasonId", "CreatedById", "CreatedDate", "IsDeleted", "ModifiedById", "ModifiedDate", "ReasonName", "Unit" },
-                values: new object[,]
-                {
-                    { 1, null, null, false, null, null, "Casual Leave", 12 },
-                    { 2, null, null, false, null, null, "Emergency Leave", 6 },
-                    { 3, null, null, false, null, null, "Maternity Leave", 90 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "OfficeDetail",
-                columns: new[] { "OfficeId", "CreatedById", "CreatedDate", "FaxNo", "IsDeleted", "ModifiedById", "ModifiedDate", "OfficeCode", "OfficeKey", "OfficeName", "PhoneNo", "SupervisorName" },
-                values: new object[] { 1, null, null, null, false, null, null, "A0001", "AF", "Afghanistan", null, null });
-
-            migrationBuilder.InsertData(
-                table: "PayrollAccountHead",
-                columns: new[] { "PayrollHeadId", "AccountNo", "CreatedById", "CreatedDate", "Description", "IsDeleted", "ModifiedById", "ModifiedDate", "PayrollHeadName", "PayrollHeadTypeId", "TransactionTypeId" },
-                values: new object[,]
-                {
-                    { 3, null, null, null, null, false, null, null, "Salary Tax", 2, 1 },
-                    { 5, null, null, null, null, false, null, null, "Pension", 2, 1 },
-                    { 1, null, null, null, null, false, null, null, "Net Salary", 3, 1 },
-                    { 2, null, null, null, null, false, null, null, "Advance Deduction", 2, 1 },
-                    { 4, null, null, null, null, true, null, null, "Gross Salary", 3, 2 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "ProjectPhaseDetails",
-                columns: new[] { "ProjectPhaseDetailsId", "CreatedById", "CreatedDate", "IsDeleted", "ModifiedById", "ModifiedDate", "ProjectPhase" },
-                values: new object[] { 1L, null, null, false, null, null, "Data Entry" });
-
-            migrationBuilder.InsertData(
-                table: "ReceiptType",
-                columns: new[] { "ReceiptTypeId", "CreatedById", "CreatedDate", "IsDeleted", "ModifiedById", "ModifiedDate", "ReceiptTypeName" },
-                values: new object[,]
-                {
-                    { 1, null, null, false, null, null, "Purchased" },
-                    { 2, null, null, false, null, null, "Transfers" },
-                    { 3, null, null, false, null, null, "Donation" },
-                    { 4, null, null, false, null, null, "Take Over" },
-                    { 7, null, null, false, null, null, "Other" },
-                    { 6, null, null, false, null, null, "Return" },
-                    { 5, null, null, false, null, null, "Loan" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "SalaryHeadDetails",
-                columns: new[] { "SalaryHeadId", "AccountNo", "CreatedById", "CreatedDate", "Description", "HeadName", "HeadTypeId", "IsDeleted", "ModifiedById", "ModifiedDate", "TransactionTypeId" },
-                values: new object[,]
-                {
-                    { 10, null, null, null, "Other2Allowance", "Other2Allowance", 1, false, null, null, 2 },
-                    { 1, null, null, null, "Tr Allowance", "Tr Allowance", 1, false, null, null, 2 },
-                    { 2, null, null, null, "Food Allowance", "Food Allowance", 1, false, null, null, 2 },
-                    { 3, null, null, null, "Fine Deduction", "Fine Deduction", 2, false, null, null, 1 },
-                    { 4, null, null, null, "Capacity Building Deduction", "Capacity Building Deduction", 2, false, null, null, 1 },
-                    { 5, null, null, null, "Security Deduction", "Security Deduction", 2, false, null, null, 1 },
-                    { 6, null, null, null, "Other Allowance", "Other Allowance", 1, false, null, null, 2 },
-                    { 7, null, null, null, "Other Deduction", "Other Deduction", 2, false, null, null, 1 },
-                    { 8, null, null, null, "Medical Allowance", "Medical Allowance", 1, false, null, null, 2 },
-                    { 9, null, null, null, "Other1Allowance", "Other1Allowance", 1, false, null, null, 2 },
-                    { 11, null, null, null, "Basic Pay (In hours)", "Basic Pay (In hours)", 3, false, null, null, 2 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "SecurityConsiderationDetail",
-                columns: new[] { "SecurityConsiderationId", "CreatedById", "CreatedDate", "IsDeleted", "ModifiedById", "ModifiedDate", "SecurityConsiderationName" },
-                values: new object[,]
-                {
-                    { 11L, null, null, false, null, null, "Future Threats expected" },
-                    { 10L, null, null, false, null, null, "No obstacle for deploying Resources & office" },
-                    { 9L, null, null, false, null, null, "No barrier for staff to access the area" },
-                    { 8L, null, null, false, null, null, "Future Threats exits" },
-                    { 6L, null, null, false, null, null, "Bonfires can be reached partially" },
-                    { 7L, null, null, false, null, null, "Resources can be deployed partially" },
-                    { 2L, null, null, false, null, null, "Beneficiaries cannot be reached" },
-                    { 3L, null, null, false, null, null, "Resources cannot be deployed" },
-                    { 4L, null, null, false, null, null, "Threat exit for future (Highly)" },
-                    { 1L, null, null, false, null, null, "Project Staff Cannot Visit Project Site" },
-                    { 5L, null, null, false, null, null, "Project staff access the are partially" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "SecurityDetail",
-                columns: new[] { "SecurityId", "CreatedById", "CreatedDate", "IsDeleted", "ModifiedById", "ModifiedDate", "SecurityName" },
-                values: new object[,]
-                {
-                    { 3L, null, null, false, null, null, "Secure (Green Area)" },
-                    { 2L, null, null, false, null, null, "Partially Insecure" },
-                    { 1L, null, null, false, null, null, "Insecure" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "StatusAtTimeOfIssue",
-                columns: new[] { "StatusAtTimeOfIssueId", "CreatedById", "CreatedDate", "IsDeleted", "ModifiedById", "ModifiedDate", "StatusName" },
-                values: new object[,]
-                {
-                    { 9, null, null, false, null, null, "Broken" },
-                    { 7, null, null, false, null, null, "Handover" },
-                    { 8, null, null, false, null, null, "Demolished" },
-                    { 6, null, null, false, null, null, "Stolen" },
-                    { 5, null, null, false, null, null, "Sold" },
-                    { 1, null, null, false, null, null, "New" },
-                    { 2, null, null, false, null, null, "Useable" },
-                    { 3, null, null, false, null, null, "To Repair" },
-                    { 4, null, null, false, null, null, "Damage" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "StrengthConsiderationDetail",
-                columns: new[] { "StrengthConsiderationId", "CreatedById", "CreatedDate", "IsDeleted", "ModifiedById", "ModifiedDate", "StrengthConsiderationName" },
-                values: new object[,]
-                {
-                    { 2L, null, null, false, null, null, "Not Gender Friendly" },
-                    { 3L, null, null, false, null, null, "Not Applicable" },
-                    { 1L, null, null, false, null, null, "Gender Friendly" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "VoucherType",
-                columns: new[] { "VoucherTypeId", "CreatedById", "CreatedDate", "IsDeleted", "ModifiedById", "ModifiedDate", "VoucherTypeName" },
-                values: new object[,]
-                {
-                    { 1, null, null, false, null, null, "Adjustment" },
-                    { 2, null, null, false, null, null, "Journal" }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Department",
-                columns: new[] { "DepartmentId", "CreatedById", "CreatedDate", "DepartmentName", "IsDeleted", "ModifiedById", "ModifiedDate", "OfficeCode", "OfficeId" },
-                values: new object[] { 1, null, null, "Administration", false, null, null, null, 1 });
-
-            migrationBuilder.InsertData(
-                table: "ProvinceDetails",
-                columns: new[] { "ProvinceId", "CountryId", "CreatedById", "CreatedDate", "IsDeleted", "ModifiedById", "ModifiedDate", "ProvinceName" },
-                values: new object[,]
-                {
-                    { 61, 2, null, null, false, null, null, "Nevada" },
-                    { 60, 2, null, null, false, null, null, "Nebraska" },
-                    { 59, 2, null, null, false, null, null, "Montana" },
-                    { 58, 2, null, null, false, null, null, "Missouri" },
-                    { 57, 2, null, null, false, null, null, "Mississippi" },
-                    { 56, 2, null, null, false, null, null, "Minnesota" },
-                    { 55, 2, null, null, false, null, null, "Michigan" },
-                    { 54, 2, null, null, false, null, null, "Massachusetts" },
-                    { 53, 2, null, null, false, null, null, "Maryland" },
-                    { 52, 2, null, null, false, null, null, "Maine" },
-                    { 51, 2, null, null, false, null, null, "Louisiana" },
-                    { 50, 2, null, null, false, null, null, "Kentucky" },
-                    { 49, 2, null, null, false, null, null, "Kansas" },
-                    { 48, 2, null, null, false, null, null, "Iowa" },
-                    { 47, 2, null, null, false, null, null, "Indiana" },
-                    { 46, 2, null, null, false, null, null, "Illinois" },
-                    { 45, 2, null, null, false, null, null, "Idaho" },
-                    { 62, 2, null, null, false, null, null, "New Hampshire" },
-                    { 44, 2, null, null, false, null, null, "Hawaii" },
-                    { 63, 2, null, null, false, null, null, "New Jersey" },
-                    { 65, 2, null, null, false, null, null, "New York" },
-                    { 82, 2, null, null, false, null, null, "Wisconsin" },
-                    { 81, 2, null, null, false, null, null, "West Virginia" },
-                    { 80, 2, null, null, false, null, null, "Washington" },
-                    { 79, 2, null, null, false, null, null, "Virginia" },
-                    { 78, 2, null, null, false, null, null, "Vermont" },
-                    { 77, 2, null, null, false, null, null, "Utah" },
-                    { 76, 2, null, null, false, null, null, "Texas" },
-                    { 75, 2, null, null, false, null, null, "Tennessee" },
-                    { 74, 2, null, null, false, null, null, "South Dakota" },
-                    { 73, 2, null, null, false, null, null, "South Carolina" },
-                    { 72, 2, null, null, false, null, null, "Rhode Island" },
-                    { 71, 2, null, null, false, null, null, "Pennsylvania" },
-                    { 70, 2, null, null, false, null, null, "Oregon" },
-                    { 69, 2, null, null, false, null, null, "Oklahoma" },
-                    { 68, 2, null, null, false, null, null, "Ohio" },
-                    { 67, 2, null, null, false, null, null, "North Dakota" },
-                    { 66, 2, null, null, false, null, null, "North Carolina" },
-                    { 64, 2, null, null, false, null, null, "New Mexico" },
-                    { 43, 2, null, null, false, null, null, "Georgia" },
-                    { 42, 2, null, null, false, null, null, "Florida" },
-                    { 41, 2, null, null, false, null, null, "Delaware" },
-                    { 18, 1, null, null, false, null, null, "Kunduz" },
-                    { 17, 1, null, null, false, null, null, "Kunar" },
-                    { 16, 1, null, null, false, null, null, "Khost" },
-                    { 15, 1, null, null, false, null, null, "Kapisa" },
-                    { 14, 1, null, null, false, null, null, "Kandahar" },
-                    { 13, 1, null, null, false, null, null, "Kabul" },
-                    { 12, 1, null, null, false, null, null, "Jowzjan" },
-                    { 11, 1, null, null, false, null, null, "Herat" },
-                    { 10, 1, null, null, false, null, null, "Helmand" },
-                    { 9, 1, null, null, false, null, null, "Ghor" },
-                    { 8, 1, null, null, false, null, null, "Ghazni" },
-                    { 7, 1, null, null, false, null, null, "Faryab" },
-                    { 6, 1, null, null, false, null, null, "Farah" },
-                    { 5, 1, null, null, false, null, null, "Daykundi" },
-                    { 4, 1, null, null, false, null, null, "Bamyan" },
-                    { 3, 1, null, null, false, null, null, "Balkh" },
-                    { 2, 1, null, null, false, null, null, "Baghlan" },
-                    { 19, 1, null, null, false, null, null, "Laghman" },
-                    { 20, 1, null, null, false, null, null, "Logar" },
-                    { 21, 1, null, null, false, null, null, "Maidan Wardak" },
-                    { 22, 1, null, null, false, null, null, "Nangarhar" },
-                    { 40, 2, null, null, false, null, null, "Connecticut" },
-                    { 39, 2, null, null, false, null, null, "Colorado" },
-                    { 38, 2, null, null, false, null, null, "California" },
-                    { 37, 2, null, null, false, null, null, "Arkansas" },
-                    { 36, 2, null, null, false, null, null, "Arizona" },
-                    { 35, 2, null, null, false, null, null, "Alaska" },
-                    { 34, 1, null, null, false, null, null, "Alabama" },
-                    { 33, 1, null, null, false, null, null, "Zabul" },
-                    { 83, 2, null, null, false, null, null, "Wyoming" },
-                    { 32, 1, null, null, false, null, null, "Urozgan" },
-                    { 30, 1, null, null, false, null, null, "Sar-e Pol" },
-                    { 29, 1, null, null, false, null, null, "Samangan" },
-                    { 28, 1, null, null, false, null, null, "Parwan" },
-                    { 27, 1, null, null, false, null, null, "Panjshir" },
-                    { 26, 1, null, null, false, null, null, "Paktika" },
-                    { 25, 1, null, null, false, null, null, "Paktia" },
-                    { 24, 1, null, null, false, null, null, "Nuristan" },
-                    { 23, 1, null, null, false, null, null, "Nimruz" },
-                    { 31, 1, null, null, false, null, null, "Takhar" },
-                    { 1, 1, null, null, false, null, null, "Badghis" }
+                    { 27, null, null, false, null, null, 3, "Accounting", "FinancialReport" },
+                    { 26, null, null, false, null, null, 3, "Accounting", "TrialBalance" },
+                    { 25, null, null, false, null, null, 3, "Accounting", "BudgetBalance" },
+                    { 24, null, null, false, null, null, 3, "Accounting", "LedgerStatement" },
+                    { 87, null, null, false, null, null, 2, "Code", "PensionDebitAccount" },
+                    { 88, null, null, false, null, null, 2, "Code", "AttendanceGroupMaster" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -7775,11 +6520,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 name: "IX_ActivityDocumentsDetail_StatusId",
                 table: "ActivityDocumentsDetail",
                 column: "StatusId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ActivityMaster_TaskId",
-                table: "ActivityMaster",
-                column: "TaskId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Advances_CurrencyId",
@@ -7844,46 +6584,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_AssignActivity_ActivityId",
-                table: "AssignActivity",
-                column: "ActivityId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AssignActivity_ProjectId",
-                table: "AssignActivity",
-                column: "ProjectId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AssignActivity_TaskId",
-                table: "AssignActivity",
-                column: "TaskId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AssignActivity_UserId",
-                table: "AssignActivity",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AssignActivityApproveBy_ApprovedById",
-                table: "AssignActivityApproveBy",
-                column: "ApprovedById");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AssignActivityApproveBy_AssignActivityId",
-                table: "AssignActivityApproveBy",
-                column: "AssignActivityId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AssignActivityFeedback_AssignActivityId",
-                table: "AssignActivityFeedback",
-                column: "AssignActivityId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AssignActivityFeedback_UserId",
-                table: "AssignActivityFeedback",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_AssignLeaveToEmployee_EmployeeId",
                 table: "AssignLeaveToEmployee",
                 column: "EmployeeId");
@@ -7899,21 +6599,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 column: "LeaveReasonId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BudgetReceivable_BudgetLineId",
-                table: "BudgetReceivable",
-                column: "BudgetLineId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BudgetReceivable_ProjectId",
-                table: "BudgetReceivable",
-                column: "ProjectId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_BudgetReceivedAmount_BudgetReceivalbeId",
-                table: "BudgetReceivedAmount",
-                column: "BudgetReceivalbeId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_CEAgeGroupDetail_ProjectId",
                 table: "CEAgeGroupDetail",
                 column: "ProjectId");
@@ -7926,11 +6611,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_CEFeasibilityExpertOtherDetail_ProjectId",
                 table: "CEFeasibilityExpertOtherDetail",
-                column: "ProjectId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CEOccupationDetail_ProjectId",
-                table: "CEOccupationDetail",
                 column: "ProjectId");
 
             migrationBuilder.CreateIndex(
@@ -8254,11 +6934,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 column: "PayrollHeadId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_EmployeePayrollForMonth_EmployeeID",
-                table: "EmployeePayrollForMonth",
-                column: "EmployeeID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_EmployeePayrollMonth_CurrencyId",
                 table: "EmployeePayrollMonth",
                 column: "CurrencyId");
@@ -8376,23 +7051,23 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 column: "DocumentFileId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ExchangeRates_Date",
-                table: "ExchangeRates",
+                name: "IX_ExchangeRate_Date",
+                table: "ExchangeRate",
                 column: "Date");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ExchangeRates_FromCurrency",
-                table: "ExchangeRates",
+                name: "IX_ExchangeRate_FromCurrency",
+                table: "ExchangeRate",
                 column: "FromCurrency");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ExchangeRates_OfficeId",
-                table: "ExchangeRates",
+                name: "IX_ExchangeRate_OfficeId",
+                table: "ExchangeRate",
                 column: "OfficeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ExchangeRates_ToCurrency",
-                table: "ExchangeRates",
+                name: "IX_ExchangeRate_ToCurrency",
+                table: "ExchangeRate",
                 column: "ToCurrency");
 
             migrationBuilder.CreateIndex(
@@ -8526,11 +7201,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 column: "JobId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ItemPurchaseDocuments_Purchase",
-                table: "ItemPurchaseDocuments",
-                column: "Purchase");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_ItemSpecificationDetails_ItemSpecificationMasterId",
                 table: "ItemSpecificationDetails",
                 column: "ItemSpecificationMasterId");
@@ -8577,46 +7247,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 column: "JobId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MotorMaintenances_Generator",
-                table: "MotorMaintenances",
-                column: "Generator");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MotorMaintenances_Order",
-                table: "MotorMaintenances",
-                column: "Order");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MotorMaintenances_Vehicle",
-                table: "MotorMaintenances",
-                column: "Vehicle");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MotorSpareParts_Generator",
-                table: "MotorSpareParts",
-                column: "Generator");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MotorSpareParts_Order",
-                table: "MotorSpareParts",
-                column: "Order");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_MotorSpareParts_Vehicle",
-                table: "MotorSpareParts",
-                column: "Vehicle");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_NotesMaster_AccountTypeId",
-                table: "NotesMaster",
-                column: "AccountTypeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_NotesMaster_ChartOfAccountNewId",
-                table: "NotesMaster",
-                column: "ChartOfAccountNewId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_OrderSchedulePermission_PageId",
                 table: "OrderSchedulePermission",
                 column: "PageId");
@@ -8645,16 +7275,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 name: "IX_PensionPaymentHistory_VoucherNo",
                 table: "PensionPaymentHistory",
                 column: "VoucherNo");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Permissions_CreatedById",
-                table: "Permissions",
-                column: "CreatedById");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Permissions_ModifiedById",
-                table: "Permissions",
-                column: "ModifiedById");
 
             migrationBuilder.CreateIndex(
                 name: "IX_PlayoutMinutes_ScheduleId",
@@ -8779,16 +7399,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_ProjectAssignTo_ProjectId",
                 table: "ProjectAssignTo",
-                column: "ProjectId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProjectBudgetLine_BudgetLineTypeId",
-                table: "ProjectBudgetLine",
-                column: "BudgetLineTypeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProjectBudgetLine_ProjectId",
-                table: "ProjectBudgetLine",
                 column: "ProjectId");
 
             migrationBuilder.CreateIndex(
@@ -8982,16 +7592,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 column: "ProvinceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PurchaseGenerators_Purchase",
-                table: "PurchaseGenerators",
-                column: "Purchase");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PurchaseVehicles_Purchase",
-                table: "PurchaseVehicles",
-                column: "Purchase");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_PurposeofInitiativeCriteria_ProjectId",
                 table: "PurposeofInitiativeCriteria",
                 column: "ProjectId");
@@ -9127,11 +7727,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 column: "CodeTypeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_TaskMaster_ProjectId",
-                table: "TaskMaster",
-                column: "ProjectId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_UnitRates_ActivityTypeId",
                 table: "UnitRates",
                 column: "ActivityTypeId");
@@ -9165,21 +7760,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 name: "IX_UnitRates_TimeCategoryId",
                 table: "UnitRates",
                 column: "TimeCategoryId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_VehicleFuel_Generator",
-                table: "VehicleFuel",
-                column: "Generator");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_VehicleFuel_Order",
-                table: "VehicleFuel",
-                column: "Order");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_VehicleFuel_Vehicle",
-                table: "VehicleFuel",
-                column: "Vehicle");
 
             migrationBuilder.CreateIndex(
                 name: "IX_VoucherDetail_BudgetLineId",
@@ -9221,16 +7801,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 name: "IX_VoucherDetail_VoucherTypeId",
                 table: "VoucherDetail",
                 column: "VoucherTypeId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_VoucherDocumentDetail_DocumentFileId",
-                table: "VoucherDocumentDetail",
-                column: "DocumentFileId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_VoucherDocumentDetail_VoucherNo",
-                table: "VoucherDocumentDetail",
-                column: "VoucherNo");
 
             migrationBuilder.CreateIndex(
                 name: "IX_VoucherTransactions_BudgetLineId",
@@ -9293,9 +7863,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 name: "AgreeDisagreePermission");
 
             migrationBuilder.DropTable(
-                name: "AnalyticalDetail");
-
-            migrationBuilder.DropTable(
                 name: "ApproveProjectDetails");
 
             migrationBuilder.DropTable(
@@ -9317,16 +7884,10 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "AssignActivityApproveBy");
-
-            migrationBuilder.DropTable(
-                name: "AssignActivityFeedback");
-
-            migrationBuilder.DropTable(
                 name: "AssignLeaveToEmployee");
 
             migrationBuilder.DropTable(
-                name: "BudgetReceivedAmount");
+                name: "BudgetLineType");
 
             migrationBuilder.DropTable(
                 name: "CEAgeGroupDetail");
@@ -9336,9 +7897,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "CEFeasibilityExpertOtherDetail");
-
-            migrationBuilder.DropTable(
-                name: "CEOccupationDetail");
 
             migrationBuilder.DropTable(
                 name: "ChatDetail");
@@ -9363,9 +7921,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "EmailSettingDetail");
-
-            migrationBuilder.DropTable(
-                name: "EmployeeAnalyticalDetail");
 
             migrationBuilder.DropTable(
                 name: "EmployeeApplyLeave");
@@ -9437,9 +7992,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 name: "EmployeePayrollAccountHead");
 
             migrationBuilder.DropTable(
-                name: "EmployeePayrollForMonth");
-
-            migrationBuilder.DropTable(
                 name: "EmployeePayrollMonth");
 
             migrationBuilder.DropTable(
@@ -9464,13 +8016,10 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 name: "EmployeeSalaryPaymentHistory");
 
             migrationBuilder.DropTable(
-                name: "Errorlog");
+                name: "ExchangeRate");
 
             migrationBuilder.DropTable(
                 name: "ExchangeRateDetail");
-
-            migrationBuilder.DropTable(
-                name: "ExchangeRates");
 
             migrationBuilder.DropTable(
                 name: "ExchangeRateVerifications");
@@ -9524,28 +8073,13 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 name: "InvoiceGeneration");
 
             migrationBuilder.DropTable(
-                name: "ItemPurchaseDocuments");
-
-            migrationBuilder.DropTable(
                 name: "ItemSpecificationDetails");
 
             migrationBuilder.DropTable(
                 name: "JobPriceDetails");
 
             migrationBuilder.DropTable(
-                name: "Languages");
-
-            migrationBuilder.DropTable(
                 name: "LoggerDetails");
-
-            migrationBuilder.DropTable(
-                name: "MotorMaintenances");
-
-            migrationBuilder.DropTable(
-                name: "MotorSpareParts");
-
-            migrationBuilder.DropTable(
-                name: "NotesMaster");
 
             migrationBuilder.DropTable(
                 name: "OrderSchedulePermission");
@@ -9659,6 +8193,9 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 name: "SecurityDetail");
 
             migrationBuilder.DropTable(
+                name: "StorePurchaseOrders");
+
+            migrationBuilder.DropTable(
                 name: "StoreSourceCodeDetail");
 
             migrationBuilder.DropTable(
@@ -9677,12 +8214,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 name: "UserDetailOffices");
 
             migrationBuilder.DropTable(
-                name: "VehicleFuel");
-
-            migrationBuilder.DropTable(
-                name: "VoucherDocumentDetail");
-
-            migrationBuilder.DropTable(
                 name: "VoucherTransactions");
 
             migrationBuilder.DropTable(
@@ -9692,10 +8223,7 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AssignActivity");
-
-            migrationBuilder.DropTable(
-                name: "BudgetReceivable");
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "EntitySourceDocumentDetails");
@@ -9782,25 +8310,10 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 name: "SecurityConsiderationDetail");
 
             migrationBuilder.DropTable(
+                name: "StoreItemPurchases");
+
+            migrationBuilder.DropTable(
                 name: "CodeType");
-
-            migrationBuilder.DropTable(
-                name: "PurchaseGenerators");
-
-            migrationBuilder.DropTable(
-                name: "StorePurchaseOrders");
-
-            migrationBuilder.DropTable(
-                name: "PurchaseVehicles");
-
-            migrationBuilder.DropTable(
-                name: "ActivityMaster");
-
-            migrationBuilder.DropTable(
-                name: "AspNetUsers");
-
-            migrationBuilder.DropTable(
-                name: "ProjectBudgetLine");
 
             migrationBuilder.DropTable(
                 name: "DocumentFileDetail");
@@ -9827,13 +8340,22 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 name: "ProjectIndicators");
 
             migrationBuilder.DropTable(
-                name: "StoreItemPurchases");
+                name: "InventoryItems");
 
             migrationBuilder.DropTable(
-                name: "TaskMaster");
+                name: "ReceiptType");
 
             migrationBuilder.DropTable(
-                name: "BudgetLineType");
+                name: "StatusAtTimeOfIssue");
+
+            migrationBuilder.DropTable(
+                name: "PurchaseUnitType");
+
+            migrationBuilder.DropTable(
+                name: "VoucherDetail");
+
+            migrationBuilder.DropTable(
+                name: "EmployeeDetail");
 
             migrationBuilder.DropTable(
                 name: "JobGrade");
@@ -9851,52 +8373,10 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 name: "Producers");
 
             migrationBuilder.DropTable(
-                name: "InventoryItems");
-
-            migrationBuilder.DropTable(
-                name: "EmployeeDetail");
-
-            migrationBuilder.DropTable(
-                name: "ReceiptType");
-
-            migrationBuilder.DropTable(
-                name: "StatusAtTimeOfIssue");
-
-            migrationBuilder.DropTable(
-                name: "PurchaseUnitType");
-
-            migrationBuilder.DropTable(
-                name: "VoucherDetail");
-
-            migrationBuilder.DropTable(
-                name: "ProjectDetails");
-
-            migrationBuilder.DropTable(
-                name: "ClientDetails");
-
-            migrationBuilder.DropTable(
-                name: "LanguageDetail");
-
-            migrationBuilder.DropTable(
-                name: "UnitRates");
-
-            migrationBuilder.DropTable(
                 name: "StoreItemGroups");
 
             migrationBuilder.DropTable(
                 name: "InventoryItemType");
-
-            migrationBuilder.DropTable(
-                name: "EmployeeType");
-
-            migrationBuilder.DropTable(
-                name: "QualificationDetails");
-
-            migrationBuilder.DropTable(
-                name: "NationalityDetails");
-
-            migrationBuilder.DropTable(
-                name: "ProvinceDetails");
 
             migrationBuilder.DropTable(
                 name: "ProjectBudgetLineDetail");
@@ -9914,10 +8394,43 @@ namespace HumanitarianAssistance.Persistence.Migrations
                 name: "VoucherType");
 
             migrationBuilder.DropTable(
+                name: "EmployeeType");
+
+            migrationBuilder.DropTable(
+                name: "QualificationDetails");
+
+            migrationBuilder.DropTable(
+                name: "NationalityDetails");
+
+            migrationBuilder.DropTable(
+                name: "ProvinceDetails");
+
+            migrationBuilder.DropTable(
+                name: "ClientDetails");
+
+            migrationBuilder.DropTable(
+                name: "LanguageDetail");
+
+            migrationBuilder.DropTable(
+                name: "UnitRates");
+
+            migrationBuilder.DropTable(
+                name: "StoreInventories");
+
+            migrationBuilder.DropTable(
+                name: "ProjectJobDetail");
+
+            migrationBuilder.DropTable(
+                name: "CountryDetails");
+
+            migrationBuilder.DropTable(
                 name: "Categories");
 
             migrationBuilder.DropTable(
                 name: "ActivityTypes");
+
+            migrationBuilder.DropTable(
+                name: "CurrencyDetails");
 
             migrationBuilder.DropTable(
                 name: "MediaCategories");
@@ -9933,18 +8446,6 @@ namespace HumanitarianAssistance.Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "TimeCategories");
-
-            migrationBuilder.DropTable(
-                name: "StoreInventories");
-
-            migrationBuilder.DropTable(
-                name: "CountryDetails");
-
-            migrationBuilder.DropTable(
-                name: "CurrencyDetails");
-
-            migrationBuilder.DropTable(
-                name: "ProjectJobDetail");
 
             migrationBuilder.DropTable(
                 name: "ChartOfAccountNew");
