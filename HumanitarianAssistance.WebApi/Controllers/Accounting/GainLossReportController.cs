@@ -33,11 +33,11 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
             return await _mediator.Send(new GetExchangeGainLossVoucherListQuery());
         }
 
-        // [HttpPost]
-        // public async Task<ApiResponse> GetExchangeGainLossReport([FromBody]ExchangeGainLossFilterQuery model)
-        // {
-        //     return await _mediator.Send(model);
-        // }
+        [HttpPost]
+        public async Task<ApiResponse> GetExchangeGainLossReport([FromBody]GetExchangeGainLossReportQuery model)
+        {
+            return await _mediator.Send(model);
+        }
 
         [HttpPost]
         public async Task<ApiResponse> AddExchangeGainLossVoucher([FromBody] ExchangeGainLossVoucherDetailsCommand model)
