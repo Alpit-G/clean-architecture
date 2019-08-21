@@ -157,7 +157,7 @@ namespace HumanitarianAssistance.WebApi
             });
 
 
-
+            #region "Frontend config"
 
             // for each angular client we want to host. 
             app.Map(new PathString("/oldui"), client =>
@@ -217,6 +217,7 @@ namespace HumanitarianAssistance.WebApi
                 }
             });
 
+            #endregion
 
 
             app.Run(async (context) =>

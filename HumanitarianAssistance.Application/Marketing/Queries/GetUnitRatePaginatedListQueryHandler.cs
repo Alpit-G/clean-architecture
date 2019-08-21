@@ -31,7 +31,7 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
                 response.StatusCode = 200;
                 var unitRateList = await (from ur in _dbContext.UnitRates.AsNoTracking().AsQueryable()
                                           join at in _dbContext.ActivityTypes on ur.ActivityTypeId equals at.ActivityTypeId
-                                          where !ur.IsDeleted.Value && !at.IsDeleted.Value
+                                          where !ur.IsDeleted && !at.IsDeleted
                                           select (new UnitRateDetailsModel
                                           {
                                               UnitRateId = ur.UnitRateId,

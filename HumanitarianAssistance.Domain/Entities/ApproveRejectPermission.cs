@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities
 {
-    public class ApproveRejectPermission : BaseEntityWithoutId
+    public class ApproveRejectPermission : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

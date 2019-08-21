@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities.Marketing
 {
-    public class PolicyDaySchedule : BaseEntityWithoutId
+    public class PolicyDaySchedule : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

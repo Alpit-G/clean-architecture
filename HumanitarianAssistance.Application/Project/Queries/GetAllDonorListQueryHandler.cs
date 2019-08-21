@@ -24,7 +24,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
             ApiResponse response = new ApiResponse();
             try
             {
-                var list = await _dbContext.DonorDetail.Where(x => !x.IsDeleted.Value)
+                var list = await _dbContext.DonorDetail.Where(x => !x.IsDeleted)
                     .OrderByDescending(x => x.DonorId).ToListAsync();
                 response.data.DonorDetail = list;
                 response.StatusCode = 200;

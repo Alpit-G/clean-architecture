@@ -35,7 +35,7 @@
 //                                                  join jp in _dbContext.JobPriceDetails on j.JobId equals jp.JobId
 //                                                  join cd in _dbContext.ContractDetails on j.ContractId equals cd.ContractId
 //                                                  join cur in _dbContext.CurrencyDetails on cd.CurrencyId equals cur.CurrencyId
-//                                                  where !j.IsDeleted.Value && !jp.IsDeleted.Value && j.JobId == request.JobId
+//                                                  where !j.IsDeleted && !jp.IsDeleted && j.JobId == request.JobId
 //                                                  select (new JobPriceModel
 //                                                  {
 //                                                      JobName = j.JobName,

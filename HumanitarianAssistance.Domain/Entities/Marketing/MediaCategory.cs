@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities.Marketing
 {
-    public class MediaCategory : BaseEntityWithoutId
+    public class MediaCategory : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

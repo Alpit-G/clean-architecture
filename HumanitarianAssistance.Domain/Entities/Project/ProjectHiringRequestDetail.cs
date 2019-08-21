@@ -7,7 +7,7 @@ using HumanitarianAssistance.Domain.Entities.HR;
 
 namespace HumanitarianAssistance.Domain.Entities.Project
 {
-    public class ProjectHiringRequestDetail : BaseEntityWithoutId
+    public class ProjectHiringRequestDetail : BaseEntity
     {
         public ProjectHiringRequestDetail()
         {

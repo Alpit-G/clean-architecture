@@ -42,13 +42,25 @@ namespace HumanitarianAssistance.WebApi.Controllers.Accounting
         [HttpPost]
         public async Task<ApiResponse> AddExchangeGainLossVoucher([FromBody] ExchangeGainLossVoucherDetailsCommand model)
         {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            model.CreatedById = userId;
+            model.CreatedDate = DateTime.UtcNow;
+
             return await _mediator.Send(model);
         }
 
         [HttpPost]
         public async Task<ApiResponse> DeleteGainLossVoucherTransaction([FromBody]long id)
         {
-            return await _mediator.Send(new DeleteGainLossVoucherTransactionCommand { VoucherNo = id });
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            return await _mediator.Send(new DeleteGainLossVoucherTransactionCommand
+            {
+                VoucherNo = id,
+                ModifiedById = userId,
+                ModifiedDate = DateTime.UtcNow
+            });
         }
 
     }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace HumanitarianAssistance.Domain.Entities.Store
 {
-    public class InventoryItemType : BaseEntityWithoutId
+    public class InventoryItemType : BaseEntity
     {
         [Key]
         public int ItemType { get; set; }

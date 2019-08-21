@@ -1,13 +1,12 @@
 ﻿using AutoMapper;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
-using HumanitarianAssistance.Domain.Entities;
+using HumanitarianAssistance.Domain.Entities.Store;
 using HumanitarianAssistance.Persistence;
 using MediatR;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -15,8 +14,8 @@ namespace HumanitarianAssistance.Application.Store.Commands.Create
 {
     public class AddItemSpecificationsDetailsCommandHandler : IRequestHandler<AddItemSpecificationsDetailsCommand, ApiResponse>
     {
-        private HumanitarianAssistanceDbContext _dbContext;
-        private IMapper _mapper;
+        private readonly HumanitarianAssistanceDbContext _dbContext;
+        private readonly IMapper _mapper;
         public AddItemSpecificationsDetailsCommandHandler(HumanitarianAssistanceDbContext dbContext, IMapper mapper)
         {
             _dbContext = dbContext;

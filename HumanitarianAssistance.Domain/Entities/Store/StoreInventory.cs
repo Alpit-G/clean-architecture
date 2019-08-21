@@ -5,7 +5,7 @@ using HumanitarianAssistance.Domain.Entities.Accounting;
 
 namespace HumanitarianAssistance.Domain.Entities.Store
 {
-    public class StoreInventory : BaseEntityWithoutId
+    public class StoreInventory : BaseEntity
     {
         public StoreInventory()
         {

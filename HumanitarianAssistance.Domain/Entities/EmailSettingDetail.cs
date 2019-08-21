@@ -6,13 +6,8 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities
 {
-    public class EmailSettingDetail : BaseEntityWithoutId
+    public class EmailSettingDetail : BaseEntity
     {
-        public EmailSettingDetail()
-        {
-            //CurrentEmailType = new EmailType();
-        }
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Column(Order = 1)]

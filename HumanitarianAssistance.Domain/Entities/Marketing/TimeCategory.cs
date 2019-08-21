@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities.Marketing
 {
-    public class TimeCategory : BaseEntityWithoutId
+    public class TimeCategory : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

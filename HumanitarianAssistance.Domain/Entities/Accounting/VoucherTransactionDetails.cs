@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities.Accounting
 {
-    public class VoucherTransactionDetails : BaseEntityWithoutId
+    public class VoucherTransactionDetails : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

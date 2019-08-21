@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HumanitarianAssistance.Domain.Entities.Project
 {
-    public class ProjectOpportunityControl : BaseEntityWithoutId
+    public class ProjectOpportunityControl : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

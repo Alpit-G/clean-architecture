@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HumanitarianAssistance.Domain.Entities.Project
 {
-    public class ProjectMonitoringIndicatorQuestions : BaseEntityWithoutId
+    public class ProjectMonitoringIndicatorQuestions : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

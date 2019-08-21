@@ -14,7 +14,7 @@ namespace HumanitarianAssistance.Application.Store.Queries
 {
     public class GetAllPurchasesByItemQueryHandler : IRequestHandler<GetAllPurchasesByItemQuery, ApiResponse>
     {
-        private HumanitarianAssistanceDbContext _dbContext;
+        private readonly HumanitarianAssistanceDbContext _dbContext;
 
         public GetAllPurchasesByItemQueryHandler(HumanitarianAssistanceDbContext dbContext)
         {
@@ -30,7 +30,6 @@ namespace HumanitarianAssistance.Application.Store.Queries
                                                                             .Include(x => x.StoreInventoryItem)
                                                                             .Where(x => x.InventoryItem == request.itemId && x.IsDeleted == false).ToListAsync();
 
-                var officeDetails = await _dbContext.OfficeDetail.ToListAsync();
 
                 var purchasesModel = purchases.Select(v => new StoreItemPurchaseViewModel
                 {
@@ -70,7 +69,7 @@ namespace HumanitarianAssistance.Application.Store.Queries
 
                 foreach (var item in purchasesModel)
                 {
-                    var exchangeRate = _uow.GetDbContext().ExchangeRateDetail.OrderByDescending(x=> x.Date).FirstOrDefault(x => x.IsDeleted == false && x.Date.Date <= item.PurchaseDate.Date && x.FromCurrency == item.Currency && x.ToCurrency == (int)Currency.USD);
+                    var exchangeRate = _dbContext.ExchangeRateDetail.OrderByDescending(x=> x.Date).FirstOrDefault(x => x.IsDeleted == false && x.Date.Date <= item.PurchaseDate.Date && x.FromCurrency == item.Currency && x.ToCurrency == (int)Currency.USD);
 
                     if (exchangeRate == null)
                     {

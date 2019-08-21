@@ -16,7 +16,7 @@ namespace HumanitarianAssistance.Domain.Entities.Store
     // that is specific to that item type.
     // Please check the readmes in the StoreService class, I've written comments comments 
     // and added code snippets to further clarify what to do with specific item types
-    public class StoreInventoryItem : BaseEntityWithoutId
+    public class StoreInventoryItem : BaseEntity
     {
         [Key]
         public string ItemId { get; set; }

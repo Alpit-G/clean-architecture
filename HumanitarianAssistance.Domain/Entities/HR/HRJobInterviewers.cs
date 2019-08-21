@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HumanitarianAssistance.Domain.Entities.HR
 {
-    public class HRJobInterviewers : BaseEntityWithoutId
+    public class HRJobInterviewers : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

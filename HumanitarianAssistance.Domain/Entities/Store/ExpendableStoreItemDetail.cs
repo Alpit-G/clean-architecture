@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities.Store
 {
-    public class ExpendableStoreItemDetail : BaseEntityWithoutId
+    public class ExpendableStoreItemDetail : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

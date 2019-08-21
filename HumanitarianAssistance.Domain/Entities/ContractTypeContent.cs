@@ -5,7 +5,7 @@ using HumanitarianAssistance.Domain.Entities.HR;
 
 namespace HumanitarianAssistance.Domain.Entities
 {
-    public class ContractTypeContent : BaseEntityWithoutId
+    public class ContractTypeContent : BaseEntity
     {
         public int ContractTypeContentId { get; set; }
         public int EmployeeContractTypeId { get; set; }

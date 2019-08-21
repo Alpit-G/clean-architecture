@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities
 {
-    public class LoggerDetails : BaseEntityWithoutId
+    public class LoggerDetails : BaseEntity
     {
         public int LoggerDetailsId { get; set; }
         public int NotificationId { get; set; }

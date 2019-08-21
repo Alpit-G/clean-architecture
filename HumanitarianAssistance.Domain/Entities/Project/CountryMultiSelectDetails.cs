@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HumanitarianAssistance.Domain.Entities.Project
 {
-    public class CountryMultiSelectDetails : BaseEntityWithoutId
+    public class CountryMultiSelectDetails : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

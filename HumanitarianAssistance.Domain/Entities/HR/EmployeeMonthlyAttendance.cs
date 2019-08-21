@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities.HR
 {
-    public  class EmployeeMonthlyAttendance : BaseEntityWithoutId
+    public  class EmployeeMonthlyAttendance : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

@@ -61,7 +61,7 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
                 //                                join mc in _uow.GetDbContext().PolicyDetails on j.PolicyId equals mc.PolicyId
                 //                                join pd in _uow.GetDbContext().JobDetails on j.JobId equals pd.JobId
                 //                                join po in _uow.GetDbContext().ProjectDetails on j.ProjectId equals po.ProjectId
-                //                                where !j.IsDeleted.Value
+                //                                where !j.IsDeleted
                 //                               select (new SchedulerModel
                 //                                {
                 //                                    PolicyId = j.PolicyId,

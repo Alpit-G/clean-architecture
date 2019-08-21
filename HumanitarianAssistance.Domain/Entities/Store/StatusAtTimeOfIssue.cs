@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities.Store
 {
-    public class StatusAtTimeOfIssue : BaseEntityWithoutId
+    public class StatusAtTimeOfIssue : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

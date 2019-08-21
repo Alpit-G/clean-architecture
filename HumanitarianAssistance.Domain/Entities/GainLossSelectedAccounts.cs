@@ -7,7 +7,7 @@ using HumanitarianAssistance.Domain.Entities.Accounting;
 
 namespace HumanitarianAssistance.Domain.Entities
 {
-    public class GainLossSelectedAccounts : BaseEntityWithoutId
+    public class GainLossSelectedAccounts : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

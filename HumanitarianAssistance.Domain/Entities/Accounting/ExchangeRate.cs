@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities.Accounting
 {
-    public class ExchangeRate : BaseEntityWithoutId
+    public class ExchangeRate : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

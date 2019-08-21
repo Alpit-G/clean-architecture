@@ -29,8 +29,8 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
                                           join jp in _dbContext.LanguageDetail on j.LanguageId equals jp.LanguageId
                                           join me in _dbContext.Mediums on j.MediumId equals me.MediumId
                                           join mc in _dbContext.MediaCategories on j.MediaCategoryId equals mc.MediaCategoryId
-                                          where !j.IsDeleted.Value && !jp.IsDeleted.Value && !me.IsDeleted.Value
-                                          && !mc.IsDeleted.Value
+                                          where !j.IsDeleted && !jp.IsDeleted && !me.IsDeleted
+                                          && !mc.IsDeleted
                                           select (new PolicyModel
                                           {
                                               PolicyId = j.PolicyId,

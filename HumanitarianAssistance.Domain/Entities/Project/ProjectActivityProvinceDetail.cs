@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HumanitarianAssistance.Domain.Entities.Project
 {
-    public class ProjectActivityProvinceDetail : BaseEntityWithoutId
+    public class ProjectActivityProvinceDetail : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

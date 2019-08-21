@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities.HR
 {
-    public class InterviewLanguages: BaseEntityWithoutId
+    public class InterviewLanguages: BaseEntity
     {
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]

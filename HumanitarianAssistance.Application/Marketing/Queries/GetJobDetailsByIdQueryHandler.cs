@@ -30,7 +30,7 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
                                      join jp in _dbContext.JobPriceDetails on j.JobId equals jp.JobId
                                      join cd in _dbContext.ContractDetails on j.ContractId equals cd.ContractId
                                      join cur in _dbContext.CurrencyDetails on cd.CurrencyId equals cur.CurrencyId
-                                     where !j.IsDeleted.Value && !jp.IsDeleted.Value && j.JobId == request.jobId
+                                     where !j.IsDeleted && !jp.IsDeleted && j.JobId == request.jobId
                                      select (new JobPriceModel
                                      {
                                          JobId = j.JobId,
@@ -47,7 +47,6 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
                                          ContractId = j.ContractId,
                                          Minutes = jp.Minutes,
                                          IsApproved = j.IsApproved,
-                                         CreatedBy = j.CreatedBy.ToString(),
                                          IsAgreementApproved = j.IsAgreementApproved,
                                          ClientId = cd.ClientId,
                                          ClientName = cd.ClientName,

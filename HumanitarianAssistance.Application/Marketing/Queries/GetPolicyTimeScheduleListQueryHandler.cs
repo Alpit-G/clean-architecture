@@ -26,7 +26,7 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
             {
                 int count = await _dbContext.PolicyTimeSchedules.CountAsync(x => x.IsDeleted == false);
                 var policyScheduleList = await (from j in _dbContext.PolicyTimeSchedules
-                                                where !j.IsDeleted.Value && j.PolicyId == request.Id
+                                                where !j.IsDeleted && j.PolicyId == request.Id
                                                 select (new PolicyTimeScheduleModel
                                                 {
                                                     PolicyId = j.PolicyId,

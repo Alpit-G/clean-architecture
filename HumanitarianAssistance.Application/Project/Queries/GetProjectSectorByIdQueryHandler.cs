@@ -25,7 +25,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
             try
             {
                 var Projectsector = await _dbContext.ProjectSector
-                       .FirstOrDefaultAsync(x => !x.IsDeleted.Value && x.ProjectId == request.ProjectId);
+                       .FirstOrDefaultAsync(x => !x.IsDeleted && x.ProjectId == request.ProjectId);
                 response.data.projectSector = Projectsector;
                 response.StatusCode = StaticResource.successStatusCode;
                 response.Message = "Success";

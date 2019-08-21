@@ -36,8 +36,6 @@ namespace HumanitarianAssistance.Application.CommonServices
 
         public async Task<VoucherDetailEntityModel> AddVoucherDetail(AddVoucherDetailCommand request)
         {
-            ApiResponse response = new ApiResponse();
-
             try
             {
                 request.TimezoneOffset = request.TimezoneOffset > 0 ? request.TimezoneOffset * -1 : Math.Abs(request.TimezoneOffset.Value);

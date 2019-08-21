@@ -27,7 +27,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
             try
             {
                 var ProjectList = await _dbContext.ProjectDetail
-                                          .Where(x => !x.IsDeleted.Value)
+                                          .Where(x => !x.IsDeleted)
                                           .OrderByDescending(x => x.ProjectId).Select(x => new ProjectDetailModel
                                           {
                                               ProjectId = x.ProjectId,

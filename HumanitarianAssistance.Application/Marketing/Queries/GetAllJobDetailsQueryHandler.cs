@@ -29,7 +29,7 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
                 int count = await _dbContext.JobDetails.CountAsync(x => x.IsDeleted == false);
                 var JobList = await (from j in _dbContext.JobDetails.AsNoTracking().AsQueryable()
                                      join jp in _dbContext.JobPriceDetails on j.JobId equals jp.JobId
-                                     where !j.IsDeleted.Value && !jp.IsDeleted.Value
+                                     where !j.IsDeleted && !jp.IsDeleted
                                      select (new JobDetailsModel
                                      {
                                          JobId = j.JobId,
@@ -50,7 +50,7 @@ namespace HumanitarianAssistance.Application.Marketing.Queries
                                          IsInvoiceApproved = jp.IsInvoiceApproved
                                      })).OrderByDescending(x => x.JobId).Take(10).Skip(0).ToListAsync();
 
-                //var list = await _uow.JobDetailsRepository.FindAllAsync(x => !x.IsDeleted.Value);
+                //var list = await _uow.JobDetailsRepository.FindAllAsync(x => !x.IsDeleted);
                 response.data.JobDetailsModel = JobList;
                 response.data.jobListTotalCount = count;
                 response.StatusCode = 200;

@@ -132,7 +132,7 @@ export class CurrencyCodeComponent implements OnInit {
           } else if (data.StatusCode === 900) {
             this.toastr.error('Currency Code already exist!!!');
           } else {
-            this.toastr.error('Error!!!');
+            this.toastr.error(data.Message);
           }
           this.currencyCodePopupLoading = false;
         },
@@ -166,7 +166,7 @@ export class CurrencyCodeComponent implements OnInit {
           } else if (data.StatusCode === 900) {
             this.toastr.error('Currency Code already exist!!!');
           } else {
-            this.toastr.error('Error!!!');
+            this.toastr.error(data.Message);
           }
           this.currencyCodePopupLoading = false;
         },

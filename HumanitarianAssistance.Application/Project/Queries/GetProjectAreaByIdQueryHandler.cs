@@ -27,7 +27,7 @@ namespace HumanitarianAssistance.Application.Project.Queries
             try
             {
                 var Projectarea = await _dbContext.ProjectArea
-                       .FirstOrDefaultAsync(x => !x.IsDeleted.Value && x.ProjectId == request.ProjectId);
+                       .FirstOrDefaultAsync(x => !x.IsDeleted && x.ProjectId == request.ProjectId);
                        
                 response.data.projectArea = Projectarea;
                 response.StatusCode = StaticResource.successStatusCode;

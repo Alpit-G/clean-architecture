@@ -1,12 +1,11 @@
 ﻿using AutoMapper;
 using HumanitarianAssistance.Application.Infrastructure;
 using HumanitarianAssistance.Common.Helpers;
-using HumanitarianAssistance.Domain.Entities;
+using HumanitarianAssistance.Domain.Entities.Store;
 using HumanitarianAssistance.Persistence;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;

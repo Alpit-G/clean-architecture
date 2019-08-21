@@ -7,7 +7,7 @@ using HumanitarianAssistance.Domain.Entities.Accounting;
 
 namespace HumanitarianAssistance.Domain.Entities.Store
 {
-    public class PaymentTypes : BaseEntityWithoutId
+    public class PaymentTypes : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

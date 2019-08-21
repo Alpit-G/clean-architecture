@@ -6,7 +6,7 @@ using System.Text;
 
 namespace HumanitarianAssistance.Domain.Entities.Project
 {
-    public class CEFeasibilityExpertOtherDetail : BaseEntityWithoutId
+    public class CEFeasibilityExpertOtherDetail : BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
