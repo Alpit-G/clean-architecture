@@ -52,7 +52,7 @@
     "jwt-decode": "^2.2.0",
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.23",
-    "msgpack5": "^4.2.1",
+    "msgpack5": "^4.5.1",
     "ng-bootstrap": "^1.6.3",
     "ng5-slider": "^1.1.14",
     "ngx-daterangepicker-material": "^1.2.4",
